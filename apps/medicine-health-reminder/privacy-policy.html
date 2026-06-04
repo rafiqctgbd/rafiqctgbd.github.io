@@ -1,171 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Medicine &amp; Health Reminder</title>
+    <title>Privacy Policy | Medicine & Health Reminder</title>
+    
+    <style>
+        /* Shared design variables and base layout */
+        :root { --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --muted: #94a3b8; --accent: #0ea5e9; --accent-hover: #38bdf8; --border: rgba(255,255,255,0.1); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding-top: 100px; }
+        .container { max-width: 900px; margin: auto; padding: 0 20px 60px 20px; }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 0; }
+        .logo a { font-weight: 800; font-size: 1.4rem; color: var(--text); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        nav ul { display: flex; list-style: none; }
+        nav a:not(.logo a) { color: var(--muted); text-decoration: none; margin-left: 30px; font-weight: 500; transition: 0.3s; }
+        nav a:hover:not(.logo a), nav a.active { color: var(--accent); }
+
+        /* Typography & Document formatting */
+        .doc-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 3rem; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.4rem; margin: 2rem 0 1rem 0; color: var(--accent); }
+        p { color: var(--muted); margin-bottom: 1.2rem; }
+        ul { margin-bottom: 1.5rem; padding-left: 20px; color: var(--muted); }
+        li { margin-bottom: 8px; }
+        hr { border: 0; height: 1px; background: var(--border); margin: 2rem 0; }
+        .date { display: inline-block; background: rgba(14, 165, 233, 0.1); color: var(--accent); padding: 5px 12px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 2rem; border: 1px solid rgba(14, 165, 233, 0.2); }
+        a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 768px) { nav ul { display: none; } .doc-card { padding: 1.5rem; } }
+    </style>
 </head>
+<body>
 
-<body style="font-family: Arial; max-width: 950px; margin: auto; padding: 20px; line-height: 1.7;">
+<nav>
+    <div class="container">
+        <div class="logo"><a href="/">M. Rafiqul<span> Islam</span></a></div>
+        <ul>
+            <li><a href="index.html">App Home</a></li>
+            <li><a href="privacy-policy.html" class="active">Privacy Policy</a></li>
+            <li><a href="README.html">README</a></li>
+        </ul>
+    </div>
+</nav>
 
-<h1>Privacy Policy</h1>
+<div class="container">
+    <div class="doc-card">
+        <h1>Privacy Policy</h1>
+        <div class="date">Effective Date: May 10, 2026</div>
 
-<p>
-<strong>Effective Date:</strong> May 10, 2026
-</p>
+        <p><strong>Medicine &amp; Health Reminder</strong> ("the App") helps users manage medicine schedules, health reminders, and personal medical records.</p>
+        <hr>
 
-<hr>
+        <h2>Information We Collect</h2>
+        <p>The App may store the following information:</p>
+        <ul>
+            <li>Medicine schedules and reminders</li>
+            <li>Health-related notes and records</li>
+            <li>Medical images or attachments added by the user</li>
+            <li>App preferences and settings</li>
+            <li>Dose history log (taken, snoozed, or missed records — stored locally on device only)</li>
+        </ul>
+        <p>By default, this information is stored locally on the user's own device only. The App does not upload or store user data on developer-owned servers.</p>
+        <p>If the user chooses to sign in with Google and use the optional backup feature, backup data is stored only inside the user's own private Google Drive AppData folder. Google Drive backup and restore are completely optional and require explicit user consent and sign-in.</p>
 
-<h2>Medicine &amp; Health Reminder</h2>
+        <h2>Google Sign-In and Google Drive Access</h2>
+        <p>The App optionally allows users to sign in with Google in order to backup and restore their medicine reminders and health records. The App uses the Google Drive <strong>drive.appdata</strong> scope only.</p>
+        <ul>
+            <li>Data is stored privately in the user's own Google Drive account</li>
+            <li>Data is not shared with third parties</li>
+            <li>Data is not sold</li>
+            <li>Only the user can access their backup data</li>
+            <li>The App cannot access general Google Drive files, photos, videos, or documents</li>
+        </ul>
 
-<p>
-Medicine &amp; Health Reminder ("the App") helps users manage medicine schedules, health reminders, and personal medical records.
-</p>
+        <h2>Data Sharing</h2>
+        <p>We do not sell, rent, trade, or share user data with third parties.</p>
 
-<hr>
+        <h2>User Control</h2>
+        <ul>
+            <li>Users may use the app without Google Sign-In</li>
+            <li>Users may revoke Google account access anytime through Google Account settings</li>
+            <li>Users may delete all backups from Google Drive directly within the App</li>
+            <li>Users may uninstall the app to remove all local device data</li>
+        </ul>
 
-<h2>Information We Collect</h2>
+        <h2>Permissions Used</h2>
+        <ul>
+            <li>Internet access — backup and restore via Google Drive</li>
+            <li>Notifications and alarms — medicine reminder alerts</li>
+            <li>Camera and media/storage access — medical image attachments</li>
+            <li>Boot completed — automatically restore reminders after device restart</li>
+            <li>Exact alarm scheduling — ensure reminders fire at precise times</li>
+        </ul>
 
-<p>
-The App may store the following information:
-</p>
+        <h2>Data Retention</h2>
+        <p>Backup data remains in the user's own Google Drive account until the user chooses to delete it. The App developer does not retain copies of user backup data.</p>
 
-<ul>
-    <li>Medicine schedules and reminders</li>
-    <li>Health-related notes and records</li>
-    <li>Medical images or attachments added by the user</li>
-    <li>App preferences and settings</li>
-    <li>Dose history log (taken, snoozed, or missed records — stored locally on device only)</li>
-</ul>
+        <h2>Advertising</h2>
+        <p>This application does not display advertisements and does not use any advertising SDKs. No user data is used for advertising purposes.</p>
 
-<p>
-By default, this information is stored locally on the user's own device only.
-</p>
+        <h2>Children's Privacy</h2>
+        <p>This application is not directed toward children under the age of 13. We do not knowingly collect personal information from children.</p>
 
-<p>
-The App does not upload or store user data on developer-owned servers.
-</p>
+        <h2>Changes to This Privacy Policy</h2>
+        <p>This Privacy Policy may be updated occasionally to reflect changes in the App or applicable regulations. Users will be informed of significant changes via app update release notes. The effective date at the top of this page will always reflect the most recent revision.</p>
 
-<p>
-If the user chooses to sign in with Google and use the optional backup feature, backup data is stored only inside the user's own private Google Drive AppData folder.
-</p>
-
-<p>
-Google Drive backup and restore are completely optional and require explicit user consent and sign-in.
-</p>
-
-<hr>
-
-<h2>Google Sign-In and Google Drive Access</h2>
-
-<p>
-The App optionally allows users to sign in with Google in order to backup and restore their medicine reminders and health records.
-</p>
-
-<p>
-The App uses the Google Drive <strong>drive.appdata</strong> scope only.
-</p>
-
-<ul>
-    <li>Data is stored privately in the user's own Google Drive account</li>
-    <li>Data is not shared with third parties</li>
-    <li>Data is not sold</li>
-    <li>Only the user can access their backup data</li>
-    <li>The App cannot access general Google Drive files, photos, videos, or documents</li>
-</ul>
-
-<hr>
-
-<h2>Data Sharing</h2>
-
-<p>
-We do not sell, rent, trade, or share user data with third parties.
-</p>
-
-<hr>
-
-<h2>User Control</h2>
-
-<ul>
-    <li>Users may use the app without Google Sign-In</li>
-    <li>Users may revoke Google account access anytime through Google Account settings</li>
-    <li>Users may delete all backups from Google Drive directly within the App</li>
-    <li>Users may uninstall the app to remove all local device data</li>
-</ul>
-
-<hr>
-
-<h2>Permissions Used</h2>
-
-<ul>
-    <li>Internet access — backup and restore via Google Drive</li>
-    <li>Notifications and alarms — medicine reminder alerts</li>
-    <li>Camera and media/storage access — medical image attachments</li>
-    <li>Boot completed — automatically restore reminders after device restart</li>
-    <li>Exact alarm scheduling — ensure reminders fire at precise times</li>
-</ul>
-
-<hr>
-
-<h2>Data Retention</h2>
-
-<p>
-Backup data remains in the user's own Google Drive account until the user chooses to delete it.
-</p>
-
-<p>
-The App developer does not retain copies of user backup data.
-</p>
-
-<hr>
-
-<h2>Advertising</h2>
-
-<p>
-This application does not display advertisements and does not use any advertising SDKs.
-No user data is used for advertising purposes.
-</p>
-
-<hr>
-
-<h2>Children's Privacy</h2>
-
-<p>
-This application is not directed toward children under the age of 13.
-</p>
-
-<p>
-We do not knowingly collect personal information from children.
-</p>
-
-<hr>
-
-<h2>Changes to This Privacy Policy</h2>
-
-<p>
-This Privacy Policy may be updated occasionally to reflect changes in the App or applicable regulations.
-Users will be informed of significant changes via app update release notes.
-The effective date at the top of this page will always reflect the most recent revision.
-</p>
-
-<hr>
-
-<h2>Contact</h2>
-
-<p>
-For questions regarding this Privacy Policy:
-</p>
-
-<p>
-rafiqctgbd@gmail.com
-</p>
-
-<hr>
-
-<p>
-<a href="index.html">Home</a> |
-<a href="README.html">README</a>
-</p>
+        <h2>Contact</h2>
+        <p>For questions regarding this Privacy Policy, contact: <a href="mailto:rafiqctgbd@gmail.com">rafiqctgbd@gmail.com</a></p>
+    </div>
+</div>
 
 </body>
 </html>
