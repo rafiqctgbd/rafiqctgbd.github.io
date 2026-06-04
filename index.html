@@ -122,6 +122,7 @@ h1 {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   padding: 14px 28px;
   border-radius: 8px;
   text-decoration: none;
@@ -185,13 +186,17 @@ h2::before {
 .project-preview {
   width: 100%;
   height: 220px;
-  background: #2a3850; /* Fallback color */
+  background: #2a3850; 
   border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* Special styling for the mobile app preview */
+.mobile-preview {
+  background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(14,165,233,0.2));
 }
 
 .project-preview img {
@@ -219,7 +224,7 @@ h2::before {
 .card p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
 
 /* Tech Tags */
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; margin-bottom: 15px; }
 .tag {
   font-size: 0.75rem;
   background: rgba(14, 165, 233, 0.1);
@@ -294,7 +299,7 @@ footer {
 
 @media (max-width: 768px) {
   h1 { font-size: 2.5rem; }
-  .btn { width: 100%; justify-content: center; }
+  .btn { width: 100%; }
   nav ul { display: none; }
 }
 </style>
@@ -306,7 +311,8 @@ footer {
     <div class="logo">M. Rafiqul<span> Islam</span></div>
     <ul>
       <li><a href="#expertise">Expertise</a></li>
-      <li><a href="#software">Software Suites</a></li>
+      <li><a href="#software">Desktop Suites</a></li>
+      <li><a href="#mobile">Mobile Apps</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -328,7 +334,7 @@ footer {
 
     <div class="btn-group">
       <a href="#software" class="btn btn-primary">View Automation Projects</a>
-      <a href="#contact" class="btn btn-secondary">Contact for Consultation</a>
+      <a href="#mobile" class="btn btn-secondary">View Mobile Apps</a>
     </div>
   </div>
 </section>
@@ -354,7 +360,7 @@ footer {
           <li>Python (Advanced Scripting)</li>
           <li>PyQt5 & Tkinter (GUI Apps)</li>
           <li>Node.js / JavaScript</li>
-          <li>REST APIs & Web Scraping</li>
+          <li>Android Application Development</li>
         </ul>
       </div>
 
@@ -374,7 +380,7 @@ footer {
 
 <section id="software">
   <div class="container">
-    <h2>Developed Solutions</h2>
+    <h2>Desktop Automation Solutions</h2>
     <p style="color: var(--muted); margin-bottom: 30px;">
       Proprietary desktop applications developed internally to streamline AKS Khan Diagnostics' workflow.
     </p>
@@ -429,7 +435,7 @@ footer {
           <div class="tags">
             <span class="tag">ABBYY OCR</span>
             <span class="tag">RegEx</span>
-            <li><span class="tag">Python</span></li>
+            <span class="tag">Python</span>
             <span class="tag">Batch Processing</span>
           </div>
         </div>
@@ -437,7 +443,7 @@ footer {
 
       <div class="card">
         <div class="project-preview">
-           <img src="assets/ImageCropper.jpg" alt="Image Cropper UI">
+		   <img src="assets/ImageCropper.jpg" alt="Image Cropper UI">
         </div>
         <div class="card-body">
           <h3>Smart Image Cropper</h3>
@@ -460,7 +466,7 @@ footer {
         <div class="card-body">
           <h3>Bio-Sync & Utility Bar</h3>
           <p>
-            Infrastructure tools including a custom "Rafiq Launcher Bar" for quick staff access to tools, and a ZKTeco Time Sync utility that keeps all biometric attendance devices synchronized with the central server via UDP.
+            Infrastructure tools including a custom launcher bar for quick staff access to tools on a dedicated settings popup window, and a ZKTeco Time Sync utility that keeps all biometric attendance devices synchronized with the central server via UDP.
           </p>
           <div class="tags">
             <span class="tag">Socket Programming</span>
@@ -471,6 +477,36 @@ footer {
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<section id="mobile">
+  <div class="container">
+    <h2>Mobile Applications</h2>
+    <p style="color: var(--muted); margin-bottom: 30px;">
+      Standalone Android applications designed for personal health management and utility.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="project-preview mobile-preview">
+           <span style="font-size: 3rem;">💊</span>
+        </div>
+        <div class="card-body">
+          <h3>Medicine & Health Reminder</h3>
+          <p>
+            A secure, privacy-focused Android application designed to help users manage medicine schedules, health reminders, and personal medical records. Includes precise alarm scheduling, dose history tracking, and optional Google Drive data backup via Firebase.
+          </p>
+          <div class="tags">
+            <span class="tag">Android</span>
+            <span class="tag">Local Storage</span>
+            <span class="tag">Google Drive API</span>
+            <span class="tag">Firebase</span>
+          </div>
+          <a href="apps/medicine-health-reminder/index.html" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">View Application Details</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
