@@ -1,79 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine &amp; Health Reminder</title>
+    <title>Medicine & Health Reminder | App</title>
+    <meta name="description" content="Manage medicine schedules, health reminders, and personal medical records securely on Android.">
+    
+    <style>
+        /* --- DESIGN VARIABLES (Matched to Portfolio) --- */
+        :root {
+            --bg: #0f172a;        
+            --card: #1e293b;      
+            --text: #f1f5f9;      
+            --muted: #94a3b8;     
+            --accent: #0ea5e9;    
+            --accent-hover: #38bdf8;
+            --border: rgba(255,255,255,0.1);
+            --success: #10b981;   
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding-top: 100px; /* Offset for fixed nav */
+        }
+        .container { max-width: 950px; margin: auto; padding: 0 20px 60px 20px; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+        nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 0; }
+        .logo a { font-weight: 800; font-size: 1.4rem; color: var(--text); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        nav ul { display: flex; list-style: none; }
+        nav a:not(.logo a) {
+            color: var(--muted); text-decoration: none; margin-left: 30px;
+            font-weight: 500; font-size: 0.95rem; transition: all 0.3s;
+        }
+        nav a:hover:not(.logo a), nav a.active { color: var(--accent); }
+
+        /* --- TYPOGRAPHY & LAYOUT --- */
+        h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 1rem; color: var(--text); }
+        h2 { font-size: 1.8rem; margin: 2.5rem 0 1.5rem 0; display: flex; align-items: center; gap: 15px; }
+        h2::before { content: ''; display: block; width: 6px; height: 30px; background: var(--accent); border-radius: 3px; }
+        p { color: var(--muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-hover); }
+        
+        /* --- CONTENT CARDS --- */
+        .content-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .content-card ul { padding-left: 0; list-style: none; }
+        .content-card li { color: var(--muted); margin-bottom: 10px; display: flex; align-items: flex-start; }
+        .content-card li::before { content: '▹'; color: var(--accent); margin-right: 12px; font-weight: bold; }
+
+        @media (max-width: 768px) { nav ul { display: none; } }
+    </style>
 </head>
+<body>
 
-<body style="font-family: Arial; max-width: 950px; margin: auto; padding: 20px; line-height: 1.7;">
+<nav>
+    <div class="container">
+        <div class="logo"><a href="/">M. Rafiqul<span> Islam</span></a></div>
+        <ul>
+            <li><a href="index.html" class="active">App Home</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="README.html">README</a></li>
+        </ul>
+    </div>
+</nav>
 
-<h1>Medicine &amp; Health Reminder</h1>
+<div class="container">
+    <h1>Medicine &amp; Health Reminder</h1>
+    <p>An Android application designed to help users manage medicine schedules, health reminders, and personal medical records securely and conveniently.</p>
 
-<p>
-Medicine &amp; Health Reminder is an Android application designed to help users manage medicine schedules, health reminders, and personal medical records securely and conveniently.
-</p>
+    <div class="content-card">
+        <h2>Features</h2>
+        <ul>
+            <li>Medicine reminder alarms</li>
+            <li>Health tracking and notes</li>
+            <li>Medical record management</li>
+            <li>Dose history tracking (taken, snoozed, missed)</li>
+            <li>Pause all reminders temporarily</li>
+            <li>Share medical records via WhatsApp or email</li>
+            <li>Google Drive backup and restore</li>
+            <li>Secure local data storage</li>
+            <li>Notification reminders</li>
+            <li>Optional Google Sign-In support</li>
+        </ul>
+    </div>
 
-<hr>
+    <div class="content-card">
+        <h2>Privacy &amp; Security</h2>
+        <p>User data is stored locally on the user's own device by default.</p>
+        <p>The application does not store personal data on developer-owned servers.</p>
+        <p>Google Drive backup is completely optional and requires explicit user sign-in and consent.</p>
+        <p>This application does not display advertisements and does not use any advertising SDKs.</p>
+    </div>
 
-<h2>Features</h2>
-
-<ul>
-    <li>Medicine reminder alarms</li>
-    <li>Health tracking and notes</li>
-    <li>Medical record management</li>
-    <li>Dose history tracking (taken, snoozed, missed)</li>
-    <li>Pause all reminders temporarily</li>
-    <li>Share medical records via WhatsApp or email</li>
-    <li>Google Drive backup and restore</li>
-    <li>Secure local data storage</li>
-    <li>Notification reminders</li>
-    <li>Optional Google Sign-In support</li>
-</ul>
-
-<hr>
-
-<h2>Privacy &amp; Security</h2>
-
-<p>
-User data is stored locally on the user's own device by default.
-</p>
-
-<p>
-The application does not store personal data on developer-owned servers.
-</p>
-
-<p>
-Google Drive backup is completely optional and requires explicit user sign-in and consent.
-</p>
-
-<p>
-This application does not display advertisements and does not use any advertising SDKs.
-</p>
-
-<hr>
-
-<h2>Links</h2>
-
-<ul>
-    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-    <li><a href="README.html">Project README</a></li>
-</ul>
-
-<hr>
-
-<h2>Developer</h2>
-
-<p>
-Developed by Rafiqul Islam
-</p>
-
-<p>
-GitHub:
-<a href="https://github.com/rafiqctgbd">
-https://github.com/rafiqctgbd
-</a>
-</p>
+    <div class="content-card">
+        <h2>Developer</h2>
+        <p style="margin-bottom: 5px;">Developed by <strong>Mohammad Rafiqul Islam</strong></p>
+        <p>GitHub: <a href="https://github.com/rafiqctgbd" target="_blank">github.com/rafiqctgbd</a></p>
+    </div>
+</div>
 
 </body>
 </html>
