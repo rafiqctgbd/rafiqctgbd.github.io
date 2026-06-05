@@ -1,140 +1,434 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apps — Mohammad Rafiqul Islam</title>
-<meta name="description" content="Android apps developed by Mohammad Rafiqul Islam — Senior IT Manager & Automation Architect.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mohammadrafiqulislam.com/apps/">
-<meta property="og:title" content="Apps — Mohammad Rafiqul Islam">
-<meta property="og:description" content="Android apps developed by Mohammad Rafiqul Islam — privacy-focused, ad-free, built for real-world utility.">
-<meta property="og:site_name" content="Mohammad Rafiqul Islam">
-<link rel="canonical" href="https://mohammadrafiqulislam.com/apps/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0f172a; --card: #1e293b; --text: #f1f5f9;
-  --muted: #94a3b8; --accent: #0ea5e9; --accent-hover: #38bdf8;
-  --border: rgba(255,255,255,0.08); --green: #10b981; --android: #3DDC84;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps — Mohammad Rafiqul Islam</title>
+  <meta name="description"
+    content="Android apps developed by Mohammad Rafiqul Islam — Senior IT Manager & Automation Architect.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/">
+  <meta property="og:title" content="Apps — Mohammad Rafiqul Islam">
+  <meta property="og:description"
+    content="Android apps developed by Mohammad Rafiqul Islam — privacy-focused, ad-free, built for real-world utility.">
+  <meta property="og:site_name" content="Mohammad Rafiqul Islam">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/apps/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --green: #10b981;
+      --android: #3DDC84;
+    }
 
-nav {
-  position:fixed; top:0; width:100%;
-  background:rgba(15,23,42,0.95); backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border); z-index:1000;
-}
-nav .wrap {
-  max-width:1100px; margin:auto; padding:0 24px;
-  height:66px; display:flex; justify-content:space-between; align-items:center;
-}
-.nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.1rem; color:var(--text); text-decoration:none; }
-.nav-logo span { color:var(--accent); }
-.nav-links { display:flex; gap:28px; list-style:none; }
-.nav-links a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500; transition:color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color:var(--accent); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.page-header {
-  padding:130px 0 60px;
-  background:radial-gradient(ellipse at 60% 0%, rgba(14,165,233,0.08), transparent 50%);
-  border-bottom:1px solid var(--border);
-}
-.page-header .wrap { max-width:1100px; margin:auto; padding:0 24px; }
-.breadcrumb { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:0.82rem; margin-bottom:1.2rem; }
-.breadcrumb a { color:var(--accent); text-decoration:none; }
-.breadcrumb a:hover { text-decoration:underline; }
-.section-label {
-  font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700;
-  letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:0.8rem;
-}
-h1 { font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-0.5px; margin-bottom:0.8rem; }
-.header-desc { color:var(--muted); max-width:520px; font-size:1rem; font-weight:300; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-.main { max-width:1100px; margin:auto; padding:64px 24px 80px; }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
 
-.apps-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.8rem; margin-bottom:4rem; }
+    nav .wrap {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 24px;
+      height: 66px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.app-card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:18px; overflow:hidden;
-  transition:all 0.3s; display:flex; flex-direction:column;
-  text-decoration:none; color:inherit;
-}
-.app-card:hover { transform:translateY(-5px); border-color:rgba(14,165,233,0.35); box-shadow:0 12px 40px rgba(0,0,0,0.3); }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
 
-.app-card-header {
-  padding:2rem 2rem 1.5rem;
-  background:linear-gradient(135deg, rgba(14,165,233,0.06), rgba(99,102,241,0.04));
-  border-bottom:1px solid var(--border);
-  display:flex; align-items:flex-start; gap:16px;
-}
-.app-icon {
-  width:60px; height:60px; border-radius:16px;
-  overflow:hidden; flex-shrink:0;
-  background:linear-gradient(135deg,#0ea5e9,#6366f1);
-  display:flex; align-items:center; justify-content:center;
-}
-.app-icon img { width:100%; height:100%; object-fit:cover; }
-.app-title-wrap {}
-.app-card h2 { font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:6px; }
-.app-badges { display:flex; gap:8px; flex-wrap:wrap; }
-.badge {
-  display:inline-flex; align-items:center; gap:5px;
-  padding:3px 10px; border-radius:20px; font-size:0.72rem; font-weight:700;
-  font-family:'Syne',sans-serif; letter-spacing:0.3px;
-}
-.badge-android { background:rgba(61,220,132,0.1); color:var(--android); border:1px solid rgba(61,220,132,0.2); }
-.badge-version { background:rgba(14,165,233,0.1); color:var(--accent); border:1px solid rgba(14,165,233,0.2); }
-.badge-free    { background:rgba(245,158,11,0.1); color:#f59e0b; border:1px solid rgba(245,158,11,0.2); }
+    .nav-logo span {
+      color: var(--accent);
+    }
 
-.app-card-body { padding:1.5rem 2rem 2rem; flex:1; display:flex; flex-direction:column; }
-.app-desc { color:var(--muted); font-size:0.92rem; margin-bottom:1.5rem; flex:1; line-height:1.65; }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
 
-.app-links { display:flex; gap:10px; flex-wrap:wrap; }
-.app-link {
-  display:inline-flex; align-items:center; gap:6px;
-  padding:8px 16px; border-radius:7px;
-  font-size:0.83rem; font-weight:600; text-decoration:none;
-  transition:all 0.2s;
-}
-.app-link-primary { background:var(--accent); color:#0f172a; }
-.app-link-primary:hover { background:var(--accent-hover); }
-.app-link-ghost { background:rgba(255,255,255,0.04); border:1px solid var(--border); color:var(--text); }
-.app-link-ghost:hover { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.18); }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-.app-card-placeholder {
-  background:rgba(255,255,255,0.01); border:1px dashed rgba(255,255,255,0.1);
-  border-radius:18px; padding:2.5rem;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
-  text-align:center; min-height:200px;
-}
-.placeholder-ico { font-size:2rem; margin-bottom:1rem; opacity:0.3; }
-.placeholder-text { color:var(--muted); font-size:0.88rem; opacity:0.6; }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
 
-footer {
-  border-top:1px solid var(--border); padding:30px 24px;
-  text-align:center; color:var(--muted); font-size:0.83rem;
-}
-footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
-footer a:hover { text-decoration:underline; }
+    .page-header {
+      padding: 130px 0 60px;
+      background: radial-gradient(ellipse at 60% 0%, rgba(14, 165, 233, 0.08), transparent 50%);
+      border-bottom: 1px solid var(--border);
+    }
 
-@media (max-width:768px) {
-  .nav-links { display:none; 
-  body { overflow-x:hidden; }
-  .container, .wrap { padding-left:16px !important; padding-right:16px !important; }
-  .features-grid, .perm-grid, .links-grid { grid-template-columns:1fr !important; }
-  .privacy-strip { grid-template-columns:1fr !important; padding:1.4rem !important; }
-  .apps-grid { grid-template-columns:1fr !important; }
-  h1, h2 { word-break:break-word; }
-  .btn-group { flex-direction:column; }
-  .btn { width:100%; justify-content:center; }
-}
-  .apps-grid { grid-template-columns:1fr; }
-}
-</style>
+    .page-header .wrap {
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .header-desc {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 64px 24px 80px;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 4rem;
+    }
+
+    .app-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .app-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(14, 165, 233, 0.35);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .app-card-header {
+      padding: 2rem 2rem 1.5rem;
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.06), rgba(99, 102, 241, 0.04));
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .app-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .app-title-wrap {}
+
+    .app-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .app-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-android {
+      background: rgba(61, 220, 132, 0.1);
+      color: var(--android);
+      border: 1px solid rgba(61, 220, 132, 0.2);
+    }
+
+    .badge-version {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .badge-free {
+      background: rgba(245, 158, 11, 0.1);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .app-card-body {
+      padding: 1.5rem 2rem 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
+      line-height: 1.65;
+    }
+
+    .app-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .app-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 7px;
+      font-size: 0.83rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .app-link-primary {
+      background: var(--accent);
+      color: #0f172a;
+    }
+
+    .app-link-primary:hover {
+      background: var(--accent-hover);
+    }
+
+    .app-link-ghost {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .app-link-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .app-card-placeholder {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 200px;
+    }
+
+    .placeholder-ico {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .placeholder-text {
+      color: var(--muted);
+      font-size: 0.88rem;
+      opacity: 0.6;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width:768px) {
+      .nav-links {
+        display: none;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .wrap,
+      .container {
+        padding: 0 16px !important;
+      }
+
+      .page-header {
+        padding: 80px 0 40px;
+      }
+
+      .page-header .wrap {
+        padding: 0 16px;
+      }
+
+      .main {
+        padding: 32px 0 40px;
+      }
+
+      .features-grid,
+      .perm-grid,
+      .links-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .privacy-strip {
+        grid-template-columns: 1fr !important;
+        padding: 1.4rem !important;
+      }
+
+      .apps-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+      }
+
+      h1,
+      h2 {
+        word-break: break-word;
+        font-size: 1.4rem !important;
+      }
+
+      .header-desc {
+        font-size: 0.9rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      footer {
+        padding: 20px 16px;
+      }
+    }
+
+    @media (max-width:640px) {
+      .main {
+        padding: 24px 0 32px;
+      }
+
+      .page-header {
+        padding: 70px 0 32px;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -144,82 +438,88 @@ footer a:hover { text-decoration:underline; }
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Apps — Mohammad Rafiqul Islam">
-  <meta name="twitter:description" content="Android apps developed by Mohammad Rafiqul Islam — privacy-focused, ad-free utilities built for real-world use.">
+  <meta name="twitter:description"
+    content="Android apps developed by Mohammad Rafiqul Islam — privacy-focused, ad-free utilities built for real-world use.">
   <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
   <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 </head>
+
 <body>
 
-<nav>
-  <div class="wrap">
-    <a href="/" class="nav-logo">M. Rafiqul<span> Islam</span></a>
-    <ul class="nav-links">
-      <li><a href="/#expertise">Expertise</a></li>
-      <li><a href="/#software">Software</a></li>
-      <li><a href="/apps/" class="active">Apps</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="page-header">
-  <div class="wrap">
-    <div class="breadcrumb">
-      <a href="/">Portfolio</a>
-      <span style="opacity:0.4">/</span>
-      Apps
+  <nav>
+    <div class="wrap">
+      <a href="/" class="nav-logo">M. Rafiqul<span> Islam</span></a>
+      <ul class="nav-links">
+        <li><a href="/#expertise">Expertise</a></li>
+        <li><a href="/#software">Software</a></li>
+        <li><a href="/apps/" class="active">Apps</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
     </div>
-    <div class="section-label">Published Applications</div>
-    <h1>Android Apps</h1>
-    <p class="header-desc">Mobile applications developed and published by Rafiqul Islam — focused on privacy, reliability, and real-world utility. Ad-free, no data collection.</p>
+  </nav>
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Portfolio</a>
+        <span style="opacity:0.4">/</span>
+        Apps
+      </div>
+      <div class="section-label">Published Applications</div>
+      <h1>Android Apps</h1>
+      <p class="header-desc">Mobile applications developed and published by Rafiqul Islam — focused on privacy,
+        reliability, and real-world utility. Ad-free, no data collection.</p>
+    </div>
   </div>
-</div>
 
-<div class="main">
-  <div class="apps-grid">
+  <div class="main">
+    <div class="apps-grid">
 
-    <!-- Medicine & Health Reminder -->
-    <a href="/apps/medicine-health-reminder/" class="app-card">
-      <div class="app-card-header">
-        <div class="app-icon">
-          <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder icon">
-        </div>
-        <div class="app-title-wrap">
-          <h2>Medicine &amp; Health Reminder</h2>
-          <div class="app-badges">
-            <span class="badge badge-android">📱 Android</span>
-            <span class="badge badge-version">v1.2</span>
-            <span class="badge badge-free">⚡ Free</span>
+      <!-- Medicine & Health Reminder -->
+      <a href="/apps/medicine-health-reminder/" class="app-card">
+        <div class="app-card-header">
+          <div class="app-icon">
+            <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder icon">
+          </div>
+          <div class="app-title-wrap">
+            <h2>Medicine &amp; Health Reminder</h2>
+            <div class="app-badges">
+              <span class="badge badge-android">📱 Android</span>
+              <span class="badge badge-version">v1.2</span>
+              <span class="badge badge-free">⚡ Free</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="app-card-body">
-        <p class="app-desc">Manage medicine schedules, health reminders, and personal medical records. Precise alarms, dose history tracking, missed dose detection, and optional Google Drive backup. Zero ads, local-first privacy.</p>
-        <div class="app-links">
-          <span class="app-link app-link-primary">View App →</span>
-          <span class="app-link app-link-ghost">Privacy Policy</span>
-          <span class="app-link app-link-ghost">README</span>
+        <div class="app-card-body">
+          <p class="app-desc">Manage medicine schedules, health reminders, and personal medical records. Precise alarms,
+            dose history tracking, missed dose detection, and optional Google Drive backup. Zero ads, local-first
+            privacy.</p>
+          <div class="app-links">
+            <span class="app-link app-link-primary">View App →</span>
+            <span class="app-link app-link-ghost">Privacy Policy</span>
+            <span class="app-link app-link-ghost">README</span>
+          </div>
         </div>
+      </a>
+
+      <!-- Future app placeholder -->
+      <div class="app-card-placeholder">
+        <div class="placeholder-ico">🚀</div>
+        <div class="placeholder-text">More apps coming soon</div>
       </div>
-    </a>
 
-    <!-- Future app placeholder -->
-    <div class="app-card-placeholder">
-      <div class="placeholder-ico">🚀</div>
-      <div class="placeholder-text">More apps coming soon</div>
     </div>
-
   </div>
-</div>
 
-<footer>
-  <a href="/">← Portfolio</a>
-  <a href="/#contact">Contact</a>
-  <a href="https://github.com/rafiqctgbd">GitHub</a>
-  <p style="margin-top:12px;">&copy; 2026 Mohammad Rafiqul Islam</p>
-</footer>
+  <footer>
+    <a href="/">← Portfolio</a>
+    <a href="/#contact">Contact</a>
+    <a href="https://github.com/rafiqctgbd">GitHub</a>
+    <p style="margin-top:12px;">&copy; 2026 Mohammad Rafiqul Islam</p>
+  </footer>
 
 </body>
+
 </html>
