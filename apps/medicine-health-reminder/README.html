@@ -1,207 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>README — Medicine & Health Reminder</title>
-<meta name="description" content="Technical README for Medicine & Health Reminder Android app by Rafiqul Islam.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #f1f5f9;
-  --muted: #94a3b8;
-  --accent: #0ea5e9;
-  --border: rgba(255,255,255,0.08);
-  --green: #10b981;
-  --yellow: #f59e0b;
-  --code-bg: #0d1424;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--bg); color: var(--text);
-  line-height: 1.7; overflow-x: hidden;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>README — Medicine & Health Reminder</title>
+  <meta name="description" content="Technical README for Medicine & Health Reminder Android app by Rafiqul Islam.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --border: rgba(255, 255, 255, 0.08);
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --code-bg: #0d1424;
+    }
 
-nav {
-  position: fixed; top:0; width:100%;
-  background: rgba(15,23,42,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border); z-index:1000;
-}
-nav .wrap {
-  max-width: 960px; margin:auto; padding:0 24px;
-  height:66px; display:flex; justify-content:space-between; align-items:center;
-}
-.nav-logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.05rem; color:var(--text); text-decoration:none; }
-.nav-logo span { color:var(--accent); }
-.nav-right { display:flex; gap:20px; align-items:center; }
-.nav-right a { color:var(--muted); text-decoration:none; font-size:0.88rem; transition:color 0.2s; }
-.nav-right a:hover { color:var(--accent); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* HEADER */
-.page-header {
-  padding: 130px 0 50px;
-  background: radial-gradient(ellipse at 80% 0%, rgba(14,165,233,0.07), transparent 50%);
-  border-bottom: 1px solid var(--border);
-}
-.page-header .wrap { max-width:960px; margin:auto; padding:0 24px; }
-.breadcrumb {
-  display:flex; align-items:center; gap:8px;
-  color:var(--muted); font-size:0.82rem; margin-bottom:1.2rem;
-}
-.breadcrumb a { color:var(--accent); text-decoration:none; }
-.breadcrumb a:hover { text-decoration:underline; }
-.breadcrumb span { opacity:0.4; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-.header-top { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; }
-.header-badge-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:1rem; }
-.badge {
-  display:inline-flex; align-items:center; gap:6px;
-  padding:5px 12px; border-radius:20px; font-size:0.78rem; font-weight:600;
-  font-family:'Syne',sans-serif; letter-spacing:0.3px;
-}
-.badge-android { background:rgba(16,185,129,0.1); color:var(--green); border:1px solid rgba(16,185,129,0.2); }
-.badge-free    { background:rgba(14,165,233,0.1); color:var(--accent); border:1px solid rgba(14,165,233,0.2); }
-.badge-privacy { background:rgba(245,158,11,0.1); color:var(--yellow); border:1px solid rgba(245,158,11,0.2); }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
 
-h1 { font-family:'Syne',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; letter-spacing:-0.5px; margin-bottom:0.8rem; }
-.header-desc { color:var(--muted); max-width:580px; font-size:1rem; font-weight:300; }
+    nav .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+      height: 66px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* MAIN */
-.main-wrap {
-  max-width:960px; margin:auto; padding:60px 24px 80px;
-  display:grid; grid-template-columns:200px 1fr; gap:52px; align-items:start;
-}
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
 
-/* TOC */
-.toc {
-  position:sticky; top:90px;
-  background:var(--card); border:1px solid var(--border);
-  border-radius:14px; padding:1.4rem; font-size:0.85rem;
-}
-.toc-title {
-  font-family:'Syne',sans-serif; font-weight:700; font-size:0.72rem;
-  letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); margin-bottom:1rem;
-}
-.toc ul { list-style:none; }
-.toc li { margin-bottom:6px; }
-.toc a {
-  color:var(--muted); text-decoration:none; transition:color 0.2s;
-  display:block; padding:4px 0 4px 10px;
-  border-left:2px solid transparent;
-}
-.toc a:hover { color:var(--accent); border-left-color:var(--accent); }
+    .nav-logo span {
+      color: var(--accent);
+    }
 
-/* CONTENT */
-.content section { margin-bottom:3rem; scroll-margin-top:90px; }
-.content h2 {
-  font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:700;
-  margin-bottom:1.2rem; padding-bottom:0.7rem;
-  border-bottom:1px solid var(--border);
-  display:flex; align-items:center; gap:10px;
-}
-.content h2 .ico { font-size:1rem; }
-.content p { color:var(--muted); margin-bottom:1rem; font-size:0.95rem; }
-.content a { color:var(--accent); }
-.content a:hover { text-decoration:underline; }
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
 
-/* Feature list */
-.feature-list { list-style:none; margin-bottom:1rem; }
-.feature-list li {
-  color:var(--muted); font-size:0.93rem;
-  padding:9px 0 9px 22px; border-bottom:1px solid rgba(255,255,255,0.03);
-  position:relative; display:flex; align-items:flex-start; gap:10px;
-}
-.feature-list li::before { content:'▹'; color:var(--accent); position:absolute; left:0; top:10px; }
+    .nav-right a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
 
-/* Privacy list */
-.privacy-list { list-style:none; margin-bottom:1rem; }
-.privacy-list li {
-  color:var(--muted); font-size:0.93rem;
-  padding:9px 0 9px 22px; border-bottom:1px solid rgba(255,255,255,0.03);
-  position:relative;
-}
-.privacy-list li::before { content:'✓'; color:var(--green); position:absolute; left:0; font-weight:700; }
+    .nav-right a:hover {
+      color: var(--accent);
+    }
 
-/* Permission cards */
-.perm-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:1rem; }
-.perm-card {
-  background:rgba(255,255,255,0.02); border:1px solid var(--border);
-  border-radius:10px; padding:1rem;
-}
-.perm-card .perm-title { font-weight:600; font-size:0.88rem; margin-bottom:4px; }
-.perm-card .perm-desc { color:var(--muted); font-size:0.8rem; line-height:1.5; }
+    /* HEADER */
+    .page-header {
+      padding: 130px 0 50px;
+      background: radial-gradient(ellipse at 80% 0%, rgba(14, 165, 233, 0.07), transparent 50%);
+      border-bottom: 1px solid var(--border);
+    }
 
-/* Code-style scope */
-.scope-tag {
-  display:inline-flex; align-items:center;
-  background:var(--code-bg); border:1px solid rgba(14,165,233,0.2);
-  color:var(--accent); font-family:'JetBrains Mono',monospace;
-  font-size:0.83rem; padding:4px 12px; border-radius:6px;
-  margin-bottom:1rem;
-}
+    .page-header .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+    }
 
-/* Links section */
-.links-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.link-card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:1.1rem 1.3rem;
-  text-decoration:none; transition:all 0.2s;
-  display:flex; align-items:center; gap:12px;
-}
-.link-card:hover { border-color:rgba(14,165,233,0.4); transform:translateY(-2px); }
-.link-card .link-ico {
-  width:36px; height:36px; border-radius:8px;
-  background:rgba(14,165,233,0.1);
-  display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;
-}
-.link-card .link-label { font-size:0.78rem; color:var(--muted); }
-.link-card .link-title { font-weight:600; font-size:0.92rem; color:var(--text); }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 1.2rem;
+    }
 
-/* Developer card */
-.dev-card {
-  background: linear-gradient(135deg, var(--card), #162032);
-  border:1px solid var(--border); border-radius:14px; padding:1.6rem;
-  display:flex; align-items:center; gap:16px;
-}
-.dev-avatar {
-  width:52px; height:52px; border-radius:12px;
-  background:linear-gradient(135deg, #0ea5e9, #6366f1);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem; color:#fff; flex-shrink:0;
-}
-.dev-name { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:3px; }
-.dev-role { color:var(--muted); font-size:0.83rem; margin-bottom:8px; }
-.dev-github { color:var(--accent); font-size:0.85rem; text-decoration:none; font-family:'JetBrains Mono',monospace; }
-.dev-github:hover { text-decoration:underline; }
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-footer {
-  border-top:1px solid var(--border); padding:30px 24px;
-  text-align:center; color:var(--muted); font-size:0.83rem;
-}
-footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
-footer a:hover { text-decoration:underline; }
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
 
-@media (max-width:768px) {
-  .main-wrap { grid-template-columns:1fr; }
-  .toc { display:none; }
-  .perm-grid { grid-template-columns:1fr; }
-  .links-grid { grid-template-columns:1fr; }
-}
-</style>
+    .breadcrumb span {
+      opacity: 0.4;
+    }
 
-<!-- Open Graph / Social Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/README.html">
-<meta property="og:title" content="README — Medicine & Health Reminder">
-<meta property="og:description" content="Technical README for Medicine & Health Reminder Android app by Rafiqul Islam.">
-<meta property="og:site_name" content="Mohammad Rafiqul Islam">
-<!-- Canonical -->
-<link rel="canonical" href="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/README.html">
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header-badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-android {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .badge-free {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .badge-privacy {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--yellow);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .header-desc {
+      color: var(--muted);
+      max-width: 580px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    /* MAIN */
+    .main-wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 60px 24px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    /* TOC */
+    .toc {
+      position: sticky;
+      top: 90px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li {
+      margin-bottom: 6px;
+    }
+
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+      padding: 4px 0 4px 10px;
+      border-left: 2px solid transparent;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    /* CONTENT */
+    .content section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 90px;
+    }
+
+    .content h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content h2 .ico {
+      font-size: 1rem;
+    }
+
+    .content p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .content a {
+      color: var(--accent);
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .feature-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: '▹';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    /* Privacy list */
+    .privacy-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+    }
+
+    .privacy-list li::before {
+      content: '✓';
+      color: var(--green);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* Permission cards */
+    .perm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .perm-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .perm-card .perm-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .perm-card .perm-desc {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* Code-style scope */
+    .scope-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--code-bg);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.83rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    /* Links section */
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .link-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .link-card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .link-card .link-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(14, 165, 233, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .link-card .link-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .link-card .link-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* Developer card */
+    .dev-card {
+      background: linear-gradient(135deg, var(--card), #162032);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dev-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .dev-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .dev-role {
+      color: var(--muted);
+      font-size: 0.83rem;
+      margin-bottom: 8px;
+    }
+
+    .dev-github {
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dev-github:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width:768px) {
+      .main-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 16px 48px;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .perm-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding: 90px 0 40px;
+      }
+
+      .page-header .wrap {
+        padding: 0 16px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .content h2 {
+        font-size: 1.15rem;
+      }
+
+      .content p {
+        font-size: 0.9rem;
+      }
+
+      .nav-right {
+        gap: 10px;
+      }
+    }
+
+    @media (max-width:640px) {
+      .main-wrap {
+        padding: 24px 12px 32px;
+      }
+
+      .page-header {
+        padding: 70px 0 32px;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/README.html">
+  <meta property="og:title" content="README — Medicine & Health Reminder">
+  <meta property="og:description"
+    content="Technical README for Medicine & Health Reminder Android app by Rafiqul Islam.">
+  <meta property="og:site_name" content="Mohammad Rafiqul Islam">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/README.html">
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -211,183 +552,190 @@ footer a:hover { text-decoration:underline; }
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="README — Medicine & Health Reminder">
-  <meta name="twitter:description" content="Technical documentation for Medicine & Health Reminder Android app by Rafiqul Islam.">
+  <meta name="twitter:description"
+    content="Technical documentation for Medicine & Health Reminder Android app by Rafiqul Islam.">
   <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
 </head>
+
 <body>
 
-<nav>
-  <div class="wrap">
-    <a href="/" class="nav-logo">M. Rafiqul<span> Islam</span></a>
-    <div class="nav-right">
-      <a href="/apps/medicine-health-reminder/">App Home</a>
-      <a href="/apps/medicine-health-reminder/privacy-policy.html">Privacy Policy</a>
-      <a href="/">← Portfolio</a>
+  <nav>
+    <div class="wrap">
+      <a href="/" class="nav-logo">M. Rafiqul<span> Islam</span></a>
+      <div class="nav-right">
+        <a href="/apps/medicine-health-reminder/">App Home</a>
+        <a href="/apps/medicine-health-reminder/privacy-policy.html">Privacy Policy</a>
+        <a href="/">← Portfolio</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-header">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Portfolio</a>
+        <span>/</span>
+        <a href="/apps/medicine-health-reminder/">Medicine &amp; Health Reminder</a>
+        <span>/</span>
+        README
+      </div>
+      <div class="header-badge-row">
+        <span class="badge badge-android">📱 Android</span>
+        <span class="badge badge-free">⚡ Free</span>
+        <span class="badge badge-privacy">🔐 Privacy First</span>
+      </div>
+      <h1>Medicine &amp; Health Reminder</h1>
+      <p class="header-desc">An Android application to manage medicine schedules, health reminders, and personal medical
+        records — securely and conveniently.</p>
     </div>
   </div>
-</nav>
 
-<div class="page-header">
-  <div class="wrap">
-    <div class="breadcrumb">
-      <a href="/">Portfolio</a>
-      <span>/</span>
-      <a href="/apps/medicine-health-reminder/">Medicine &amp; Health Reminder</a>
-      <span>/</span>
-      README
+  <div class="main-wrap">
+
+    <aside>
+      <nav class="toc">
+        <div class="toc-title">Contents</div>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#privacy">Data Privacy</a></li>
+          <li><a href="#drive">Google Drive Backup</a></li>
+          <li><a href="#permissions">Permissions</a></li>
+          <li><a href="#links">Links</a></li>
+          <li><a href="#developer">Developer</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="content">
+
+      <section id="about">
+        <h2><span class="ico">📋</span> About</h2>
+        <p>Medicine &amp; Health Reminder is designed for people who need reliable, private medicine schedule management
+          on Android. All data lives on your device by default — no accounts required, no data collection, no ads.</p>
+      </section>
+
+      <section id="features">
+        <h2><span class="ico">✨</span> Features</h2>
+        <ul class="feature-list">
+          <li>Medicine reminder alarms with exact-time scheduling</li>
+          <li>Health tracking notes and personal records</li>
+          <li>Medical record management with image attachments</li>
+          <li>Dose history tracking — taken, snoozed, and missed</li>
+          <li>Pause all reminders temporarily with one tap</li>
+          <li>Share medical records via WhatsApp or email</li>
+          <li>Google Drive backup and restore (optional)</li>
+          <li>Secure local data storage — no server required</li>
+          <li>Notification reminders with reliable delivery</li>
+          <li>Optional Google Sign-In support</li>
+        </ul>
+      </section>
+
+      <section id="privacy">
+        <h2><span class="ico">🔐</span> Data Privacy</h2>
+        <p>User privacy is the core principle of this application.</p>
+        <ul class="privacy-list">
+          <li>Data stored locally on the user's own device by default</li>
+          <li>No personal data stored on developer-owned servers</li>
+          <li>Google Drive backup is completely optional</li>
+          <li>Backup stored only in the user's own private Google Drive AppData folder</li>
+          <li>User data is never sold or shared with third parties</li>
+          <li>No advertisements — no advertising SDKs used</li>
+        </ul>
+      </section>
+
+      <section id="drive">
+        <h2><span class="ico">☁️</span> Google Drive Backup</h2>
+        <p>The application optionally supports Google Drive backup and restore using the Google Drive scope:</p>
+        <div class="scope-tag">drive.appdata</div>
+        <p>This allows users to securely backup and restore medicine reminders and health records across devices while
+          keeping data private and isolated from normal Google Drive files.</p>
+        <p>The app <strong>cannot</strong> access general Google Drive files, photos, videos, or documents — only the
+          user's own AppData folder.</p>
+      </section>
+
+      <section id="permissions">
+        <h2><span class="ico">🛡️</span> Permissions Used</h2>
+        <div class="perm-grid">
+          <div class="perm-card">
+            <div class="perm-title">🌐 Internet Access</div>
+            <div class="perm-desc">Backup and restore via Google Drive only</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🔔 Notifications & Alarms</div>
+            <div class="perm-desc">Medicine reminder alerts at scheduled times</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">📷 Camera & Storage</div>
+            <div class="perm-desc">Medical image attachments in health records</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🔁 Boot Completed</div>
+            <div class="perm-desc">Restore reminders automatically after restart</div>
+          </div>
+          <div class="perm-card" style="grid-column:1/-1;">
+            <div class="perm-title">⏱️ Exact Alarm Scheduling</div>
+            <div class="perm-desc">Ensures reminders fire at the precise scheduled time, not approximately</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="links">
+        <h2><span class="ico">🔗</span> Links</h2>
+        <div class="links-grid">
+          <a href="/apps/medicine-health-reminder/" class="link-card">
+            <div class="link-ico">🏠</div>
+            <div>
+              <div class="link-label">Navigation</div>
+              <div class="link-title">App Homepage</div>
+            </div>
+          </a>
+          <a href="/apps/medicine-health-reminder/privacy-policy.html" class="link-card">
+            <div class="link-ico">📄</div>
+            <div>
+              <div class="link-label">Legal</div>
+              <div class="link-title">Privacy Policy</div>
+            </div>
+          </a>
+          <a href="/" class="link-card">
+            <div class="link-ico">👤</div>
+            <div>
+              <div class="link-label">Developer</div>
+              <div class="link-title">Portfolio</div>
+            </div>
+          </a>
+          <a href="https://github.com/rafiqctgbd" class="link-card">
+            <div class="link-ico">💻</div>
+            <div>
+              <div class="link-label">Source</div>
+              <div class="link-title">GitHub Profile</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="developer">
+        <h2><span class="ico">👨‍💻</span> Developer</h2>
+        <div class="dev-card">
+          <div class="dev-avatar">R</div>
+          <div>
+            <div class="dev-name">Rafiqul Islam</div>
+            <div class="dev-role">Senior IT Manager · AKS Khan Diagnostics Ltd, Chittagong</div>
+            <a href="https://github.com/rafiqctgbd" class="dev-github">github.com/rafiqctgbd</a>
+          </div>
+        </div>
+      </section>
+
     </div>
-    <div class="header-badge-row">
-      <span class="badge badge-android">📱 Android</span>
-      <span class="badge badge-free">⚡ Free</span>
-      <span class="badge badge-privacy">🔐 Privacy First</span>
-    </div>
-    <h1>Medicine &amp; Health Reminder</h1>
-    <p class="header-desc">An Android application to manage medicine schedules, health reminders, and personal medical records — securely and conveniently.</p>
   </div>
-</div>
 
-<div class="main-wrap">
-
-  <aside>
-    <nav class="toc">
-      <div class="toc-title">Contents</div>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#privacy">Data Privacy</a></li>
-        <li><a href="#drive">Google Drive Backup</a></li>
-        <li><a href="#permissions">Permissions</a></li>
-        <li><a href="#links">Links</a></li>
-        <li><a href="#developer">Developer</a></li>
-      </ul>
-    </nav>
-  </aside>
-
-  <div class="content">
-
-    <section id="about">
-      <h2><span class="ico">📋</span> About</h2>
-      <p>Medicine &amp; Health Reminder is designed for people who need reliable, private medicine schedule management on Android. All data lives on your device by default — no accounts required, no data collection, no ads.</p>
-    </section>
-
-    <section id="features">
-      <h2><span class="ico">✨</span> Features</h2>
-      <ul class="feature-list">
-        <li>Medicine reminder alarms with exact-time scheduling</li>
-        <li>Health tracking notes and personal records</li>
-        <li>Medical record management with image attachments</li>
-        <li>Dose history tracking — taken, snoozed, and missed</li>
-        <li>Pause all reminders temporarily with one tap</li>
-        <li>Share medical records via WhatsApp or email</li>
-        <li>Google Drive backup and restore (optional)</li>
-        <li>Secure local data storage — no server required</li>
-        <li>Notification reminders with reliable delivery</li>
-        <li>Optional Google Sign-In support</li>
-      </ul>
-    </section>
-
-    <section id="privacy">
-      <h2><span class="ico">🔐</span> Data Privacy</h2>
-      <p>User privacy is the core principle of this application.</p>
-      <ul class="privacy-list">
-        <li>Data stored locally on the user's own device by default</li>
-        <li>No personal data stored on developer-owned servers</li>
-        <li>Google Drive backup is completely optional</li>
-        <li>Backup stored only in the user's own private Google Drive AppData folder</li>
-        <li>User data is never sold or shared with third parties</li>
-        <li>No advertisements — no advertising SDKs used</li>
-      </ul>
-    </section>
-
-    <section id="drive">
-      <h2><span class="ico">☁️</span> Google Drive Backup</h2>
-      <p>The application optionally supports Google Drive backup and restore using the Google Drive scope:</p>
-      <div class="scope-tag">drive.appdata</div>
-      <p>This allows users to securely backup and restore medicine reminders and health records across devices while keeping data private and isolated from normal Google Drive files.</p>
-      <p>The app <strong>cannot</strong> access general Google Drive files, photos, videos, or documents — only the user's own AppData folder.</p>
-    </section>
-
-    <section id="permissions">
-      <h2><span class="ico">🛡️</span> Permissions Used</h2>
-      <div class="perm-grid">
-        <div class="perm-card">
-          <div class="perm-title">🌐 Internet Access</div>
-          <div class="perm-desc">Backup and restore via Google Drive only</div>
-        </div>
-        <div class="perm-card">
-          <div class="perm-title">🔔 Notifications & Alarms</div>
-          <div class="perm-desc">Medicine reminder alerts at scheduled times</div>
-        </div>
-        <div class="perm-card">
-          <div class="perm-title">📷 Camera & Storage</div>
-          <div class="perm-desc">Medical image attachments in health records</div>
-        </div>
-        <div class="perm-card">
-          <div class="perm-title">🔁 Boot Completed</div>
-          <div class="perm-desc">Restore reminders automatically after restart</div>
-        </div>
-        <div class="perm-card" style="grid-column:1/-1;">
-          <div class="perm-title">⏱️ Exact Alarm Scheduling</div>
-          <div class="perm-desc">Ensures reminders fire at the precise scheduled time, not approximately</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="links">
-      <h2><span class="ico">🔗</span> Links</h2>
-      <div class="links-grid">
-        <a href="/apps/medicine-health-reminder/" class="link-card">
-          <div class="link-ico">🏠</div>
-          <div>
-            <div class="link-label">Navigation</div>
-            <div class="link-title">App Homepage</div>
-          </div>
-        </a>
-        <a href="/apps/medicine-health-reminder/privacy-policy.html" class="link-card">
-          <div class="link-ico">📄</div>
-          <div>
-            <div class="link-label">Legal</div>
-            <div class="link-title">Privacy Policy</div>
-          </div>
-        </a>
-        <a href="/" class="link-card">
-          <div class="link-ico">👤</div>
-          <div>
-            <div class="link-label">Developer</div>
-            <div class="link-title">Portfolio</div>
-          </div>
-        </a>
-        <a href="https://github.com/rafiqctgbd" class="link-card">
-          <div class="link-ico">💻</div>
-          <div>
-            <div class="link-label">Source</div>
-            <div class="link-title">GitHub Profile</div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <section id="developer">
-      <h2><span class="ico">👨‍💻</span> Developer</h2>
-      <div class="dev-card">
-        <div class="dev-avatar">R</div>
-        <div>
-          <div class="dev-name">Rafiqul Islam</div>
-          <div class="dev-role">Senior IT Manager · AKS Khan Diagnostics Ltd, Chittagong</div>
-          <a href="https://github.com/rafiqctgbd" class="dev-github">github.com/rafiqctgbd</a>
-        </div>
-      </div>
-    </section>
-
-  </div>
-</div>
-
-<footer>
-  <a href="/">Portfolio</a>
-  <a href="/apps/medicine-health-reminder/">App Home</a>
-  <a href="/apps/medicine-health-reminder/privacy-policy.html">Privacy Policy</a>
-  <p style="margin-top:12px;">© 2026 Rafiqul Islam. All rights reserved.</p>
-</footer>
+  <footer>
+    <a href="/">Portfolio</a>
+    <a href="/apps/medicine-health-reminder/">App Home</a>
+    <a href="/apps/medicine-health-reminder/privacy-policy.html">Privacy Policy</a>
+    <p style="margin-top:12px;">© 2026 Rafiqul Islam. All rights reserved.</p>
+  </footer>
 
 </body>
+
 </html>
