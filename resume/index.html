@@ -218,9 +218,57 @@ nav .wrap { max-width:1100px; margin:auto; padding:0 24px; height:66px; display:
 }
 
 @media (max-width:900px) {
-  .main-wrap { grid-template-columns:1fr; }
+  .main-wrap { grid-template-columns:1fr; gap:24px; }
   .nav-links { display:none; }
   .proj-grid { grid-template-columns:1fr; }
+  .sidebar { flex-direction:row; flex-wrap:wrap; }
+  .sidebar-card { flex:1 1 280px; }
+  .toc { display:none; }
+}
+
+@media (max-width:640px) {
+  body { overflow-x:hidden; }
+  .page-header { padding:90px 0 36px; }
+  .page-header .wrap,
+  .main-wrap { padding:0 16px; }
+  .main-wrap { padding-top:32px; padding-bottom:48px; }
+
+  /* Profile header */
+  .profile-row { flex-direction:column; gap:1rem; }
+  .profile-avatar { width:64px; height:64px; font-size:1.6rem; }
+  .profile-info h1 { font-size:1.6rem; }
+  .profile-subtitle { font-size:0.88rem; }
+  .profile-tags { gap:6px; }
+  .ptag { font-size:0.72rem; padding:3px 9px; }
+  .contact-row { gap:10px; }
+  .contact-chip { font-size:0.78rem; }
+
+  /* Nav print button */
+  .nav-print { padding:6px 10px; font-size:0.75rem; }
+
+  /* Section headings */
+  .section-heading { font-size:0.95rem; }
+
+  /* Stats row — 2x2 grid */
+  .stat-row { gap:0.8rem; }
+  .stat-box { padding:0.8rem 1rem; min-width:calc(50% - 0.4rem); }
+  .stat-num { font-size:1.4rem; }
+  .stat-label { font-size:0.68rem; }
+
+  /* Timeline */
+  .tl-card { padding:1.1rem; }
+  .tl-title { font-size:0.95rem; }
+  .tl-header { flex-direction:column; gap:6px; }
+  .tl-list li { font-size:0.83rem; }
+
+  /* Projects */
+  .proj-grid { grid-template-columns:1fr; gap:0.8rem; }
+  .proj-card { padding:0.9rem; }
+  .proj-card h4 { font-size:0.85rem; }
+
+  /* Sidebar stacks vertically on mobile */
+  .sidebar { flex-direction:column; }
+  .sidebar-card { padding:1.1rem; }
 }
 </style>
 </head>

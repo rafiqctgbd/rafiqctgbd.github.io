@@ -122,7 +122,16 @@ footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
 footer a:hover { text-decoration:underline; }
 
 @media (max-width:768px) {
-  .nav-links { display:none; }
+  .nav-links { display:none; 
+  body { overflow-x:hidden; }
+  .container, .wrap { padding-left:16px !important; padding-right:16px !important; }
+  .features-grid, .perm-grid, .links-grid { grid-template-columns:1fr !important; }
+  .privacy-strip { grid-template-columns:1fr !important; padding:1.4rem !important; }
+  .apps-grid { grid-template-columns:1fr !important; }
+  h1, h2 { word-break:break-word; }
+  .btn-group { flex-direction:column; }
+  .btn { width:100%; justify-content:center; }
+}
   .apps-grid { grid-template-columns:1fr; }
 }
 </style>
