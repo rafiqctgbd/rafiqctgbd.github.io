@@ -608,6 +608,10 @@
       nav ul {
         display: none;
       }
+      .logo {
+        font-size: 1rem;
+        letter-spacing: -0.3px;
+      }
 
       /* Hero */
       h1 {
@@ -641,16 +645,18 @@
         padding: 13px 20px;
       }
 
-      /* Section headings */
+      /* Section headings — switch flex→block to prevent overflow */
       h2 {
-        font-size: 1.55rem;
-        margin-bottom: 1.8rem;
-        gap: 10px;
+        display: block;
+        font-size: 1.35rem;
+        margin-bottom: 1.6rem;
+        padding-left: 14px;
+        border-left: 4px solid var(--accent);
+        line-height: 1.25;
+        word-break: break-word;
       }
-
       h2::before {
-        height: 26px;
-        width: 5px;
+        display: none;
       }
 
       /* Skills — single column */
@@ -709,8 +715,11 @@
       }
 
       .contact-grid h2 {
-        font-size: 1.3rem;
+        display: block;
+        font-size: 1.2rem;
         margin-bottom: 0.8rem;
+        padding-left: 12px;
+        border-left: 4px solid var(--accent);
       }
 
       .contact-grid>div:last-child {
@@ -724,6 +733,13 @@
         gap: 12px;
         align-items: flex-start;
         padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .contact-info {
+        min-width: 0;
+        flex: 1;
+        overflow: hidden;
       }
 
       .contact-icon {
