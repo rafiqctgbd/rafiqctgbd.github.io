@@ -1,125 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine & Health Reminder | App</title>
-    <meta name="description" content="Manage medicine schedules, health reminders, and personal medical records securely on Android.">
-    
-    <style>
-        /* --- DESIGN VARIABLES (Matched to Portfolio) --- */
-        :root {
-            --bg: #0f172a;        
-            --card: #1e293b;      
-            --text: #f1f5f9;      
-            --muted: #94a3b8;     
-            --accent: #0ea5e9;    
-            --accent-hover: #38bdf8;
-            --border: rgba(255,255,255,0.1);
-            --success: #10b981;   
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medicine & Health Reminder — Android App</title>
+<meta name="description" content="Medicine & Health Reminder is an Android app to manage medicine schedules, health reminders, and personal medical records securely.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --accent: #0ea5e9;
+  --accent-hover: #38bdf8;
+  --border: rgba(255,255,255,0.08);
+  --success: #10b981;
+  --green: #10b981;
+}
 
-        /* --- RESET & BASE STYLES --- */
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            padding-top: 100px; /* Offset for fixed nav */
-        }
-        .container { max-width: 950px; margin: auto; padding: 0 20px 60px 20px; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-        nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; padding-bottom: 0; }
-        .logo a { font-weight: 800; font-size: 1.4rem; color: var(--text); text-decoration: none; }
-        .logo span { color: var(--accent); }
-        nav ul { display: flex; list-style: none; }
-        nav a:not(.logo a) {
-            color: var(--muted); text-decoration: none; margin-left: 30px;
-            font-weight: 500; font-size: 0.95rem; transition: all 0.3s;
-        }
-        nav a:hover:not(.logo a), nav a.active { color: var(--accent); }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
 
-        /* --- TYPOGRAPHY & LAYOUT --- */
-        h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 1rem; color: var(--text); }
-        h2 { font-size: 1.8rem; margin: 2.5rem 0 1.5rem 0; display: flex; align-items: center; gap: 15px; }
-        h2::before { content: ''; display: block; width: 6px; height: 30px; background: var(--accent); border-radius: 3px; }
-        p { color: var(--muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { color: var(--accent-hover); }
-        
-        /* --- CONTENT CARDS --- */
-        .content-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .content-card ul { padding-left: 0; list-style: none; }
-        .content-card li { color: var(--muted); margin-bottom: 10px; display: flex; align-items: flex-start; }
-        .content-card li::before { content: '▹'; color: var(--accent); margin-right: 12px; font-weight: bold; }
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; width: 100%;
+  background: rgba(15,23,42,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  z-index: 1000;
+}
+nav .container {
+  max-width: 1100px; margin: auto; padding: 0 24px;
+  height: 66px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 1.1rem; color: var(--text);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo .dot { color: var(--accent); }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.back-link {
+  color: var(--muted); text-decoration: none;
+  font-size: 0.85rem; display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--accent); }
 
-        @media (max-width: 768px) { nav ul { display: none; } }
-    </style>
+/* HERO */
+.hero {
+  min-height: 88vh;
+  display: flex; align-items: center;
+  padding-top: 66px;
+  background: radial-gradient(ellipse at 70% 20%, rgba(14,165,233,0.08), transparent 55%),
+              radial-gradient(ellipse at 20% 80%, rgba(16,185,129,0.05), transparent 45%);
+}
+.hero .container {
+  max-width: 1100px; margin: auto; padding: 0 24px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+
+.app-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(16,185,129,0.1);
+  color: var(--green);
+  border: 1px solid rgba(16,185,129,0.2);
+  padding: 6px 14px; border-radius: 20px;
+  font-size: 0.82rem; font-weight: 600; margin-bottom: 1.5rem;
+  font-family: 'Syne', sans-serif; letter-spacing: 0.3px;
+}
+.app-badge .pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.5; transform:scale(1.3); }
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  line-height: 1.1; font-weight: 800;
+  margin-bottom: 1.2rem; letter-spacing: -1px;
+}
+.h1-accent {
+  background: linear-gradient(135deg, var(--accent), #6366f1);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-desc {
+  color: var(--muted); font-size: 1.1rem;
+  margin-bottom: 2.5rem; max-width: 480px;
+  font-weight: 300; line-height: 1.7;
+}
+.btn-group { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 8px;
+  text-decoration: none; font-weight: 600; font-size: 0.95rem;
+  transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+}
+.btn-primary {
+  background: var(--accent); color: #0f172a;
+  box-shadow: 0 4px 20px rgba(14,165,233,0.25);
+}
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); }
+.btn-ghost {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border); color: var(--text);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+
+/* App mockup card */
+.app-mockup {
+  background: linear-gradient(145deg, #1e293b, #162032);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+.app-mockup::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.mockup-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.mockup-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.mockup-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
+.mockup-sub { color: var(--muted); font-size: 0.8rem; }
+
+.reminder-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+}
+.reminder-item:hover { border-color: rgba(14,165,233,0.3); }
+.pill-dot {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.reminder-name { font-size: 0.9rem; font-weight: 500; flex: 1; }
+.reminder-time { color: var(--muted); font-size: 0.78rem; }
+.reminder-status {
+  font-size: 0.72rem; padding: 3px 8px; border-radius: 20px; font-weight: 600;
+}
+.status-taken { background: rgba(16,185,129,0.1); color: #10b981; }
+.status-due   { background: rgba(14,165,233,0.1); color: #0ea5e9; }
+.status-miss  { background: rgba(239,68,68,0.1);  color: #ef4444; }
+
+/* FEATURES */
+.section { padding: 80px 0; }
+.container { max-width: 1100px; margin: auto; padding: 0 24px; }
+
+.section-label {
+  font-family: 'Syne', sans-serif; font-size: 0.78rem;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.8rem;
+}
+h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800; margin-bottom: 0.8rem; letter-spacing: -0.5px;
+}
+.section-desc { color: var(--muted); max-width: 540px; margin-bottom: 3rem; font-size: 1.05rem; }
+
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+}
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 1.8rem;
+  transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.feature-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(14,165,233,0.04), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.feature-card:hover { transform: translateY(-4px); border-color: rgba(14,165,233,0.3); }
+.feature-card:hover::after { opacity: 1; }
+.feature-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(14,165,233,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 1rem;
+}
+.feature-card h3 {
+  font-family: 'Syne', sans-serif; font-size: 1.05rem;
+  font-weight: 700; margin-bottom: 0.5rem;
+}
+.feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+/* PRIVACY HIGHLIGHT */
+.privacy-strip {
+  background: linear-gradient(135deg, rgba(16,185,129,0.05), rgba(14,165,233,0.05));
+  border: 1px solid rgba(16,185,129,0.15);
+  border-radius: 20px; padding: 3rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+}
+.privacy-points { list-style: none; }
+.privacy-points li {
+  display: flex; align-items: flex-start; gap: 12px;
+  color: var(--muted); font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+.privacy-points li::before {
+  content: '✓';
+  color: var(--green); font-weight: 700; font-size: 0.9rem;
+  background: rgba(16,185,129,0.1);
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}
+
+/* PERMISSIONS */
+.perm-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;
+}
+.perm-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem;
+}
+.perm-icon {
+  font-size: 1.3rem; width: 40px; height: 40px;
+  background: rgba(14,165,233,0.08); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.perm-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 3px; }
+.perm-desc { color: var(--muted); font-size: 0.8rem; line-height: 1.5; }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 0;
+  text-align: center;
+  color: var(--muted); font-size: 0.85rem;
+}
+footer a { color: var(--accent); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+  .hero .container { grid-template-columns: 1fr; }
+  .app-mockup { display: none; }
+  .privacy-strip { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/">
+<meta property="og:title" content="Medicine & Health Reminder — Android App">
+<meta property="og:description" content="Manage medicine schedules, health reminders, and personal medical records securely on Android.">
+<meta property="og:site_name" content="Mohammad Rafiqul Islam">
+<!-- Canonical -->
+<link rel="canonical" href="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/">
 </head>
 <body>
 
 <nav>
-    <div class="container">
-        <div class="logo"><a href="/">M. Rafiqul<span> Islam</span></a></div>
-        <ul>
-            <li><a href="index.html" class="active">App Home</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="README.html">README</a></li>
-        </ul>
-    </div>
+  <div class="container">
+    <a href="/" class="nav-logo">M. Rafiqul<span class="dot"> Islam</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+    </ul>
+  </div>
 </nav>
 
-<div class="container">
-    <h1>Medicine &amp; Health Reminder</h1>
-    <p>An Android application designed to help users manage medicine schedules, health reminders, and personal medical records securely and conveniently.</p>
-
-    <div class="content-card">
-        <h2>Features</h2>
-        <ul>
-            <li>Medicine reminder alarms</li>
-            <li>Health tracking and notes</li>
-            <li>Medical record management</li>
-            <li>Dose history tracking (taken, snoozed, missed)</li>
-            <li>Pause all reminders temporarily</li>
-            <li>Share medical records via WhatsApp or email</li>
-            <li>Google Drive backup and restore</li>
-            <li>Secure local data storage</li>
-            <li>Notification reminders</li>
-            <li>Optional Google Sign-In support</li>
-        </ul>
+<section class="hero">
+  <div class="container">
+    <div>
+      <div class="app-badge"><span class="pulse"></span> Android Application</div>
+      <h1>Medicine &amp; Health<br><span class="h1-accent">Reminder</span></h1>
+      <p class="hero-desc">
+        Manage medicine schedules, health reminders, and personal medical records — securely stored on your own device.
+      </p>
+      <div class="btn-group">
+        <a href="privacy-policy.html" class="btn btn-primary">📄 Privacy Policy</a>
+        <a href="README.html" class="btn btn-ghost">📖 Full README</a>
+      </div>
     </div>
 
-    <div class="content-card">
-        <h2>Privacy &amp; Security</h2>
-        <p>User data is stored locally on the user's own device by default.</p>
-        <p>The application does not store personal data on developer-owned servers.</p>
-        <p>Google Drive backup is completely optional and requires explicit user sign-in and consent.</p>
-        <p>This application does not display advertisements and does not use any advertising SDKs.</p>
-    </div>
+    <div class="app-mockup">
+      <div class="mockup-header">
+        <div class="mockup-icon">💊</div>
+        <div>
+          <div class="mockup-title">Today's Schedule</div>
+          <div class="mockup-sub">Thursday, June 4</div>
+        </div>
+      </div>
 
-    <div class="content-card">
-        <h2>Developer</h2>
-        <p style="margin-bottom: 5px;">Developed by <strong>Mohammad Rafiqul Islam</strong></p>
-        <p>GitHub: <a href="https://github.com/rafiqctgbd" target="_blank">github.com/rafiqctgbd</a></p>
+      <div class="reminder-item">
+        <div class="pill-dot" style="background:#10b981"></div>
+        <div class="reminder-name">Metformin 500mg</div>
+        <div class="reminder-time">8:00 AM</div>
+        <div class="reminder-status status-taken">Taken</div>
+      </div>
+      <div class="reminder-item">
+        <div class="pill-dot" style="background:#0ea5e9"></div>
+        <div class="reminder-name">Vitamin D3</div>
+        <div class="reminder-time">1:00 PM</div>
+        <div class="reminder-status status-due">Due</div>
+      </div>
+      <div class="reminder-item">
+        <div class="pill-dot" style="background:#f59e0b"></div>
+        <div class="reminder-name">Omega-3</div>
+        <div class="reminder-time">8:00 PM</div>
+        <div class="reminder-status" style="background:rgba(245,158,11,0.1);color:#f59e0b;">Upcoming</div>
+      </div>
+      <div class="reminder-item">
+        <div class="pill-dot" style="background:#ef4444"></div>
+        <div class="reminder-name">Atorvastatin</div>
+        <div class="reminder-time">10:00 PM</div>
+        <div class="reminder-status" style="background:rgba(245,158,11,0.1);color:#f59e0b;">Upcoming</div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-label">What It Does</div>
+    <h2>Everything you need,<br>nothing you don't</h2>
+    <p class="section-desc">Built for real-world medicine management — precise alarms, private records, and optional cloud backup.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⏰</div>
+        <h3>Precise Medicine Alarms</h3>
+        <p>Exact-time reminders that fire reliably even after device restarts. Snooze, take, or mark missed — all tracked.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>Health Records</h3>
+        <p>Store health notes, medical records, and image attachments. Share via WhatsApp or email when needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Dose History Tracking</h3>
+        <p>Full history of taken, snoozed, and missed doses. Understand your adherence patterns over time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Google Drive Backup</h3>
+        <p>Optional backup to your own private Google Drive AppData folder. Restore across devices anytime.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏸️</div>
+        <h3>Pause All Reminders</h3>
+        <p>Travelling or in a meeting? Pause all reminders temporarily with one tap and resume when ready.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Secure Local Storage</h3>
+        <p>All data stored locally on your device by default. No developer servers. No ads. No data selling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="privacy">
+  <div class="container">
+    <div class="section-label">Privacy First</div>
+    <h2>Your health data<br>stays yours</h2>
+    <div class="privacy-strip">
+      <div>
+        <p style="color:var(--muted); margin-bottom:1.5rem; font-size:1rem; line-height:1.7;">
+          This app was built with a simple principle: your medical information is private. No advertising SDKs, no data collection, no servers storing your records.
+        </p>
+        <a href="privacy-policy.html" class="btn btn-primary" style="display:inline-flex;">Read Full Privacy Policy →</a>
+      </div>
+      <ul class="privacy-points">
+        <li>Data stored locally on device by default</li>
+        <li>No personal data on developer-owned servers</li>
+        <li>Google Drive backup is fully optional</li>
+        <li>Only your private AppData folder is accessed</li>
+        <li>User data never sold or shared</li>
+        <li>Zero advertisements, zero ad SDKs</li>
+        <li>Google account access revocable anytime</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="permissions">
+  <div class="container">
+    <div class="section-label">Transparency</div>
+    <h2>Permissions explained</h2>
+    <p class="section-desc">Every permission this app requests — and exactly why it's needed.</p>
+    <div class="perm-grid">
+      <div class="perm-item">
+        <div class="perm-icon">🌐</div>
+        <div>
+          <div class="perm-name">Internet Access</div>
+          <div class="perm-desc">Required only for Google Drive backup and restore. Not used for any other purpose.</div>
+        </div>
+      </div>
+      <div class="perm-item">
+        <div class="perm-icon">🔔</div>
+        <div>
+          <div class="perm-name">Notifications & Alarms</div>
+          <div class="perm-desc">To display medicine reminder alerts at the exact scheduled time.</div>
+        </div>
+      </div>
+      <div class="perm-item">
+        <div class="perm-icon">📷</div>
+        <div>
+          <div class="perm-name">Camera & Storage</div>
+          <div class="perm-desc">For attaching medical images or documents to health records.</div>
+        </div>
+      </div>
+      <div class="perm-item">
+        <div class="perm-icon">🔁</div>
+        <div>
+          <div class="perm-name">Boot Completed</div>
+          <div class="perm-desc">Automatically restores active reminders after the device restarts.</div>
+        </div>
+      </div>
+      <div class="perm-item">
+        <div class="perm-icon">⏱️</div>
+        <div>
+          <div class="perm-name">Exact Alarm Scheduling</div>
+          <div class="perm-desc">Ensures medicine reminders fire at precisely the scheduled time, not approximately.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="/">← Back to Portfolio</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="README.html">README</a>
+      <a href="https://github.com/rafiqctgbd">GitHub</a>
+    </div>
+    <p>Developed by <strong style="color:var(--text)">Rafiqul Islam</strong> · AKS Khan Diagnostics Ltd, Chittagong</p>
+  </div>
+</footer>
 
 </body>
 </html>
