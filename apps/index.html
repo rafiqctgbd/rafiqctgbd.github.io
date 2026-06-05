@@ -5,13 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apps — Mohammad Rafiqul Islam</title>
 <meta name="description" content="Android apps developed by Mohammad Rafiqul Islam — Senior IT Manager & Automation Architect.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mohammadrafiqulislam.com/apps/">
+<meta property="og:title" content="Apps — Mohammad Rafiqul Islam">
+<meta property="og:description" content="Android apps developed by Mohammad Rafiqul Islam — privacy-focused, ad-free, built for real-world utility.">
+<meta property="og:site_name" content="Mohammad Rafiqul Islam">
+<link rel="canonical" href="https://mohammadrafiqulislam.com/apps/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #0f172a; --card: #1e293b; --text: #f1f5f9;
   --muted: #94a3b8; --accent: #0ea5e9; --accent-hover: #38bdf8;
-  --border: rgba(255,255,255,0.08); --green: #10b981;
+  --border: rgba(255,255,255,0.08); --green: #10b981; --android: #3DDC84;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; }
@@ -39,6 +45,7 @@ nav .wrap {
 .page-header .wrap { max-width:1100px; margin:auto; padding:0 24px; }
 .breadcrumb { display:flex; align-items:center; gap:8px; color:var(--muted); font-size:0.82rem; margin-bottom:1.2rem; }
 .breadcrumb a { color:var(--accent); text-decoration:none; }
+.breadcrumb a:hover { text-decoration:underline; }
 .section-label {
   font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700;
   letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:0.8rem;
@@ -48,7 +55,7 @@ h1 { font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3rem); font-weight:
 
 .main { max-width:1100px; margin:auto; padding:64px 24px 80px; }
 
-.apps-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr)); gap:1.8rem; margin-bottom:4rem; }
+.apps-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.8rem; margin-bottom:4rem; }
 
 .app-card {
   background:var(--card); border:1px solid var(--border);
@@ -65,20 +72,23 @@ h1 { font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3rem); font-weight:
   display:flex; align-items:flex-start; gap:16px;
 }
 .app-icon {
-  width:56px; height:56px; border-radius:14px;
-  background:linear-gradient(135deg, #0ea5e9, #6366f1);
+  width:60px; height:60px; border-radius:16px;
+  overflow:hidden; flex-shrink:0;
+  background:linear-gradient(135deg,#0ea5e9,#6366f1);
   display:flex; align-items:center; justify-content:center;
-  font-size:1.6rem; flex-shrink:0;
 }
+.app-icon img { width:100%; height:100%; object-fit:cover; }
 .app-title-wrap {}
-.app-card h2 { font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:4px; }
-.app-platform {
+.app-card h2 { font-family:'Syne',sans-serif; font-size:1.15rem; font-weight:700; margin-bottom:6px; }
+.app-badges { display:flex; gap:8px; flex-wrap:wrap; }
+.badge {
   display:inline-flex; align-items:center; gap:5px;
-  background:rgba(16,185,129,0.1); color:var(--green);
-  border:1px solid rgba(16,185,129,0.2);
-  padding:3px 10px; border-radius:20px; font-size:0.72rem; font-weight:600;
-  font-family:'Syne',sans-serif;
+  padding:3px 10px; border-radius:20px; font-size:0.72rem; font-weight:700;
+  font-family:'Syne',sans-serif; letter-spacing:0.3px;
 }
+.badge-android { background:rgba(61,220,132,0.1); color:var(--android); border:1px solid rgba(61,220,132,0.2); }
+.badge-version { background:rgba(14,165,233,0.1); color:var(--accent); border:1px solid rgba(14,165,233,0.2); }
+.badge-free    { background:rgba(245,158,11,0.1); color:#f59e0b; border:1px solid rgba(245,158,11,0.2); }
 
 .app-card-body { padding:1.5rem 2rem 2rem; flex:1; display:flex; flex-direction:column; }
 .app-desc { color:var(--muted); font-size:0.92rem; margin-bottom:1.5rem; flex:1; line-height:1.65; }
@@ -88,14 +98,13 @@ h1 { font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3rem); font-weight:
   display:inline-flex; align-items:center; gap:6px;
   padding:8px 16px; border-radius:7px;
   font-size:0.83rem; font-weight:600; text-decoration:none;
-  transition:all 0.2s; font-family:'DM Sans',sans-serif;
+  transition:all 0.2s;
 }
 .app-link-primary { background:var(--accent); color:#0f172a; }
 .app-link-primary:hover { background:var(--accent-hover); }
 .app-link-ghost { background:rgba(255,255,255,0.04); border:1px solid var(--border); color:var(--text); }
 .app-link-ghost:hover { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.18); }
 
-/* Coming soon placeholder */
 .app-card-placeholder {
   background:rgba(255,255,255,0.01); border:1px dashed rgba(255,255,255,0.1);
   border-radius:18px; padding:2.5rem;
@@ -110,21 +119,13 @@ footer {
   text-align:center; color:var(--muted); font-size:0.83rem;
 }
 footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
+footer a:hover { text-decoration:underline; }
 
 @media (max-width:768px) {
   .nav-links { display:none; }
   .apps-grid { grid-template-columns:1fr; }
 }
 </style>
-
-<!-- Open Graph / Social Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mohammadrafiqulislam.com/apps/">
-<meta property="og:title" content="Apps — Mohammad Rafiqul Islam">
-<meta property="og:description" content="Android apps developed by Mohammad Rafiqul Islam — Senior IT Manager & Automation Architect.">
-<meta property="og:site_name" content="Mohammad Rafiqul Islam">
-<!-- Canonical -->
-<link rel="canonical" href="https://mohammadrafiqulislam.com/apps/">
 </head>
 <body>
 
@@ -149,7 +150,7 @@ footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
     </div>
     <div class="section-label">Published Applications</div>
     <h1>Android Apps</h1>
-    <p class="header-desc">Mobile applications developed and published by Rafiqul Islam — focused on privacy, reliability, and real-world utility.</p>
+    <p class="header-desc">Mobile applications developed and published by Rafiqul Islam — focused on privacy, reliability, and real-world utility. Ad-free, no data collection.</p>
   </div>
 </div>
 
@@ -159,17 +160,24 @@ footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
     <!-- Medicine & Health Reminder -->
     <a href="/apps/medicine-health-reminder/" class="app-card">
       <div class="app-card-header">
-        <div class="app-icon">💊</div>
+        <div class="app-icon">
+          <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder icon">
+        </div>
         <div class="app-title-wrap">
           <h2>Medicine &amp; Health Reminder</h2>
-          <span class="app-platform">📱 Android</span>
+          <div class="app-badges">
+            <span class="badge badge-android">📱 Android</span>
+            <span class="badge badge-version">v1.2</span>
+            <span class="badge badge-free">⚡ Free</span>
+          </div>
         </div>
       </div>
       <div class="app-card-body">
-        <p class="app-desc">Manage medicine schedules, health reminders, and personal medical records. Secure local storage, optional Google Drive backup, and zero ads.</p>
+        <p class="app-desc">Manage medicine schedules, health reminders, and personal medical records. Precise alarms, dose history tracking, missed dose detection, and optional Google Drive backup. Zero ads, local-first privacy.</p>
         <div class="app-links">
           <span class="app-link app-link-primary">View App →</span>
           <span class="app-link app-link-ghost">Privacy Policy</span>
+          <span class="app-link app-link-ghost">README</span>
         </div>
       </div>
     </a>
@@ -187,7 +195,7 @@ footer a { color:var(--accent); text-decoration:none; margin:0 10px; }
   <a href="/">← Portfolio</a>
   <a href="/#contact">Contact</a>
   <a href="https://github.com/rafiqctgbd">GitHub</a>
-  <p style="margin-top:12px;">© 2026 Mohammad Rafiqul Islam</p>
+  <p style="margin-top:12px;">&copy; 2026 Mohammad Rafiqul Islam</p>
 </footer>
 
 </body>
