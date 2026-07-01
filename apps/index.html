@@ -543,6 +543,135 @@
         font-size: 1.35rem;
       }
     }
+
+    /* ── Reduced motion ─────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ── Scroll reveal ─────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Mobile nav toggle ─────────────────────── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle {
+        display: flex !important;
+      }
+
+      .nav-links {
+        display: flex !important;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        max-height: 260px;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* ── Back to top ─────────────────────── */
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 900;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-hover);
+    }
   </style>
 
   <!-- Favicon -->
@@ -566,16 +695,19 @@
   <nav>
     <div class="wrap">
       <a href="/" class="nav-logo">M. Rafiqul<span> Islam</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="navList">
         <li><a href="/#expertise">Expertise</a></li>
         <li><a href="/#software">Software</a></li>
         <li><a href="/apps/" class="active">Apps</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <div class="page-header">
+  <div class="page-header reveal">
     <div class="wrap">
       <div class="breadcrumb">
         <a href="/">Portfolio</a>
@@ -589,7 +721,7 @@
     </div>
   </div>
 
-  <div class="main">
+  <div class="main reveal">
     <div class="apps-grid">
 
       <!-- Medicine & Health Reminder -->
@@ -639,6 +771,47 @@
     <a href="https://github.com/rafiqctgbd">GitHub</a>
     <p style="margin-top:12px;">&copy; 2026 Mohammad Rafiqul Islam</p>
   </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && items.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        items.forEach(function (el) { observer.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      var btn = document.getElementById('backToTop');
+      if (btn) {
+        window.addEventListener('scroll', function () {
+          btn.classList.toggle('visible', window.scrollY > 500);
+        });
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
 
 </body>
 
