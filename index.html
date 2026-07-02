@@ -1547,7 +1547,9 @@
         var scene = new THREE.Scene();
         // Orthographic camera + a -1..1 plane guarantees full-bleed coverage
         // at every aspect ratio with no per-resize camera math needed.
-        var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+        // near/-1, far/1 keeps the z=0 plane safely mid-range instead of
+        // sitting exactly on a clip boundary (which some engines cull).
+        var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
 
         var renderer;
         try {
@@ -1562,6 +1564,8 @@
         var geometry = new THREE.PlaneGeometry(2, 2);
         var material = new THREE.ShaderMaterial({
           transparent: true,
+          depthTest: false,
+          depthWrite: false,
           vertexShader: vertexShader,
           fragmentShader: fragmentShader,
           uniforms: {
