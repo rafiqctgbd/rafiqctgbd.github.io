@@ -1460,7 +1460,7 @@
       var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var hero = document.querySelector('.hero');
       var canvas = document.getElementById('heroCanvas');
-      if (prefersReduced || !hero || !canvas || !window.WebGLRenderingContext) {
+      if (!hero || !canvas || !window.WebGLRenderingContext) {
         return; // keep the static SVG mesh as-is
       }
 
@@ -1477,11 +1477,12 @@
           'varying vec2 v_uv;',
           'void main() {',
           '  v_uv = uv;',
-          '  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);',
+          '  gl_Position = vec4(position, 1.0);',
           '}'
         ].join('\n');
 
         var fragmentShader = [
+          'precision highp float;',
           'varying vec2 v_uv;',
           'uniform float u_time;',
           'uniform vec2 u_mouse;',
@@ -1525,14 +1526,15 @@
           '  float dist = length((cellId / gridScale - 0.5) * aspect);',
           '  float wave = sin(dist * 12.0 - u_time * 1.5) * 0.5 + 0.5;',
           '  float scale = 0.5 + 0.5 * wave + 0.2 * snoise(cellId * 0.5 + u_time * 0.2);',
-          '  cell /= scale;',
+          '  cell /= max(0.1, scale);',
           '  float shape = length(max(abs(cell) - 0.08, 0.0)) - 0.02;',
           '  float tile = 1.0 - smoothstep(0.0, 0.02, shape);',
           '  vec3 colLow = vec3(0.059, 0.090, 0.165);',   // matches --bg #0f172a
           '  vec3 colHigh = vec3(0.216, 0.741, 0.973);',  // sky-blue #37bdf8
           '  float brightness = 0.3 + 0.7 * wave;',
-          '  vec3 color = mix(colLow, colHigh, brightness * tile);',
-          '  gl_FragColor = vec4(color, 1.0);',
+          '  vec3 color = mix(colLow, colHigh, brightness);',
+          '  // Transparent gaps between diamonds — the SVG mesh shows through underneath',
+          '  gl_FragColor = vec4(color, tile * 0.85);',
           '}'
         ].join('\n');
 
@@ -1543,21 +1545,23 @@
 
         var s = size();
         var scene = new THREE.Scene();
-        var camera = new THREE.PerspectiveCamera(75, s.w / s.h, 0.1, 10);
-        camera.position.z = 1;
+        // Orthographic camera + a -1..1 plane guarantees full-bleed coverage
+        // at every aspect ratio with no per-resize camera math needed.
+        var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 
         var renderer;
         try {
-          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: false });
+          renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
         } catch (e) {
           return;
         }
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
         renderer.setSize(s.w, s.h, false);
-        renderer.setClearColor(0x0f172a, 1);
+        renderer.setClearColor(0x000000, 0); // fully transparent — mesh shows through everywhere
 
         var geometry = new THREE.PlaneGeometry(2, 2);
         var material = new THREE.ShaderMaterial({
+          transparent: true,
           vertexShader: vertexShader,
           fragmentShader: fragmentShader,
           uniforms: {
@@ -1574,6 +1578,28 @@
           targetMouseX = (e.clientX - r.left) / r.width;
           targetMouseY = 1.0 - (e.clientY - r.top) / r.height;
         }
+
+        var resizeTimeout;
+        function onResize() {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(function () {
+            var ns = size();
+            renderer.setSize(ns.w, ns.h, false);
+            material.uniforms.u_resolution.value.set(ns.w, ns.h);
+            if (prefersReduced) renderer.render(scene, camera); // keep the static frame in sync
+          }, 150);
+        }
+        window.addEventListener('resize', onResize);
+
+        if (prefersReduced) {
+          // Respect the accessibility preference: no continuous motion, no
+          // mouse-reactive movement — but still show the diamonds as a
+          // single static rendered frame rather than hiding them entirely.
+          renderer.render(scene, camera);
+          canvas.classList.add('is-ready');
+          return;
+        }
+
         window.addEventListener('mousemove', onMouseMove);
 
         var isVisible = true;
@@ -1581,19 +1607,6 @@
           isVisible = entries[0].isIntersecting;
         }, { threshold: 0 });
         io.observe(hero);
-
-        var resizeTimeout;
-        function onResize() {
-          clearTimeout(resizeTimeout);
-          resizeTimeout = setTimeout(function () {
-            var ns = size();
-            camera.aspect = ns.w / ns.h;
-            camera.updateProjectionMatrix();
-            renderer.setSize(ns.w, ns.h, false);
-            material.uniforms.u_resolution.value.set(ns.w, ns.h);
-          }, 150);
-        }
-        window.addEventListener('resize', onResize);
 
         var clock = new THREE.Clock();
         var frameId;
