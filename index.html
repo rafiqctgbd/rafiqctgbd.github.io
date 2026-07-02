@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
-  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=j221s0xCQVYQZa1f1y6218a90kBeicIDIzg4xd2xNua_Nsh8xJhrB-XvOjG-iVbIxtbjWoYZ01_7MU3tb7yThSXGHULT_7eDedNjIDfJMwhaNfh_zdKx0nDevp3PgjXL-ngKg-shTU0Vn5bJ4NcN-PHXvY8ZLwU4PA-E2TE8ohN6CGccM-4t4JVdBmhPHE73XnzNh5xkGXQhVTwc0O2mQmOJfqE1I21sIXs95XlwaDAihCHArcyuyjVKei4JNCVj2fpXdmBGPPUW_CbmjrPOUjK3LsFUzSY563YNv9DfH5Hh-xPQgHMP0zpp_FrUSkD1CzUkWdBv30HCgo3wdMM1dJwQhS_b0K2H1rPYbX39RDJRT2IguiIFZJSKCRcxX5B0BchfCiCjulyqFJfuR6WNo2UtioFm_aYcc3CyeLDO_unCf340FxJk41bUuZmy3BpseSObx_Kv1ytXRNSJM4_AayZJto5nWh1sxwmdFhKjYrMyBqc2S-m2cml3oWQh4_zUaQQXPxRItvx9hmXq1adLJ0HQ5iGAMrYoreS98DL60Tzkqr1iPn84GgD3PKMzLT24Fj6ceWoy_SMdiygu55513irLXpE2K25wGigHejPQpHeu2PxD_bXGAjRJHKB8qvkVPnat9x0y9RzG4is-m3N_zw" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9wcm9kLWNoYXQta2ltaS50b3MtY24tYmVpamluZy52b2xjZXMuY29tL2tpbWktZnMvb2tjL2VvM3RjY2V1Ymw3M2Uvb3V0cHV0L2luZGV4Lmh0bWw_WC1Ub3MtQWxnb3JpdGhtPVRPUzQtSE1BQy1TSEEyNTYmWC1Ub3MtQ3JlZGVudGlhbD1BS0xUWVRKbE5qZ3dNalkyWkRCa05ERmlZbUk1WVdOaVpEQmxabUZtWWpJelpUQSUyZjIwMjYwNzAyJTJmY24tYmVpamluZyUyZnRvcyUyZnJlcXVlc3QmWC1Ub3MtRGF0ZT0yMDI2MDcwMlQyMDMzNDBaJlgtVG9zLUV4cGlyZXM9NTE4NDAwJlgtVG9zLVNpZ25hdHVyZT05M2EzNGFkYmFjZjM5ODgwYzRhMDgxZmZiOWQ1ZGE4MDc2Njg1ZWNjYWQ4OTlmYzY5NjY3ZDI4ODlkZGM3ODA0JlgtVG9zLVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWF0dGFjaG1lbnQlM2IlMjBmaWxlbmFtZSUyYSUzZFVURi04JTI3JTI3aW5kZXguaHRtbA"/><style>
+  <style>
     :root {
       --bg: #0f172a;
       --card: #1e293b;
@@ -799,6 +799,7 @@
       z-index: 0;
       pointer-events: none;
       animation: mesh-breathe 13s ease-in-out infinite;
+      will-change: opacity;  /* added for smoother animation across browsers */
     }
 
     @keyframes mesh-breathe {
@@ -827,14 +828,13 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      z-index: 1;
+      z-index: 0;
       pointer-events: none;
       display: block;
       opacity: 0;
     }
 
     .hero-canvas.is-ready {
-      opacity: 1;
       animation: canvas-breathe 13s ease-in-out infinite;
     }
 
@@ -845,7 +845,7 @@
 
     .hero .container.hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 1;
     }
 
     /* ── Stats strip ─────────────────────── */
@@ -1467,11 +1467,10 @@
 
       import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js')
         .then(function (THREE) {
-          console.log('Three.js loaded successfully');
           initShader(THREE);
         })
-        .catch(function (err) {
-          console.error('Three.js import failed:', err);
+        .catch(function () {
+          // CDN or WebGL failed — static SVG mesh remains visible, nothing to do
         });
 
       function initShader(THREE) {
@@ -1484,7 +1483,7 @@
         ].join('\n');
 
         var fragmentShader = [
-          '#ifdef GL_FRAGMENT_PRECISION_HIGH\nprecision highp float;\n#else\nprecision mediump float;\n#endif\n',
+          'precision highp float;',
           'varying vec2 v_uv;',
           'uniform float u_time;',
           'uniform vec2 u_mouse;',
@@ -1547,10 +1546,6 @@
 
         var s = size();
         var scene = new THREE.Scene();
-        // Orthographic camera + a -1..1 plane guarantees full-bleed coverage
-        // at every aspect ratio with no per-resize camera math needed.
-        // near/-1, far/1 keeps the z=0 plane safely mid-range instead of
-        // sitting exactly on a clip boundary (which some engines cull).
         var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -1, 1);
 
         var renderer;
@@ -1561,38 +1556,21 @@
         }
         renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
         renderer.setSize(s.w, s.h, false);
-        renderer.setClearColor(0x000000, 0); // fully transparent — mesh shows through everywhere
-
-        canvas.addEventListener('webglcontextlost', function (event) {
-          event.preventDefault();
-          console.warn('WebGL context lost');
-          if (frameId) cancelAnimationFrame(frameId);
-        });
-        canvas.addEventListener('webglcontextrestored', function () {
-          console.log('WebGL context restored');
-          animate();
-        });
+        renderer.setClearColor(0x000000, 0);
 
         var geometry = new THREE.PlaneGeometry(2, 2);
-        var material;
-        try {
-          material = new THREE.ShaderMaterial({
-            transparent: true,
-            depthTest: false,
-            depthWrite: false,
-            vertexShader: vertexShader,
-            fragmentShader: fragmentShader,
-            uniforms: {
-              u_time: { value: 0.0 },
-              u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
-              u_resolution: { value: new THREE.Vector2(s.w, s.h) }
-            }
-          });
-        } catch (e) {
-          console.error('ShaderMaterial failed:', e);
-          canvas.style.display = 'none';
-          return;
-        }
+        var material = new THREE.ShaderMaterial({
+          transparent: true,
+          depthTest: false,
+          depthWrite: false,
+          vertexShader: vertexShader,
+          fragmentShader: fragmentShader,
+          uniforms: {
+            u_time: { value: 0.0 },
+            u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
+            u_resolution: { value: new THREE.Vector2(s.w, s.h) }
+          }
+        });
         scene.add(new THREE.Mesh(geometry, material));
 
         var mouseX = 0.5, mouseY = 0.5, targetMouseX = 0.5, targetMouseY = 0.5;
@@ -1609,34 +1587,34 @@
             var ns = size();
             renderer.setSize(ns.w, ns.h, false);
             material.uniforms.u_resolution.value.set(ns.w, ns.h);
-            if (prefersReduced) renderer.render(scene, camera); // keep the static frame in sync
+            if (prefersReduced) renderer.render(scene, camera);
           }, 150);
         }
         window.addEventListener('resize', onResize);
 
+        // ——— FIX: Use Page Visibility API instead of IntersectionObserver ———
+        var isPageVisible = true;
+        if (typeof document !== 'undefined') {
+          isPageVisible = !document.hidden;
+          document.addEventListener('visibilitychange', function () {
+            isPageVisible = !document.hidden;
+          });
+        }
+
         if (prefersReduced) {
-          // Respect the accessibility preference: no continuous motion, no
-          // mouse-reactive movement — but still show the diamonds as a
-          // single static rendered frame rather than hiding them entirely.
           renderer.render(scene, camera);
           canvas.classList.add('is-ready');
-          canvas.style.opacity = '1';
           return;
         }
 
         window.addEventListener('mousemove', onMouseMove);
 
-        var isVisible = true;
-        var io = new IntersectionObserver(function (entries) {
-          isVisible = entries[0].isIntersecting;
-        }, { threshold: 0 });
-        io.observe(hero);
-
         var clock = new THREE.Clock();
         var frameId;
         function animate() {
           frameId = requestAnimationFrame(animate);
-          if (!isVisible) return;
+          if (!isPageVisible) return;  // pause only when tab is hidden
+
           var elapsed = clock.getElapsedTime();
           mouseX += (targetMouseX - mouseX) * 0.05;
           mouseY += (targetMouseY - mouseY) * 0.05;
@@ -1645,9 +1623,7 @@
           renderer.render(scene, camera);
         }
         animate();
-
         canvas.classList.add('is-ready');
-        canvas.style.opacity = '1';
       }
     })();
   </script>
