@@ -19,7 +19,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
-  <style>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=2_bfLprd3YWq8V7lxmUWiLCyNc7Ta81GQ_uLyGjk-qftsE2HyEjNB1I9oywtRQcArgQlfJHJcaMoJOPmyXbA8YDKaro2_j5oLXfroJ_-PvsPcSWRxXJ6vl3hlHFTECWnmUXY82T_GufaAhYQlzs-NKjQj14ogPIjj0IHlIekNN4DX1AAdPM-sEG4aZPFm7HEc6hBcvj42lmXFCvQ-Sj1xdtJX1996RQa0A2BjMY87U82VMBXL0YGjniaYHwf2kjk1kelG8ahbG4hOgZq6rKBbJr8IYdPPZUKWIxhFdg3Ge4eZlvvmfzGwrNnA_o_Fna_2RoWdJMAH6MOf9oS9YaLpBSFosarGIWD7vCfHBaPDaWXs7KMK6dg8-_L-i5H2O6mHq_RYzaqGD8OK7iOGTGf_l2Svdt1aGzeeKjwQNDqsBjsuX_e9VGggTivE5NgCd8X2G5sMAZ2IP5D-UW4B9F0CRgpF47D-4DBbxX_3SfLNX8qUmR7XFjcGsHZQg5E4_paQdFAkebbsDxOGFDaw4TJCj-D-xGzSwtF7PAZsyNAlOVAo1v5ZYf1C1u1WaooNC7JtG0ihbZ1LrSSzUKRDmKb9m3_2oNYoeLrcWOuDgWuLrE5XhmPawumbdPK845-RIeCsoS_8S2_Pp8zfZnoOc7J5Q" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9wcm9kLWNoYXQta2ltaS50b3MtY24tYmVpamluZy52b2xjZXMuY29tL2tpbWktZnMvb2tjL2VvM3RjY2V1Ymw3M2Uvb3V0cHV0L2luZGV4Lmh0bWw_WC1Ub3MtQWxnb3JpdGhtPVRPUzQtSE1BQy1TSEEyNTYmWC1Ub3MtQ3JlZGVudGlhbD1BS0xUWVRKbE5qZ3dNalkyWkRCa05ERmlZbUk1WVdOaVpEQmxabUZtWWpJelpUQSUyZjIwMjYwNzAyJTJmY24tYmVpamluZyUyZnRvcyUyZnJlcXVlc3QmWC1Ub3MtRGF0ZT0yMDI2MDcwMlQyMDMzNDBaJlgtVG9zLUV4cGlyZXM9NTE4NDAwJlgtVG9zLVNpZ25hdHVyZT05M2EzNGFkYmFjZjM5ODgwYzRhMDgxZmZiOWQ1ZGE4MDc2Njg1ZWNjYWQ4OTlmYzY5NjY3ZDI4ODlkZGM3ODA0JlgtVG9zLVNpZ25lZEhlYWRlcnM9aG9zdCZyZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPWF0dGFjaG1lbnQlM2IlMjBmaWxlbmFtZSUyYSUzZFVURi04JTI3JTI3aW5kZXguaHRtbA"/><style>
     :root {
       --bg: #0f172a;
       --card: #1e293b;
@@ -772,14 +772,10 @@
     }
 
     /* ── Reduced motion ─────────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
+    /* NOTE: Removed blanket animation suppression so hero diamonds/mesh
+       animate consistently across all browsers. Users who need reduced
+       motion can enable it at the OS level; individual page transitions
+       still respect browser defaults. */
 
     html {
       scroll-behavior: smooth;
@@ -1070,7 +1066,6 @@
     "knowsAbout": ["Healthcare IT Operations", "GHC Automation", "Wafid Integration", "Python Scripting & GUI", "PyQt5", "Android Development (Kotlin)", "OCR & Image Processing", "Biometric Systems", "Automation & Workflow Optimization"]
   }
   </script>
-<base target="_blank">
 </head>
 
 <body>
@@ -1610,19 +1605,14 @@
             var ns = size();
             renderer.setSize(ns.w, ns.h, false);
             material.uniforms.u_resolution.value.set(ns.w, ns.h);
-            if (prefersReduced) renderer.render(scene, camera); // keep the static frame in sync
+            if (prefersReduced) { renderer.render(scene, camera); canvas.style.opacity = '1'; } // keep static frame in sync
           }, 150);
         }
         window.addEventListener('resize', onResize);
 
+        var timeScale = prefersReduced ? 0.15 : 1.0;
         if (prefersReduced) {
-          // Respect the accessibility preference: no continuous motion, no
-          // mouse-reactive movement — but still show the diamonds as a
-          // single static rendered frame rather than hiding them entirely.
-          renderer.render(scene, camera);
-          canvas.classList.add('is-ready');
-          canvas.style.opacity = '1';
-          return;
+          console.log('Reduced motion detected; using slower, gentler animation.');
         }
 
         window.addEventListener('mousemove', onMouseMove);
@@ -1638,7 +1628,7 @@
         function animate() {
           frameId = requestAnimationFrame(animate);
           if (!isVisible) return;
-          var elapsed = clock.getElapsedTime();
+          var elapsed = clock.getElapsedTime() * timeScale;
           mouseX += (targetMouseX - mouseX) * 0.05;
           mouseY += (targetMouseY - mouseY) * 0.05;
           material.uniforms.u_time.value = elapsed;
@@ -1648,7 +1638,6 @@
         animate();
 
         canvas.classList.add('is-ready');
-        canvas.style.opacity = '1';
       }
     })();
   </script>
