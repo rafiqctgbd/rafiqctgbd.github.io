@@ -798,8 +798,12 @@
       height: 100%;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.5;
-      transition: opacity 1s ease;
+      animation: mesh-breathe 13s ease-in-out infinite;
+    }
+
+    @keyframes mesh-breathe {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.2; }
     }
 
     .mesh-bg .mesh-line {
@@ -827,11 +831,15 @@
       pointer-events: none;
       display: block;
       opacity: 0;
-      transition: opacity 1.2s ease;
     }
 
     .hero-canvas.is-ready {
-      opacity: 1;
+      animation: canvas-breathe 13s ease-in-out infinite;
+    }
+
+    @keyframes canvas-breathe {
+      0%, 100% { opacity: 0.82; }
+      50% { opacity: 1; }
     }
 
     .hero .container.hero-content {
@@ -1452,7 +1460,6 @@
       var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var hero = document.querySelector('.hero');
       var canvas = document.getElementById('heroCanvas');
-      var svgMesh = document.getElementById('heroMesh');
       if (prefersReduced || !hero || !canvas || !window.WebGLRenderingContext) {
         return; // keep the static SVG mesh as-is
       }
@@ -1603,7 +1610,6 @@
         animate();
 
         canvas.classList.add('is-ready');
-        if (svgMesh) svgMesh.style.opacity = '0';
       }
     })();
   </script>
