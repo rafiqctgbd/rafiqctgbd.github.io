@@ -818,22 +818,6 @@
       50% { opacity: 0.2; }
     }
 
-    .mesh-bg .mesh-line {
-      stroke: rgba(14, 165, 233, 0.18);
-      stroke-width: 1;
-    }
-
-    .mesh-bg .mesh-node {
-      fill: var(--accent);
-      opacity: 0.55;
-      animation: pulse-node 3.6s ease-in-out infinite;
-    }
-
-    @keyframes pulse-node {
-      0%, 100% { opacity: 0.35; r: 2.3; }
-      50% { opacity: 0.9; r: 3.4; }
-    }
-
     .hero-canvas {
       position: absolute;
       inset: 0;
@@ -1102,35 +1086,7 @@
   </nav>
 
   <section class="hero">
-    <svg class="mesh-bg" id="heroMesh" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g class="mesh-line">
-        <line x1="80" y1="120" x2="260" y2="60" />
-        <line x1="260" y1="60" x2="480" y2="140" />
-        <line x1="480" y1="140" x2="700" y2="90" />
-        <line x1="260" y1="60" x2="320" y2="230" />
-        <line x1="480" y1="140" x2="440" y2="300" />
-        <line x1="320" y1="230" x2="440" y2="300" />
-        <line x1="440" y1="300" x2="620" y2="330" />
-        <line x1="620" y1="330" x2="700" y2="90" />
-        <line x1="320" y1="230" x2="150" y2="330" />
-        <line x1="150" y1="330" x2="260" y2="440" />
-        <line x1="260" y1="440" x2="440" y2="300" />
-        <line x1="620" y1="330" x2="560" y2="470" />
-        <line x1="260" y1="440" x2="560" y2="470" />
-      </g>
-      <g>
-        <circle class="mesh-node" cx="80" cy="120" r="3" />
-        <circle class="mesh-node" cx="260" cy="60" r="2.6" />
-        <circle class="mesh-node" cx="480" cy="140" r="3.2" />
-        <circle class="mesh-node" cx="700" cy="90" r="2.6" />
-        <circle class="mesh-node" cx="320" cy="230" r="2.8" />
-        <circle class="mesh-node" cx="440" cy="300" r="3.4" />
-        <circle class="mesh-node" cx="620" cy="330" r="2.6" />
-        <circle class="mesh-node" cx="150" cy="330" r="2.6" />
-        <circle class="mesh-node" cx="260" cy="440" r="3" />
-        <circle class="mesh-node" cx="560" cy="470" r="2.8" />
-      </g>
-    </svg>
+    <canvas class="mesh-bg" id="heroNetwork" aria-hidden="true"></canvas>
     <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="container hero-content">
       <div class="role-badge">
@@ -1469,6 +1425,230 @@
 
   <script>
     (function () {
+      var canvas = document.getElementById('heroNetwork');
+      var hero = document.querySelector('.hero');
+      if (!canvas || !hero) return;
+
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var W, H, DPR;
+      var layers = [];
+      var connections = [];
+      var pulses = [];
+      var ripples = [];
+      var mouseX = 0.5, mouseY = 0.5, targetMouseX = 0.5, targetMouseY = 0.5;
+      var isVisible = true;
+
+      var LAYER_COUNTS = [5, 8, 10, 8, 5];
+      var ACCENT = [14, 165, 233];       // #0ea5e9, matches --accent
+      var ACCENT_LIGHT = [56, 189, 248]; // #38bdf8, matches --accent-hover
+      var LINE_ALPHA = 0.1;
+
+      function rand(a, b) { return a + Math.random() * (b - a); }
+
+      function buildNetwork() {
+        layers = [];
+        connections = [];
+        var count = LAYER_COUNTS.length;
+        for (var i = 0; i < count; i++) {
+          var n = LAYER_COUNTS[i];
+          var nodes = [];
+          var xFrac = (i + 0.5) / count;
+          for (var j = 0; j < n; j++) {
+            var yFrac = (j + 0.5) / n + rand(-0.04, 0.04);
+            nodes.push({ baseX: xFrac, baseY: yFrac, r: rand(2.2, 4.2), phase: rand(0, Math.PI * 2) });
+          }
+          layers.push(nodes);
+        }
+        for (var li = 0; li < layers.length - 1; li++) {
+          for (var a = 0; a < layers[li].length; a++) {
+            var linksOut = 2 + Math.floor(Math.random() * 2);
+            for (var k = 0; k < linksOut; k++) {
+              var b = Math.floor(Math.random() * layers[li + 1].length);
+              connections.push({ from: [li, a], to: [li + 1, b] });
+            }
+          }
+        }
+      }
+
+      function spawnPulse() {
+        if (connections.length === 0) return;
+        var c = connections[Math.floor(Math.random() * connections.length)];
+        pulses.push({ conn: c, t: 0, speed: rand(0.006, 0.014) });
+      }
+
+      function nodePos(ref) {
+        var n = layers[ref[0]][ref[1]];
+        var parX = (mouseX - 0.5) * 0.055 * (ref[0] - 2);
+        var parY = (mouseY - 0.5) * 0.045 * (ref[0] - 2);
+        return { x: (n.baseX + parX) * W, y: (n.baseY + parY) * H, r: n.r };
+      }
+
+      function resize() {
+        var rect = hero.getBoundingClientRect();
+        DPR = Math.min(window.devicePixelRatio || 1, 2);
+        W = Math.max(1, rect.width);
+        H = Math.max(1, rect.height);
+        canvas.width = W * DPR;
+        canvas.height = H * DPR;
+        canvas.style.width = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      }
+
+      function onMouseMove(e) {
+        var rect = hero.getBoundingClientRect();
+        targetMouseX = (e.clientX - rect.left) / rect.width;
+        targetMouseY = (e.clientY - rect.top) / rect.height;
+      }
+
+      var lastSpawn = 0;
+      var lastFrameTime = 0;
+
+      function draw(now) {
+        requestAnimationFrame(draw);
+        if (!isVisible) return;
+        var dt = lastFrameTime ? (now - lastFrameTime) : 16;
+        lastFrameTime = now;
+
+        mouseX += (targetMouseX - mouseX) * 0.08;
+        mouseY += (targetMouseY - mouseY) * 0.08;
+
+        ctx.clearRect(0, 0, W, H);
+
+        var grad = ctx.createRadialGradient(W * 0.5, H * 0.35, 0, W * 0.5, H * 0.35, Math.max(W, H) * 0.8);
+        grad.addColorStop(0, 'rgba(14,165,233,0.05)');
+        grad.addColorStop(1, 'rgba(15,23,42,0)');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+
+        ctx.lineWidth = 1;
+        for (var i = 0; i < connections.length; i++) {
+          var c = connections[i];
+          var p1 = nodePos(c.from);
+          var p2 = nodePos(c.to);
+          ctx.strokeStyle = 'rgba(' + ACCENT.join(',') + ',' + LINE_ALPHA + ')';
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+
+        lastSpawn += dt;
+        if (lastSpawn > 180) {
+          lastSpawn = 0;
+          spawnPulse();
+          if (Math.random() < 0.5) spawnPulse();
+        }
+
+        for (var pI = pulses.length - 1; pI >= 0; pI--) {
+          var pulse = pulses[pI];
+          pulse.t += pulse.speed * (dt / 16);
+          if (pulse.t >= 1) {
+            pulses.splice(pI, 1);
+            if (Math.random() < 0.35) {
+              var dest = nodePos(pulse.conn.to);
+              ripples.push({ x: dest.x, y: dest.y, r: 2, alpha: 0.6 });
+            }
+            continue;
+          }
+          var a = nodePos(pulse.conn.from);
+          var b = nodePos(pulse.conn.to);
+          var x = a.x + (b.x - a.x) * pulse.t;
+          var y = a.y + (b.y - a.y) * pulse.t;
+          var glow = ctx.createRadialGradient(x, y, 0, x, y, 6);
+          glow.addColorStop(0, 'rgba(' + ACCENT_LIGHT.join(',') + ',0.95)');
+          glow.addColorStop(1, 'rgba(' + ACCENT_LIGHT.join(',') + ',0)');
+          ctx.fillStyle = glow;
+          ctx.beginPath();
+          ctx.arc(x, y, 6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        for (var rI = ripples.length - 1; rI >= 0; rI--) {
+          var rp = ripples[rI];
+          rp.r += 0.6 * (dt / 16);
+          rp.alpha -= 0.012 * (dt / 16);
+          if (rp.alpha <= 0) { ripples.splice(rI, 1); continue; }
+          ctx.strokeStyle = 'rgba(' + ACCENT_LIGHT.join(',') + ',' + Math.max(rp.alpha, 0) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(rp.x, rp.y, rp.r * 10, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+
+        var t = now * 0.001;
+        for (var li = 0; li < layers.length; li++) {
+          for (var ni = 0; ni < layers[li].length; ni++) {
+            var node = layers[li][ni];
+            var pos = nodePos([li, ni]);
+            var pulseR = node.r + Math.sin(t * 1.2 + node.phase) * 0.6;
+            var g = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, pulseR * 4);
+            g.addColorStop(0, 'rgba(' + ACCENT.join(',') + ',0.9)');
+            g.addColorStop(1, 'rgba(' + ACCENT.join(',') + ',0)');
+            ctx.fillStyle = g;
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, pulseR * 4, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = 'rgba(241,245,249,0.9)';
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, pulseR, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      }
+
+      resize();
+      buildNetwork();
+
+      window.addEventListener('mousemove', onMouseMove);
+      hero.addEventListener('click', function (e) {
+        var rect = hero.getBoundingClientRect();
+        var cx = e.clientX - rect.left;
+        var cy = e.clientY - rect.top;
+        ripples.push({ x: cx, y: cy, r: 1, alpha: 0.8 });
+        for (var i = 0; i < connections.length; i++) {
+          var c = connections[i];
+          var p1 = nodePos(c.from);
+          var p2 = nodePos(c.to);
+          var midX = (p1.x + p2.x) / 2;
+          var midY = (p1.y + p2.y) / 2;
+          var d = Math.hypot(midX - cx, midY - cy);
+          if (d < Math.max(W, H) * 0.22) {
+            pulses.push({ conn: c, t: 0, speed: rand(0.01, 0.02) });
+          }
+        }
+      });
+
+      var resizeTimeout;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function () {
+          resize();
+          buildNetwork();
+        }, 200);
+      });
+
+      try {
+        var io = new IntersectionObserver(function (entries) {
+          isVisible = entries[0].isIntersecting;
+        }, { threshold: 0 });
+        io.observe(hero);
+      } catch (e) {
+        isVisible = true;
+      }
+
+      // Always animates for every visitor, matching the diamond layer's
+      // policy — this hero graphic is a deliberate exception to the site's
+      // reduced-motion handling (see the CSS reduced-motion block).
+      requestAnimationFrame(draw);
+    })();
+  </script>
+
+  <script>
+    (function () {
       var canvas = document.getElementById('heroCanvas');
       var hero = document.querySelector('.hero');
       if (!canvas || !hero) return;
@@ -1505,15 +1685,36 @@
         return Math.abs(Math.sin(x * 127.1 + y * 311.7) * 43758.5453) % 1;
       }
 
-      function drawDiamond(cx, cy, size, alpha) {
+      function roundRectPath(x, y, w, h, r) {
         ctx.beginPath();
-        ctx.moveTo(cx, cy - size);
-        ctx.lineTo(cx + size, cy);
-        ctx.lineTo(cx, cy + size);
-        ctx.lineTo(cx - size, cy);
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.arcTo(x + w, y, x + w, y + r, r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+        ctx.lineTo(x + r, y + h);
+        ctx.arcTo(x, y + h, x, y + h - r, r);
+        ctx.lineTo(x, y + r);
+        ctx.arcTo(x, y, x + r, y, r);
         ctx.closePath();
+      }
+
+      function drawDiamond(cx, cy, size, alpha, rotAngle) {
+        ctx.save();
+        ctx.translate(cx, cy);
+        // +45° so it reads as a diamond when rotAngle is 0, same as before —
+        // but now the shape keeps spinning with rotAngle instead of staying
+        // fixed, morphing between diamond and square as the grid rotates,
+        // matching the original shader's rotated signed-distance-field shape.
+        ctx.rotate(rotAngle + Math.PI / 4);
+        var half = size * 0.72;
+        var r = Math.min(half * 0.35, 4);
+        ctx.shadowColor = 'rgba(' + COL_HIGH.join(',') + ',' + Math.min(alpha * 0.7, 0.6) + ')';
+        ctx.shadowBlur = Math.max(2, size * 0.6);
+        roundRectPath(-half, -half, half * 2, half * 2, r);
         ctx.fillStyle = 'rgba(' + COL_HIGH.join(',') + ',' + alpha + ')';
         ctx.fill();
+        ctx.restore();
       }
 
       function render(t) {
@@ -1523,11 +1724,11 @@
         var aspect = [aspectX, 1];
         var mouseOffset = [(mouseX - 0.5) * 0.3, (mouseY - 0.5) * 0.3];
 
-        var rotAngle = t * 0.15;
+        var rotAngle = t * 0.09;
         var c = Math.cos(rotAngle);
         var s = Math.sin(rotAngle);
 
-        var globalRot = t * 0.08;
+        var globalRot = t * 0.05;
         var gc = Math.cos(globalRot);
         var gs = Math.sin(globalRot);
 
@@ -1558,8 +1759,8 @@
               Math.pow((cellIdY / GRID_SCALE - 0.5) * aspect[1], 2)
             );
 
-            var wave = Math.sin(dist * 12.0 - t * 1.5) * 0.5 + 0.5;
-            var noise = hash(cellIdX * 0.5 + t * 0.2, cellIdY * 0.5 + t * 0.2);
+            var wave = Math.sin(dist * 12.0 - t * 1.0) * 0.5 + 0.5;
+            var noise = hash(cellIdX * 0.5 + t * 0.13, cellIdY * 0.5 + t * 0.13);
             var scale = 0.5 + 0.5 * wave + 0.2 * noise;
 
             rx /= Math.max(0.1, scale);
@@ -1585,8 +1786,8 @@
               scx = rdx + W * 0.5;
               scy = rdy + H * 0.5;
 
-              var diamondSize = Math.min(screenCellW, screenCellH) * 0.35 * scale;
-              drawDiamond(scx, scy, diamondSize, alpha);
+              var diamondSize = Math.min(screenCellW, screenCellH) * 0.26 * scale;
+              drawDiamond(scx, scy, diamondSize, alpha, rotAngle);
             }
           }
         }
