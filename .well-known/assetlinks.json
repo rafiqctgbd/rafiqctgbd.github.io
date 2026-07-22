@@ -1,0 +1,11 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.rafiqctgbd.medicinehealth",
+      "sha256_cert_fingerprints":
+        ["5D:9B:2E:5E:DE:94:04:A6:F0:3F:96:2D:A5:F9:58:F1:D4:FF:5E:F0:7E:7A:68:90:C8:CD:13:14:48:B4:A9:9D"]
+    }
+  }
+]
