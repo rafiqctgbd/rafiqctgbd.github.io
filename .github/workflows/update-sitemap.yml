@@ -1,0 +1,45 @@
+name: Update sitemap lastmod
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.html"
+
+# Needed so the workflow can push the updated sitemap.xml back to the repo
+permissions:
+  contents: write
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2  # need at least the previous commit to diff against
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Determine previous commit
+        id: prev
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            # Fallback for edge cases (e.g. first push seen by Actions): diff against parent commit
+            BEFORE=$(git rev-parse HEAD~1 2>/dev/null || echo "none")
+          fi
+          echo "before=$BEFORE" >> "$GITHUB_OUTPUT"
+
+      - name: Update sitemap.xml
+        run: |
+          python3 scripts/update_sitemap.py "${{ steps.prev.outputs.before }}" "${{ github.sha }}" "sitemap.xml" "https://mohammadrafiqulislam.com"
+
+      - name: Commit updated sitemap
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-update sitemap lastmod [skip ci]"
+          file_pattern: "sitemap.xml"
