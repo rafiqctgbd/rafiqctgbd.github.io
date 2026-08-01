@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Never Forget Your Medicine Again: 9 Things That Work</title>
+  <meta name="description" content="Practical, tested ways to stop missing medicine doses — pill organizers, alarms, habit stacking, and why phone reminders often fail on Android.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/en/never-forget-medicine-reminder-guide/">
+  <meta property="og:title" content="How to Never Forget Your Medicine Again: 9 Things That Work">
+  <meta property="og:description" content="Practical, tested ways to stop missing medicine doses — pill organizers, alarms, habit stacking, and why phone reminders often fail on Android.">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:site_name" content="Mohammad Rafiqul Islam">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/blog/en/never-forget-medicine-reminder-guide/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+      --green: #10b981;
+      --android: #3DDC84;
+      --bn: #f59e0b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', 'Noto Sans Bengali', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: auto; padding: 0 24px; width: 100%; }
+    .container-narrow { max-width: 780px; margin: auto; padding: 0 24px; width: 100%; }
+
+    section { padding: 80px 0; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    .lang-pill {
+      display: inline-block;
+      margin-left: 28px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lang-pill a { margin: 0 4px; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      nav ul { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15,23,42,0.98); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+      nav ul.open { max-height: 400px; }
+      nav ul li { width: 100%; }
+      nav a { margin: 0; padding: 14px 24px; display: block; border-bottom: 1px solid var(--border); }
+      .lang-pill { margin: 14px 24px; }
+    }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-play { background: #fff; color: var(--bg); }
+    .btn-play:hover { background: #e2e8f0; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow.bn-eyebrow { color: var(--bn); }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+
+    footer { padding: 50px 0 40px; text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; }
+    footer a:hover { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 900; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--accent-hover); }
+
+    /* ── Blog hub / listing ─────────────────────── */
+    .blog-hero { padding: 140px 0 60px; background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 45%); }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 18px; }
+    .blog-hero p { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+    .lang-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    @media (max-width: 700px) { .lang-choice-grid { grid-template-columns: 1fr; } }
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .lang-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .lang-card h2 { color: var(--text); font-size: 1.4rem; margin-bottom: 10px; }
+    .lang-card p { color: var(--muted); font-size: 0.92rem; }
+    .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
+    .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { color: var(--muted); font-size: 0.9rem; }
+    .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
+
+    .coming-soon-note { margin-top: 40px; padding: 18px 22px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Article page ─────────────────────── */
+    .article-header { padding: 150px 0 40px; }
+    .breadcrumb { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .article-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.25; margin-bottom: 18px; }
+    .article-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .article-meta-row { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.85rem; }
+
+    .prose { padding: 10px 0 60px; font-size: 1.02rem; }
+    .prose h2 { font-size: 1.5rem; margin: 42px 0 16px; color: var(--text); }
+    .prose h3 { font-size: 1.15rem; margin: 28px 0 12px; color: var(--text); }
+    .prose p { color: #cbd5e1; margin-bottom: 18px; }
+    .prose ul, .prose ol { color: #cbd5e1; margin: 0 0 20px 22px; }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { color: var(--text); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(14,165,233,0.35); }
+    .prose a:hover { color: var(--accent-hover); }
+
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+    .callout h4 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+    .callout p { color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem; }
+
+    .app-promo { background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(16,185,129,0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 30px; margin: 36px 0; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .app-promo img { width: 60px; height: 60px; border-radius: 14px; flex-shrink: 0; }
+    .app-promo-text h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .app-promo-text p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0; }
+    .tag-chip { background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 6px 12px; border-radius: 999px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Never Forget Your Medicine Again: 9 Things That Actually Work",
+    "description": "Practical, tested ways to stop missing medicine doses — pill organizers, alarms, habit stacking, and why phone reminders often fail.",
+    "author": { "@type": "Person", "name": "Mohammad Rafiqul Islam", "url": "https://mohammadrafiqulislam.com" },
+    "publisher": { "@type": "Person", "name": "Mohammad Rafiqul Islam" },
+    "datePublished": "2026-08-02",
+    "dateModified": "2026-08-02",
+    "mainEntityOfPage": "https://mohammadrafiqulislam.com/blog/en/never-forget-medicine-reminder-guide/",
+    "image": "https://mohammadrafiqulislam.com/assets/og-image.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the best way to remember to take medicine?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no single best way for everyone. The most reliable approach combines a physical cue (like a pill organizer you can see) with a loud, persistent alarm, since visual cues and phone reminders fail in different situations. Pairing both closes most of the gaps." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do phone alarms fail for medicine reminders?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Regular alarms and notifications are often delayed or silently cancelled by Android's battery optimization system, especially on budget and mid-range phones. A dedicated reminder app that requests exact-alarm and full-screen-intent permissions is far more reliable than a generic to-do or calendar reminder." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I remember medicine for an elderly parent who lives alone?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use a reminder that is loud and visual rather than a silent notification, keep the pill organizer somewhere they already look every day (next to the kettle or prayer mat, not a drawer), and if possible use an app that lets a family member check whether a dose was marked as taken." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it bad to double up if I miss a dose?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not always, but it depends entirely on the medicine. Some drugs are fine to take a few hours late, others should be skipped entirely if too much time has passed, and doubling up can be harmful for some medications. Always follow the instructions on the label or ask your pharmacist or doctor for that specific medicine." }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">M. Rafiqul<span> Islam</span></a>
+      <ul id="navList">
+        <li><a href="/apps/">Apps</a></li>
+        <li><a href="/blog/en/" class="active">Blog</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li class="lang-pill"><a href="#" style="color:var(--text);">EN</a> / <a href="/blog/bn/">BN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="article-header">
+    <div class="container-narrow">
+      <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/en/">Blog</a> / Medicine Reminder</div>
+      <span class="article-tag">Medicine Reminder</span>
+      <h1 style="margin-top:14px;">How to Never Forget Your Medicine Again: 9 Things That Actually Work</h1>
+      <p class="article-sub">If you've ever found an untaken pill on the counter at 9pm and thought "I was sure I took that today" &mdash;
+        this is for you.</p>
+      <div class="article-meta-row">
+        <span>By Mohammad Rafiqul Islam</span>
+        <span>&middot;</span>
+        <span>Updated August 2026</span>
+        <span>&middot;</span>
+        <span>9 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="container-narrow">
+
+      <p>Missing a dose isn't usually about being careless. It's almost always a systems problem &mdash; the reminder
+        arrived at the wrong moment, or there was no reminder at all, or it looked like every other notification
+        you swipe away without reading. The fix isn't "try harder to remember." It's building a system that
+        doesn't depend on memory in the first place.</p>
+
+      <p>Here are nine things that genuinely reduce missed doses, roughly in order of how much effort they take
+        to set up.</p>
+
+      <h2>Why we forget medicine in the first place</h2>
+      <p>Before the tips, it helps to know what's actually going wrong. Missed doses usually come from one of
+        three causes:</p>
+      <ul>
+        <li><strong>No trigger at all</strong> &mdash; you rely on "I'll remember," which works fine until a busy
+          day breaks the routine.</li>
+        <li><strong>A trigger that fails silently</strong> &mdash; a phone alarm gets muted, a notification gets
+          swiped away half-asleep, or Android delays it due to battery optimization.</li>
+        <li><strong>A trigger with no follow-up</strong> &mdash; the alarm goes off, you say "in five minutes,"
+          and then you genuinely forget within those five minutes.</li>
+      </ul>
+      <p>Every tip below is aimed at one of these three failure points.</p>
+
+      <h2>1. Use a physical pill organizer, not just memory</h2>
+      <p>A weekly pill organizer (the kind with 7, or 7&times;2 for morning/night) does something a bottle can't:
+        it makes a missed dose <em>visible</em>. If Tuesday morning's slot is still full at noon, you know
+        instantly, without having to remember whether you took it. This alone catches a huge share of missed
+        doses for people managing daily medicines.</p>
+
+      <h2>2. Put the organizer somewhere you already look</h2>
+      <p>The organizer only works if you see it. A drawer doesn't count. Put it next to the kettle, on the dining
+        table, by the prayer mat, or wherever your eyes land every single day without being told to. This is a
+        small change that quietly fixes a lot of "I forgot" mornings.</p>
+
+      <h2>3. Set a real alarm, not a hope</h2>
+      <p>"I'll just remember after breakfast" is not a system. A specific, loud alarm at a specific time is. But
+        this is also where most people's second attempt falls apart &mdash; because <strong>not all alarms are
+        equal</strong>, which brings us to the next point.</p>
+
+      <div class="callout">
+        <h4>Why your phone's default reminders quietly fail</h4>
+        <p>On many Android phones, especially budget and mid-range models common in Bangladesh, the operating
+          system aggressively manages battery usage by delaying or killing background notifications from apps
+          it doesn't consider "important." A calendar reminder or a generic to-do app notification can arrive
+          minutes late, or not trigger a sound at all if the phone is in silent mode. This isn't a rare glitch
+          &mdash; it's a documented Android behavior, and it's a major, invisible reason medicine reminders get
+          missed even when someone did set an alarm.</p>
+      </div>
+
+      <h2>4. Use a reminder tool built for alarms, not notifications</h2>
+      <p>There's a real difference between an app that sends a <em>notification</em> and one that sets an actual
+        <em>alarm clock</em>. An alarm clock-style reminder is treated by Android as high priority &mdash; it can
+        wake the screen, ring even in silent mode (if you allow it), and show a full-screen prompt you can't
+        accidentally swipe away. That reliability difference matters most for medicines where timing genuinely
+        affects how well the drug works.</p>
+
+      <div class="app-promo">
+        <img src="/assets/mhr_icon.png" alt="Medicine & Health Reminder app icon" loading="lazy">
+        <div class="app-promo-text">
+          <h4>This is exactly the problem Medicine &amp; Health Reminder was built to solve</h4>
+          <p>It uses Android's exact-alarm scheduling with full-screen alerts, so reminders still ring even when
+            the phone is locked or in battery saver mode. It also tracks missed doses automatically, keeps a
+            simple health tracker for weight, blood pressure and sugar, and can back up your records to Google
+            Drive. It's free, ad-free, and works fully offline for reminders.</p>
+          <a href="https://play.google.com/store/apps/details?id=com.rafiqctgbd.medicinehealth" class="btn btn-play" target="_blank" rel="noopener">Get it on Google Play</a>
+        </div>
+      </div>
+
+      <h2>5. Stack the reminder onto something you already do</h2>
+      <p>Habit stacking works because it borrows a trigger that's already reliable. Instead of "take medicine at
+        8am" (a time, which is easy to lose track of), try "take medicine right after brushing your teeth" or
+        "right after making tea." You almost never forget to brush your teeth &mdash; so the medicine gets pulled
+        along with it.</p>
+
+      <h2>6. Involve one other person, quietly</h2>
+      <p>This matters most for elderly parents or anyone managing multiple medicines. It doesn't need to be
+        constant supervision &mdash; even a simple daily "did you take your morning tablets?" text from a son,
+        daughter, or spouse closes the loop when a reminder alarm was missed or silenced. Some reminder apps also
+        let you check dose history remotely, which achieves the same thing without anyone having to ask.</p>
+
+      <h2>7. Track refills before the bottle is empty</h2>
+      <p>A surprising number of missed doses happen not because someone forgot to take the medicine, but because
+        it simply ran out and the next purchase got delayed by a day or two. Set a reminder for when you're down
+        to a 5&ndash;7 day supply, not when the bottle is already empty.</p>
+
+      <h2>8. Have a plan for when you miss one</h2>
+      <p>Missing an occasional dose will still happen &mdash; the goal is reducing it, not eliminating it
+        completely. What matters is having a clear rule ready in advance, because "should I take it now or
+        skip it" is a bad question to be figuring out from scratch when you're already stressed.</p>
+
+      <h2>9. Review the schedule with your doctor or pharmacist, not just once</h2>
+      <p>Medicine schedules that were designed around a hospital routine don't always survive contact with real
+        daily life. If a particular dose keeps getting missed at the same time every week, that's useful
+        information &mdash; mention it at your next visit. Sometimes the schedule itself is the thing that needs
+        adjusting, not your memory.</p>
+
+      <div class="tag-row">
+        <span class="tag-chip">Medicine Reminder</span>
+        <span class="tag-chip">Elderly Care</span>
+        <span class="tag-chip">Android Notifications</span>
+        <span class="tag-chip">Health Habits</span>
+      </div>
+
+      <h2>Related reading</h2>
+      <div class="related-grid">
+        <a href="/blog/en/elderly-parents-medicine-reminder-guide/" class="article-card">
+          <span class="article-tag">Elderly Care</span>
+          <h3>How to Help Elderly Parents Never Miss a Medicine or Checkup</h3>
+        </a>
+      </div>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3>What is the best way to remember to take medicine?</h3>
+        <p>There's no single best way for everyone. The most reliable approach pairs a visible physical cue,
+          like a pill organizer, with a persistent alarm &mdash; because each one catches failures the other
+          one misses.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why do phone alarms fail for medicine reminders?</h3>
+        <p>Regular notifications are often delayed or silently cancelled by Android's battery optimization,
+          particularly on budget and mid-range phones. Apps that use exact-alarm scheduling with full-screen
+          alerts are much more reliable than a generic to-do or calendar reminder.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I remember medicine for an elderly parent who lives alone?</h3>
+        <p>Favor loud, visual reminders over silent notifications, place the pill organizer somewhere they
+          already look daily, and where possible use an app that lets a family member check whether a dose was
+          marked taken.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is it bad to double up if I miss a dose?</h3>
+        <p>It depends entirely on the medicine &mdash; some are fine taken a few hours late, others should be
+          skipped if too much time has passed, and doubling up can be harmful for certain drugs. Always check
+          the label or ask your pharmacist for that specific medicine.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function () {
+          backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
