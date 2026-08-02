@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medicine &amp; Health Reminder — Official Application Site</title>
+  <title>Medicine &amp; Health Reminder | Official Application Website</title>
   <meta name="application-name" content="Medicine &amp; Health Reminder">
   <meta name="description"
     content="Medicine &amp; Health Reminder is an Android app to manage medicine schedules, health reminders, and personal medical records securely. Free, ad-free, privacy-first.">
@@ -206,7 +206,13 @@
       letter-spacing: -1px;
     }
 
-    .h1-accent {
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1px;
       background: linear-gradient(135deg, var(--accent), #6366f1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -219,6 +225,15 @@
       max-width: 480px;
       font-weight: 300;
       line-height: 1.7;
+    }
+    
+    .hero-purpose {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-top: -1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
     }
 
     .btn-group {
@@ -1026,12 +1041,20 @@
           <span class="hero-badge hb-free">⚡ Free</span>
           <span class="hero-badge hb-privacy">🔐 No Ads</span>
         </div>
-        <h1>Medicine &amp; Health <span class="h1-accent">Reminder</span></h1>
-        <p class="hero-desc">
-          Manage medicine schedules, health checkup reminders,
-          and personal medical records — all in one private,
-          ad-free Android app. Precise alarms, missed dose
-          detection, and optional cloud backup.
+        <h1>Medicine &amp; Health Reminder</h1>
+        
+        <p class="hero-subtitle">
+          <strong>Medicine &amp; Health Reminder is an Android application</strong>
+          designed to help users remember medications, manage medicine schedules,
+          organize health checkup reminders, securely store personal medical records,
+          and optionally back up their own data to Google Drive using Google Sign-In.
+          The application is free, privacy-focused, and contains no advertisements.
+        </p>
+        
+        <p class="hero-purpose">
+          <strong>Official application website.</strong> This page explains the
+          purpose, features, permissions, and privacy practices of the
+          Medicine &amp; Health Reminder Android application.
         </p>
         <div class="hero-cta">
           <div class="btn-group">
