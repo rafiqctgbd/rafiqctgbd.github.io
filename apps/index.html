@@ -28,6 +28,12 @@
           "position": 1,
           "url": "https://mohammadrafiqulislam.com/apps/medicine-health-reminder/",
           "name": "Medicine & Health Reminder"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://mohammadrafiqulislam.com/apps/nextcue/",
+          "name": "NextCue: Bill & Life Reminder"
         }
       ]
     }
@@ -276,6 +282,42 @@
       background: rgba(245, 158, 11, 0.1);
       color: #f59e0b;
       border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    /* Pre-release marker — NextCue is in internal/closed testing, not yet
+       on Play. Remove this badge from its card once production is live. */
+    .badge-soon {
+      background: rgba(148, 163, 184, 0.12);
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    /* NextCue's own brand cyan, used only for its card's accents so the two
+       apps are visually distinguishable in the grid — same shell, own hue. */
+    .app-card-nextcue .app-card-header {
+      background: linear-gradient(135deg, rgba(0, 196, 180, 0.07), rgba(255, 184, 0, 0.03));
+    }
+
+    .app-card-nextcue:hover {
+      border-color: rgba(0, 196, 180, 0.38);
+    }
+
+    .app-card-nextcue .app-icon {
+      background: linear-gradient(135deg, #00C4B4, #0ea5e9);
+    }
+
+    .app-card-nextcue .badge-version {
+      background: rgba(0, 196, 180, 0.1);
+      color: #00C4B4;
+      border-color: rgba(0, 196, 180, 0.22);
+    }
+
+    .app-card-nextcue .app-link-primary {
+      background: #00C4B4;
+    }
+
+    .app-card-nextcue:hover .app-link-primary {
+      background: #2BE0D0;
     }
 
     .app-card-body {
@@ -768,6 +810,39 @@
             a personal health tracker (weight/BMI, BP, sugar),
             quick medicine lookup, schedule sharing, and optional
             Google Drive backup. Zero ads, local-first privacy.
+          </p>
+          <div class="app-links">
+            <span class="app-link app-link-primary">View App →</span>
+            <span class="app-link app-link-ghost">Privacy Policy</span>
+            <span class="app-link app-link-ghost">README</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- NextCue: Bill & Life Reminder -->
+      <a href="/apps/nextcue/" class="app-card app-card-nextcue">
+        <div class="app-card-header">
+          <div class="app-icon">
+            <img src="/assets/nextcue_icon.png" alt="NextCue icon">
+          </div>
+          <div class="app-title-wrap">
+            <h2>NextCue: Bill &amp; Life Reminder</h2>
+            <div class="app-badges">
+              <span class="badge badge-android">📱 Android</span>
+              <span class="badge badge-version">v1.22</span>
+              <span class="badge badge-free">⚡ Free</span>
+              <span class="badge badge-soon">🚧 In Testing</span>
+            </div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <p class="app-desc">
+            Bills, ID and document renewals, subscriptions, rent,
+            warranties and birthdays — one simple reminder app for
+            everything that isn't medicine. 68 quick-add templates,
+            a Today view, smart expiry-based renewal alerts, reliable
+            full-screen alarms, and optional Google Drive backup.
+            Zero ads, no account required, local-first privacy.
           </p>
           <div class="app-links">
             <span class="app-link app-link-primary">View App →</span>

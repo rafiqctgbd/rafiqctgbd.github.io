@@ -392,6 +392,24 @@
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
+    /* NextCue's brand cyan, applied only to its own card so the two apps
+       are distinguishable at a glance while sharing the same card shell. */
+    .app-card-mini-nextcue:hover {
+      border-color: rgba(0, 196, 180, 0.35);
+    }
+
+    .app-card-mini-nextcue .app-mini-icon {
+      background: linear-gradient(135deg, #00C4B4, #0ea5e9) !important;
+    }
+
+    .app-card-mini-nextcue .app-version {
+      color: #00C4B4;
+    }
+
+    .app-card-mini-nextcue .app-mini-link {
+      color: #00C4B4;
+    }
+
     .app-mini-icon {
       width: 54px;
       height: 54px;
@@ -1308,6 +1326,26 @@
             </div>
           </div>
         </a>
+
+        <a href="/apps/nextcue/" class="app-card-mini app-card-mini-nextcue">
+          <div class="app-mini-icon">
+            <img src="/assets/nextcue_icon.png" alt="NextCue icon">
+          </div>
+          <div class="app-mini-info">
+            <h3>NextCue: Bill &amp; Life Reminder</h3>
+            <div class="app-meta">
+              <span class="app-version">v1.22</span>
+              <span class="app-platform-badge">📱 Android</span>
+            </div>
+            <p>Never forget bills, document renewals, subscriptions, rent, warranties or birthdays. Quick-add
+              templates, smart expiry-based renewal alerts, reliable alarms, and optional Google Drive backup.</p>
+            <div class="app-mini-links">
+              <span class="app-mini-link">App Page →</span>
+              <span class="app-mini-link">Privacy Policy</span>
+              <span class="app-mini-link">README</span>
+            </div>
+          </div>
+        </a>
       </div>
       <a href="/apps/" style="color:var(--accent);text-decoration:none;font-size:0.9rem;font-weight:600;">View all apps
         →</a>
@@ -1364,7 +1402,8 @@
       <div style="margin-bottom:14px;">
         <a href="/apps/">Android Apps</a>
         <a href="/blog/">Blog</a>
-        <a href="/apps/medicine-health-reminder/privacy-policy.html">Privacy Policy</a>
+        <a href="/apps/medicine-health-reminder/privacy-policy.html">Privacy (Medicine)</a>
+        <a href="/apps/nextcue/privacy-policy.html">Privacy (NextCue)</a>
         <a href="https://github.com/rafiqctgbd">GitHub</a>
         <a href="mailto:me@mohammadrafiqulislam.com">Email</a>
       </div>

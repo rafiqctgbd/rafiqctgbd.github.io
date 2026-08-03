@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>README &amp; Terms — NextCue: Bill &amp; Life Reminder</title>
+  <meta name="description"
+    content="Full documentation and Terms of Service for NextCue: Bill & Life Reminder — features, permissions, data privacy, and optional Google Drive backup.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/nextcue/README.html">
+  <meta property="og:title" content="README &amp; Terms — NextCue: Bill &amp; Life Reminder">
+  <meta property="og:description"
+    content="Features, permissions, data privacy and Terms of Service for the NextCue Android reminder app.">
+  <meta property="og:site_name" content="Mohammad Rafiqul Islam">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/nextcue_icon.png">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/apps/nextcue/README.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+<style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --border: rgba(255, 255, 255, 0.08);
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --code-bg: #0d1424;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+      height: 66px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-right a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .nav-right a:hover {
+      color: var(--accent);
+    }
+
+    /* HEADER */
+    .page-header {
+      padding: 130px 0 50px;
+      background: radial-gradient(ellipse at 80% 0%, rgba(14, 165, 233, 0.07), transparent 50%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      opacity: 0.4;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header-badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-android {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .badge-free {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .badge-privacy {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--yellow);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .header-desc {
+      color: var(--muted);
+      max-width: 580px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    /* MAIN */
+    .main-wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 60px 24px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    /* TOC */
+    .toc {
+      position: sticky;
+      top: 90px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li {
+      margin-bottom: 6px;
+    }
+
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+      padding: 4px 0 4px 10px;
+      border-left: 2px solid transparent;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    /* CONTENT */
+    .content section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 90px;
+    }
+
+    .content h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content h2 .ico {
+      font-size: 1rem;
+    }
+
+    .content p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .content a {
+      color: var(--accent);
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .feature-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: '▹';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    /* Privacy list */
+    .privacy-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+    }
+
+    .privacy-list li::before {
+      content: '✓';
+      color: var(--green);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* Permission cards */
+    .perm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .perm-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .perm-card .perm-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .perm-card .perm-desc {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* Code-style scope */
+    .scope-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--code-bg);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.83rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    /* Links section */
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .link-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .link-card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .link-card .link-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(14, 165, 233, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .link-card .link-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .link-card .link-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* Developer card */
+    .dev-card {
+      background: linear-gradient(135deg, var(--card), #162032);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dev-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .dev-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .dev-role {
+      color: var(--muted);
+      font-size: 0.83rem;
+      margin-bottom: 8px;
+    }
+
+    .dev-github {
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dev-github:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width:768px) {
+      .main-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 16px 48px;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .perm-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding: 90px 0 40px;
+      }
+
+      .page-header .wrap {
+        padding: 0 16px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .content h2 {
+        font-size: 1.15rem;
+      }
+
+      .content p {
+        font-size: 0.9rem;
+      }
+
+      .nav-right {
+        gap: 10px;
+      }
+    }
+
+    @media (max-width:640px) {
+      /* Nav */
+      body { overflow-x: hidden; }
+      .nav-logo { font-size: 0.95rem; letter-spacing: -0.3px; }
+      .nav-right { display: none; }
+      nav .wrap { padding: 0 14px; }
+      /* Headings — fix flex overflow */
+      h2 {
+        display: block !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 1.4rem;
+        padding-left: 12px;
+        border-left: 4px solid var(--accent);
+        line-height: 1.3;
+        word-break: break-word;
+      }
+      h2::before { display: none !important; }
+      /* Layout */
+      .wrap, .container { padding-left: 14px !important; padding-right: 14px !important; }
+      .content-wrap, .main-wrap { padding-left: 14px !important; padding-right: 14px !important; }
+      .page-header .wrap { padding: 0 14px; }
+      /* Prevent content overflow */
+      * { max-width: 100%; box-sizing: border-box; }
+      p, li, a { word-break: break-word; overflow-wrap: anywhere; }
+      .highlight-box, .contact-box, .tl-card, .feature-card,
+      .perm-item, .link-card, .proj-card, .training-item { overflow: hidden; }
+      h1 { font-size: 1.8rem; }
+      .toc { display: none !important; }
+      .main-wrap { grid-template-columns: 1fr !important; padding: 28px 14px 60px !important; }
+      .content h2 { font-size: 1.05rem !important; padding-left: 10px; }
+      .perm-grid { grid-template-columns: 1fr !important; }
+      .links-grid { grid-template-columns: 1fr !important; }
+      .dev-card { flex-direction: column; gap: 12px; }
+      .content p, .feature-list li, .privacy-list li { font-size: 0.88rem; }
+      .breadcrumb { font-size: 0.72rem; flex-wrap: wrap; }
+      .badge { font-size: 0.7rem; padding: 4px 9px; }
+      .main-wrap {
+        padding: 24px 12px 32px;
+      }
+
+      .page-header {
+        padding: 70px 0 32px;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+
+    /* ── Reduced motion ─────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-fill-mode: forwards !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ── Scroll reveal ─────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Mobile nav toggle ─────────────────────── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle {
+        display: flex !important;
+      }
+
+      .nav-right {
+        display: flex !important;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        gap: 0;
+      }
+
+      .nav-right.open {
+        max-height: 220px;
+      }
+
+      .nav-right a {
+        display: block;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* ── Back to top ─────────────────────── */
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 900;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-hover);
+    }
+  </style>
+  <style>
+    /* ── NextCue brand layer (see /apps/nextcue/index.html) ───────────── */
+    :root {
+      --accent: #00C4B4;
+      --accent-hover: #2BE0D0;
+    }
+
+    .page-header {
+      background: radial-gradient(ellipse at 60% 0%, rgba(0, 196, 180, 0.09), transparent 50%);
+    }
+
+    .badge-free {
+      background: rgba(255, 184, 0, 0.10);
+      color: #FFB800;
+      border-color: rgba(255, 184, 0, 0.22);
+    }
+
+    /* Inline code spans used in the Technical Overview section */
+    .content code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.88em;
+      background: rgba(0, 196, 180, 0.08);
+      color: var(--accent);
+      border-radius: 5px;
+      padding: 1px 6px;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="README &amp; Terms — NextCue">
+  <meta name="twitter:description"
+    content="Features, permissions, data privacy and Terms of Service for the NextCue Android reminder app.">
+  <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/nextcue_icon.png">
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="/" class="nav-logo">Next<span>Cue</span></a>
+      <div class="nav-right" id="navList">
+        <a href="/apps/nextcue/">App Home</a>
+        <a href="/apps/nextcue/privacy-policy.html">Privacy Policy</a>
+        <a href="/">← Portfolio</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-header reveal">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Portfolio</a>
+        <span>/</span>
+        <a href="/apps/">Apps</a>
+        <span>/</span>
+        <a href="/apps/nextcue/">NextCue</a>
+        <span>/</span>
+        README &amp; Terms
+      </div>
+      <div class="header-badge-row">
+        <span class="badge badge-android">📱 Android</span>
+        <span class="badge badge-free">⚡ Free</span>
+        <span class="badge badge-privacy">🔐 Privacy First</span>
+      </div>
+      <h1>README &amp; Terms of Service</h1>
+      <p class="header-desc">Full documentation and Terms of Service for NextCue: Bill &amp; Life Reminder — the
+        Android app that helps you remember bills, renewals, subscriptions, and every other date that matters. Last
+        updated August 2026.</p>
+    </div>
+  </div>
+
+  <div class="main-wrap">
+
+    <aside>
+      <nav class="toc">
+        <div class="toc-title">Contents</div>
+        <ul>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#privacy">Data Privacy</a></li>
+          <li><a href="#drive">Google Drive Backup</a></li>
+          <li><a href="#permissions">Permissions</a></li>
+          <li><a href="#technical">Technical Overview</a></li>
+          <li><a href="#links">Links</a></li>
+          <li><a href="#developer">Developer</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <div class="content">
+
+      <section id="terms">
+        <h2><span class="ico">📜</span> Terms of Service</h2>
+        <p><em>Last updated: August 2026</em></p>
+        <p>By downloading, installing, or using NextCue: Bill &amp; Life Reminder ("the App"), you agree to these Terms
+          of Service. If you do not agree, please do not use the App.</p>
+
+        <p><strong>1. Description of Service</strong><br>
+          NextCue is a free Android application that helps you remember bills, document renewals, subscriptions, rent,
+          warranties, birthdays, and other recurring or one-time events. All features are provided free of charge, with
+          no advertisements and no in-app purchases.</p>
+
+        <p><strong>2. Reminders Are a Convenience, Not a Guarantee</strong><br>
+          The App is a personal reminder tool. It is your responsibility to actually pay bills, renew documents, and
+          meet deadlines. Alarm delivery on Android depends on your device's settings, power state, and the
+          manufacturer's battery-management behaviour, none of which the App fully controls. Do not rely on the App as
+          your only safeguard for a legally or financially critical deadline.</p>
+
+        <p><strong>3. Your Responsibilities</strong><br>
+          You're responsible for the accuracy of the dates, amounts, and details you enter. You're also responsible for
+          keeping your device secure, since data stored on your device — and any optional Google Drive backup — can be
+          accessed by anyone with access to your device or Google account.</p>
+
+        <p><strong>4. Optional Google Drive Backup</strong><br>
+          If you choose to enable Google Drive backup, your reminders and history are stored in your own Google Drive
+          account, in a folder named "NextCue Backups," created and managed by the App. You can disable this feature,
+          sign out, and delete your backup data from within the App at any time. See the
+          <a href="/apps/nextcue/privacy-policy.html">Privacy Policy</a> for full details.</p>
+
+        <p><strong>5. No Warranty</strong><br>
+          The App is provided "as is" and "as available," without warranties of any kind, express or implied —
+          including reliability of alarm delivery under all device conditions, particularly on Android devices where
+          the manufacturer's battery-optimization behaviour can interfere with background apps.</p>
+
+        <p><strong>6. Limitation of Liability</strong><br>
+          To the fullest extent permitted by law, the developer is not liable for any indirect, incidental, or
+          consequential damages arising from your use of, or inability to use, the App — including a missed bill
+          payment, an expired document, a late fee, or a lapsed subscription.</p>
+
+        <p><strong>7. Changes to the App and These Terms</strong><br>
+          Features may be added, changed, or removed in future updates. These Terms may be updated from time to time;
+          continued use of the App after a change means you accept the revised Terms.</p>
+
+        <p><strong>8. Termination</strong><br>
+          You may stop using the App at any time by uninstalling it. Uninstalling removes locally stored data from your
+          device; any Google Drive backup you created remains in your own Google Drive until you delete it yourself.</p>
+
+        <p><strong>9. Contact</strong><br>
+          Questions about these Terms can be sent to <a href="mailto:rafiqctgbd@gmail.com">rafiqctgbd@gmail.com</a>.</p>
+      </section>
+
+      <section id="about">
+        <h2><span class="ico">📋</span> About</h2>
+        <p>NextCue is designed for people who want reliable, private reminders for the everyday things they currently
+          track with sticky notes, memory, or nothing at all. All data lives on your device by default — no accounts
+          required, no data collection, no ads.</p>
+        <p>It is a deliberate companion to
+          <a href="/apps/medicine-health-reminder/">Medicine &amp; Health Reminder</a>, built on the same
+          production-hardened alarm engine, generalized beyond medicine to every other kind of recurring life event.
+          NextCue isn't a to-do app or a project manager — there are no subtasks, projects, or collaboration features,
+          and that's intentional. It does one thing: make sure you never forget a bill, a renewal, or a date that
+          matters.</p>
+      </section>
+
+      <section id="features">
+        <h2><span class="ico">✨</span> Features</h2>
+        <ul class="feature-list">
+          <li>68 ready-made templates across 7 buckets — Bills, Personal Events, Home &amp; Lifestyle, Subscriptions,
+            Renewals, Maintenance, and Health</li>
+          <li>Today view grouping reminders as Today / Tomorrow / This Week / Later</li>
+          <li>Expiry-based smart renewal reminders with automatic lead-time alerts (6 months, 3 months, 1 month,
+            1 week before)</li>
+          <li>Recurrence options — one-time, daily, weekly, monthly, and yearly</li>
+          <li>Full-screen alarm alerts with Done and Snooze actions</li>
+          <li>Swipe-to-done and swipe-to-snooze with Undo</li>
+          <li>Automatic snooze for unattended alarms, and missed-marking after repeated no-response</li>
+          <li>Reminders automatically restore after device reboot</li>
+          <li>History tab logging every done, snoozed, and missed action, with one-tap Restore</li>
+          <li>Reminder Reliability panel with live status checks and one-tap fixes</li>
+          <li>Four alarm tones, adjustable snooze duration, and a fully silent mode</li>
+          <li>Sort by time, name, or next occurrence; browse by category</li>
+          <li>Live search across all reminders</li>
+          <li>Pause all reminders temporarily with one tap</li>
+          <li>Share your full reminder list via WhatsApp, SMS, or email</li>
+          <li>Optional Google Drive backup and restore, with optional automatic weekly backup</li>
+          <li>Secure local data storage — no server required</li>
+        </ul>
+      </section>
+
+      <section id="privacy">
+        <h2><span class="ico">🔐</span> Data Privacy</h2>
+        <p>User privacy is a core principle of this application.</p>
+        <ul class="privacy-list">
+          <li>Data stored locally on the user's own device by default</li>
+          <li>No account required to use the app</li>
+          <li>No personal data stored on developer-owned servers</li>
+          <li>Google Drive backup is completely optional and off until you sign in</li>
+          <li>User data is never sold or shared with third parties</li>
+          <li>No advertisements — no advertising SDKs used</li>
+          <li>No analytics or tracking libraries of any kind</li>
+          <li>No camera, location, contacts, or SMS permissions requested</li>
+        </ul>
+      </section>
+
+      <section id="drive">
+        <h2><span class="ico">☁️</span> Google Drive Backup</h2>
+        <p>The application optionally supports Google Drive backup and restore using the Google Drive scope:</p>
+        <div class="scope-tag">drive.file</div>
+        <p>This lets you back up your reminders and history to your own Google Drive, so they survive a phone change,
+          loss, or theft — and restore them on a new device in seconds.</p>
+        <p>The backup is written to a visible folder named <strong>"NextCue Backups"</strong> in your own Drive, so you
+          can find, download, or delete the file yourself at any time. The app <strong>cannot</strong> access any other
+          files, photos, videos, or documents in your Google Drive — the <code>drive.file</code> scope restricts it to
+          only the file it created itself.</p>
+        <p>Backup options inside the app:</p>
+        <ul class="feature-list">
+          <li><strong>Back up now</strong> — a manual, one-time upload</li>
+          <li><strong>Automatic weekly backup</strong> — optional silent background backup</li>
+          <li><strong>Backup reminder</strong> — optional weekly or monthly nudge if you prefer backing up manually;
+            uploads nothing on its own</li>
+          <li><strong>Restore</strong> — replaces device data with your saved backup</li>
+          <li><strong>Delete backup from Drive</strong> — permanently removes the backup file</li>
+        </ul>
+      </section>
+
+      <section id="permissions">
+        <h2><span class="ico">🛡️</span> Permissions Used</h2>
+        <div class="perm-grid">
+          <div class="perm-card">
+            <div class="perm-title">⏱️ Exact Alarm Scheduling</div>
+            <div class="perm-desc">Ensures reminders fire at the precise scheduled time, not approximately</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🔔 Notifications</div>
+            <div class="perm-desc">Display reminder alerts when they are due</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">📺 Full-Screen Alerts</div>
+            <div class="perm-desc">Show the full-screen alarm screen for due reminders</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🔁 Boot Completed</div>
+            <div class="perm-desc">Restore reminders automatically after device restart</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">📳 Vibration &amp; Wake Lock</div>
+            <div class="perm-desc">Alarm vibration, and reliable tone playback while the screen is off</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🔋 Battery Optimization</div>
+            <div class="perm-desc">Optional, user-triggered — stops battery managers delaying alarms</div>
+          </div>
+          <div class="perm-card" style="grid-column:1/-1;">
+            <div class="perm-title">🌐 Internet Access</div>
+            <div class="perm-desc">Used only by the optional Google Drive backup feature, and only after you sign in.
+              Not used for any other purpose.</div>
+          </div>
+        </div>
+        <p style="margin-top:1.2rem;">NextCue does <strong>not</strong> request camera, microphone, contacts, SMS, call
+          log, location, or photo/storage permissions.</p>
+      </section>
+
+      <section id="technical">
+        <h2><span class="ico">⚙️</span> Technical Overview</h2>
+        <ul class="feature-list">
+          <li><strong>Platform:</strong> Android (Kotlin), minimum Android 5.0 (API 21), targets Android 16 (API 36)</li>
+          <li><strong>Storage:</strong> SharedPreferences + JSON — no database, no server</li>
+          <li><strong>Alarm engine:</strong> exact alarm scheduling, ported from Medicine &amp; Health Reminder</li>
+          <li><strong>Package:</strong> <code>com.rafiqctgbd.nextcue</code></li>
+          <li><strong>Backup:</strong> Google Sign-In with Drive REST API v3, <code>drive.file</code> scope</li>
+          <li><strong>Brand colour:</strong> cyan <code>#00C4B4</code>, deliberately distinct from Medicine &amp;
+            Health Reminder's blue</li>
+        </ul>
+      </section>
+
+      <section id="links">
+        <h2><span class="ico">🔗</span> Links</h2>
+        <div class="links-grid">
+          <a href="/apps/nextcue/" class="link-card">
+            <div class="link-ico">🏠</div>
+            <div>
+              <div class="link-label">Navigation</div>
+              <div class="link-title">App Homepage</div>
+            </div>
+          </a>
+          <a href="/apps/nextcue/privacy-policy.html" class="link-card">
+            <div class="link-ico">📄</div>
+            <div>
+              <div class="link-label">Legal</div>
+              <div class="link-title">Privacy Policy</div>
+            </div>
+          </a>
+          <a href="/apps/medicine-health-reminder/" class="link-card">
+            <div class="link-ico">💊</div>
+            <div>
+              <div class="link-label">Companion App</div>
+              <div class="link-title">Medicine &amp; Health Reminder</div>
+            </div>
+          </a>
+          <a href="https://github.com/rafiqctgbd" class="link-card">
+            <div class="link-ico">💻</div>
+            <div>
+              <div class="link-label">Source</div>
+              <div class="link-title">GitHub Profile</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="developer">
+        <h2><span class="ico">👨‍💻</span> Developer</h2>
+        <div class="dev-card">
+          <div class="dev-avatar">R</div>
+          <div>
+            <div class="dev-name">Rafiqul Islam</div>
+            <div class="dev-role">Senior IT Manager · AKS Khan Diagnostics Ltd, Chittagong</div>
+            <a href="https://github.com/rafiqctgbd" class="dev-github">github.com/rafiqctgbd</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>
+    <a href="/">Portfolio</a>
+    <a href="/apps/nextcue/">App Home</a>
+    <a href="/apps/nextcue/privacy-policy.html">Privacy Policy</a>
+    <p style="margin-top:12px;">© 2026 Rafiqul Islam. All rights reserved.</p>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && items.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        items.forEach(function (el) { observer.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      var btn = document.getElementById('backToTop');
+      if (btn) {
+        window.addEventListener('scroll', function () {
+          btn.classList.toggle('visible', window.scrollY > 500);
+        });
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
