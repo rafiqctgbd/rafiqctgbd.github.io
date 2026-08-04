@@ -1,0 +1,68 @@
+This repository contains two kinds of material, licensed differently.
+Please read both sections.
+
+================================================================================
+1. SOURCE CODE  —  MIT License
+================================================================================
+
+Applies to the HTML, CSS, JavaScript, and Python in this repository —
+including the page templates, stylesheets, and the scripts in scripts/.
+
+Copyright (c) 2026 Mohammad Rafiqul Islam
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+2. BRAND ASSETS AND CONTENT  —  All Rights Reserved
+================================================================================
+
+The MIT License above does NOT apply to any of the following, all of which
+remain the exclusive property of Mohammad Rafiqul Islam:
+
+  * The names "NextCue", "NextCue: Bill & Life Reminder", and
+    "Medicine & Health Reminder", and any associated logos or wordmarks.
+
+  * All application icon artwork, including but not limited to the files in
+    assets/ and any icon rendered by scripts/render_icon.py, together with the
+    underlying vector artwork those files are generated from.
+
+  * Feature graphics, promotional images, screenshots, and other marketing
+    assets.
+
+  * The written content of the pages in this repository, including app
+    descriptions, blog posts, privacy policies, and terms of service.
+
+  * Photographs and any other personal or biographical material.
+
+scripts/render_icon.py is published so that the icon files in this repository
+can be regenerated reproducibly from a single source of truth. Publishing that
+script grants no licence to the icon artwork itself. The permission granted in
+Section 1 covers running and modifying the code; it does not extend to the
+artwork the code produces.
+
+You may not use these assets to identify your own product or service, nor in
+any way that suggests endorsement by, affiliation with, or origination from
+Mohammad Rafiqul Islam.
+
+Reusing the site's code, layout, or structure for your own website is welcome
+under the MIT License, provided you replace all branding and content covered
+by this section with your own.
+
+For any use not permitted above, please ask first:
+https://mohammadrafiqulislam.com
