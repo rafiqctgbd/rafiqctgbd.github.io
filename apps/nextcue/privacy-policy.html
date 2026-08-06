@@ -545,6 +545,18 @@
     .back-to-top:hover {
       background: var(--accent-hover);
     }
+  
+    a{color:#38bdf8}
+    a:hover{color:#7dd3fc}
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
   <style>
     /* ── NextCue brand layer (see /apps/nextcue/index.html) ───────────── */
@@ -638,6 +650,7 @@
       </nav>
     </aside>
 
+    <main id="main-content">
     <article>
 
       <section id="overview">
@@ -793,7 +806,8 @@
     </article>
   </div>
 
-  <footer>
+  </main>
+<footer>
     <a href="/">Portfolio</a>
     <a href="/apps/nextcue/">App Home</a>
     <a href="/apps/nextcue/README.html">README</a>

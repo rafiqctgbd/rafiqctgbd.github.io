@@ -698,12 +698,22 @@
     .back-to-top:hover {
       background: var(--accent-hover);
     }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/README.html">
   <meta property="og:title" content="Terms of Service — Medicine &amp; Health Reminder">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
   <meta property="og:description"
     content="Technical README for Medicine & Health Reminder Android app by Rafiqul Islam.">
   <meta property="og:site_name" content="Medicine &amp; Health Reminder">
@@ -776,6 +786,7 @@
         </ul>
       </nav>
     </aside>
+<main id="main-content">
 
     <div class="content">
 
@@ -877,6 +888,25 @@
           keeping data private and isolated from normal Google Drive files.</p>
         <p>The app <strong>cannot</strong> access general Google Drive files, photos, videos, or documents — only the
           user's own AppData folder.</p>
+
+        <h3 style="font-size:1.05rem;margin:22px 0 8px;">Backup screen (v1.3.6+)</h3>
+        <p>Backup lives on its own screen, reachable from the Backup button on the Medical Records tab. From there you
+          can back up or restore on demand, see when the last backup ran, turn on automatic backup, choose a reminder
+          frequency, or delete the Drive backup permanently.</p>
+
+        <h3 style="font-size:1.05rem;margin:22px 0 8px;">Automatic weekly backup</h3>
+        <p>Off by default. When enabled, the app backs up roughly once a week, and what it uploads depends on the
+          connection at that moment:</p>
+        <ul>
+          <li><strong>Wi-Fi (unmetered)</strong> — medicines, health tracker entries and medical record photos.</li>
+          <li><strong>Mobile data (metered)</strong> — medicines and tracker entries only. Record photos wait for
+            Wi-Fi, so a background backup can never quietly consume a data allowance.</li>
+        </ul>
+        <p>A manual <strong>Back up now</strong> behaves differently on purpose: because the user asked for it
+          explicitly, it uploads everything on any connection. Photos already stored in Drive are skipped, so repeat
+          backups stay small.</p>
+        <p>If automatic backup is left off, the app can instead show an occasional local reminder notification —
+          weekly, monthly, or never.</p>
       </section>
 
       <section id="permissions">
@@ -954,7 +984,8 @@
     </div>
   </div>
 
-  <footer>
+  </main>
+<footer>
     <a href="/">Portfolio</a>
     <a href="/apps/medicine-health-reminder/">App Home</a>
     <a href="/apps/medicine-health-reminder/privacy-policy.html">Privacy Policy</a>

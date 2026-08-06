@@ -318,7 +318,7 @@
     }
 
     .placeholder-text {
-      color: rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.6);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
@@ -1036,6 +1036,15 @@
     .back-to-top:hover {
       background: var(--accent-hover);
     }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
 
   <!-- Favicon -->
@@ -1104,6 +1113,7 @@
       </button>
     </div>
   </nav>
+<main id="main-content">
 
   <section class="hero">
     <canvas class="mesh-bg" id="heroNetwork" aria-hidden="true"></canvas>
@@ -1309,12 +1319,12 @@
       <div class="apps-row">
         <a href="/apps/medicine-health-reminder/" class="app-card-mini">
           <div class="app-mini-icon">
-            <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder icon">
+            <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder icon" loading="lazy" decoding="async">
           </div>
           <div class="app-mini-info">
             <h3>Medicine &amp; Health Reminder</h3>
             <div class="app-meta">
-              <span class="app-version">v1.3.5</span>
+              <span class="app-version">v1.3.7</span>
               <span class="app-platform-badge">📱 Android</span>
             </div>
             <p>Manage medicine schedules, health reminders, and medical records. Secure local storage with optional
@@ -1329,12 +1339,12 @@
 
         <a href="/apps/nextcue/" class="app-card-mini app-card-mini-nextcue">
           <div class="app-mini-icon">
-            <img src="/assets/nextcue_icon.png" alt="NextCue icon">
+            <img src="/assets/nextcue_icon.png" alt="NextCue icon" loading="lazy" decoding="async">
           </div>
           <div class="app-mini-info">
             <h3>NextCue: Bill &amp; Life Reminder</h3>
             <div class="app-meta">
-              <span class="app-version">v1.22</span>
+              <span class="app-version">v1.26</span>
               <span class="app-platform-badge">📱 Android</span>
             </div>
             <p>Never forget bills, document renewals, subscriptions, rent, warranties or birthdays. Quick-add
@@ -1397,7 +1407,8 @@
     </div>
   </section>
 
-  <footer>
+  </main>
+<footer>
     <div class="container">
       <div style="margin-bottom:14px;">
         <a href="/apps/">Android Apps</a>

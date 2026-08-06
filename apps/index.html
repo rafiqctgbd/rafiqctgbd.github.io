@@ -734,6 +734,15 @@
     .back-to-top:hover {
       background: var(--accent-hover);
     }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
 
   <!-- Favicon -->
@@ -769,6 +778,7 @@
       </button>
     </div>
   </nav>
+<main id="main-content">
 
   <div class="page-header reveal">
     <div class="wrap">
@@ -791,13 +801,13 @@
       <a href="/apps/medicine-health-reminder/" class="app-card">
         <div class="app-card-header">
           <div class="app-icon">
-            <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder icon">
+            <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder icon" loading="lazy" decoding="async">
           </div>
           <div class="app-title-wrap">
             <h2>Medicine &amp; Health Reminder</h2>
             <div class="app-badges">
               <span class="badge badge-android">📱 Android</span>
-              <span class="badge badge-version">v1.3.5</span>
+              <span class="badge badge-version">v1.3.7</span>
               <span class="badge badge-free">⚡ Free</span>
             </div>
           </div>
@@ -823,13 +833,13 @@
       <a href="/apps/nextcue/" class="app-card app-card-nextcue">
         <div class="app-card-header">
           <div class="app-icon">
-            <img src="/assets/nextcue_icon.png" alt="NextCue icon">
+            <img src="/assets/nextcue_icon.png" alt="NextCue icon" loading="lazy" decoding="async">
           </div>
           <div class="app-title-wrap">
             <h2>NextCue: Bill &amp; Life Reminder</h2>
             <div class="app-badges">
               <span class="badge badge-android">📱 Android</span>
-              <span class="badge badge-version">v1.25</span>
+              <span class="badge badge-version">v1.26</span>
               <span class="badge badge-free">⚡ Free</span>
               <span class="badge badge-soon">🚧 In Testing</span>
             </div>
@@ -861,7 +871,8 @@
     </div>
   </div>
 
-  <footer>
+  </main>
+<footer>
     <a href="/">← Portfolio</a>
     <a href="/#contact">Contact</a>
     <a href="https://github.com/rafiqctgbd">GitHub</a>

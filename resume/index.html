@@ -347,7 +347,7 @@
     .skill-pill {
       font-size: 0.72rem;
       background: rgba(14, 165, 233, 0.08);
-      color: var(--accent);
+      color: var(--accent-hover);
       border: 1px solid rgba(14, 165, 233, 0.15);
       padding: 3px 9px;
       border-radius: 4px;
@@ -725,7 +725,7 @@
     .training-topic {
       font-size: 0.72rem;
       background: rgba(99, 102, 241, 0.1);
-      color: var(--purple);
+      color: #a5b4fc;
       border: 1px solid rgba(99, 102, 241, 0.2);
       padding: 3px 9px;
       border-radius: 4px;
@@ -1106,6 +1106,15 @@
         display: none !important;
       }
     }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
 </head>
 
@@ -1126,6 +1135,7 @@
       </button>
     </div>
   </nav>
+<main id="main-content">
 
   <!-- PAGE HEADER -->
   <div class="page-header reveal">
@@ -1510,7 +1520,8 @@
     </div><!-- end .content -->
   </div><!-- end .main-wrap -->
 
-  <footer
+  </main>
+<footer
     style="border-top:1px solid var(--border);padding:28px 24px;text-align:center;color:var(--muted);font-size:0.83rem;">
     <a href="/" style="color:var(--accent);text-decoration:none;margin:0 10px;">Portfolio</a>
     <a href="/apps/" style="color:var(--accent);text-decoration:none;margin:0 10px;">Apps</a>

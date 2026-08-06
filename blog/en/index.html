@@ -102,6 +102,7 @@
     .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
     .btn-play { background: #fff; color: var(--bg); }
+    .prose a.btn-play, a.btn-play { color: var(--bg); border-bottom: none; }
     .btn-play:hover { background: #e2e8f0; }
     .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
 
@@ -140,7 +141,7 @@
     .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
     .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
     .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent-hover); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
     .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
     .article-card p { color: var(--muted); font-size: 0.9rem; }
     .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
@@ -184,6 +185,15 @@
 
     .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
 
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
 </head>
 
@@ -204,6 +214,7 @@
       </button>
     </div>
   </nav>
+<main id="main-content">
 
   <section class="blog-hero" style="padding-bottom:20px;">
     <div class="container">
@@ -273,6 +284,7 @@
     })();
   </script>
 
+</main>
 </body>
 
 </html>

@@ -964,6 +964,15 @@
     .back-to-top:hover {
       background: var(--accent-hover);
     }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
 
   <!-- Favicon -->
@@ -1031,7 +1040,7 @@
         <div class="app-badge"><span class="pulse"></span> Android Application</div>
         <div class="hero-badges">
           <span class="hero-badge hb-android">📱 Android</span>
-          <span class="hero-badge hb-version">v1.3.5</span>
+          <span class="hero-badge hb-version">v1.3.7</span>
           <span class="hero-badge hb-free">⚡ Free</span>
           <span class="hero-badge hb-privacy">🔐 No Ads</span>
         </div>
@@ -1144,8 +1153,17 @@
         <div class="feature-card">
           <div class="feature-icon">☁️</div>
           <h3>Google Drive Backup</h3>
-          <p>Optional backup to your own private Google Drive AppData folder. Restore reminders and records across
-            devices anytime.</p>
+          <p>A dedicated backup screen with one-tap backup and restore, a last-backed-up timestamp, and permanent
+            deletion whenever you want. Everything goes to your own private Google Drive AppData folder — never to
+            anyone else's server.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Automatic Weekly Backup</h3>
+          <p>Switch it on and the app quietly backs itself up about once a week. On Wi-Fi it includes your medical
+            record photos; on mobile data it backs up medicines and tracker entries only, so a background backup
+            can never eat your data allowance. Off by default, and you can ask for a gentle reminder instead.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">⏸️</div>

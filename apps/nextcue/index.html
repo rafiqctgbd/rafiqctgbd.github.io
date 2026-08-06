@@ -961,6 +961,15 @@
     .back-to-top:hover {
       background: var(--accent-hover);
     }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
   <style>
     /* ── NextCue brand layer ──────────────────────────────────────────
@@ -1068,6 +1077,7 @@
         <span></span><span></span><span></span>
       </button>
     </div>
+          <p class="hero-note" style="font-size:0.82rem;color:var(--muted);margin-top:10px;max-width:52ch;">NextCue is in closed testing. Joining opts your Google account into the test — the app then installs from Google Play like any other app.</p>
   </nav>
 
   <main>
@@ -1077,7 +1087,7 @@
         <div class="app-badge"><span class="pulse"></span> Android Application</div>
         <div class="hero-badges">
           <span class="hero-badge hb-android">📱 Android</span>
-          <span class="hero-badge hb-version">v1.25</span>
+          <span class="hero-badge hb-version">v1.26</span>
           <span class="hero-badge hb-free">⚡ Free</span>
           <span class="hero-badge hb-privacy">🔐 No Ads</span>
         </div>
@@ -1090,12 +1100,12 @@
         </p>
         <div class="hero-cta">
           <div class="btn-group">
-            <span class="btn btn-play btn-disabled" aria-disabled="true">
+            <a href="https://play.google.com/apps/testing/com.rafiqctgbd.nextcue" class="btn btn-play" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 3L20 12L6 21V3Z" fill="#0f172a" />
               </svg>
-              Coming soon to Google Play
-            </span>
+              Join the closed test on Google Play
+            </a>
             <a href="privacy-policy.html" class="btn btn-ghost">📄 Privacy Policy</a>
             <a href="README.html" class="btn btn-ghost">📖 Full README</a>
           </div>

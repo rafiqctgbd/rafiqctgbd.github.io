@@ -10,6 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/medicine-health-reminder/privacy-policy.html">
   <meta property="og:title" content="Privacy Policy — Medicine &amp; Health Reminder">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
   <meta property="og:description"
     content="Privacy Policy for Medicine &amp; Health Reminder Android application by Mohammad Rafiqul Islam.">
   <meta property="og:site_name" content="Medicine &amp; Health Reminder">
@@ -544,6 +545,18 @@
     .back-to-top:hover {
       background: var(--accent-hover);
     }
+  
+    a{color:#38bdf8}
+    a:hover{color:#7dd3fc}
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
   </style>
 
   <!-- Favicon -->
@@ -588,7 +601,7 @@
       </div>
       <div class="page-label">Legal Document</div>
       <h1>Privacy Policy</h1>
-      <div class="effective-date">✓ Effective Date: June 28, 2026</div>
+      <div class="effective-date">✓ Effective Date: August 6, 2026</div>
     </div>
   </div>
 
@@ -613,6 +626,7 @@
       </nav>
     </aside>
 
+    <main id="main-content">
     <article>
 
       <section id="overview">
@@ -654,6 +668,31 @@
           <li>Only the user can access their backup data</li>
           <li>The App cannot access general Google Drive files, photos, videos, or documents</li>
         </ul>
+
+        <h3 style="font-size:1.02rem;margin:22px 0 8px;">Automatic backup (added in v1.3.6)</h3>
+        <p>Automatic backup is <strong>off by default</strong>. Nothing is ever uploaded until you sign in with
+          Google and switch it on yourself, and you can switch it off again at any time from the
+          Google&nbsp;Drive&nbsp;Backup screen.</p>
+        <p>When it is switched on, the App backs up roughly once a week, and how much it uploads depends on the
+          connection in use at that moment:</p>
+        <ul>
+          <li><strong>On Wi-Fi (unmetered):</strong> your medicines, health tracker entries and medical record
+            photos are all backed up.</li>
+          <li><strong>On mobile data (metered):</strong> only your medicines and health tracker entries are backed
+            up. Medical record <em>photos</em> are deliberately held back until you are next on Wi-Fi, so that a
+            background backup can never quietly consume your mobile data allowance.</li>
+        </ul>
+        <p>Tapping <strong>Back&nbsp;up&nbsp;now</strong> yourself is different: because you asked for it
+          explicitly, it always uploads everything, including record photos, on whatever connection you are using.
+          Photos already saved in Drive are skipped, so repeat backups stay small.</p>
+        <p>The App may also show an optional reminder notification if you have chosen manual backups and have not
+          backed up for a while. This is a local notification only — nothing is transmitted.</p>
+
+        <h3 style="font-size:1.02rem;margin:22px 0 8px;">Deleting your backup</h3>
+        <p>You can permanently delete the App's backup from your Google Drive at any time, directly inside the App,
+          using <strong>Delete backup from Drive</strong> on the Google&nbsp;Drive&nbsp;Backup screen. This removes
+          the backup files from your Drive account; data stored on your phone is not affected. You may also sign
+          out at any time, which immediately stops all further backup activity.</p>
       </section>
 
       <section id="sharing">
@@ -732,7 +771,8 @@
     </article>
   </div>
 
-  <footer>
+  </main>
+<footer>
     <a href="/">Portfolio</a>
     <a href="/apps/medicine-health-reminder/">App Home</a>
     <a href="/apps/medicine-health-reminder/README.html">README</a>
