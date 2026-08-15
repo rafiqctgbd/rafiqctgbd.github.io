@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Never Miss a Renewal: Passports, Licences &amp; Insurance</title>
+  <meta name="description" content="Annual renewals fail differently from monthly bills. A practical system for tracking passport, driving licence, insurance, fitness and domain expiry dates — and how much warning each one actually needs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/en/never-miss-renewal-expiry-date-guide/">
+  <meta property="og:title" content="How to Never Miss a Renewal: Passports, Licences &amp; Insurance">
+  <meta property="og:description" content="Annual renewals fail differently from monthly bills. A practical system for tracking expiry dates — and how much warning each one actually needs.">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:site_name" content="Mohammad Rafiqul Islam">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/blog/en/never-miss-renewal-expiry-date-guide/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+      --green: #10b981;
+      --android: #3DDC84;
+      --bn: #f59e0b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', 'Noto Sans Bengali', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: auto; padding: 0 24px; width: 100%; }
+    .container-narrow { max-width: 780px; margin: auto; padding: 0 24px; width: 100%; }
+
+    section { padding: 80px 0; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    .lang-pill {
+      display: inline-block;
+      margin-left: 28px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lang-pill a { margin: 0 4px; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      nav ul { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15,23,42,0.98); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+      nav ul.open { max-height: 400px; }
+      nav ul li { width: 100%; }
+      nav a { margin: 0; padding: 14px 24px; display: block; border-bottom: 1px solid var(--border); }
+      .lang-pill { margin: 14px 24px; }
+    }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-play { background: #fff; color: var(--bg); }
+    .prose a.btn-play, a.btn-play { color: var(--bg); border-bottom: none; }
+    .btn-play:hover { background: #e2e8f0; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow.bn-eyebrow { color: var(--bn); }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+
+    footer { padding: 50px 0 40px; text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; }
+    footer a:hover { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 900; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--accent-hover); }
+
+    /* ── Blog hub / listing ─────────────────────── */
+    .blog-hero { padding: 140px 0 60px; background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 45%); }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 18px; }
+    .blog-hero p { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+    .lang-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    @media (max-width: 700px) { .lang-choice-grid { grid-template-columns: 1fr; } }
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .lang-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .lang-card h2 { color: var(--text); font-size: 1.4rem; margin-bottom: 10px; }
+    .lang-card p { color: var(--muted); font-size: 0.92rem; }
+    .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
+    .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent-hover); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { color: var(--muted); font-size: 0.9rem; }
+    .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
+
+    .coming-soon-note { margin-top: 40px; padding: 18px 22px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Article page ─────────────────────── */
+    .article-header { padding: 150px 0 40px; }
+    .breadcrumb { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .article-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.25; margin-bottom: 18px; }
+    .article-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .article-meta-row { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.85rem; }
+
+    .prose { padding: 10px 0 60px; font-size: 1.02rem; }
+    .prose h2 { font-size: 1.5rem; margin: 42px 0 16px; color: var(--text); }
+    .prose h3 { font-size: 1.15rem; margin: 28px 0 12px; color: var(--text); }
+    .prose p { color: #cbd5e1; margin-bottom: 18px; }
+    .prose ul, .prose ol { color: #cbd5e1; margin: 0 0 20px 22px; }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { color: var(--text); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(14,165,233,0.35); }
+    .prose a:hover { color: var(--accent-hover); }
+
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+    .callout h4 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+    .callout p { color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem; }
+
+    .app-promo { background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(16,185,129,0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 30px; margin: 36px 0; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .app-promo img { width: 60px; height: 60px; border-radius: 14px; flex-shrink: 0; }
+    .app-promo-text h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .app-promo-text p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0; }
+    .tag-chip { background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 6px 12px; border-radius: 999px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Never Miss a Renewal: Passports, Licences, Insurance and Other Expiry Dates",
+    "description": "Annual renewals fail differently from monthly bills. A practical system for tracking expiry dates, and how much warning each one actually needs.",
+    "author": { "@type": "Person", "name": "Mohammad Rafiqul Islam", "url": "https://mohammadrafiqulislam.com" },
+    "publisher": { "@type": "Person", "name": "Mohammad Rafiqul Islam" },
+    "datePublished": "2026-08-16",
+    "dateModified": "2026-08-16",
+    "mainEntityOfPage": "https://mohammadrafiqulislam.com/blog/en/never-miss-renewal-expiry-date-guide/",
+    "image": "https://mohammadrafiqulislam.com/assets/og-image.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How far in advance should I set a renewal reminder?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on how long the renewal itself takes, not on the expiry date. A passport needs months of warning because processing takes weeks and many countries require six months of remaining validity to let you travel. A vehicle fitness certificate or trade licence needs about a month. A domain name needs a few weeks so a failed auto-renewal can be caught. The rule is simple: set the reminder for the date you need to start, not the date it expires." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are yearly renewals harder to remember than monthly bills?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Monthly bills build a rhythm. You pay electricity twelve times a year, so the habit reinforces itself and missing one is quickly obvious. A yearly renewal gives you exactly one chance to remember something you last thought about twelve months ago, with no repetition to build a habit and no monthly statement arriving to remind you." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a calendar event enough for tracking expiry dates?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A calendar event works only if you reliably open your calendar and the notification survives. Two things commonly break it: the reminder fires on the expiry date itself, which is already too late for anything requiring paperwork, and Android battery optimisation can delay or silence the notification entirely. A single event with a single alert is the most common way renewal tracking fails." }
+      },
+      {
+        "@type": "Question",
+        "name": "What documents should I be tracking for expiry?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The ones where lapsing costs money or creates legal trouble: passport, driving licence, vehicle registration, fitness certificate and tax token, health and life insurance premiums, trade licence, professional memberships, domain and hosting renewals, product warranties, visas, and bank card expiry. Warranties are the most commonly forgotten, because people only think about them once something breaks." }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">M. Rafiqul<span> Islam</span></a>
+      <ul id="navList">
+        <li><a href="/apps/">Apps</a></li>
+        <li><a href="/blog/en/" class="active">Blog</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li class="lang-pill"><a href="#" style="color:var(--text);">EN</a> / <a href="/blog/bn/">BN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+<main id="main-content">
+
+  <section class="article-header">
+    <div class="container-narrow">
+      <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/en/">Blog</a> / Renewals &amp; Expiry Dates</div>
+      <span class="article-tag">Renewals &amp; Expiry Dates</span>
+      <h1 style="margin-top:14px;">How to Never Miss a Renewal: Passports, Licences, Insurance and Other Expiry Dates</h1>
+      <p class="article-sub">A reminder that arrives on the expiry date has already failed. Here is how to work
+        out how much warning each renewal actually needs.</p>
+      <div class="article-meta-row">
+        <span>By Mohammad Rafiqul Islam</span>
+        <span>&middot;</span>
+        <span>Updated August 2026</span>
+        <span>&middot;</span>
+        <span>10 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="container-narrow">
+
+      <p>Almost everyone who has missed a renewal has the same story. They knew the date. They may even have
+        written it down somewhere. What they did not have was a reminder that arrived <em>early enough to be
+        useful</em> &mdash; because by the time a passport actually expires, the renewal you needed to start
+        is already six weeks late.</p>
+
+      <p>That is the thing most renewal tracking gets wrong. Expiry dates are not deadlines you act on. They
+        are deadlines you need to have <strong>finished</strong> acting on.</p>
+
+      <h2>Why yearly renewals are harder than monthly bills</h2>
+      <p>It seems backwards. A monthly bill demands your attention twelve times a year and an annual renewal
+        only once, so the annual one should be easier. In practice it is the opposite, for three reasons:</p>
+      <ul>
+        <li><strong>No rhythm to lean on.</strong> Paying electricity every month builds a habit that
+          reinforces itself. A yearly renewal gives you exactly one chance to remember something you last
+          thought about twelve months ago.</li>
+        <li><strong>Nothing arrives to prompt you.</strong> Monthly bills send a statement, an SMS, sometimes
+          a collector at the door. Most documents just quietly stop being valid on a date nobody announces.</li>
+        <li><strong>The consequences are delayed.</strong> Miss an electricity payment and you notice within
+          weeks. Miss a warranty expiry and you find out eighteen months later, when the thing breaks.</li>
+      </ul>
+
+      <h2>The single most useful idea: work backwards from the paperwork</h2>
+      <p>Ask the wrong question and you get a useless reminder. "When does it expire?" gives you a date. The
+        question that actually matters is: <strong>how long does the renewal take, and when do I need to
+        start?</strong></p>
+      <p>A passport is the clearest example. Suppose it expires in March. Setting a reminder for March is
+        worse than useless, because:</p>
+      <ul>
+        <li>Processing can take several weeks, and longer in peak season.</li>
+        <li>Many countries will not let you enter with less than six months of validity remaining &mdash; so
+          your passport effectively stops working for travel <em>six months before</em> the date printed on
+          it.</li>
+        <li>You may need supporting documents that have their own lead time.</li>
+      </ul>
+      <p>Which means the genuinely useful reminder for a March expiry lands somewhere around the previous
+        August. Nine months of warning is not excessive here. It is the actual requirement.</p>
+
+      <div class="callout">
+        <h4>The rule worth remembering</h4>
+        <p>Set the reminder for <strong>the date you need to start</strong>, not the date it expires. Then add
+          a second, shorter reminder closer to the deadline as a safety net &mdash; because the first one will
+          sometimes arrive in a week when you genuinely cannot act on it.</p>
+      </div>
+
+      <h2>How much lead time each renewal actually needs</h2>
+      <p>These are practical starting points rather than rules. Adjust them to how long things take where you
+        live, since processing times vary a lot by country and by season.</p>
+
+      <h3>Months of warning</h3>
+      <ul>
+        <li><strong>Passport &mdash; 6 to 9 months.</strong> Driven by the six-month validity rule for
+          international travel, not by the printed expiry date.</li>
+        <li><strong>Visa &mdash; 2 to 3 months.</strong> Especially if it is tied to employment or study,
+          where a lapse has consequences well beyond a fee.</li>
+      </ul>
+
+      <h3>About a month</h3>
+      <ul>
+        <li><strong>Driving licence &mdash; 1 to 2 months.</strong> Often requires a medical certificate or a
+          test appointment, both of which need booking.</li>
+        <li><strong>Vehicle fitness certificate, tax token and registration &mdash; 1 month.</strong> Driving
+          on an expired one is a fine, and the queue is rarely short.</li>
+        <li><strong>Insurance premiums &mdash; 1 month.</strong> This matters more than people assume: a
+          lapsed health or life policy can mean losing accumulated benefits, not just paying late.</li>
+        <li><strong>Trade licence and professional memberships &mdash; 1 month.</strong> Renewal fees often
+          rise once you are past the date.</li>
+      </ul>
+
+      <h3>A few weeks</h3>
+      <ul>
+        <li><strong>Domain names and hosting &mdash; 2 to 4 weeks.</strong> Auto-renew is not a guarantee. It
+          fails silently when the saved card expires, and a lapsed domain can be expensive to recover.</li>
+        <li><strong>Bank and credit cards &mdash; 1 month.</strong> Mostly so you can update the card on every
+          service that auto-charges it, which is the thing that actually breaks.</li>
+        <li><strong>Product warranties &mdash; 1 month before expiry.</strong> The most forgotten item on this
+          list, because nobody thinks about a warranty until something has already broken. A reminder a month
+          out is a genuine prompt to get a wobbly appliance looked at while the repair is still free.</li>
+      </ul>
+
+      <h2>Why a single calendar event usually is not enough</h2>
+      <p>Putting the date in a calendar is better than nothing, and for some people it is genuinely
+        sufficient. But it fails in two specific ways worth knowing about.</p>
+      <p>The first is the one above: the event is almost always set <em>on</em> the expiry date, which is
+        already too late for anything involving paperwork.</p>
+      <p>The second is quieter. On many Android phones, particularly budget and mid-range models, the system
+        aggressively manages battery by delaying or suppressing background notifications from apps it does not
+        consider important. A calendar alert set eleven months in advance is exactly the kind of notification
+        that can arrive late, arrive silently, or get swiped away half-read among twenty others. For a monthly
+        bill that is survivable, because next month comes around. For a once-a-year renewal, that single
+        missed notification <em>is</em> the failure.</p>
+
+      <div class="app-promo">
+        <img src="/assets/nextcue_icon.png" alt="NextCue app icon" loading="lazy">
+        <div class="app-promo-text">
+          <h4>This is the problem I built NextCue around</h4>
+          <p>Rather than one alert on the expiry date, NextCue's expiry-based reminders let you set several
+            lead times for the same item &mdash; so a passport can quietly warn you at 90, 30 and 7 days out
+            instead of once, too late. It ships with templates for the things people actually track (bills,
+            licences, insurance, fitness certificates, domains, warranties) so you are not filling in blank
+            forms, and it uses Android's exact-alarm scheduling with full-screen alerts so a yearly reminder
+            is not quietly dropped by battery optimisation. It is free, ad-free, and works offline.</p>
+          <p style="color:var(--muted);font-size:0.88rem;"><strong style="color:var(--text);">NextCue is
+            currently in closed testing on Google Play</strong> and is not publicly available yet. If you would
+            like to try it early and help shape it, you can join the test from the app page.</p>
+          <a href="/apps/nextcue/" class="btn btn-play">Learn more &amp; join the test</a>
+        </div>
+      </div>
+
+      <h2>Building the system: four steps</h2>
+
+      <h3>1. Do one inventory, once</h3>
+      <p>Sit down with a cup of tea and list everything you own that has an expiry date. Not from memory
+        &mdash; go through your document folder, your wallet, and your email receipts. Most people find
+        between fifteen and thirty items, and are surprised by at least three of them.</p>
+
+      <h3>2. Record the expiry date and the lead time separately</h3>
+      <p>These are two different pieces of information, and conflating them is the original mistake.
+        "Passport expires 12 March" and "start the renewal by August" both need to exist.</p>
+
+      <h3>3. Put the reminder somewhere that will still exist next year</h3>
+      <p>A note in your phone's notes app is fine until you change phones. Whatever you use, it needs to
+        survive a device change &mdash; which is a real argument for something that backs up, rather than a
+        list that lives in exactly one place.</p>
+
+      <h3>4. Renew the reminder when you renew the document</h3>
+      <p>This is the step everyone skips. The moment you collect the new passport, set the next reminder. If
+        you wait, you will not do it, and you have just reset the whole problem for another five years.</p>
+
+      <h2>Three mistakes worth avoiding</h2>
+      <ul>
+        <li><strong>Trusting auto-renew without a reminder.</strong> Auto-renew is a convenience, not a
+          guarantee. It fails silently, and it fails most often when the card behind it has expired &mdash;
+          which tends to happen around the same time as everything else.</li>
+        <li><strong>Setting every reminder to the same lead time.</strong> Thirty days is right for a fitness
+          certificate and badly wrong for a passport. One default across everything guarantees that some
+          reminders arrive too late to be actionable.</li>
+        <li><strong>Tracking only the expensive things.</strong> The costly lapses are often small items: a
+          warranty that ran out a month before the fridge failed, or a domain that lapsed and was bought by
+          someone else.</li>
+      </ul>
+
+      <h2>The short version</h2>
+      <p>Renewals do not get missed because people are disorganised. They get missed because the reminder was
+        set to the wrong date &mdash; the deadline instead of the starting point &mdash; and because a single
+        alert once a year is a fragile thing to hang a passport on. Fix those two and the problem mostly
+        disappears.</p>
+
+      <div class="tag-row">
+        <span class="tag-chip">Renewals</span>
+        <span class="tag-chip">Expiry Dates</span>
+        <span class="tag-chip">Bills &amp; Subscriptions</span>
+        <span class="tag-chip">Android Reminders</span>
+        <span class="tag-chip">Productivity</span>
+      </div>
+
+      <h2>Related reading</h2>
+      <div class="related-grid">
+        <a href="/blog/en/never-forget-medicine-reminder-guide/" class="article-card">
+          <span class="article-tag">Medicine Reminder</span>
+          <h3>How to Never Forget Your Medicine Again: 9 Things That Actually Work</h3>
+        </a>
+        <a href="/blog/en/elderly-parents-medicine-reminder-guide/" class="article-card">
+          <span class="article-tag">Elderly Care</span>
+          <h3>How to Help Elderly Parents Never Miss a Medicine or Checkup</h3>
+        </a>
+      </div>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3>How far in advance should I set a renewal reminder?</h3>
+        <p>Base it on how long the renewal takes, not on the expiry date. A passport needs months, because
+          processing takes weeks and many countries require six months of remaining validity to let you
+          travel. A fitness certificate or trade licence needs about a month. Set the reminder for the date
+          you need to <em>start</em>.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why are yearly renewals harder to remember than monthly bills?</h3>
+        <p>Monthly bills build a rhythm and send you a statement. A yearly renewal gives you one chance to
+          remember something you last thought about twelve months ago, with nothing arriving to prompt you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is a calendar event enough for tracking expiry dates?</h3>
+        <p>Sometimes, but it breaks in two ways: the event is usually set on the expiry date itself, which is
+          already too late for paperwork, and Android battery optimisation can delay or silence a notification
+          scheduled months ahead. One event with one alert is the most common way renewal tracking fails.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What documents should I be tracking for expiry?</h3>
+        <p>Anything where lapsing costs money or creates legal trouble: passport, driving licence, vehicle
+          registration, fitness certificate and tax token, insurance premiums, trade licence, professional
+          memberships, domains and hosting, warranties, visas, and bank cards. Warranties are the most
+          commonly forgotten.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function () {
+          backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</main>
+</body>
+
+</html>
