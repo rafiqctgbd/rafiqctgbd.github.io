@@ -17,7 +17,7 @@
 
   <url>
     <loc>https://mohammadrafiqulislam.com/apps/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -31,7 +31,7 @@
 
   <url>
     <loc>https://mohammadrafiqulislam.com/apps/nextcue/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -45,7 +45,7 @@
 
   <url>
     <loc>https://mohammadrafiqulislam.com/blog/en/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -58,8 +58,22 @@
   </url>
 
   <url>
+    <loc>https://mohammadrafiqulislam.com/blog/en/android-reminders-not-working-fix/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadrafiqulislam.com/blog/bn/bill-renewal-reminder-shohoj-upay/</loc>
+    <lastmod>2026-08-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://mohammadrafiqulislam.com/blog/en/never-miss-renewal-expiry-date-guide/</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -86,7 +100,7 @@
   </url>
 
   <url>
-    <loc>https://mohammadrafiqulislam.com/blog/bn/babo-maa-oshudh-reminder-guide/</loc>
+    <loc>https://mohammadrafiqulislam.com/blog/bn/baba-maa-oshudh-reminder-guide/</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

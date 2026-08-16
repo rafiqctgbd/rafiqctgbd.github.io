@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Android Reminders Don't Go Off — and How to Fix It</title>
+  <meta name="description" content="Battery optimisation, OEM app-killers and three permissions most people have never heard of. Why Android reminders arrive late or not at all, and the settings that actually fix it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/en/android-reminders-not-working-fix/">
+  <meta property="og:title" content="Why Android Reminders Don't Go Off — and How to Fix It">
+  <meta property="og:description" content="Battery optimisation, OEM app-killers and three permissions most people have never heard of. Why Android reminders arrive late, and what actually fixes it.">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:site_name" content="Mohammad Rafiqul Islam">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/blog/en/android-reminders-not-working-fix/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+      --green: #10b981;
+      --android: #3DDC84;
+      --bn: #f59e0b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', 'Noto Sans Bengali', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: auto; padding: 0 24px; width: 100%; }
+    .container-narrow { max-width: 780px; margin: auto; padding: 0 24px; width: 100%; }
+
+    section { padding: 80px 0; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    .lang-pill {
+      display: inline-block;
+      margin-left: 28px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lang-pill a { margin: 0 4px; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      nav ul { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15,23,42,0.98); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+      nav ul.open { max-height: 400px; }
+      nav ul li { width: 100%; }
+      nav a { margin: 0; padding: 14px 24px; display: block; border-bottom: 1px solid var(--border); }
+      .lang-pill { margin: 14px 24px; }
+    }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-play { background: #fff; color: var(--bg); }
+    .prose a.btn-play, a.btn-play { color: var(--bg); border-bottom: none; }
+    .btn-play:hover { background: #e2e8f0; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow.bn-eyebrow { color: var(--bn); }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+
+    footer { padding: 50px 0 40px; text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; }
+    footer a:hover { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 900; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--accent-hover); }
+
+    /* ── Blog hub / listing ─────────────────────── */
+    .blog-hero { padding: 140px 0 60px; background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 45%); }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 18px; }
+    .blog-hero p { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+    .lang-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    @media (max-width: 700px) { .lang-choice-grid { grid-template-columns: 1fr; } }
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .lang-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .lang-card h2 { color: var(--text); font-size: 1.4rem; margin-bottom: 10px; }
+    .lang-card p { color: var(--muted); font-size: 0.92rem; }
+    .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
+    .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent-hover); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { color: var(--muted); font-size: 0.9rem; }
+    .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
+
+    .coming-soon-note { margin-top: 40px; padding: 18px 22px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Article page ─────────────────────── */
+    .article-header { padding: 150px 0 40px; }
+    .breadcrumb { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .article-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.25; margin-bottom: 18px; }
+    .article-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .article-meta-row { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.85rem; }
+
+    .prose { padding: 10px 0 60px; font-size: 1.02rem; }
+    .prose h2 { font-size: 1.5rem; margin: 42px 0 16px; color: var(--text); }
+    .prose h3 { font-size: 1.15rem; margin: 28px 0 12px; color: var(--text); }
+    .prose p { color: #cbd5e1; margin-bottom: 18px; }
+    .prose ul, .prose ol { color: #cbd5e1; margin: 0 0 20px 22px; }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { color: var(--text); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(14,165,233,0.35); }
+    .prose a:hover { color: var(--accent-hover); }
+
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+    .callout h4 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+    .callout p { color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem; }
+
+    .app-promo { background: linear-gradient(135deg, rgba(14,165,233,0.1), rgba(16,185,129,0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 30px; margin: 36px 0; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .app-promo img { width: 60px; height: 60px; border-radius: 14px; flex-shrink: 0; }
+    .app-promo-text h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .app-promo-text p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0; }
+    .tag-chip { background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 6px 12px; border-radius: 999px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+  </style>  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why Android Reminders Don't Go Off — and How to Fix It",
+    "description": "Battery optimisation, OEM app-killers and three permissions most people have never heard of. Why Android reminders arrive late or not at all, and the settings that actually fix it.",
+    "author": { "@type": "Person", "name": "Mohammad Rafiqul Islam", "url": "https://mohammadrafiqulislam.com" },
+    "publisher": { "@type": "Person", "name": "Mohammad Rafiqul Islam" },
+    "datePublished": "2026-08-16",
+    "dateModified": "2026-08-16",
+    "mainEntityOfPage": "https://mohammadrafiqulislam.com/blog/en/android-reminders-not-working-fix/",
+    "image": "https://mohammadrafiqulislam.com/assets/og-image.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why do my Android reminders arrive late or not at all?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Usually because the operating system stopped them, not because the app failed. Android's Doze and battery optimisation defer background work to save power, and many manufacturers layer their own, more aggressive app-killing on top. A reminder scheduled as an ordinary notification is the first thing to be delayed. Reminders scheduled as exact alarms are treated differently and survive far better." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a notification and an exact alarm?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A notification is a message the app asks the system to show, and the system is free to delay it. An exact alarm is a request to wake the device at a precise moment, and Android treats it as high priority, which is what an alarm clock uses. Since Android 12 an app must hold the Alarms and reminders permission to schedule one, and many reminder apps do not use exact alarms at all." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which Android setting should I change first if reminders are unreliable?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Set the app's battery usage to Unrestricted. That single setting fixes more missed reminders than anything else, because the default Optimised mode lets the system defer the app's scheduled work. After that, enable Alarms and reminders, allow notifications, and on Xiaomi, Oppo, Vivo, Realme and Huawei devices also enable Autostart, which is a separate manufacturer setting Android cannot report on." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are budget Android phones worse at reminders?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Manufacturers tune budget and mid-range devices for battery life, so their custom Android skins close background apps more aggressively and often ship with Autostart disabled by default. The app is not at fault and reinstalling rarely helps. The fix is to grant the app the exemptions described here, which the manufacturer's settings hide in a different place from stock Android." }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">M. Rafiqul<span> Islam</span></a>
+      <ul id="navList">
+        <li><a href="/apps/">Apps</a></li>
+        <li><a href="/blog/en/" class="active">Blog</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li class="lang-pill"><a href="#" style="color:var(--text);">EN</a> / <a href="/blog/bn/">BN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+<main id="main-content">
+
+  <section class="article-header">
+    <div class="container-narrow">
+      <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/en/">Blog</a> / Android Reliability</div>
+      <span class="article-tag">Android Reliability</span>
+      <h1 style="margin-top:14px;">Why Android Reminders Don't Go Off &mdash; and How to Fix It</h1>
+      <p class="article-sub">When a reminder doesn't ring, the app usually isn't broken. Something in Android
+        stopped it &mdash; and there are only a handful of places to look.</p>
+      <div class="article-meta-row">
+        <span>By Mohammad Rafiqul Islam</span>
+        <span>&middot;</span>
+        <span>Updated August 2026</span>
+        <span>&middot;</span>
+        <span>11 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="container-narrow">
+
+      <p>I build Android reminder apps, and the single most common message I get is some version of the same
+        thing: <em>"I set the reminder and it never went off."</em> Almost every time, the app did exactly what
+        it was told. The reminder was scheduled correctly, and then the operating system quietly decided not to
+        deliver it on time.</p>
+
+      <p>That's frustrating to hear as a user, because it sounds like an excuse. So this article is the
+        opposite of an excuse: here is precisely what stops Android reminders, in the order it usually
+        happens, and exactly which settings fix it. It applies to any reminder app, not only mine.</p>
+
+      <h2>First, the distinction that explains most of it</h2>
+      <p>There are two completely different ways an app can ask Android to remind you of something, and they
+        get treated very differently.</p>
+      <ul>
+        <li><strong>A notification</strong> is a message the app asks the system to display. The system is
+          free to delay it, batch it with others, or hold it until the phone wakes up. This is fine for "your
+          order shipped" and bad for "take your 8am tablet."</li>
+        <li><strong>An exact alarm</strong> is a request to wake the device at a precise moment. Android
+          treats it as high priority &mdash; it's the same mechanism the built-in Clock app uses. It can wake
+          the screen and ring through most restrictions.</li>
+      </ul>
+      <p>Plenty of to-do apps, calendar apps and general reminder apps use the first kind. They aren't badly
+        made; a shopping list genuinely doesn't need alarm-clock precision. But if you're using one of them
+        for medicine or a bill deadline, you've picked a tool that was never designed to guarantee the
+        timing.</p>
+
+      <div class="callout">
+        <h4>The quick test</h4>
+        <p>Set a reminder for two minutes from now, lock the phone, and put it down without touching it. Then
+          do the same test again after leaving the phone untouched for an hour or more. The second test is the
+          one that matters &mdash; most reminder failures only appear once the device has settled into a deep
+          idle state, which is exactly what happens overnight.</p>
+      </div>
+
+      <h2>Layer 1: Doze and battery optimisation</h2>
+      <p>Android has a power-saving system, generally called Doze, that kicks in when the phone has been
+        stationary and unused for a while. It batches background work into occasional windows instead of
+        letting apps run whenever they like. This is genuinely good engineering &mdash; it's a large part of
+        why modern phones last all day.</p>
+      <p>The side effect is that an app sitting in the default <strong>Optimised</strong> battery mode can
+        have its scheduled work deferred. For a reminder due at a specific minute, "deferred" means late, and
+        late can mean useless.</p>
+      <p><strong>The fix:</strong> set the app's battery usage to <strong>Unrestricted</strong>. On most
+        phones: Settings &rarr; Apps &rarr; <em>[app name]</em> &rarr; Battery &rarr; Unrestricted. This is
+        the single highest-impact setting on this page. It does not meaningfully drain your battery for a
+        reminder app, which spends almost all of its time doing nothing at all.</p>
+
+      <h2>Layer 2: the manufacturer's own app-killer</h2>
+      <p>This is the layer most people never hear about, and it's the reason two phones running the same
+        Android version behave completely differently.</p>
+      <p>Xiaomi, Redmi and POCO (MIUI/HyperOS), Oppo and Realme (ColorOS), Vivo (Funtouch OS), Huawei and
+        Honor (EMUI) all ship additional battery management of their own, layered on top of Android's. It's
+        typically more aggressive than stock Android, and on many of these devices background auto-start is
+        <strong>disabled by default</strong> for newly installed apps.</p>
+      <p>The practical result: the app gets closed in the background, and a reminder scheduled for tomorrow
+        morning never gets the chance to fire.</p>
+      <p><strong>The fix:</strong> find the <strong>Autostart</strong> setting (sometimes "Auto-launch",
+        "Start in background", or "Allow background activity") and enable it for your reminder app. On MIUI
+        and HyperOS it's usually under Settings &rarr; Apps &rarr; Permissions &rarr; Autostart. It's also
+        worth locking the app in the recent-apps screen if your phone supports that.</p>
+      <p>One thing worth knowing: <strong>Android provides no way for an app to check whether Autostart is
+        enabled.</strong> An app can detect and tell you about most other permissions, but not this one. That
+        is why a well-built reminder app will simply ask you to verify it manually rather than claiming
+        everything is fine.</p>
+
+      <h2>Layer 3: three permissions Android added recently</h2>
+      <p>Newer Android versions introduced permissions that didn't exist a few years ago. Each one can silently
+        break reminders, and each is granted in a different place.</p>
+
+      <h3>Notifications (Android 13 and newer)</h3>
+      <p>Apps must now ask permission before showing notifications at all. If this was declined once &mdash;
+        easy to do, since the prompt appears the first time you open the app &mdash; reminders may fire
+        internally while showing you nothing.</p>
+
+      <h3>Alarms &amp; reminders (Android 12 and newer)</h3>
+      <p>Scheduling exact alarms now requires its own permission, listed as <em>Alarms &amp; reminders</em>.
+        Without it, an app that wants alarm-clock precision has to fall back to an inexact schedule, which
+        puts you back into Layer 1's delays.</p>
+
+      <h3>Full-screen alerts (Android 14 and newer)</h3>
+      <p>The full-screen alert that takes over the display when an alarm rings &mdash; the thing that makes a
+        reminder impossible to miss while you're watching a video &mdash; is now a restricted permission too.
+        Without it, an alarm may still ring, but as a small banner rather than the unmissable screen you were
+        expecting.</p>
+
+      <div class="app-promo">
+        <img src="/assets/nextcue_icon.png" alt="NextCue app icon" loading="lazy">
+        <div class="app-promo-text">
+          <h4>How I handle this in my own apps</h4>
+          <p>Both of my reminder apps use exact-alarm scheduling with full-screen alerts rather than ordinary
+            notifications, re-arm every scheduled reminder after a reboot, and check on each launch that
+            nothing has been silently dropped. Both also include a Reminder Reliability screen that shows the
+            live status of each setting above and takes you straight to the right system page &mdash;
+            including a manual prompt for Autostart, precisely because Android won't report it.</p>
+          <p><a href="/apps/medicine-health-reminder/">Medicine &amp; Health Reminder</a> covers medicines,
+            doses and health tracking, and is available on Google Play now.
+            <a href="/apps/nextcue/">NextCue</a> covers bills, renewals, subscriptions and important dates,
+            and is <strong style="color:var(--text);">currently in closed testing</strong> &mdash; not
+            publicly available yet, though you can join the test from its page.</p>
+          <a href="https://play.google.com/store/apps/details?id=com.rafiqctgbd.medicinehealth" class="btn btn-play" target="_blank" rel="noopener">Get Medicine &amp; Health Reminder</a>
+        </div>
+      </div>
+
+      <h2>The checklist, in order</h2>
+      <p>If reminders are unreliable on your phone, work through these in sequence. Most people are fixed by
+        the first two.</p>
+      <ol>
+        <li><strong>Battery: Unrestricted.</strong> Settings &rarr; Apps &rarr; <em>[app]</em> &rarr;
+          Battery.</li>
+        <li><strong>Autostart: enabled.</strong> Xiaomi, Oppo, Vivo, Realme, Huawei and Honor devices only.
+          Location varies by brand.</li>
+        <li><strong>Notifications: allowed.</strong> Check that the app's alarm notification channel is on and
+          not silenced.</li>
+        <li><strong>Alarms &amp; reminders: allowed.</strong> Android 12 and newer.</li>
+        <li><strong>Full-screen alerts: allowed.</strong> Android 14 and newer.</li>
+        <li><strong>Don't force-stop the app.</strong> Force-stopping cancels its scheduled alarms until you
+          open it again. Swiping it from recents is fine on most phones; force-stop from app settings is
+          not.</li>
+        <li><strong>Check Do Not Disturb.</strong> Some setups silence alarms too, and DND schedules are easy
+          to forget you configured.</li>
+      </ol>
+
+      <h2>Why this hits some people much harder than others</h2>
+      <p>If you've never had this problem, you probably use a phone with a light Android skin and haven't
+        enabled an aggressive battery saver. Budget and mid-range devices &mdash; which is most of the market
+        in Bangladesh and much of South Asia &mdash; are tuned differently, because battery life sells phones
+        and a missed notification isn't visible in a spec sheet.</p>
+      <p>So the same reminder app genuinely can be flawless on one phone and unreliable on another, with no
+        difference in the app itself. That's worth knowing before you uninstall something and try the next one,
+        because reinstalling doesn't change any of the settings above &mdash; and on some devices, a fresh
+        install starts with Autostart disabled all over again.</p>
+
+      <h2>The short version</h2>
+      <p>Reminders don't fail because your phone is broken or because you're using it wrong. They fail because
+        the phone is doing its job &mdash; saving battery &mdash; and no one told it that this particular app
+        is the one you can't afford to have delayed. Five minutes in the settings above is usually all it
+        takes to tell it.</p>
+
+      <div class="tag-row">
+        <span class="tag-chip">Android Notifications</span>
+        <span class="tag-chip">Battery Optimization</span>
+        <span class="tag-chip">Exact Alarms</span>
+        <span class="tag-chip">MIUI &amp; HyperOS</span>
+        <span class="tag-chip">Troubleshooting</span>
+      </div>
+
+      <h2>Related reading</h2>
+      <div class="related-grid">
+        <a href="/blog/en/never-miss-renewal-expiry-date-guide/" class="article-card">
+          <span class="article-tag">Renewals &amp; Expiry Dates</span>
+          <h3>How to Never Miss a Renewal: Passports, Licences, Insurance and Other Expiry Dates</h3>
+        </a>
+        <a href="/blog/en/never-forget-medicine-reminder-guide/" class="article-card">
+          <span class="article-tag">Medicine Reminder</span>
+          <h3>How to Never Forget Your Medicine Again: 9 Things That Actually Work</h3>
+        </a>
+      </div>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3>Why do my Android reminders arrive late or not at all?</h3>
+        <p>Usually the operating system stopped them, not the app. Doze and battery optimisation defer
+          background work, and many manufacturers add more aggressive app-killing on top. Reminders scheduled
+          as ordinary notifications are the first to be delayed; exact alarms survive far better.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's the difference between a notification and an exact alarm?</h3>
+        <p>A notification is a message the system may delay at its discretion. An exact alarm is a request to
+          wake the device at a precise moment, treated as high priority &mdash; the same mechanism your Clock
+          app uses. Since Android 12, apps need the <em>Alarms &amp; reminders</em> permission to schedule
+          one.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which setting should I change first?</h3>
+        <p>Set the app's battery usage to <strong>Unrestricted</strong>. It fixes more missed reminders than
+          anything else. Then enable <em>Alarms &amp; reminders</em>, allow notifications, and on Xiaomi,
+          Oppo, Vivo, Realme and Huawei phones enable Autostart as well.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why are budget Android phones worse at this?</h3>
+        <p>They're tuned for battery life, so their custom skins close background apps more aggressively and
+          often ship with Autostart off by default. The app isn't at fault, and reinstalling rarely helps
+          &mdash; granting the exemptions above does.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function () {
+          backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</main>
+</body>
+
+</html>
