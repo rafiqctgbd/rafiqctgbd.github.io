@@ -322,6 +322,44 @@
       background: #2BE0D0;
     }
 
+    /* Docuary's own vault violet, on the same principle as NextCue's cyan.
+       The icon is drawn in CSS rather than referenced from /assets — the
+       launcher icon does not exist yet, and a broken <img> in the grid is
+       worse than a placeholder that looks deliberate. */
+    .app-card-docuary .app-card-header {
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.07), rgba(99, 102, 241, 0.04));
+    }
+
+    .app-card-docuary:hover {
+      border-color: rgba(167, 139, 250, 0.38);
+    }
+
+    .app-card-docuary .app-icon {
+      background: linear-gradient(135deg, #A78BFA, #6366f1);
+    }
+
+    .app-card-docuary .badge-version {
+      background: rgba(167, 139, 250, 0.1);
+      color: #A78BFA;
+      border-color: rgba(167, 139, 250, 0.22);
+    }
+
+    .app-card-docuary .app-link-primary {
+      background: #A78BFA;
+    }
+
+    .app-card-docuary:hover .app-link-primary {
+      background: #C4B5FD;
+    }
+
+    .doc-mark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #0f172a;
+      letter-spacing: -1px;
+    }
+
     .app-card-body {
       padding: 1.5rem 2rem 2rem;
       flex: 1;
@@ -855,6 +893,40 @@
             a Today view, smart expiry-based renewal alerts, reliable
             full-screen alarms, and optional Google Drive backup.
             Zero ads, no account required, local-first privacy.
+          </p>
+          <div class="app-links">
+            <span class="app-link app-link-primary">View App →</span>
+            <span class="app-link app-link-ghost">Privacy Policy</span>
+            <span class="app-link app-link-ghost">README</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Docuary: Document Vault -->
+      <a href="/apps/docuary/" class="app-card app-card-docuary">
+        <div class="app-card-header">
+          <div class="app-icon">
+            <span class="doc-mark">D</span>
+          </div>
+          <div class="app-title-wrap">
+            <h2>Docuary: Document Vault</h2>
+            <div class="app-badges">
+              <span class="badge badge-android">📱 Android</span>
+              <span class="badge badge-version">v0.1.0</span>
+              <span class="badge badge-free">⚡ Free</span>
+              <span class="badge badge-soon">🚧 In Development</span>
+            </div>
+          </div>
+        </div>
+        <div class="app-card-body">
+          <p class="app-desc">
+            Passports, licences, insurance and certificates in an
+            encrypted vault on your own phone. Scan a document and
+            on-device text recognition reads every word, so searching
+            for a policy number actually finds it. Machine-readable
+            passport parsing, contentless expiry reminders, multi-select
+            sharing, and optional end-to-end encrypted Google Drive
+            backup. No account, no servers, no tracking.
           </p>
           <div class="app-links">
             <span class="app-link app-link-primary">View App →</span>

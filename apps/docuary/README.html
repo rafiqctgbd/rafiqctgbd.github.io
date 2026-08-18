@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>document.documentElement.className+=" js";</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>README &amp; Terms — Docuary: Document Vault</title>
+  <meta name="description"
+    content="Terms of Service and full documentation for Docuary: Document Vault, a free Android app by Rafiqul Islam. Encrypted document storage with on-device OCR and optional end-to-end encrypted Google Drive backup.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/docuary/README.html">
+  <meta property="og:title" content="README &amp; Terms of Service — Docuary: Document Vault">
+  <meta property="og:description"
+    content="Terms of Service and documentation for Docuary — encrypted document storage with on-device OCR.">
+  <meta property="og:site_name" content="Mohammad Rafiqul Islam">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/apps/docuary/README.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+<style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --border: rgba(255, 255, 255, 0.08);
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --code-bg: #0d1424;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+      height: 66px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-right a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .nav-right a:hover {
+      color: var(--accent);
+    }
+
+    /* HEADER */
+    .page-header {
+      padding: 130px 0 50px;
+      background: radial-gradient(ellipse at 80% 0%, rgba(14, 165, 233, 0.07), transparent 50%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      opacity: 0.4;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header-badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-android {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .badge-free {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .badge-privacy {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--yellow);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .header-desc {
+      color: var(--muted);
+      max-width: 580px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    /* MAIN */
+    .main-wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 60px 24px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    /* TOC */
+    .toc {
+      position: sticky;
+      top: 90px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li {
+      margin-bottom: 6px;
+    }
+
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+      padding: 4px 0 4px 10px;
+      border-left: 2px solid transparent;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    /* CONTENT */
+    .content section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 90px;
+    }
+
+    .content h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content h2 .ico {
+      font-size: 1rem;
+    }
+
+    .content p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .content a {
+      color: var(--accent);
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .feature-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: '▹';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    /* Privacy list */
+    .privacy-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+    }
+
+    .privacy-list li::before {
+      content: '✓';
+      color: var(--green);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* Permission cards */
+    .perm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .perm-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .perm-card .perm-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .perm-card .perm-desc {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* Code-style scope */
+    .scope-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--code-bg);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.83rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    /* Links section */
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .link-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .link-card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .link-card .link-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(14, 165, 233, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .link-card .link-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .link-card .link-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* Developer card */
+    .dev-card {
+      background: linear-gradient(135deg, var(--card), #162032);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dev-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .dev-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .dev-role {
+      color: var(--muted);
+      font-size: 0.83rem;
+      margin-bottom: 8px;
+    }
+
+    .dev-github {
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dev-github:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width:768px) {
+      .main-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 16px 48px;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .perm-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding: 90px 0 40px;
+      }
+
+      .page-header .wrap {
+        padding: 0 16px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .content h2 {
+        font-size: 1.15rem;
+      }
+
+      .content p {
+        font-size: 0.9rem;
+      }
+
+      .nav-right {
+        gap: 10px;
+      }
+    }
+
+    @media (max-width:640px) {
+      /* Nav */
+      body { overflow-x: hidden; }
+      .nav-logo { font-size: 0.95rem; letter-spacing: -0.3px; }
+      .nav-right { display: none; }
+      nav .wrap { padding: 0 14px; }
+      /* Headings — fix flex overflow */
+      h2 {
+        display: block !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 1.4rem;
+        padding-left: 12px;
+        border-left: 4px solid var(--accent);
+        line-height: 1.3;
+        word-break: break-word;
+      }
+      h2::before { display: none !important; }
+      /* Layout */
+      .wrap, .container { padding-left: 14px !important; padding-right: 14px !important; }
+      .content-wrap, .main-wrap { padding-left: 14px !important; padding-right: 14px !important; }
+      .page-header .wrap { padding: 0 14px; }
+      /* Prevent content overflow */
+      * { max-width: 100%; box-sizing: border-box; }
+      p, li, a { word-break: break-word; overflow-wrap: anywhere; }
+      .highlight-box, .contact-box, .tl-card, .feature-card,
+      .perm-item, .link-card, .proj-card, .training-item { overflow: hidden; }
+      h1 { font-size: 1.8rem; }
+      .toc { display: none !important; }
+      .main-wrap { grid-template-columns: 1fr !important; padding: 28px 14px 60px !important; }
+      .content h2 { font-size: 1.05rem !important; padding-left: 10px; }
+      .perm-grid { grid-template-columns: 1fr !important; }
+      .links-grid { grid-template-columns: 1fr !important; }
+      .dev-card { flex-direction: column; gap: 12px; }
+      .content p, .feature-list li, .privacy-list li { font-size: 0.88rem; }
+      .breadcrumb { font-size: 0.72rem; flex-wrap: wrap; }
+      .badge { font-size: 0.7rem; padding: 4px 9px; }
+      .main-wrap {
+        padding: 24px 12px 32px;
+      }
+
+      .page-header {
+        padding: 70px 0 32px;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+
+    /* ── Reduced motion ─────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-fill-mode: forwards !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ── Scroll reveal ─────────────────────── */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Mobile nav toggle ─────────────────────── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle {
+        display: flex !important;
+      }
+
+      .nav-right {
+        display: flex !important;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        gap: 0;
+      }
+
+      .nav-right.open {
+        max-height: 220px;
+      }
+
+      .nav-right a {
+        display: block;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* ── Back to top ─────────────────────── */
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 900;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-hover);
+    }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+  </style>
+  <style>
+    /* ── Docuary brand layer ──────────────────────────────────────────
+       Same dark shell, typography and layout as the rest of the site;
+       only the accent hue changes, so Docuary is recognisable in its own
+       vault violet while still clearly belonging to the same portfolio. */
+    :root {
+      --accent: #A78BFA;
+      --accent-hover: #C4B5FD;
+    }
+
+    .page-header {
+      background: radial-gradient(ellipse at 60% 0%, rgba(167, 139, 250, 0.09), transparent 50%);
+    }
+
+    a { color: #A78BFA }
+    a:hover { color: #C4B5FD }
+
+    .ico { color: var(--accent); }
+
+    .dev-avatar {
+      background: linear-gradient(135deg, #A78BFA, #6366f1);
+    }
+
+    .back-to-top { box-shadow: 0 6px 18px rgba(167, 139, 250, 0.35); }
+
+    /* Used once, for the irreversibility clause. This is the single thing on
+       the page a reader must not skim past, so it is set apart in amber. */
+    .warn-box {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+
+    .warn-box p { margin: 0; }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="README &amp; Terms — Docuary: Document Vault">
+  <meta name="twitter:description"
+    content="Terms of Service and documentation for Docuary — encrypted document storage with on-device OCR.">
+  <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "README & Terms of Service — Docuary: Document Vault",
+  "url": "https://mohammadrafiqulislam.com/apps/docuary/README.html",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Mohammad Rafiqul Islam",
+    "url": "https://mohammadrafiqulislam.com/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Mohammad Rafiqul Islam",
+    "url": "https://mohammadrafiqulislam.com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Mohammad Rafiqul Islam",
+    "url": "https://mohammadrafiqulislam.com/"
+  },
+  "description": "Terms of Service and full documentation for Docuary: Document Vault, a free Android app by Rafiqul Islam."
+}
+</script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="/" class="nav-logo">Docu<span>ary</span></a>
+      <div class="nav-right" id="navList">
+        <a href="/apps/docuary/">App Home</a>
+        <a href="/apps/docuary/privacy-policy.html">Privacy Policy</a>
+        <a href="/">← Portfolio</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-header reveal">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Portfolio</a>
+        <span>/</span>
+        <a href="/apps/">Apps</a>
+        <span>/</span>
+        <a href="/apps/docuary/">Docuary</a>
+        <span>/</span>
+        README &amp; Terms
+      </div>
+      <div class="header-badge-row">
+        <span class="badge badge-android">📱 Android</span>
+        <span class="badge badge-free">⚡ Free</span>
+        <span class="badge badge-privacy">🔐 Privacy First</span>
+      </div>
+      <h1>README &amp; Terms of Service</h1>
+      <p class="header-desc">Full documentation and Terms of Service for Docuary: Document Vault — the Android app
+        that keeps your passports, licences, insurance papers and certificates encrypted on your own phone. Last
+        updated August 2026.</p>
+    </div>
+  </div>
+
+  <div class="main-wrap">
+
+    <aside>
+      <nav class="toc">
+        <div class="toc-title">Contents</div>
+        <ul>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#privacy">Data Privacy</a></li>
+          <li><a href="#drive">Google Drive Backup</a></li>
+          <li><a href="#permissions">Permissions</a></li>
+          <li><a href="#technical">Technical Overview</a></li>
+          <li><a href="#links">Links</a></li>
+          <li><a href="#developer">Developer</a></li>
+        </ul>
+      </nav>
+    </aside>
+<main id="main-content">
+
+    <div class="content">
+
+      <section id="terms">
+        <h2><span class="ico">📜</span> Terms of Service</h2>
+        <p><em>Last updated: August 2026</em></p>
+        <p>By downloading, installing, or using Docuary: Document Vault ("the App"), you agree to these Terms of
+          Service. If you do not agree, please do not use the App.</p>
+
+        <p><strong>1. Description of Service</strong><br>
+          Docuary is a free Android application that stores personal documents — passports, licences, insurance
+          papers, certificates and similar — in an encrypted vault on your own device, with on-device text
+          recognition, expiry reminders, sharing, and optional backup to your own Google Drive. All features are
+          provided free of charge, with no advertisements and no in-app purchases.</p>
+
+        <p><strong>2. Your Passphrase Cannot Be Recovered</strong><br>
+          This is the most important clause in this document, and it is a consequence of the design rather than a
+          policy choice. Your documents are encrypted with a key derived from your passphrase. That key is never
+          transmitted anywhere and the developer never holds it.</p>
+
+        <div class="warn-box">
+          <p><strong>If you forget your passphrase, your documents cannot be recovered — by you, by the developer, or
+            by anyone else.</strong> There is no reset link, no recovery email, and no back door. The same property
+            that prevents a thief reading your vault prevents its recovery. Keep your recovery passphrase somewhere
+            safe and separate from your phone.</p>
+        </div>
+
+        <p><strong>3. The App Is Not a Substitute for Your Original Documents</strong><br>
+          Docuary stores images and extracted text. It does not create legally valid copies, certified duplicates, or
+          replacements for original documents. Do not rely on a stored scan where an authority requires an original,
+          and do not treat the App as your only copy of anything that matters. Keep originals, and keep an independent
+          backup of anything irreplaceable.</p>
+
+        <p><strong>4. Reminders Are a Convenience, Not a Guarantee</strong><br>
+          Expiry reminders are a personal convenience. It remains your responsibility to renew documents on time.
+          Notification delivery on Android depends on your device settings, power state, and the manufacturer's
+          battery-management behaviour, none of which the App fully controls. Do not rely on the App as your only
+          safeguard for a legally or financially critical deadline.</p>
+
+        <p><strong>5. Your Responsibilities</strong><br>
+          You are responsible for the accuracy of what you enter, for choosing a passphrase strong enough for what you
+          are protecting, and for keeping your device secure. You are also responsible for what you do with documents
+          after you share them — once a document leaves the App through the Android share menu, it is governed by the
+          receiving app and recipient, not by Docuary.</p>
+
+        <p><strong>6. Encryption Is Strong, Not Absolute</strong><br>
+          The App uses established, current cryptography (see the Technical Overview below), but no security measure is
+          absolute. The App has not undergone a formal third-party security audit. A device that is compromised at the
+          operating-system level, or a passphrase that is guessed, weak, or written down where others can find it, will
+          defeat any encryption. The App reduces risk; it does not eliminate it.</p>
+
+        <p><strong>7. Optional Google Drive Backup</strong><br>
+          If you enable Drive backup, encrypted copies of your documents are stored in a hidden application folder in
+          your own Google Drive account. They are encrypted before upload and are not readable by the developer or by
+          Google. You can disconnect and delete this backup at any time. Destroying the vault on your device does not
+          delete the Drive backup, which is removed separately. See the
+          <a href="/apps/docuary/privacy-policy.html">Privacy Policy</a> for full details.</p>
+
+        <p><strong>8. Lawful Use</strong><br>
+          You agree to store only documents you are lawfully entitled to hold. The App is intended for your own
+          personal records and those of people you are entitled to act for, such as your immediate family.</p>
+
+        <p><strong>9. No Warranty</strong><br>
+          The App is provided "as is" and "as available," without warranties of any kind, express or implied —
+          including without limitation the accuracy of text recognition, the reliability of reminder delivery under
+          all device conditions, the availability of Google Drive, or uninterrupted or error-free operation.</p>
+
+        <p><strong>10. Limitation of Liability</strong><br>
+          To the fullest extent permitted by law, the developer is not liable for any indirect, incidental, or
+          consequential damages arising from your use of, or inability to use, the App — including an expired
+          document, a missed renewal, a lost passphrase, loss of stored data, or unauthorised access to your device.</p>
+
+        <p><strong>11. Changes to the App and These Terms</strong><br>
+          Features may be added, changed, or removed in future updates. These Terms may be updated from time to time;
+          continued use of the App after a change means you accept the revised Terms.</p>
+
+        <p><strong>12. Termination</strong><br>
+          You may stop using the App at any time by uninstalling it. Uninstalling removes all locally stored data from
+          your device. Any Google Drive backup you created remains in your own Google Drive until you delete it
+          yourself.</p>
+
+        <p><strong>13. Contact</strong><br>
+          Questions about these Terms can be sent to
+          <a href="mailto:support@mohammadrafiqulislam.com">support@mohammadrafiqulislam.com</a>.</p>
+      </section>
+
+      <section id="about">
+        <h2><span class="ico">📘</span> About</h2>
+        <p>Most people keep their important documents in three places at once: a drawer at home, a folder of blurred
+          photos in the camera roll, and an email they sent themselves years ago. None of those are searchable, none
+          are encrypted, and none tell you when something is about to expire.</p>
+        <p>Docuary is one place for all of them, on your own phone, encrypted. Photograph a document and it is filed,
+          straightened, read, indexed and tracked. Search for a policy number and the right document appears — not
+          because you titled it well, but because the App read every word inside it.</p>
+        <p>The design principle is that you should not have to trust the developer. There is no account, no server and
+          no telemetry, so there is nothing to breach and nothing to sell. That is checked rather than promised: the
+          App makes no network requests at all unless you switch on Drive backup.</p>
+      </section>
+
+      <section id="features">
+        <h2><span class="ico">✨</span> Features</h2>
+        <ul class="feature-list">
+          <li>Encrypted vault for passports, licences, insurance, certificates, warranties and any other document</li>
+          <li>Camera scanning with automatic edge detection and perspective correction</li>
+          <li>On-device text recognition, so search finds words <em>inside</em> your documents</li>
+          <li>Automatic passport and ID card recognition, including the machine-readable strip and its check
+            digits</li>
+          <li>Issue and expiry date tracking, with reminders that never name the document</li>
+          <li>Multi-select sharing by email, WhatsApp or any other app</li>
+          <li>Encrypted <code>.docuary</code> bundle export for moving documents between devices</li>
+          <li>Insights dashboard — what is expiring, what you have filed, where the gaps are</li>
+          <li>Unlock with passphrase, PIN, fingerprint or face</li>
+          <li>Optional decoy vault, for situations where you may be compelled to unlock your phone</li>
+          <li>Automatic locking after inactivity</li>
+          <li>Dark mode, and complete offline operation</li>
+        </ul>
+      </section>
+
+      <section id="privacy">
+        <h2><span class="ico">🔐</span> Data Privacy</h2>
+        <ul class="privacy-list">
+          <li>All documents stored locally on the user's own device, encrypted</li>
+          <li>No account required — none exists to create</li>
+          <li>No personal data stored on developer-owned servers, because there are none</li>
+          <li>Text recognition runs on the device; documents are never uploaded for processing</li>
+          <li>Google Drive backup is completely optional and off until you enable it</li>
+          <li>No Google Sign-In, so the App never receives your email address or identity</li>
+          <li>User data is never sold or shared with third parties</li>
+          <li>No advertisements, no advertising SDKs, no analytics, no crash reporting</li>
+          <li>Android's own cloud backup is disabled for the App, so the operating system cannot copy vault files off
+            the device outside the App's encryption</li>
+          <li>Document screens are excluded from screenshots and the recent-apps preview</li>
+        </ul>
+        <p>Full detail is in the <a href="/apps/docuary/privacy-policy.html">Privacy Policy</a>.</p>
+      </section>
+
+      <section id="drive">
+        <h2><span class="ico">☁️</span> Google Drive Backup</h2>
+        <p>Backup is optional, off by default, and end-to-end encrypted. Documents are sealed on your device before
+          upload, so Google stores ciphertext and the developer never holds the key.</p>
+        <ul class="feature-list">
+          <li><strong>Scope</strong> — <code>drive.appdata</code> only, a hidden folder belonging to the App. Docuary
+            cannot see, list or open any other file in your Drive</li>
+          <li><strong>No sign-in</strong> — the App requests authorization for that one folder, never your identity</li>
+          <li><strong>Opaque filenames</strong> — random identifiers, never your document titles</li>
+          <li><strong>Restore</strong> — recover on a new phone using your recovery passphrase</li>
+          <li><strong>Disconnect</strong> — stop backup at any time from within the App</li>
+          <li><strong>Delete</strong> — remove the backup from your Drive, or revoke access entirely from your Google
+            account permissions page</li>
+        </ul>
+        <p>Docuary's use and transfer of information received from Google APIs adheres to the
+          <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank"
+            rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+      </section>
+
+      <section id="permissions">
+        <h2><span class="ico">🔑</span> Permissions</h2>
+        <div class="perm-grid">
+          <div class="perm-card">
+            <div class="perm-title">📷 Camera</div>
+            <div class="perm-desc">To photograph documents, which go straight into the encrypted vault. No video or
+              audio capability. Optional — you can import files instead</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🔔 Notifications</div>
+            <div class="perm-desc">Expiry reminders, which never name the document. Optional</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🔐 Biometrics</div>
+            <div class="perm-desc">To unlock the vault. Android matches your fingerprint in secure hardware and reports
+              only success or failure — the App never sees biometric data. Optional</div>
+          </div>
+          <div class="perm-card">
+            <div class="perm-title">🌐 Internet &amp; Network State</div>
+            <div class="perm-desc">Used only by the optional Google Drive backup. Unused if you never connect it</div>
+          </div>
+        </div>
+        <p>Docuary requests no broad storage permission, no microphone, no contacts, no SMS, no call log and no
+          location. Importing a file uses Android's system picker, which grants access to the single file you
+          choose.</p>
+      </section>
+
+      <section id="technical">
+        <h2><span class="ico">⚙️</span> Technical Overview</h2>
+        <ul class="feature-list">
+          <li><strong>Platform:</strong> Native Android, Kotlin with Jetpack Compose</li>
+          <li><strong>Minimum version:</strong> Android 8.0 (API 26)</li>
+          <li><strong>Package:</strong> <code>com.rafiqctgbd.docuary</code></li>
+          <li><strong>Encryption:</strong> AES-256-GCM authenticated encryption, with the header bound in as
+            associated data</li>
+          <li><strong>Key derivation:</strong> Argon2id, tuned to current OWASP guidance</li>
+          <li><strong>Key storage:</strong> Android Keystore, using StrongBox hardware where the device provides
+            it</li>
+          <li><strong>Database:</strong> SQLCipher, so the full-text search index is encrypted alongside the
+            documents</li>
+          <li><strong>Text recognition:</strong> ML Kit, bundled on-device — no network dependency</li>
+          <li><strong>Backup:</strong> Drive REST API v3, <code>drive.appdata</code> scope, authorization without
+            sign-in</li>
+          <li><strong>Brand colour:</strong> violet <code>#A78BFA</code>, deliberately distinct from NextCue's cyan and
+            Medicine &amp; Health Reminder's blue</li>
+        </ul>
+      </section>
+
+      <section id="links">
+        <h2><span class="ico">🔗</span> Links</h2>
+        <div class="links-grid">
+          <a href="/apps/docuary/" class="link-card">
+            <div class="link-ico">🏠</div>
+            <div>
+              <div class="link-label">Navigation</div>
+              <div class="link-title">App Homepage</div>
+            </div>
+          </a>
+          <a href="/apps/docuary/privacy-policy.html" class="link-card">
+            <div class="link-ico">📄</div>
+            <div>
+              <div class="link-label">Legal</div>
+              <div class="link-title">Privacy Policy</div>
+            </div>
+          </a>
+          <a href="/apps/nextcue/" class="link-card">
+            <div class="link-ico">🔔</div>
+            <div>
+              <div class="link-label">Companion App</div>
+              <div class="link-title">NextCue: Bill &amp; Life Reminder</div>
+            </div>
+          </a>
+          <a href="https://github.com/rafiqctgbd" class="link-card">
+            <div class="link-ico">💻</div>
+            <div>
+              <div class="link-label">Source</div>
+              <div class="link-title">GitHub Profile</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="developer">
+        <h2><span class="ico">👨‍💻</span> Developer</h2>
+        <div class="dev-card">
+          <div class="dev-avatar">R</div>
+          <div>
+            <div class="dev-name">Rafiqul Islam</div>
+            <div class="dev-role">Senior IT Manager · AKS Khan Diagnostics Ltd, Chittagong</div>
+            <a href="https://github.com/rafiqctgbd" class="dev-github">github.com/rafiqctgbd</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  </main>
+<footer>
+    <a href="/">Portfolio</a>
+    <a href="/apps/docuary/">App Home</a>
+    <a href="/apps/docuary/privacy-policy.html">Privacy Policy</a>
+    <p style="margin-top:12px;">&copy; 2026 Rafiqul Islam. All rights reserved.</p>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && items.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0, rootMargin: '200px 0px 200px 0px' });
+        items.forEach(function (el) { observer.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      var btn = document.getElementById('backToTop');
+      if (btn) {
+        window.addEventListener('scroll', function () {
+          btn.classList.toggle('visible', window.scrollY > 500);
+        });
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
