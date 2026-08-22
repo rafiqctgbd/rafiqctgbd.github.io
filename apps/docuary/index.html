@@ -1009,23 +1009,6 @@
     a { color: #A78BFA }
     a:hover { color: #C4B5FD }
 
-    /* Placeholder launcher mark, drawn in CSS.
-       Swap for <img src="/assets/docuary_icon.png"> once the real icon exists —
-       referencing a file that isn't in /assets yet would ship a broken image. */
-    .doc-mark {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #A78BFA, #6366f1);
-      color: #0f172a;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.5rem;
-      letter-spacing: -1px;
-    }
-
     /* Pre-release notice. Docuary is not on Google Play yet, so this page
        carries no store link — an install button that 404s is worse than none. */
     .prerelease {
@@ -1050,7 +1033,7 @@
   <meta name="twitter:title" content="Docuary: Document Vault — Android App">
   <meta name="twitter:description"
     content="Your documents, encrypted on your phone. Offline OCR search, expiry alerts, and backup that stays private.">
-  <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/docuary_icon.png">
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
   {
@@ -1060,7 +1043,7 @@
     "operatingSystem": "Android 8.0 and up",
     "applicationCategory": "ProductivityApplication",
     "description": "Android document vault that keeps passports, licences, insurance papers and certificates encrypted on the device. On-device OCR search, machine-readable passport recognition, expiry reminders, multi-select sharing and optional end-to-end encrypted Google Drive backup. Free, ad-free and privacy-first.",
-    "image": "https://mohammadrafiqulislam.com/assets/og-image.png",
+    "image": "https://mohammadrafiqulislam.com/assets/docuary_icon.png",
     "softwareVersion": "0.2.0",
     "contentRating": "3+",
     "author": {
@@ -1130,7 +1113,7 @@
       <div class="app-mockup">
         <div class="mockup-header">
           <div class="mockup-icon">
-            <div class="doc-mark">D</div>
+            <img src="/assets/docuary_icon.png" alt="Docuary icon">
           </div>
           <div>
             <div class="mockup-title">My Vault</div>

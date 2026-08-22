@@ -322,10 +322,7 @@
       background: #2BE0D0;
     }
 
-    /* Docuary's own vault violet, on the same principle as NextCue's cyan.
-       The icon is drawn in CSS rather than referenced from /assets — the
-       launcher icon does not exist yet, and a broken <img> in the grid is
-       worse than a placeholder that looks deliberate. */
+    /* Docuary's own vault violet, on the same principle as NextCue's cyan. */
     .app-card-docuary .app-card-header {
       background: linear-gradient(135deg, rgba(167, 139, 250, 0.07), rgba(99, 102, 241, 0.04));
     }
@@ -350,14 +347,6 @@
 
     .app-card-docuary:hover .app-link-primary {
       background: #C4B5FD;
-    }
-
-    .doc-mark {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.6rem;
-      color: #0f172a;
-      letter-spacing: -1px;
     }
 
     .app-card-body {
@@ -906,7 +895,7 @@
       <a href="/apps/docuary/" class="app-card app-card-docuary">
         <div class="app-card-header">
           <div class="app-icon">
-            <span class="doc-mark">D</span>
+            <img src="/assets/docuary_icon.png" alt="Docuary icon" loading="lazy" decoding="async">
           </div>
           <div class="app-title-wrap">
             <h2>Docuary: Document Vault</h2>
