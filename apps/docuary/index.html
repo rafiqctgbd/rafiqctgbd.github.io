@@ -1009,8 +1009,8 @@
     a { color: #A78BFA }
     a:hover { color: #C4B5FD }
 
-    /* Closed-testing notice. Public Play installation is not available yet;
-       testers use the Google Play testing track and tester group below. */
+    /* Pre-release notice. Docuary is not on Google Play yet, so this page
+       carries no store link — an install button that 404s is worse than none. */
     .prerelease {
       background: rgba(245, 158, 11, 0.07);
       border: 1px solid rgba(245, 158, 11, 0.25);
@@ -1066,6 +1066,7 @@
     <div class="container">
       <a href="/" class="nav-logo">Docu<span class="dot">ary</span></a>
       <ul class="nav-links" id="navList">
+        <li><a href="#join">Join the test</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#backup">Backup</a></li>
         <li><a href="#privacy">Privacy</a></li>
@@ -1099,17 +1100,19 @@
         </p>
         <div class="hero-cta">
           <div class="btn-group">
-            <a href="https://play.google.com/apps/testing/com.rafiqctgbd.docuary" class="btn btn-primary" target="_blank" rel="noopener">🧪 Join Closed Testing</a>
-            <a href="https://groups.google.com/g/docuary-testers" class="btn btn-ghost" target="_blank" rel="noopener">👥 Tester Group</a>
+            <a href="https://play.google.com/apps/testing/com.rafiqctgbd.docuary" class="btn btn-play" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 3L20 12L6 21V3Z" fill="#0f172a" />
+              </svg>
+              Join the closed test on Google Play
+            </a>
             <a href="privacy-policy.html" class="btn btn-ghost">📄 Privacy Policy</a>
-            <a href="README.html" class="btn btn-ghost">📖 README &amp; Terms</a>
-            <a href="/apps/" class="btn btn-ghost">← All Apps</a>
+            <a href="README.html" class="btn btn-ghost">📖 Full README</a>
           </div>
         </div>
         <div class="prerelease">
-          <strong style="color:var(--text)">Closed testing.</strong> Docuary is currently being tested through Google Play's closed-testing track.
-          To participate, join the tester group and then open the Google Play testing link on your Android device. The app is not
-          publicly available on Google Play yet.
+          <strong style="color:var(--text)">Closed testing.</strong> Docuary is currently being tested on Google Play.
+          Public release will follow after testing and Play Console requirements are completed.
         </div>
       </div>
 
@@ -1148,6 +1151,67 @@
           <div class="reminder-status status-taken">Filed</div>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <section class="section reveal" id="join">
+    <div class="container">
+      <div class="section-label">Closed Beta &nbsp;·&nbsp; Help Wanted</div>
+      <h2>Help me test Docuary</h2>
+      <p class="section-desc">Docuary is in <strong style="color:var(--text)">closed testing</strong> on Google Play.
+        If you'd like to help test the app, the three steps below will get you started.</p>
+
+      <div style="background:rgba(255,193,7,0.08);border:1px solid rgba(255,193,7,0.28);border-radius:12px;padding:14px 18px;margin:1.5rem 0 1.8rem;font-size:0.92rem;line-height:1.6;">
+        <strong style="color:var(--text)">Important:</strong> use the <strong style="color:var(--text)">same Google account</strong>
+        for all three steps, on the phone where you'll install the app.
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;gap:18px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#04121b;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;">1</div>
+          <div>
+            <strong style="color:var(--text);display:block;margin-bottom:4px;">Join the Google Group</strong>
+            <p style="color:var(--muted);font-size:0.92rem;line-height:1.6;margin-bottom:10px;">Tap
+              <em>Ask to join group</em> to join the Docuary tester community.</p>
+            <a href="https://groups.google.com/g/docuary-testers" class="btn btn-ghost" target="_blank" rel="noopener">Open the Google Group</a>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;gap:18px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#04121b;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;">2</div>
+          <div>
+            <strong style="color:var(--text);display:block;margin-bottom:4px;">Become a tester</strong>
+            <p style="color:var(--muted);font-size:0.92rem;line-height:1.6;margin-bottom:10px;">Tap
+              <em>Become a tester</em> to opt your Google account into the closed test.</p>
+            <a href="https://play.google.com/apps/testing/com.rafiqctgbd.docuary" class="btn btn-play" target="_blank" rel="noopener">Become a tester</a>
+          </div>
+        </div>
+
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;display:flex;gap:18px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#04121b;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;">3</div>
+          <div>
+            <strong style="color:var(--text);display:block;margin-bottom:4px;">Install from Google Play</strong>
+            <p style="color:var(--muted);font-size:0.92rem;line-height:1.6;margin-bottom:10px;">Once you're enrolled as a tester,
+              install Docuary from Google Play using the link below.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.rafiqctgbd.docuary" class="btn btn-ghost" target="_blank" rel="noopener">Install on Google Play</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.8rem;padding:18px 20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;">
+        <strong style="color:var(--text);display:block;margin-bottom:8px;">A small favour</strong>
+        <ul style="color:var(--muted);font-size:0.92rem;line-height:1.9;padding-left:1.1rem;margin:0;">
+          <li>Please keep Docuary installed while you test it.</li>
+          <li>Try scanning, searching and viewing different document types.</li>
+          <li>Anything broken, confusing or annoying — please report it so it can be fixed before public release.</li>
+        </ul>
+        <p style="color:var(--muted);font-size:0.9rem;margin-top:14px;">Feedback:
+          <a href="mailto:apps@mohammadrafiqulislam.com" style="color:var(--accent);">apps@mohammadrafiqulislam.com</a></p>
+      </div>
+
+      <p class="section-desc" style="margin-top:1.4rem;font-size:0.86rem;">Joining the group and closed test uses your Google account.
+        You can leave the test at any time from Google Play's tester page.</p>
     </div>
   </section>
 
