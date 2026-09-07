@@ -1122,6 +1122,7 @@
       <ul id="navList">
         <li><a href="#expertise">Expertise</a></li>
         <li><a href="#software">Software</a></li>
+        <li><a href="#tools">Free Tools</a></li>
         <li><a href="/apps/">Apps</a></li>
         <li><a href="/blog/">Blog</a></li>
         <li><a href="/resume/">Resume</a></li>
@@ -1328,6 +1329,45 @@
     </div>
   </section>
 
+  <section id="tools" class="reveal">
+    <div class="container">
+      <h2>Free Tools</h2>
+      <p style="color:var(--muted);margin-bottom:2.5rem;max-width:680px;">
+        Unlike the internal solutions above, this one's a free public download — a standalone Windows utility
+        built for GCC recruitment and manpower agencies.
+      </p>
+      <div class="grid">
+
+        <div class="card">
+          <div class="project-preview">
+            <img src="/assets/wafid-slip-tool.png" alt="Wafid GCC Slip - Download &amp; Print screenshot" loading="lazy">
+          </div>
+          <div class="card-body">
+            <h3>Wafid GCC Slip — Download &amp; Print</h3>
+            <p>Paste or load a list of passport numbers and this tool fetches each one's medical appointment slip
+              from wafid.com automatically, then prints them straight away — SumatraPDF as the primary print
+              engine, with a direct Windows-GDI fallback so no external PDF tools are strictly required. Built for
+              agencies processing slips in bulk: retry logic, skip-already-downloaded, and an optional hidden
+              (headless) browser mode for unattended runs.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Playwright</span>
+              <span class="tag">Tkinter</span><span class="tag">Batch Automation</span>
+            </div>
+            <div style="margin-top:1.2rem;">
+              <a href="https://u.pcloud.link/publink/show?code=XZmcXHJZYEyFuk876D0dBFfmDhCPfFgH6Oak" class="btn btn-primary" target="_blank" rel="noopener" style="display:inline-flex;">⬇ Download for Windows</a>
+              <p style="color:var(--muted);font-size:0.82rem;margin-top:0.6rem;margin-bottom:0;">
+                v1.0.0 &middot; Windows only &middot; ~79 MB &middot; Free. Windows SmartScreen may warn since the
+                file isn't code-signed — this is normal for an independently distributed tool; choose "More
+                info → Run anyway" if you trust the source.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <section id="apps" class="reveal">
     <div class="container">
       <h2>Android Apps</h2>
@@ -1343,7 +1383,7 @@
           <div class="app-mini-info">
             <h3>Medicine &amp; Health Reminder</h3>
             <div class="app-meta">
-              <span class="app-version">v1.6.0</span>
+              <span class="app-version">v1.6.2</span>
               <span class="app-platform-badge">📱 Android</span>
             </div>
             <p>Manage medicine schedules, health reminders, and medical records. Secure local storage with optional
