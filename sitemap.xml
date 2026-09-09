@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://mohammadrafiqulislam.com/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -186,6 +186,13 @@
   <url>
     <loc>https://mohammadrafiqulislam.com/blog/en/medicine-reminder-your-own-language/</loc>
     <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mohammadrafiqulislam.com/blog/bn/kon-reminder-app-apnar-dorkar/</loc>
+    <lastmod>2026-09-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
