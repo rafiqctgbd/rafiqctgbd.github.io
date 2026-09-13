@@ -32,7 +32,8 @@ the entire deploy process.
 | App | Package | Status |
 |---|---|---|
 | [Medicine & Health Reminder](https://mohammadrafiqulislam.com/apps/medicine-health-reminder/) | `com.rafiqctgbd.medicinehealth` | Published |
-| [NextCue: Bill & Life Reminder](https://mohammadrafiqulislam.com/apps/nextcue/) | `com.rafiqctgbd.nextcue` | In testing |
+| [NextCue: Bill & Life Reminder](https://mohammadrafiqulislam.com/apps/nextcue/) | `com.rafiqctgbd.nextcue` | Published |
+| [Docuary: Document Vault](https://mohammadrafiqulislam.com/apps/docuary/) | `com.rafiqctgbd.docuary` | In testing |
 
 Both are free, ad-free, and store data locally on the device by default, with
 optional user-controlled Google Drive backup.
