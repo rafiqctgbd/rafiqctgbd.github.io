@@ -35,7 +35,7 @@ the entire deploy process.
 | [NextCue: Bill & Life Reminder](https://mohammadrafiqulislam.com/apps/nextcue/) | `com.rafiqctgbd.nextcue` | Published |
 | [Docuary: Document Vault](https://mohammadrafiqulislam.com/apps/docuary/) | `com.rafiqctgbd.docuary` | In testing |
 
-Both are free, ad-free, and store data locally on the device by default, with
+All are free, ad-free, and store data locally on the device by default, with
 optional user-controlled Google Drive backup.
 
 ## Scripts
