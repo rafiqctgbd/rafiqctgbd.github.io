@@ -918,7 +918,8 @@
             Home &amp; Lifestyle, Maintenance, Health, and Routines &amp; Habits</li>
           <li>Available in eight languages — Arabic, Bengali, English, Hindi, Indonesian, Portuguese, Spanish
             and Urdu — with an in-app language picker independent of the phone's system language</li>
-          <li>Today view grouping reminders as Today / Tomorrow / This Week / Later</li>
+          <li>Today view grouping reminders as Today / Tomorrow / This Week / Later / Expired</li>
+          <li>Pause any cue — or everything at once — without deleting it; paused cues stay visible, clearly marked</li>
           <li>Expiry-based smart renewal reminders with automatic lead-time alerts (6 months, 3 months, 1 month,
             1 week before)</li>
           <li>Recurrence options — one-time, daily, weekly, monthly, and yearly</li>
@@ -1016,11 +1017,11 @@
       <section id="technical">
         <h2><span class="ico">⚙️</span> Technical Overview</h2>
         <ul class="feature-list">
-          <li><strong>Platform:</strong> Android (Kotlin), minimum Android 5.0 (API 21), targets Android 16 (API 36)</li>
+          <li><strong>Platform:</strong> Android (Kotlin), minimum Android 6.0 (API 23), targets Android 16 (API 36)</li>
           <li><strong>Storage:</strong> SharedPreferences + JSON — no database, no server</li>
           <li><strong>Alarm engine:</strong> exact alarm scheduling, ported from Medicine &amp; Health Reminder</li>
           <li><strong>Package:</strong> <code>com.rafiqctgbd.nextcue</code></li>
-          <li><strong>Backup:</strong> Google Sign-In with Drive REST API v3, <code>drive.file</code> scope</li>
+          <li><strong>Backup:</strong> Google sign-in via Credential Manager, Drive REST API v3, <code>drive.file</code> scope</li>
           <li><strong>Brand colour:</strong> cyan <code>#00C4B4</code>, deliberately distinct from Medicine &amp;
             Health Reminder's blue</li>
         </ul>
