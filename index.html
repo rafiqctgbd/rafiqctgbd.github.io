@@ -844,41 +844,22 @@
         scroll-behavior: auto !important;
       }
 
-      /* Deliberate exception, by owner's request: the hero mesh + diamond
-         graphic always animates for every visitor. Everything else on the
-         site (nav menu, scroll reveal, back-to-top) still respects the
-         reduced-motion preference normally via the blanket rule above. */
-      .mesh-bg,
-      .hero-canvas.is-ready {
-        animation-duration: 13s !important;
-        animation-iteration-count: infinite !important;
-        animation-fill-mode: none !important;
-      }
+      /* Deliberate exception, by owner's request: the hero signal field
+         (canvas #heroCanvas, driven by the JS near the bottom of this file)
+         keeps animating for every visitor. That block of JS intentionally
+         does not check prefers-reduced-motion. Everything else on the site —
+         nav menu, scroll reveal, back-to-top — still respects the preference
+         normally via the blanket rule above. */
     }
 
     html {
       scroll-behavior: smooth;
     }
 
-    /* ── Hero network-mesh signature graphic ─────────────────────── */
+    /* ── Hero canvas (signal-flow field) ─────────────────────── */
     .hero {
       position: relative;
       overflow: hidden;
-    }
-
-    .mesh-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      animation: mesh-breathe 13s ease-in-out infinite;
-    }
-
-    @keyframes mesh-breathe {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 0.2; }
     }
 
     .hero-canvas {
@@ -890,15 +871,11 @@
       pointer-events: none;
       display: block;
       opacity: 0;
+      transition: opacity 1.4s ease;
     }
 
     .hero-canvas.is-ready {
-      animation: canvas-breathe 13s ease-in-out infinite;
-    }
-
-    @keyframes canvas-breathe {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
+      opacity: 1;
     }
 
     .hero .container.hero-content {
@@ -1101,7 +1078,7 @@
   <meta name="twitter:title"
     content="Mohammad Rafiqul Islam — Senior IT Manager & Automation Architect">
   <meta name="twitter:description"
-    content="20+ years healthcare IT experience. Senior IT Manager at AKS Khan Diagnostics. Expert in GHC/Wafid automation, Python development, Android apps & biometric systems. Chittagong, Bangladesh.">
+    content="20+ years healthcare IT experience. Senior IT Manager at Accu Health Diagnostics. Expert in GHC/Wafid automation, Python development, Android apps & biometric systems. Chittagong, Bangladesh.">
   <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
   <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -1114,10 +1091,10 @@
     "name": "Mohammad Rafiqul Islam",
     "url": "https://mohammadrafiqulislam.com",
     "jobTitle": "Senior IT Manager",
-    "description": "Senior IT Manager and Healthcare IT Architect with 20+ years in healthcare IT operations, GHC/Wafid integration, Python automation, Android development, and biometric systems. AKS Khan Diagnostics Ltd, Chittagong, Bangladesh.",
+    "description": "Senior IT Manager and Healthcare IT Architect with 20+ years in healthcare IT operations, GHC/Wafid integration, Python automation, Android development, and biometric systems. Accu Health Diagnostics Ltd, Chittagong, Bangladesh.",
     "worksFor": {
       "@type": "Organization",
-      "name": "AKS Khan Diagnostics Ltd",
+      "name": "Accu Health Diagnostics Ltd",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Chittagong",
@@ -1186,7 +1163,6 @@
 <main id="main-content">
 
   <section class="hero">
-    <canvas class="mesh-bg" id="heroNetwork" aria-hidden="true"></canvas>
     <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="container hero-content">
       <div class="role-badge">
@@ -1280,7 +1256,7 @@
     <div class="container">
       <h2>Developed Solutions</h2>
       <p style="color:var(--muted);margin-bottom:2.5rem;max-width:680px;">
-        Proprietary desktop applications developed internally to streamline AKS Khan Diagnostics' clinical workflow and
+        Proprietary desktop applications developed internally to streamline Accu Health Diagnostics' clinical workflow and
         GCC medical operations.
       </p>
       <div class="grid">
@@ -1577,7 +1553,7 @@
             <div class="contact-icon">📍</div>
             <div class="contact-info">
               <h3>Location</h3>
-              <span>AKS Khan Diagnostics Ltd, Chittagong</span>
+              <span>Accu Health Diagnostics Ltd, Chittagong</span>
             </div>
           </div>
         </div>
@@ -1657,408 +1633,389 @@
     })();
   </script>
 
+  <!-- ── Hero signal-flow field ─────────────────────────────────────
+       A single canvas: curl-noise drift streams, bright signal pulses
+       riding the field as straight-line shooting stars, a cursor-driven
+       vortex, and click shockwave ripples. Replaces the previous
+       two-canvas setup (mesh-bg + hero-canvas). Animates for every
+       visitor by design — see the reduced-motion comment in the CSS
+       head.                                                          -->
   <script>
     (function () {
-      var canvas = document.getElementById('heroNetwork');
-      var hero = document.querySelector('.hero');
+      "use strict";
+
+      var canvas = document.getElementById("heroCanvas");
+      var hero   = document.querySelector(".hero");
       if (!canvas || !hero) return;
 
-      var ctx = canvas.getContext('2d');
-      if (!ctx) return;
+      var ctx = canvas.getContext("2d", { alpha: true });
+      if (!ctx) return;                       // very old browser — page still fine
 
-      var W, H, DPR;
-      var layers = [];
-      var connections = [];
-      var pulses = [];
-      var ripples = [];
-      var mouseX = 0.5, mouseY = 0.5, targetMouseX = 0.5, targetMouseY = 0.5;
+      /* ── Canvas state ─────────────────────────────────────────────── */
+      var W = 1, H = 1, DPR = 1;
       var isVisible = true;
+      var lastT = 0;
 
-      var LAYER_COUNTS = [5, 8, 10, 8, 5];
-      var ACCENT = [14, 165, 233];       // #0ea5e9, matches --accent
-      var ACCENT_LIGHT = [56, 189, 248]; // #38bdf8, matches --accent-hover
-      var LINE_ALPHA = 0.1;
+      /* ── Palette (matches site tokens) ────────────────────────────── */
+      var C_SKY    = [56, 189, 248];   // --accent-hover
+      var C_AZURE  = [14, 165, 233];   // --accent
+      var C_INDIGO = [129, 140, 248];  // indigo-400
+
+      /* ── Pointer state ───────────────────────────────────────────── */
+      var ptrX = 0.72, ptrY = 0.38;    // smoothed, normalised
+      var ptrTX = 0.72, ptrTY = 0.38;  // target
+      var ptrOver = false;
+      var ptrForce = 0;                // 0→1 ramp, drives vortex strength
+
+      /* ── Cheap 2D value noise ─────────────────────────────────────── */
+      function hash2(x, y) {
+        var n = Math.sin(x * 127.1 + y * 311.7) * 43758.5453123;
+        return n - Math.floor(n);
+      }
+      function vnoise(x, y) {
+        var xi = Math.floor(x), yi = Math.floor(y);
+        var xf = x - xi, yf = y - yi;
+        var u = xf * xf * (3 - 2 * xf);
+        var v = yf * yf * (3 - 2 * yf);
+        var a = hash2(xi, yi),     b = hash2(xi + 1, yi);
+        var c = hash2(xi, yi + 1), d = hash2(xi + 1, yi + 1);
+        return (a * (1 - u) + b * u) * (1 - v) + (c * (1 - u) + d * u) * v;
+      }
+      /* Two-octave curl-ish field. Smooth in space, drifts in time. */
+      function flowAngle(x, y, t) {
+        var s = 0.0017;
+        var n1 = vnoise(x * s + t * 0.00011, y * s - t * 0.00009);
+        var n2 = vnoise(x * s * 2.4 - t * 0.00007, y * s * 2.4 + t * 0.00012);
+        return (n1 * 0.7 + n2 * 0.3) * Math.PI * 3.6;
+      }
 
       function rand(a, b) { return a + Math.random() * (b - a); }
 
-      function buildNetwork() {
-        layers = [];
-        connections = [];
-        var count = LAYER_COUNTS.length;
-        for (var i = 0; i < count; i++) {
-          var n = LAYER_COUNTS[i];
-          var nodes = [];
-          var xFrac = (i + 0.5) / count;
-          for (var j = 0; j < n; j++) {
-            var yFrac = (j + 0.5) / n + rand(-0.04, 0.04);
-            nodes.push({ baseX: xFrac, baseY: yFrac, r: rand(2.2, 4.2), phase: rand(0, Math.PI * 2) });
-          }
-          layers.push(nodes);
-        }
-        for (var li = 0; li < layers.length - 1; li++) {
-          for (var a = 0; a < layers[li].length; a++) {
-            var linksOut = 2 + Math.floor(Math.random() * 2);
-            for (var k = 0; k < linksOut; k++) {
-              var b = Math.floor(Math.random() * layers[li + 1].length);
-              connections.push({ from: [li, a], to: [li + 1, b] });
-            }
-          }
-        }
+      /* ── Entities ────────────────────────────────────────────────── */
+      var particles = [];   // flow-field streaks
+      var pulses    = [];   // bright shooting stars
+      var ripples   = [];   // click shockwaves
+      var pulseClock = 0;
+
+      function makeParticle(seed) {
+        var col = Math.random() < 0.26 ? C_INDIGO
+                : (Math.random() < 0.5 ? C_SKY : C_AZURE);
+        var life = rand(4, 9);
+        return {
+          x: Math.random() * W,
+          y: Math.random() * H,
+          px: 0, py: 0,
+          vx: 0, vy: 0,
+          speed: rand(0.35, 1.0),
+          age: seed ? Math.random() * life : 0,
+          maxAge: life,
+          col: col,
+          w: rand(0.6, 1.5),
+          bright: Math.random() < 0.07
+        };
+      }
+
+      /* Particle count scales with the hero's area so phones stay smooth. */
+      function populate() {
+        var n = Math.round((W * H) / 4600);
+        n = Math.max(70, Math.min(220, n));
+        particles.length = 0;
+        for (var i = 0; i < n; i++) particles.push(makeParticle(true));
       }
 
       function spawnPulse() {
-        if (connections.length === 0) return;
-        var c = connections[Math.floor(Math.random() * connections.length)];
-        pulses.push({ conn: c, t: 0, speed: rand(0.006, 0.014) });
+        /* Fixed direction chosen once at spawn — the pulse then flies in
+           a straight line for its whole life, like a real shooting star,
+           instead of following the drifting curl-noise field (which read
+           as a wiggly, worm-like path). */
+        var e = Math.random(), x, y, ang;
+        if (e < 0.55)      { x = W + 30;  y = rand(H * 0.05, H * 0.95); ang = Math.PI + rand(-0.5, 0.5); }
+        else if (e < 0.80) { x = -30;     y = rand(H * 0.05, H * 0.95); ang = rand(-0.5, 0.5); }
+        else if (Math.random() < 0.5) { x = rand(0, W); y = -30;   ang = Math.PI / 2 + rand(-0.5, 0.5); }
+        else                           { x = rand(0, W); y = H + 30; ang = -Math.PI / 2 + rand(-0.5, 0.5); }
+        var spd = rand(2.2, 4.0) * 1.7;
+        pulses.push({
+          x: x, y: y,
+          vx: Math.cos(ang) * spd,
+          vy: Math.sin(ang) * spd,
+          age: 0, maxAge: rand(5, 9), life: 1,
+          headW: rand(1.6, 2.6),
+          tailLen: rand(70, 150),
+          col: Math.random() < 0.5 ? C_SKY : C_INDIGO
+        });
       }
 
-      function nodePos(ref) {
-        var n = layers[ref[0]][ref[1]];
-        var parX = (mouseX - 0.5) * 0.055 * (ref[0] - 2);
-        var parY = (mouseY - 0.5) * 0.045 * (ref[0] - 2);
-        return { x: (n.baseX + parX) * W, y: (n.baseY + parY) * H, r: n.r };
+      function spawnRipple(x, y) {
+        ripples.push({ x: x, y: y, r: 0, maxR: Math.max(W, H) * 0.42, life: 1 });
       }
 
+      /* ── Resize ──────────────────────────────────────────────────── */
       function resize() {
         var rect = hero.getBoundingClientRect();
         DPR = Math.min(window.devicePixelRatio || 1, 2);
         W = Math.max(1, rect.width);
         H = Math.max(1, rect.height);
-        canvas.width = W * DPR;
-        canvas.height = H * DPR;
-        canvas.style.width = W + 'px';
-        canvas.style.height = H + 'px';
+        canvas.width  = Math.round(W * DPR);
+        canvas.height = Math.round(H * DPR);
+        canvas.style.width  = W + "px";
+        canvas.style.height = H + "px";
         ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
       }
 
-      function onMouseMove(e) {
-        var rect = hero.getBoundingClientRect();
-        targetMouseX = (e.clientX - rect.left) / rect.width;
-        targetMouseY = (e.clientY - rect.top) / rect.height;
-      }
+      /* ── Frame loop ──────────────────────────────────────────────── */
+      function frame(now) {
+        requestAnimationFrame(frame);
 
-      var lastSpawn = 0;
-      var lastFrameTime = 0;
+        if (!isVisible) { lastT = now; return; }   // hero scrolled away — idle
+        if (!lastT) lastT = now;
 
-      function draw(now) {
-        requestAnimationFrame(draw);
-        if (!isVisible) return;
-        var dt = lastFrameTime ? (now - lastFrameTime) : 16;
-        lastFrameTime = now;
+        // step is in "60 fps frames", capped so a backgrounded tab doesn't jump
+        var step = Math.min((now - lastT) / 16.6667, 3);
+        lastT = now;
 
-        mouseX += (targetMouseX - mouseX) * 0.08;
-        mouseY += (targetMouseY - mouseY) * 0.08;
+        ptrX += (ptrTX - ptrX) * 0.08 * step;
+        ptrY += (ptrTY - ptrY) * 0.08 * step;
+        ptrForce += ((ptrOver ? 1 : 0) - ptrForce) * 0.06 * step;
+
+        var mx = ptrX * W, my = ptrY * H;
+        var i, j;
 
         ctx.clearRect(0, 0, W, H);
 
-        var grad = ctx.createRadialGradient(W * 0.5, H * 0.35, 0, W * 0.5, H * 0.35, Math.max(W, H) * 0.8);
-        grad.addColorStop(0, 'rgba(14,165,233,0.05)');
-        grad.addColorStop(1, 'rgba(15,23,42,0)');
-        ctx.fillStyle = grad;
-        ctx.fillRect(0, 0, W, H);
-
-        ctx.lineWidth = 1;
-        for (var i = 0; i < connections.length; i++) {
-          var c = connections[i];
-          var p1 = nodePos(c.from);
-          var p2 = nodePos(c.to);
-          ctx.strokeStyle = 'rgba(' + ACCENT.join(',') + ',' + LINE_ALPHA + ')';
-          ctx.beginPath();
-          ctx.moveTo(p1.x, p1.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.stroke();
+        /* ── Cursor spotlight ──────────────────────────────────────── */
+        if (ptrForce > 0.01) {
+          var SR = Math.max(W, H) * 0.32;
+          var sg = ctx.createRadialGradient(mx, my, 0, mx, my, SR);
+          sg.addColorStop(0, "rgba(56,189,248," + (0.055 * ptrForce) + ")");
+          sg.addColorStop(1, "rgba(56,189,248,0)");
+          ctx.fillStyle = sg;
+          ctx.fillRect(mx - SR, my - SR, SR * 2, SR * 2);
         }
 
-        lastSpawn += dt;
-        if (lastSpawn > 180) {
-          lastSpawn = 0;
-          spawnPulse();
-          if (Math.random() < 0.5) spawnPulse();
+        /* ── Age ripples ───────────────────────────────────────────── */
+        for (i = ripples.length - 1; i >= 0; i--) {
+          var rp = ripples[i];
+          rp.r    += rp.maxR * 0.011 * step;
+          rp.life -= 0.0085 * step;
+          if (rp.life <= 0 || rp.r >= rp.maxR) ripples.splice(i, 1);
         }
 
-        for (var pI = pulses.length - 1; pI >= 0; pI--) {
-          var pulse = pulses[pI];
-          pulse.t += pulse.speed * (dt / 16);
-          if (pulse.t >= 1) {
-            pulses.splice(pI, 1);
-            if (Math.random() < 0.35) {
-              var dest = nodePos(pulse.conn.to);
-              ripples.push({ x: dest.x, y: dest.y, r: 2, alpha: 0.6 });
+        /* ── Flow particles ────────────────────────────────────────── */
+        ctx.lineCap = "round";
+
+        for (i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.px = p.x;
+          p.py = p.y;
+
+          var ang = flowAngle(p.x, p.y, now);
+          var tvx = Math.cos(ang) * p.speed * 1.8;
+          var tvy = Math.sin(ang) * p.speed * 1.8;
+          p.vx += (tvx - p.vx) * 0.06 * step;
+          p.vy += (tvy - p.vy) * 0.06 * step;
+
+          /* Cursor vortex — inward pull + tangential swirl */
+          if (ptrForce > 0.01) {
+            var dx = mx - p.x, dy = my - p.y;
+            var d2 = dx * dx + dy * dy;
+            var VR = 280;
+            if (d2 < VR * VR) {
+              var d = Math.sqrt(d2) + 0.0001;
+              var fall = 1 - d / VR;
+              fall *= fall;
+              var f = fall * ptrForce;
+              p.vx += (dx / d) * f * 0.50 * step;   // pull
+              p.vy += (dy / d) * f * 0.50 * step;
+              p.vx += (-dy / d) * f * 0.95 * step;  // swirl
+              p.vy += (dx / d) * f * 0.95 * step;
             }
+          }
+
+          /* Click shockwave — radial push inside a moving band */
+          for (j = 0; j < ripples.length; j++) {
+            var rq = ripples[j];
+            var sx = p.x - rq.x, sy = p.y - rq.y;
+            var sd = Math.sqrt(sx * sx + sy * sy) + 0.001;
+            var band = Math.abs(sd - rq.r);
+            if (band < 46) {
+              var push = (1 - band / 46) * rq.life * 2.4;
+              p.vx += (sx / sd) * push * step;
+              p.vy += (sy / sd) * push * step;
+            }
+          }
+
+          /* Speed clamp so the vortex can't fling anything off-screen */
+          var sp  = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+          var cap = p.speed * 3.4;
+          if (sp > cap) { p.vx = p.vx / sp * cap; p.vy = p.vy / sp * cap; }
+
+          p.x += p.vx * step;
+          p.y += p.vy * step;
+          p.age += step / 60;
+
+          /* Recycle when out of bounds or expired */
+          var pad = 40;
+          if (p.x < -pad || p.x > W + pad ||
+              p.y < -pad || p.y > H + pad || p.age > p.maxAge) {
+            particles[i] = makeParticle(false);
             continue;
           }
-          var a = nodePos(pulse.conn.from);
-          var b = nodePos(pulse.conn.to);
-          var x = a.x + (b.x - a.x) * pulse.t;
-          var y = a.y + (b.y - a.y) * pulse.t;
-          var glow = ctx.createRadialGradient(x, y, 0, x, y, 6);
-          glow.addColorStop(0, 'rgba(' + ACCENT_LIGHT.join(',') + ',0.95)');
-          glow.addColorStop(1, 'rgba(' + ACCENT_LIGHT.join(',') + ',0)');
-          ctx.fillStyle = glow;
+
+          /* Fade in on birth, out on death */
+          var fade = Math.min(p.age / 0.7, 1) *
+                     Math.min((p.maxAge - p.age) / 1.3, 1);
+          if (fade <= 0.01) continue;
+
+          /* Alpha rides speed — faster streaks read as brighter signal */
+          var alpha = Math.min(sp / 2.4, 1) * 0.50 * fade;
+          var c = p.col;
+          ctx.strokeStyle = "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + alpha + ")";
+          ctx.lineWidth = p.bright ? p.w * 1.8 : p.w;
           ctx.beginPath();
-          ctx.arc(x, y, 6, 0, Math.PI * 2);
+          ctx.moveTo(p.px, p.py);
+          ctx.lineTo(p.x, p.y);
+          ctx.stroke();
+
+          if (p.bright) {                       // little glowing head node
+            ctx.fillStyle = "rgba(224,242,254," + (alpha * 1.4) + ")";
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.w * 0.9, 0, 6.2832);
+            ctx.fill();
+          }
+        }
+
+        /* ── Signal pulses (bright shooting-star render) ─────────────
+           Same sparse spawn rate and blue/indigo palette as before —
+           only the rendering technique changes, borrowed from a
+           shooting-star variant: a tapered triangular tail with a
+           linear-gradient fade (crisper and brighter than a stroked
+           multi-segment trail) plus a soft coloured halo and a
+           hot white core. Direction is fixed at spawn (see spawnPulse)
+           so each one flies in a straight line, not a curved path. */
+        for (i = pulses.length - 1; i >= 0; i--) {
+          var pu = pulses[i];
+          pu.x += pu.vx * step;
+          pu.y += pu.vy * step;
+
+          pu.age  += step / 60;
+          pu.life  = 1 - pu.age / pu.maxAge;
+
+          if (pu.life <= 0 ||
+              pu.x < -80 || pu.x > W + 80 ||
+              pu.y < -80 || pu.y > H + 80) {
+            pulses.splice(i, 1);
+            continue;
+          }
+
+          var pSpd = Math.sqrt(pu.vx * pu.vx + pu.vy * pu.vy) || 0.0001;
+          var ux = pu.vx / pSpd, uy = pu.vy / pSpd;
+          var pc = pu.col;
+          var fade = pu.life;
+          var tx = pu.x - ux * pu.tailLen;
+          var ty = pu.y - uy * pu.tailLen;
+          var perpX = -uy, perpY = ux;
+          var hw = pu.headW;
+
+          /* Tapered triangular tail, gradient-faded from head to tip. */
+          var g = ctx.createLinearGradient(pu.x, pu.y, tx, ty);
+          g.addColorStop(0,    "rgba(" + pc[0] + "," + pc[1] + "," + pc[2] + "," + (0.95 * fade) + ")");
+          g.addColorStop(0.18, "rgba(" + pc[0] + "," + pc[1] + "," + pc[2] + "," + (0.60 * fade) + ")");
+          g.addColorStop(0.55, "rgba(" + pc[0] + "," + pc[1] + "," + pc[2] + "," + (0.18 * fade) + ")");
+          g.addColorStop(1,    "rgba(" + pc[0] + "," + pc[1] + "," + pc[2] + ",0)");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.moveTo(pu.x + perpX * hw, pu.y + perpY * hw);
+          ctx.lineTo(tx, ty);
+          ctx.lineTo(pu.x - perpX * hw, pu.y - perpY * hw);
+          ctx.closePath();
+          ctx.fill();
+
+          /* Soft coloured halo around the head. */
+          var HR = hw * 5.5;
+          var hg = ctx.createRadialGradient(pu.x, pu.y, 0, pu.x, pu.y, HR);
+          hg.addColorStop(0,    "rgba(" + pc[0] + "," + pc[1] + "," + pc[2] + "," + (0.65 * fade) + ")");
+          hg.addColorStop(0.45, "rgba(" + pc[0] + "," + pc[1] + "," + pc[2] + "," + (0.20 * fade) + ")");
+          hg.addColorStop(1,    "rgba(" + pc[0] + "," + pc[1] + "," + pc[2] + ",0)");
+          ctx.fillStyle = hg;
+          ctx.beginPath();
+          ctx.arc(pu.x, pu.y, HR, 0, 6.2832);
+          ctx.fill();
+
+          /* Bright white core. */
+          ctx.fillStyle = "rgba(255,255,255," + (0.95 * fade) + ")";
+          ctx.beginPath();
+          ctx.arc(pu.x, pu.y, Math.max(0.8, hw * 0.9), 0, 6.2832);
           ctx.fill();
         }
 
-        for (var rI = ripples.length - 1; rI >= 0; rI--) {
-          var rp = ripples[rI];
-          rp.r += 0.6 * (dt / 16);
-          rp.alpha -= 0.012 * (dt / 16);
-          if (rp.alpha <= 0) { ripples.splice(rI, 1); continue; }
-          ctx.strokeStyle = 'rgba(' + ACCENT_LIGHT.join(',') + ',' + Math.max(rp.alpha, 0) + ')';
-          ctx.lineWidth = 1;
+        /* ── Ripple rings ──────────────────────────────────────────── */
+        for (i = 0; i < ripples.length; i++) {
+          var rr = ripples[i];
+          var ra = rr.life * 0.45;
+          ctx.strokeStyle = "rgba(56,189,248," + ra + ")";
+          ctx.lineWidth = 1.6 * rr.life;
           ctx.beginPath();
-          ctx.arc(rp.x, rp.y, rp.r * 10, 0, Math.PI * 2);
+          ctx.arc(rr.x, rr.y, rr.r, 0, 6.2832);
+          ctx.stroke();
+
+          ctx.strokeStyle = "rgba(129,140,248," + (ra * 0.55) + ")";
+          ctx.lineWidth = 1.1 * rr.life;
+          ctx.beginPath();
+          ctx.arc(rr.x, rr.y, rr.r * 0.68, 0, 6.2832);
           ctx.stroke();
         }
 
-        var t = now * 0.001;
-        for (var li = 0; li < layers.length; li++) {
-          for (var ni = 0; ni < layers[li].length; ni++) {
-            var node = layers[li][ni];
-            var pos = nodePos([li, ni]);
-            var pulseR = node.r + Math.sin(t * 1.2 + node.phase) * 0.6;
-            var g = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, pulseR * 4);
-            g.addColorStop(0, 'rgba(' + ACCENT.join(',') + ',0.9)');
-            g.addColorStop(1, 'rgba(' + ACCENT.join(',') + ',0)');
-            ctx.fillStyle = g;
-            ctx.beginPath();
-            ctx.arc(pos.x, pos.y, pulseR * 4, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.fillStyle = 'rgba(241,245,249,0.9)';
-            ctx.beginPath();
-            ctx.arc(pos.x, pos.y, pulseR, 0, Math.PI * 2);
-            ctx.fill();
-          }
+        /* ── Keep the sky alive with new pulses ────────────────────── */
+        pulseClock += step / 60;
+        if (pulseClock > 1.3) {
+          pulseClock = 0;
+          spawnPulse();
+          if (Math.random() < 0.45) spawnPulse();
         }
       }
 
-      resize();
-      buildNetwork();
-
-      window.addEventListener('mousemove', onMouseMove);
-      hero.addEventListener('click', function (e) {
-        var rect = hero.getBoundingClientRect();
-        var cx = e.clientX - rect.left;
-        var cy = e.clientY - rect.top;
-        ripples.push({ x: cx, y: cy, r: 1, alpha: 0.8 });
-        for (var i = 0; i < connections.length; i++) {
-          var c = connections[i];
-          var p1 = nodePos(c.from);
-          var p2 = nodePos(c.to);
-          var midX = (p1.x + p2.x) / 2;
-          var midY = (p1.y + p2.y) / 2;
-          var d = Math.hypot(midX - cx, midY - cy);
-          if (d < Math.max(W, H) * 0.22) {
-            pulses.push({ conn: c, t: 0, speed: rand(0.01, 0.02) });
-          }
-        }
+      /* ── Events ──────────────────────────────────────────────────── */
+      hero.addEventListener("pointerenter", function () { ptrOver = true; });
+      hero.addEventListener("pointerleave", function () { ptrOver = false; });
+      hero.addEventListener("pointermove", function (e) {
+        var r = hero.getBoundingClientRect();
+        ptrTX = (e.clientX - r.left) / r.width;
+        ptrTY = (e.clientY - r.top)  / r.height;
+        ptrOver = true;                        // covers touch / late entry
+      });
+      hero.addEventListener("pointerdown", function (e) {
+        var r = hero.getBoundingClientRect();
+        spawnRipple(e.clientX - r.left, e.clientY - r.top);
       });
 
-      var resizeTimeout;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function () {
-          resize();
-          buildNetwork();
-        }, 200);
-      });
-
+      /* Pause when the hero isn't on screen */
       try {
         var io = new IntersectionObserver(function (entries) {
           isVisible = entries[0].isIntersecting;
         }, { threshold: 0 });
         io.observe(hero);
-      } catch (e) {
+      } catch (err) {
         isVisible = true;
       }
 
-      // Always animates for every visitor, matching the diamond layer's
-      // policy — this hero graphic is a deliberate exception to the site's
-      // reduced-motion handling (see the CSS reduced-motion block).
-      requestAnimationFrame(draw);
-    })();
-  </script>
-
-  <script>
-    (function () {
-      var canvas = document.getElementById('heroCanvas');
-      var hero = document.querySelector('.hero');
-      if (!canvas || !hero) return;
-
-      var ctx = canvas.getContext('2d');
-      if (!ctx) return; // extremely old browser — static SVG mesh remains visible
-
-      var W, H, DPR;
-      var mouseX = 0.5, mouseY = 0.5, targetMouseX = 0.5, targetMouseY = 0.5;
-      var isVisible = true;
-
-      var COL_HIGH = [56, 189, 248]; // sky-blue #38bdf8, matches --accent-hover
-      var GRID_SCALE = 10;
-
-      function resize() {
-        var rect = hero.getBoundingClientRect();
-        DPR = Math.min(window.devicePixelRatio || 1, 2);
-        W = Math.max(1, rect.width);
-        H = Math.max(1, rect.height);
-        canvas.width = W * DPR;
-        canvas.height = H * DPR;
-        canvas.style.width = W + 'px';
-        canvas.style.height = H + 'px';
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-      }
-
-      function onMouseMove(e) {
-        var rect = hero.getBoundingClientRect();
-        targetMouseX = (e.clientX - rect.left) / rect.width;
-        targetMouseY = (e.clientY - rect.top) / rect.height;
-      }
-
-      function hash(x, y) {
-        return Math.abs(Math.sin(x * 127.1 + y * 311.7) * 43758.5453) % 1;
-      }
-
-      function roundRectPath(x, y, w, h, r) {
-        ctx.beginPath();
-        ctx.moveTo(x + r, y);
-        ctx.lineTo(x + w - r, y);
-        ctx.arcTo(x + w, y, x + w, y + r, r);
-        ctx.lineTo(x + w, y + h - r);
-        ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
-        ctx.lineTo(x + r, y + h);
-        ctx.arcTo(x, y + h, x, y + h - r, r);
-        ctx.lineTo(x, y + r);
-        ctx.arcTo(x, y, x + r, y, r);
-        ctx.closePath();
-      }
-
-      function drawDiamond(cx, cy, size, alpha, rotAngle) {
-        ctx.save();
-        ctx.translate(cx, cy);
-        // +45° so it reads as a diamond when rotAngle is 0, same as before —
-        // but now the shape keeps spinning with rotAngle instead of staying
-        // fixed, morphing between diamond and square as the grid rotates,
-        // matching the original shader's rotated signed-distance-field shape.
-        ctx.rotate(rotAngle + Math.PI / 4);
-        var half = size * 0.72;
-        var r = Math.min(half * 0.35, 4);
-        ctx.shadowColor = 'rgba(' + COL_HIGH.join(',') + ',' + Math.min(alpha * 0.7, 0.6) + ')';
-        ctx.shadowBlur = Math.max(2, size * 0.6);
-        roundRectPath(-half, -half, half * 2, half * 2, r);
-        ctx.fillStyle = 'rgba(' + COL_HIGH.join(',') + ',' + alpha + ')';
-        ctx.fill();
-        ctx.restore();
-      }
-
-      function render(t) {
-        ctx.clearRect(0, 0, W, H);
-
-        var aspectX = W / H;
-        var aspect = [aspectX, 1];
-        var mouseOffset = [(mouseX - 0.5) * 0.3, (mouseY - 0.5) * 0.3];
-
-        var rotAngle = t * 0.09;
-        var c = Math.cos(rotAngle);
-        var s = Math.sin(rotAngle);
-
-        var globalRot = t * 0.05;
-        var gc = Math.cos(globalRot);
-        var gs = Math.sin(globalRot);
-
-        var cols = Math.ceil(GRID_SCALE * aspectX) + 2;
-        var rows = Math.ceil(GRID_SCALE) + 2;
-
-        for (var i = -1; i < cols; i++) {
-          for (var j = -1; j < rows; j++) {
-            var gx = (i + 0.5) / (cols - 2);
-            var gy = (j + 0.5) / (rows - 2);
-
-            var uvx = (gx - 0.5) * gc - (gy - 0.5) * gs + 0.5;
-            var uvy = (gx - 0.5) * gs + (gy - 0.5) * gc + 0.5;
-
-            var gridX = (uvx + mouseOffset[0]) * GRID_SCALE * aspect[0];
-            var gridY = (uvy + mouseOffset[1]) * GRID_SCALE * aspect[1];
-
-            var cellIdX = Math.floor(gridX);
-            var cellIdY = Math.floor(gridY);
-            var cellX = (gridX - cellIdX) - 0.5;
-            var cellY = (gridY - cellIdY) - 0.5;
-
-            var rx = cellX * c - cellY * s;
-            var ry = cellX * s + cellY * c;
-
-            var dist = Math.sqrt(
-              Math.pow((cellIdX / GRID_SCALE - 0.5) * aspect[0], 2) +
-              Math.pow((cellIdY / GRID_SCALE - 0.5) * aspect[1], 2)
-            );
-
-            var wave = Math.sin(dist * 12.0 - t * 1.0) * 0.5 + 0.5;
-            var noise = hash(cellIdX * 0.5 + t * 0.13, cellIdY * 0.5 + t * 0.13);
-            var scale = 0.5 + 0.5 * wave + 0.2 * noise;
-
-            rx /= Math.max(0.1, scale);
-            ry /= Math.max(0.1, scale);
-
-            var ax = Math.abs(rx) - 0.08;
-            var ay = Math.abs(ry) - 0.08;
-            var shape = Math.sqrt(Math.max(ax, 0) * Math.max(ax, 0) + Math.max(ay, 0) * Math.max(ay, 0)) - 0.02;
-
-            if (shape <= 0.02) {
-              var brightness = 0.3 + 0.7 * wave;
-              var alpha = brightness * 0.85;
-
-              var screenCellW = W / (GRID_SCALE * aspect[0]);
-              var screenCellH = H / (GRID_SCALE * aspect[1]);
-              var scx = (cellIdX + 0.5 - mouseOffset[0] * GRID_SCALE * aspect[0]) * screenCellW;
-              var scy = (cellIdY + 0.5 - mouseOffset[1] * GRID_SCALE * aspect[1]) * screenCellH;
-
-              var dx = (scx - W * 0.5);
-              var dy = (scy - H * 0.5);
-              var rdx = dx * gc - dy * gs;
-              var rdy = dx * gs + dy * gc;
-              scx = rdx + W * 0.5;
-              scy = rdy + H * 0.5;
-
-              var diamondSize = Math.min(screenCellW, screenCellH) * 0.26 * scale;
-              drawDiamond(scx, scy, diamondSize, alpha, rotAngle);
-            }
-          }
-        }
-      }
-
-      function draw(now) {
-        requestAnimationFrame(draw);
-        if (!isVisible) return;
-        mouseX += (targetMouseX - mouseX) * 0.05;
-        mouseY += (targetMouseY - mouseY) * 0.05;
-        render(now * 0.001);
-      }
-
-      resize();
-
-      var resizeTimeout;
-      window.addEventListener('resize', function () {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(resize, 150);
+      /* Debounced resize + repopulate (particle count depends on W×H) */
+      var rTimer;
+      window.addEventListener("resize", function () {
+        clearTimeout(rTimer);
+        rTimer = setTimeout(function () { resize(); populate(); }, 180);
       });
 
-      try {
-        var io = new IntersectionObserver(function (entries) {
-          isVisible = entries[0].isIntersecting;
-        }, { threshold: 0 });
-        io.observe(hero);
-      } catch (e) {
-        isVisible = true;
-      }
+      /* ── Boot ────────────────────────────────────────────────────── */
+      resize();
+      populate();
 
-      // The hero diamonds/mesh always animate for every visitor — this is a
-      // deliberate exception to the site's reduced-motion handling, made at
-      // the owner's request. Everything else on the site (nav menu, scroll
-      // reveal, back-to-top) still respects prefers-reduced-motion normally.
-      window.addEventListener('mousemove', onMouseMove);
-      requestAnimationFrame(draw);
-      canvas.classList.add('is-ready');
+      // NOTE: the hero field animates for every visitor, including those who
+      // prefer reduced motion — a deliberate exception made at the owner's
+      // request. To honour the preference instead, wrap the two lines below in
+      //   if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) { … }
+      // and just add the is-ready class outside the check.
+      requestAnimationFrame(frame);
+      requestAnimationFrame(function () { canvas.classList.add("is-ready"); });
     })();
   </script>
 
