@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Guide &amp; Terms — Mouza Plot &amp; Measure BD</title>
   <meta name="description"
-    content="User guide, Terms of Service and documentation for Mouza Plot & Measure BD: how to find, preview and download Bangladesh Mouza maps, calibrate the scale, and measure plots in decimal, katha, bigha and acre.">
+    content="User guide, Terms of Service and documentation for Mouza Plot & Measure BD: how to find, preview and download Bangladesh Mouza maps, calibrate the scale, measure plots in decimal, katha, bigha and acre, and measure on the Google satellite map.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/mouza-plot/README.html">
   <meta property="og:title" content="User Guide &amp; Terms of Service — Mouza Plot &amp; Measure BD">
@@ -908,6 +908,7 @@
           <li><a href="#g-edit">&nbsp;&nbsp;5. Name &amp; edit plots</a></li>
           <li><a href="#g-share">&nbsp;&nbsp;6. Reports &amp; export</a></li>
           <li><a href="#g-accuracy">&nbsp;&nbsp;7. Accuracy tips</a></li>
+          <li><a href="#g-google">&nbsp;&nbsp;8. Measure on the Google map</a></li>
           <li><a href="#units">Land Units</a></li>
           <li><a href="#faq">Questions</a></li>
           <li><a href="#terms">Terms of Service</a></li>
@@ -1047,6 +1048,22 @@
           <li>A scanned map is a copy of a hand-drawn sheet. Expect small differences from the recorded area, and use
             the app for checking and planning, not as a legal survey.</li>
         </ol>
+
+        <h3 id="g-google">8. Measure on the Google map</h3>
+        <ol>
+          <li>Open the <span class="ui">Google map</span> tab. The first time, the app asks for your location (optional): allow it to
+            open the map where you are. Search a place by name, or type coordinates such as <span class="ui">23.81, 90.41</span>.</li>
+          <li>Choose <span class="ui">Area</span> for a plot or <span class="ui">Distance</span> for a line. The layers button switches
+            between Satellite, Map and Terrain.</li>
+          <li>Mark each corner: put the red crosshair on it and tap <span class="ui">Add point</span>, or simply tap the map. Standing
+            on a corner? Tap <span class="ui">GPS point</span> to use your phone's position, and walk the boundary corner by corner.
+            Long-press a corner dot to drag it.</li>
+          <li>The area shows in decimal, square feet, square metres, acre, katha and bigha, with each side's length on the map.
+            Tap <span class="ui">Finish</span> to save it. Tap a saved outline later to rename, edit, share or delete it.</li>
+        </ol>
+        <div class="tip-box"><strong>Compare, don't replace.</strong> Satellite images and phone GPS can be off by a few metres,
+          and a boundary on the ground may not match the Mouza map. Use both results together, and confirm anything important
+          with an official survey.</div>
       </section>
 
       <section id="units">
@@ -1125,10 +1142,13 @@
           government Mouza maps; the App helps you find and measure them. The official sources are the DLRS
           (<a href="https://dlrs.gov.bd" target="_blank" rel="noopener">dlrs.gov.bd</a>), its Mouza map and khatian service (<a href="https://dlrms.land.gov.bd" target="_blank" rel="noopener">dlrms.land.gov.bd</a>) and the Ministry of Land (<a href="https://land.gov.bd" target="_blank" rel="noopener">land.gov.bd</a>).</p>
 
-        <p><strong>4. Map Availability</strong><br>
-          Maps are listed and downloaded from a public source that the developer does not operate. The developer
-          cannot guarantee that a particular map is available, complete, current, or that the source will remain
-          online.</p>
+        <p><strong>4. Map Downloads Are an Optional Extra</strong><br>
+          The App is mainly for measuring land on maps; downloading maps is an optional, additional feature. Maps are
+          listed and downloaded from a public source that the developer does not operate, so the download feature may
+          stop working at any time, temporarily or permanently, until the developer can resolve it. The developer
+          does not guarantee that the download feature, or any particular map, will be available, complete or
+          current, and accepts no liability for its availability or functioning. You can always open your own map
+          file (PDF, JPG or PNG) instead.</p>
 
         <p><strong>5. Your Responsibilities</strong><br>
           You are responsible for how you use the maps and measurements, for checking results that matter, and for
@@ -1168,9 +1188,10 @@
           <li>No personal data collected, stored or sold</li>
           <li>No advertisements, no advertising SDKs, no analytics, no crash reporting</li>
           <li>Maps, plots, dag numbers and settings are stored on your own phone</li>
-          <li>The App goes online only to list and download maps, and sends nothing about you or your plots</li>
+          <li>The App goes online to list and download maps and to show the Google map, and never sends your plots or location to us</li>
+          <li>Location is optional and read only on your phone, for the Google map tab</li>
           <li>Reports and DXF files are created only when you ask, and go only where you send them</li>
-          <li>Never asks for location, contacts, camera, microphone or phone number</li>
+          <li>Never asks for contacts, camera, microphone or phone number</li>
         </ul>
         <p>Full detail is in the <a href="/apps/mouza-plot/privacy-policy.html">Privacy Policy</a>.</p>
       </section>
@@ -1178,6 +1199,11 @@
       <section id="permissions">
         <h2><span class="ico">🔑</span> Permissions</h2>
         <div class="perm-grid">
+          <div class="perm-card">
+            <div class="perm-title">📍 Location (optional)</div>
+            <div class="perm-desc">For the Google map tab: shows where you are and adds GPS points. Read on the phone only,
+              never sent to us; the tab works without it</div>
+          </div>
           <div class="perm-card">
             <div class="perm-title">🌐 Internet &amp; Network State</div>
             <div class="perm-desc">To list and download maps, and to check for Wi-Fi before a large download.
