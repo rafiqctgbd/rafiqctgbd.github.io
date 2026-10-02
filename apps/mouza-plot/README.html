@@ -1000,8 +1000,9 @@
             two-point calibration the app also compares it with the printed scale: it tells you if the image looks
             resized (for example "about 80% of the original scan, 320 DPI") or if your points match a different
             scale, such as 32″ instead of 16″.</li>
-          <li>Under <strong>Local units</strong> you can set the size of a katha (default 720 sq ft) and a bigha
-            (default 20 katha) if your area uses different values.</li>
+          <li>Bigha and kani sizes differ from area to area. Set the ones used where your land is in Settings ›
+            <span class="ui">Bigha–katha</span> (default 1 bigha = 33.06 decimal = 20 katha) and
+            <span class="ui">Kani–gonda</span> (default 1 kani = 40 decimal). Every map and the Google map use them.</li>
         </ol>
 
         <h3 id="g-plot">4. Measure a plot</h3>
@@ -1035,11 +1036,19 @@
           <li><span class="ui">Delete plot</span> removes it (Undo brings it back).</li>
         </ol>
 
+        <div class="tip-box"><strong>Totals and shares:</strong> ⋮ menu › <span class="ui">Total &amp; shares</span> adds up the
+          plots you tick and divides the total into shares, for example <span class="ui">1, 1, 2</span> (two equal heirs and one
+          double share) or <span class="ui">40, 35, 25</span> (percentages). It divides the area only; it does not draw where each
+          share lies on the ground.</div>
+
         <h3 id="g-share">6. Reports and export</h3>
         <ol>
           <li><strong>PDF report:</strong> select a plot and tap <span class="ui">Share PDF</span> to send it by WhatsApp, e-mail or
             Drive, or use the ⋮ menu › <span class="ui">Export PDF report…</span> to save one. It lists each plot's area, sides and
             perimeter, and the calibration used.</li>
+          <li><strong>Backup:</strong> Settings › <span class="ui">Back up maps and plots</span> saves one file with every map,
+            plot and Google map outline. On a new phone, <span class="ui">Restore from a backup</span> adds them back; nothing
+            already on the phone is deleted.</li>
           <li><strong>DXF:</strong> ⋮ menu › <span class="ui">Export DXF…</span> saves the plots for AutoCAD and other CAD software
             (units: ground inches, the same as the official Mouza DWG drawings).</li>
           <li><strong>Validation:</strong> ⋮ menu › <span class="ui">Validation</span> compares your plots with areas you already know,
@@ -1075,7 +1084,10 @@
 
       <section id="units">
         <h2><span class="ico">📏</span> Land Units</h2>
-        <p>The units the app uses, with its default katha and bigha sizes (both adjustable per map).</p>
+        <p>The units the app uses, with the default bigha and kani sizes (both adjustable in Settings). Standard sizes as given by the Ministry of Land,
+          <a href="https://minland.gov.bd/pages/static-pages/694032ae35ce18e1c0560717" target="_blank" rel="noopener">বাংলাদেশ ভূমি পরিমাপের আদর্শ এককসমূহ</a>
+          (standard land measurement units of Bangladesh). Local bigha and kani sizes differ from area to area, so both can be
+          changed in Settings.</p>
         <table class="units-table">
           <thead><tr><th>Unit</th><th>Equals</th></tr></thead>
           <tbody>
@@ -1083,6 +1095,8 @@
             <tr><td>1 acre (<span class="bn">একর</span>)</td><td>100 decimal · 43,560 sq ft</td></tr>
             <tr><td>1 katha (<span class="bn">কাঠা</span>)</td><td>720 sq ft · about 1.653 decimal (default)</td></tr>
             <tr><td>1 bigha (<span class="bn">বিঘা</span>)</td><td>20 katha · 14,400 sq ft · about 33.06 decimal (default)</td></tr>
+            <tr><td>1 kani (<span class="bn">কানি</span>)</td><td>20 gonda · 40 decimal in Chattogram (default; adjustable in Settings)</td></tr>
+            <tr><td>1 gonda (<span class="bn">গণ্ডা</span>)</td><td>4 kora · 2 decimal (at 40 decimal per kani); 1 kora = 3 kranti; 1 kranti = 20 til</td></tr>
             <tr><td>1 chain (<span class="bn">চেইন</span>)</td><td>66 ft · 100 links</td></tr>
             <tr><td>Map scale 16″ = 1 mile</td><td>1:3,960 · 1 map inch = 330 ft · 0.825 ft per pixel at 400 DPI</td></tr>
             <tr><td>Map scale 32″ = 1 mile</td><td>1:1,980 · 1 map inch = 165 ft · 0.4125 ft per pixel at 400 DPI</td></tr>
