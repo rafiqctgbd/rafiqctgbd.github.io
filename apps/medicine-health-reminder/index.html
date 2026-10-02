@@ -444,6 +444,26 @@
       color: #f59e0b;
     }
 
+    /* Screenshots */
+    .shots-tabs { display: flex; gap: 0.6rem; margin-bottom: 1.6rem; }
+    .shots-tab {
+      font: inherit; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+      color: var(--muted); background: var(--card); border: 1px solid var(--border);
+      border-radius: 999px; padding: 0.45rem 1.1rem;
+    }
+    .shots-tab[aria-selected="true"] { color: #fff; background: var(--accent); border-color: var(--accent); }
+    .shots-strip {
+      display: flex; gap: 1.2rem; overflow-x: auto; padding-bottom: 1rem;
+      scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+    }
+    .shots-strip[hidden] { display: none; }
+    .shots-strip img {
+      flex: 0 0 auto; width: 220px; height: auto; aspect-ratio: 9 / 16;
+      border-radius: 14px; border: 1px solid var(--border); background: var(--card);
+      scroll-snap-align: start;
+    }
+    @media (max-width: 600px) { .shots-strip img { width: 180px; } }
+
     /* Sections */
     .section {
       padding: 80px 0;
@@ -998,9 +1018,9 @@
     "applicationCategory": "HealthApplication",
     "description": "Android application to manage medicine schedules, health reminders, and personal medical records securely and conveniently.",
     "image": "https://mohammadrafiqulislam.com/assets/mhr_icon.png",
-    "softwareVersion": "1.7.2",
+    "softwareVersion": "1.8.0",
     "datePublished": "2026-07-22",
-    "dateModified": "2026-09-16",
+    "dateModified": "2026-10-03",
     "contentRating": "3+",
     "downloadUrl": "https://play.google.com/store/apps/details?id=com.rafiqctgbd.medicinehealth",
     "installUrl": "https://play.google.com/store/apps/details?id=com.rafiqctgbd.medicinehealth",
@@ -1043,7 +1063,7 @@
         <div class="app-badge"><span class="pulse"></span> Android Application</div>
         <div class="hero-badges">
           <span class="hero-badge hb-android">📱 Android</span>
-          <span class="hero-badge hb-version">v1.7.2</span>
+          <span class="hero-badge hb-version">v1.8.0</span>
           <span class="hero-badge hb-free">⚡ Free</span>
           <span class="hero-badge hb-privacy">🔐 No Ads</span>
           <span class="hero-badge hb-privacy">🌐 6 Languages</span>
@@ -1270,6 +1290,38 @@
     </div>
   </section>
 
+  <section class="section reveal" id="screenshots">
+    <div class="container">
+      <div class="section-label">Screenshots</div>
+      <h2>See it in action</h2>
+      <p class="section-desc">The app in English and in Bengali. Scroll sideways to see them all.</p>
+      <div class="shots-tabs" role="tablist" aria-label="Screenshot language">
+        <button class="shots-tab" role="tab" aria-selected="true" data-lang="en">English</button>
+        <button class="shots-tab" role="tab" aria-selected="false" data-lang="bn">বাংলা</button>
+      </div>
+        <div class="shots-strip" id="shots-en" role="tabpanel">
+          <img src="/assets/mhr/en-01.webp" alt="Alarms list with insulin, vitamin and eye-drop reminders" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/en-02.webp" alt="Flexible frequency picker: daily, weekly, every few hours and more" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/en-03.webp" alt="Full-screen alarm with a Dismiss button and snooze options" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/en-04.webp" alt="Category grid from eye drops and tablets to vaccines and lab tests" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/en-05.webp" alt="Optional Google Drive backup screen" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/en-06.webp" alt="Refill manager tracking tablets on hand with an order-via-pharmacy button" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/en-07.webp" alt="Settings showing reminder reliability checks" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/en-08.webp" alt="Health tracker for weight, blood pressure and sugar" width="540" height="960" loading="lazy" decoding="async">
+        </div>
+        <div class="shots-strip" id="shots-bn" role="tabpanel" hidden>
+          <img src="/assets/mhr/bn-01.webp" alt="বাংলা: অ্যালার্ম তালিকা" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/bn-02.webp" alt="বাংলা: ওষুধ খাওয়ার ফ্রিকোয়েন্সি বাছাই" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/bn-03.webp" alt="বাংলা: ফুল-স্ক্রিন অ্যালার্ম" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/bn-04.webp" alt="বাংলা: ওষুধের ধরন বাছাই" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/bn-05.webp" alt="বাংলা: গুগল ড্রাইভ ব্যাকআপ" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/bn-06.webp" alt="বাংলা: রিফিল ম্যানেজার" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/bn-07.webp" alt="বাংলা: সেটিংস ও রিমাইন্ডার নির্ভরযোগ্যতা" width="540" height="960" loading="lazy" decoding="async">
+          <img src="/assets/mhr/bn-08.webp" alt="বাংলা: হেলথ ট্র্যাকার" width="540" height="960" loading="lazy" decoding="async">
+        </div>
+    </div>
+  </section>
+
   <section class="section reveal" id="privacy">
     <div class="container">
       <div class="section-label">Privacy First</div>
@@ -1431,6 +1483,18 @@
         });
         btn.addEventListener('click', function () {
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+      (function () {
+      var tabs = document.querySelectorAll('.shots-tab');
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].addEventListener('click', function () {
+          for (var j = 0; j < tabs.length; j++) {
+            var on = tabs[j] === this;
+            tabs[j].setAttribute('aria-selected', on ? 'true' : 'false');
+            document.getElementById('shots-' + tabs[j].dataset.lang).hidden = !on;
+          }
         });
       }
     })();

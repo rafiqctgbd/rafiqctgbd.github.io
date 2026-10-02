@@ -14,16 +14,16 @@ geometry the app itself ships.
 Usage
 -----
     # Preferred: read straight from the Android project (no drift possible)
-    python3 scripts/render_icon.py --project ../NextCue
+    python3 scripts/render_icon.py --project ../AndroidAppsProjects/NextCue
 
     # Or point at the res/ directory explicitly
-    python3 scripts/render_icon.py --res ../NextCue/app/src/main/res
+    python3 scripts/render_icon.py --res ../AndroidAppsProjects/NextCue/app/src/main/res
 
     # No Android project to hand? Falls back to the pinned geometry below.
     python3 scripts/render_icon.py
 
     # Write somewhere other than assets/
-    python3 scripts/render_icon.py --project ../NextCue --out /tmp/icons
+    python3 scripts/render_icon.py --project ../AndroidAppsProjects/NextCue --out /tmp/icons
 
 Requirements
 ------------
