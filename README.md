@@ -13,12 +13,14 @@ index.html                          Portfolio home
 apps/                               Android app pages
   medicine-health-reminder/         Medicine & Health Reminder
   nextcue/                          NextCue: Bill & Life Reminder
+  docuary/                          Docuary: Document Vault
+  mouza-plot/                       Mouza Plot & Measure BD
     index.html                        App landing page
     privacy-policy.html               Privacy policy (linked from Play Console)
     README.html                       README & Terms of Service
 blog/                               Blog posts (English and Bengali)
 resume/                             Résumé
-assets/                             Icons, images, favicons
+assets/                             Icons, images, favicons, app screenshots (assets/mhr/)
 scripts/                            Maintenance scripts
 sitemap.xml                         Search engine sitemap
 ```
@@ -33,10 +35,17 @@ the entire deploy process.
 |---|---|---|
 | [Medicine & Health Reminder](https://mohammadrafiqulislam.com/apps/medicine-health-reminder/) | `com.rafiqctgbd.medicinehealth` | Published |
 | [NextCue: Bill & Life Reminder](https://mohammadrafiqulislam.com/apps/nextcue/) | `com.rafiqctgbd.nextcue` | Published |
-| [Docuary: Document Vault](https://mohammadrafiqulislam.com/apps/docuary/) | `com.rafiqctgbd.docuary` | In closed testing |
+| [Docuary: Document Vault](https://mohammadrafiqulislam.com/apps/docuary/) | `com.rafiqctgbd.docuary` | In testing |
+| [Mouza Plot & Measure BD](https://mohammadrafiqulislam.com/apps/mouza-plot/) | `com.rafiqctgbd.mouzaplot` | In testing |
 
-All are free, ad-free, and store data locally on the device by default, with
-optional user-controlled Google Drive backup.
+All four are free, ad-free, and store data locally on the device. MHR, NextCue
+and Docuary offer optional user-controlled Google Drive backup; Mouza Plot has
+no backup of its own and goes online only to list and download Mouza maps.
+
+Mouza Plot's pages (`README.html` there is the user guide plus the Terms) and
+its privacy policy are built from the app's own text: the policy comes from
+`app/src/main/res/raw*/privacy_policy.txt` in the MouzaPlot project, the images
+from its `docs/store/` art. Change the app's text first, then the page.
 
 ## Scripts
 
@@ -48,7 +57,7 @@ actually ships.
 
 ```bash
 pip install cairosvg pillow
-python3 scripts/render_icon.py --project ../NextCue
+python3 scripts/render_icon.py --project ../AndroidAppsProjects/NextCue
 ```
 
 Outputs the rounded transparent web icons, the flat no-alpha Play Console
@@ -67,8 +76,9 @@ This repository is **dual-licensed** — see [LICENSE](LICENSE) for full terms.
 
 - **Code** (HTML, CSS, JavaScript, Python) — MIT License. Reuse of the layout
   and structure for your own site is welcome.
-- **Brand assets and content** (the NextCue and Medicine & Health Reminder
-  names and icons, feature graphics, screenshots, written page content, and
-  personal material) — All rights reserved.
+- **Brand assets and content** (the NextCue, Medicine & Health Reminder,
+  Docuary and Mouza Plot & Measure BD names and icons, feature graphics,
+  screenshots, written page content, and personal material) — All rights
+  reserved.
 
 `render_icon.py` being public does not license the artwork it produces.
