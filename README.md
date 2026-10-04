@@ -14,7 +14,7 @@ apps/                               Android app pages
   medicine-health-reminder/         Medicine & Health Reminder
   nextcue/                          NextCue: Bill & Life Reminder
   docuary/                          Docuary: Document Vault
-  mouza-plot/                       Mouza Plot & Measure BD
+  mouza-plot/                       Mouza Plot & Land Measure BD
     index.html                        App landing page
     privacy-policy.html               Privacy policy (linked from Play Console)
     README.html                       README & Terms of Service
@@ -36,11 +36,12 @@ the entire deploy process.
 | [Medicine & Health Reminder](https://mohammadrafiqulislam.com/apps/medicine-health-reminder/) | `com.rafiqctgbd.medicinehealth` | Published |
 | [NextCue: Bill & Life Reminder](https://mohammadrafiqulislam.com/apps/nextcue/) | `com.rafiqctgbd.nextcue` | Published |
 | [Docuary: Document Vault](https://mohammadrafiqulislam.com/apps/docuary/) | `com.rafiqctgbd.docuary` | In testing |
-| [Mouza Plot & Measure BD](https://mohammadrafiqulislam.com/apps/mouza-plot/) | `com.rafiqctgbd.mouzaplot` | In testing |
+| [Mouza Plot & Land Measure BD](https://mohammadrafiqulislam.com/apps/mouza-plot/) | `com.rafiqctgbd.mouzaplot` | In testing |
 
 All four are free, ad-free, and store data locally on the device. MHR, NextCue
-and Docuary offer optional user-controlled Google Drive backup; Mouza Plot has
-no backup of its own and goes online only to list and download Mouza maps.
+and Docuary offer optional user-controlled Google Drive backup; Mouza Plot saves
+a backup file only where the user puts it, and goes online only to list and
+download Mouza maps, show the Google map and open government land services.
 
 Mouza Plot's pages (`README.html` there is the user guide plus the Terms) and
 its privacy policy are built from the app's own text: the policy comes from
@@ -77,7 +78,7 @@ This repository is **dual-licensed** — see [LICENSE](LICENSE) for full terms.
 - **Code** (HTML, CSS, JavaScript, Python) — MIT License. Reuse of the layout
   and structure for your own site is welcome.
 - **Brand assets and content** (the NextCue, Medicine & Health Reminder,
-  Docuary and Mouza Plot & Measure BD names and icons, feature graphics,
+  Docuary and Mouza Plot & Land Measure BD names and icons, feature graphics,
   screenshots, written page content, and personal material) — All rights
   reserved.
 
