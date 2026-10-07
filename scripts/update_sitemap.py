@@ -38,7 +38,7 @@ def file_path_to_url(path: str, site_root: str) -> str:
     Converts a repo-relative file path to the URL convention used in sitemap.xml:
       index.html                 -> https://site/
       folder/index.html          -> https://site/folder/
-      folder/page.html           -> https://site/folder/page.html
+      folder/page.html           -> https://site/folder/page   (the host redirects /page.html to /page)
     """
     site_root = site_root.rstrip("/")
     if path == "index.html":
@@ -46,6 +46,8 @@ def file_path_to_url(path: str, site_root: str) -> str:
     if path.endswith("/index.html"):
         folder = path[: -len("index.html")]
         return f"{site_root}/{folder}"
+    if path.endswith(".html"):
+        path = path[: -len(".html")]
     return f"{site_root}/{path}"
 
 
