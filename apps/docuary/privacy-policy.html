@@ -235,6 +235,13 @@
       gap: 10px;
     }
 
+    article h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.4rem 0 0.6rem;
+    }
+
     article h2 .section-num {
       font-size: 0.7rem;
       background: rgba(14, 165, 233, 0.1);
@@ -686,7 +693,7 @@
       <div class="page-label">Legal Document</div>
       <img class="page-app-icon" src="/assets/docuary_icon.png" alt="Docuary app icon" width="56" height="56" style="display:block;width:56px;height:56px;border-radius:14px;margin:0 0 14px;box-shadow:0 4px 14px rgba(0,0,0,.3);object-fit:cover;">
       <h1>Privacy Policy</h1>
-      <div class="effective-date">✓ Effective Date: August 18, 2026</div>
+      <div class="effective-date">✓ Effective Date: October 12, 2026</div>
     </div>
   </div>
 
@@ -701,7 +708,8 @@
           <li><a href="#leaves">What Leaves Your Device</a></li>
           <li><a href="#drive">Google Drive Backup</a></li>
           <li><a href="#sharing">Sharing Documents</a></li>
-          <li><a href="#ocr">On-Device Text Recognition</a></li>
+          <li><a href="#scanning">Scanning &amp; Text Recognition</a></li>
+          <li><a href="#mlkit">Google ML Kit Diagnostics</a></li>
           <li><a href="#permissions">Permissions</a></li>
           <li><a href="#control">User Control &amp; Deletion</a></li>
           <li><a href="#retention">Retention &amp; System Backup</a></li>
@@ -726,9 +734,14 @@
             that key never leaves your device.</p>
         </div>
         <p>In short: the App collects nothing. It creates no account, reads no email address, shows no advertisements,
-          uses no analytics or crash-reporting libraries, and touches no advertising identifier. By default it makes
-          no network requests at all — with one narrow, entirely optional exception described in Section 04, which
+          uses no analytics or crash-reporting libraries, and touches no advertising identifier. On its own it makes
+          no network requests — with one narrow, entirely optional exception described in Section 04, which
           activates only if you personally choose to turn it on.</p>
+        <p>Two Google components are involved in scanning, and this policy says plainly what each does:
+          Google's document scanner, which runs inside Google Play services (Section 06), and Google's on-device text
+          recognition library, ML Kit (Section 07). Neither receives your documents' text, and in current versions
+          the App sends Google nothing at all. Section 07 also corrects a statement that earlier versions of this
+          policy got wrong.</p>
         <p>The developer cannot read your documents. Not as a promise of good conduct, but because they are never
           received, and are not decryptable without a passphrase only you hold.</p>
       </section>
@@ -738,15 +751,18 @@
         <p>Everything the App holds is stored <strong>on your own device</strong>, inside private app storage that
           other applications cannot read. This includes:</p>
         <ul>
-          <li>Document images you capture with the camera or import from your device</li>
+          <li>Document images you scan or import from your device</li>
           <li>Titles, categories, notes, and issue or expiry dates you enter</li>
           <li>Text extracted from your documents by on-device text recognition</li>
           <li>The search index built from that text</li>
-          <li>App preferences such as theme and auto-lock timeout</li>
         </ul>
         <p>All of it is encrypted with AES-256-GCM authenticated encryption. The encryption key is derived from your
           passphrase using Argon2id, or unwrapped by your device's hardware-backed keystore when you unlock with a PIN
           or biometrics. The key exists in memory only while the vault is unlocked, and is wiped when it locks.</p>
+        <p>The App's settings — theme, auto-lock delay, page quality, the languages it reads, and similar choices —
+          are kept separately in private app storage <strong>without</strong> that encryption, because the App needs
+          them before the vault is unlocked. They contain nothing about your documents: no title, no category name, no
+          text.</p>
         <p>The App stores <strong>no data on developer-owned servers</strong>, because there are none.</p>
       </section>
 
@@ -758,7 +774,10 @@
           <li><strong>Sharing a document</strong> — you choose the recipient and the app, every time, described in
             Section 05</li>
         </ul>
-        <p>If you never enable backup and never share a document, no data ever leaves your phone.</p>
+        <p>If you never enable backup and never share a document, the App sends no data off your phone. Google Play
+          services, which provides the document scanner screen, is a separate part of your phone run by Google under
+          Google's own privacy policy; Section 06 explains what it does. Versions 0.7.0 and earlier also sent
+          Google limited diagnostic information about text recognition — see Section 07.</p>
       </section>
 
       <section id="drive">
@@ -806,19 +825,57 @@
           only to the app you selected, and that area is emptied when the vault locks or the App restarts.</p>
       </section>
 
-      <section id="ocr">
-        <h2><span class="section-num">06</span> On-Device Text Recognition</h2>
-        <p>Text recognition runs entirely on your device, using a model bundled inside the App. Your documents are
-          never uploaded for processing, and the feature works with no network connection at all.</p>
+      <section id="scanning">
+        <h2><span class="section-num">06</span> Scanning and Text Recognition</h2>
+        <h3>Google's document scanner</h3>
+        <p>In versions released after 0.7.0, tapping Scan opens <strong>Google's document scanner</strong>, a screen
+          provided by Google Play services that finds the page's edges, straightens it and lets you crop, rotate and
+          clean it up. Google describes its scanning flow as operating entirely on the device. The scanner uses
+          Google Play services' own camera access; the App itself does not need the camera permission for it.</p>
+        <p>When you finish, the scanner hands the page back to the App as an image file in the App's private
+          storage. The App reads that file into the encrypted vault and <strong>deletes the scanner's copy
+          immediately</strong>; any copy left behind by an interruption is deleted the next time the App starts or the
+          vault locks. Google Play services is part of your phone's system software rather than part of the App, and
+          is governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy
+            Policy</a>.</p>
+        <p>If Google Play services is not available, or you prefer, the App uses its own built-in camera instead,
+          which never involves Google Play services.</p>
+        <h3>Reading the text</h3>
+        <p>Text recognition runs entirely on your device, using models bundled inside the App. Your documents and
+          their text are never uploaded for processing, and the feature works with no network connection at all.
+          English and other Latin-script text is read by Google's ML Kit; Hindi by ML Kit's Devanagari model; and
+          Bangla, Arabic and Urdu, if you switch them on, by the open-source Tesseract engine. All of these run inside
+          the App, on your phone.</p>
         <p>Passports and identity cards are recognised on-device in the same way, including the machine-readable
           strip. No image and no extracted text is sent anywhere.</p>
       </section>
 
+      <section id="mlkit">
+        <h2><span class="section-num">07</span> Google ML Kit Diagnostics</h2>
+        <p>Google's ML Kit library, which the App uses for text recognition, is built to send Google limited
+          diagnostic and usage information about the library itself. According to
+          <a href="https://developers.google.com/ml-kit/android-data-disclosure" target="_blank" rel="noopener">Google's
+            ML Kit data disclosure</a>, that information is: device manufacturer and model, Android version, the App's
+          package name and version, a per-installation identifier that is not intended to identify you or your phone,
+          and technical measurements such as processing time, image size and error codes. Google states it is
+          encrypted in transit and not shared with third parties. <strong>It never includes your images or the text of
+          your documents.</strong></p>
+        <p><strong>In versions released after 0.7.0, the App switches this reporting off</strong>, so ML Kit inside
+          the App sends Google nothing.</p>
+        <div class="warn-box">
+          <p><strong>A correction.</strong> Versions 0.7.0 and earlier included ML Kit's diagnostic reporting as Google
+            ships it, so those versions sent Google the information described above whenever text recognition ran.
+            Earlier versions of this policy said the App made no network requests at all; for those versions that was
+            not accurate, and this policy has been corrected. Updating the App ends it.</p>
+        </div>
+      </section>
+
       <section id="permissions">
-        <h2><span class="section-num">07</span> Permissions Used</h2>
+        <h2><span class="section-num">08</span> Permissions Used</h2>
         <ul>
-          <li><strong>Camera</strong> — to photograph documents, which go straight into the encrypted vault. The App
-            has no video or audio capability</li>
+          <li><strong>Camera</strong> — for the App's own built-in camera, which photographs documents straight into
+            the encrypted vault. Google's document scanner does not use this permission. The App has no video or audio
+            capability</li>
           <li><strong>Notifications</strong> — to warn you before a document expires. Reminders never name the
             document; they say something needs attention, and you open the App to see what</li>
           <li><strong>Biometrics and device credential</strong> — to unlock the vault. The App never receives your
@@ -833,7 +890,7 @@
       </section>
 
       <section id="control">
-        <h2><span class="section-num">08</span> User Control &amp; Deletion</h2>
+        <h2><span class="section-num">09</span> User Control &amp; Deletion</h2>
         <p>Privacy laws including the GDPR and CCPA give you rights to access, correct, export and delete personal
           data held by a company. The developer holds none of yours, so there is nothing to disclose, correct or
           delete on your behalf. You already hold direct control over everything the App stores:</p>
@@ -850,12 +907,16 @@
           one device is not a request to destroy your backup, and treating it as one would make that button far more
           destructive than it says. The backup is deleted separately, from within the App or from your Google
           account.</p>
+        <p>Google does not link ML Kit diagnostics to you, so there is no personal record of them for the developer
+          to request or delete on your behalf.</p>
       </section>
 
       <section id="retention">
-        <h2><span class="section-num">09</span> Data Retention &amp; System Backup</h2>
+        <h2><span class="section-num">10</span> Data Retention &amp; System Backup</h2>
         <p>Local data remains on your device until you delete it or uninstall the App. Backup data remains in your own
           Google Drive account until you choose to delete it. The developer retains no copies and has no access.</p>
+        <p>Temporary copies are short-lived by design: a page handed back by Google's document scanner is deleted as
+          soon as the App has read it, and decrypted copies made for sharing are deleted when the vault locks.</p>
         <p>One exception: a document you file under the optional <strong>Temporary</strong> category is
           automatically and permanently deleted 90 days after it is added, with an on-screen countdown and advance
           notifications at 7 days and 1 day. This is purely on-device behavior — no data is collected or transmitted
@@ -867,14 +928,15 @@
       </section>
 
       <section id="advertising">
-        <h2><span class="section-num">10</span> Advertising &amp; Analytics</h2>
+        <h2><span class="section-num">11</span> Advertising &amp; Analytics</h2>
         <p>This application displays no advertisements and contains no advertising SDK. It uses no analytics library
           and no crash-reporting library, and it does not read the advertising identifier. No user data is used for
-          advertising purposes, because no user data is collected.</p>
+          advertising purposes, because no user data is collected. The diagnostic reporting built into Google's ML Kit
+          is switched off in current versions, as described in Section 07.</p>
       </section>
 
       <section id="security">
-        <h2><span class="section-num">11</span> Security</h2>
+        <h2><span class="section-num">12</span> Security</h2>
         <ul>
           <li>AES-256-GCM authenticated encryption for every document, every page and the search index</li>
           <li>Argon2id passphrase strengthening, tuned to current OWASP guidance</li>
@@ -892,20 +954,24 @@
       </section>
 
       <section id="children">
-        <h2><span class="section-num">12</span> Children's Privacy</h2>
+        <h2><span class="section-num">13</span> Children's Privacy</h2>
         <p>This application is not directed toward children under the age of 13. We do not knowingly collect personal
           information from children, or from anyone else. The App requires no personal information to function.</p>
       </section>
 
       <section id="changes">
-        <h2><span class="section-num">13</span> Changes to This Policy</h2>
+        <h2><span class="section-num">14</span> Changes to This Policy</h2>
         <p>This Privacy Policy may be updated occasionally to reflect changes in the App or applicable regulations.
           Users will be informed of significant changes via app update release notes. The effective date at the top of
           this page will always reflect the most recent revision.</p>
+        <p><strong>October 12, 2026:</strong> added Google's document scanner and the additional text-recognition
+          languages (Section 06); disclosed ML Kit's diagnostic reporting in versions 0.7.0 and earlier, and its
+          removal in later versions (Section 07); corrected the description of how app settings are stored
+          (Section 02).</p>
       </section>
 
       <section id="contact">
-        <h2><span class="section-num">14</span> Contact</h2>
+        <h2><span class="section-num">15</span> Contact</h2>
         <p>Docuary is published by SixSeasons Labs, an independent developer.</p>
         <p>For questions regarding this Privacy Policy, or to report a security issue, please contact:</p>
         <div class="contact-box">

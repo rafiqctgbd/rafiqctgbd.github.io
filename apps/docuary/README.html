@@ -855,7 +855,7 @@
 
       <section id="terms">
         <h2><span class="ico">📜</span> Terms of Service</h2>
-        <p><em>Last updated: August 2026</em></p>
+        <p><em>Last updated: October 2026</em></p>
         <p>By downloading, installing, or using Docuary: Document Vault ("the App"), you agree to these Terms of
           Service. If you do not agree, please do not use the App.</p>
 
@@ -945,8 +945,11 @@
           straightened, read, indexed and tracked. Search for a policy number and the right document appears — not
           because you titled it well, but because the App read every word inside it.</p>
         <p>The design principle is that you should not have to trust the developer. There is no account, no server and
-          no telemetry, so there is nothing to breach and nothing to sell. That is checked rather than promised: the
-          App makes no network requests at all unless you switch on Drive backup.</p>
+          no telemetry, so there is nothing to breach and nothing to sell. From the next update that is checked
+          rather than promised: the App makes no network requests at all unless you switch on Drive backup. Up to
+          version 0.7.0, Google's ML Kit text-recognition library also sent Google anonymous diagnostics — never
+          images or text; the <a href="privacy-policy#mlkit">Privacy Policy</a> explains what, and why it is now
+          switched off.</p>
       </section>
 
       <section id="features">
@@ -965,6 +968,9 @@
           <li>Optional decoy vault, for situations where you may be compelled to unlock your phone</li>
           <li>Automatic locking after inactivity</li>
           <li>Dark mode, and complete offline operation</li>
+          <li><em>Next update:</em> Google's document scanner for reliable edge finding; text recognition in Bangla,
+            Hindi, Arabic and Urdu as well as English; a page-quality setting; reading saved documents' text again;
+            PDF exports about eight times smaller</li>
         </ul>
       </section>
 
@@ -975,10 +981,13 @@
           <li>No account required — none exists to create</li>
           <li>No personal data stored on developer-owned servers, because there are none</li>
           <li>Text recognition runs on the device; documents are never uploaded for processing</li>
+          <li>From the next update, scanning uses Google's document scanner, provided by Google Play services; the
+            App deletes the scanner's copy of each page as soon as it has read it</li>
           <li>Google Drive backup is completely optional and off until you enable it</li>
           <li>No Google Sign-In, so the App never receives your email address or identity</li>
           <li>User data is never sold or shared with third parties</li>
-          <li>No advertisements, no advertising SDKs, no analytics, no crash reporting</li>
+          <li>No advertisements, no advertising SDKs, no analytics, no crash reporting; Google ML Kit's built-in
+            diagnostics are switched off from the next update</li>
           <li>Android's own cloud backup is disabled for the App, so the operating system cannot copy vault files off
             the device outside the App's encryption</li>
           <li>Document screens are excluded from screenshots and the recent-apps preview</li>
@@ -1011,7 +1020,8 @@
           <div class="perm-card">
             <div class="perm-title">📷 Camera</div>
             <div class="perm-desc">To photograph documents, which go straight into the encrypted vault. No video or
-              audio capability. Optional — you can import files instead</div>
+              audio capability. Optional — you can import files instead. From the next update, needed only for the
+              App's own camera; Google's document scanner does not use it</div>
           </div>
           <div class="perm-card">
             <div class="perm-title">🔔 Notifications</div>
@@ -1045,7 +1055,11 @@
             it</li>
           <li><strong>Database:</strong> SQLCipher, so the full-text search index is encrypted alongside the
             documents</li>
-          <li><strong>Text recognition:</strong> ML Kit, bundled on-device — no network dependency</li>
+          <li><strong>Text recognition:</strong> ML Kit (Latin; Devanagari from the next update), bundled on-device,
+            with its diagnostic reporting removed from the next update; Tesseract (Bengali, Arabic, Urdu, Apache-2.0)
+            from the next update — no network dependency</li>
+          <li><strong>Scanning:</strong> Google's ML Kit document scanner via Google Play services from the next
+            update, with the App's own CameraX scanner as the fallback</li>
           <li><strong>Backup:</strong> Drive REST API v3, <code>drive.appdata</code> scope, authorization without
             sign-in</li>
           <li><strong>Brand colour:</strong> violet <code>#A78BFA</code>, deliberately distinct from NextCue's cyan and

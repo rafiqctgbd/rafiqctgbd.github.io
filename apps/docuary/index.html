@@ -1290,6 +1290,24 @@
             Drive required — and import it back in on this device or another.</p>
         </div>
       </div>
+      <div style="margin-top:2.2rem;padding:20px 22px;background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.25);border-radius:14px;">
+        <strong style="color:var(--text);display:block;margin-bottom:10px;font-family:'Syne',sans-serif;">Coming in the next update</strong>
+        <ul style="color:var(--muted);font-size:0.94rem;line-height:1.75;padding-left:1.1rem;margin:0;">
+          <li><strong style="color:var(--text)">Reads বাংলা, हिन्दी, العربية and اردو</strong> as well as English — on
+            your phone, like everything else. Choose the languages in Settings; Docuary starts with the ones that match
+            your phone. Text in those languages becomes searchable, and dates in Bangla or Hindi digits are found.</li>
+          <li><strong style="color:var(--text)">Google's document scanner</strong> finds the page edges reliably — a
+            printed leaflet on a white desk, a page beside a keyboard — with shadow clean-up, crop and rotate. Its copy
+            of the page is deleted as soon as Docuary has read it. Phones without Google Play services keep Docuary's
+            own camera.</li>
+          <li><strong style="color:var(--text)">Page quality</strong> — High, Standard or Compact, from about 1 MB to
+            about 0.2 MB a page.</li>
+          <li><strong style="color:var(--text)">Read text again</strong> — a second round of recognition for documents
+            already in the vault, one at a time or all at once.</li>
+          <li><strong style="color:var(--text)">PDF exports about eight times smaller</strong>, with no visible
+            difference.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -1341,7 +1359,8 @@
         </div>
         <ul class="privacy-points">
           <li>No account, so there is nothing to breach</li>
-          <li>No advertising SDK, no analytics, no crash reporting</li>
+          <li>No advertising SDK, no analytics, no crash reporting — and Google ML Kit's built-in diagnostics are
+            switched off from the next update (<a href="privacy-policy#mlkit" style="color:var(--accent);">why</a>)</li>
           <li>No developer-owned server exists</li>
           <li>Text recognition runs on your device, never in a cloud</li>
           <li>AES-256 encryption with Argon2id passphrase strengthening</li>
@@ -1371,7 +1390,8 @@
           <div>
             <div class="perm-name">Camera</div>
             <div class="perm-desc">To photograph documents, which go straight into the encrypted vault. There is no
-              video or audio capability. Optional — you can import files instead.</div>
+              video or audio capability. Optional — you can import files instead. From the next update it is needed
+              only for Docuary's own camera; Google's document scanner does not use it.</div>
           </div>
         </div>
         <div class="perm-item">
@@ -1394,8 +1414,9 @@
           <div class="perm-icon">🌐</div>
           <div>
             <div class="perm-name">Internet</div>
-            <div class="perm-desc">Used only by the optional Google Drive backup. Never connect Drive and the app makes
-              no network requests at all.</div>
+            <div class="perm-desc">Used only by the optional Google Drive backup. Never connect Drive and, from the
+              next update, the app makes no network requests at all. (Up to version 0.7.0, Google's ML Kit also sent
+              Google anonymous diagnostics through it — <a href="privacy-policy#mlkit" style="color:var(--accent);">details</a>.)</div>
           </div>
         </div>
       </div>
