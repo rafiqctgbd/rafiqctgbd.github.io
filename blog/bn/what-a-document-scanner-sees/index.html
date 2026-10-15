@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ছবি তোলার আগেই স্ক্যানার অ্যাপ আপনার কাগজের কী দেখে?</title>
+  <meta name="description" content="ফ্রেম ঠিক করার পুরো সময়টা স্ক্যানার অ্যাপ আপনার কাগজ দেখছে। প্রিভিউয়ের ছবি আর তোলা পাতা নিয়ে অ্যাপটা কী করে — এটাই আসল প্রাইভেসি প্রশ্ন। যেকোনো স্ক্যানারকে কী জিজ্ঞেস করবেন, আর Docuary কীভাবে উত্তর দেয়।">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/bn/what-a-document-scanner-sees/">
+  <meta property="og:title" content="ছবি তোলার আগেই স্ক্যানার অ্যাপ আপনার কাগজের কী দেখে?">
+  <meta property="og:description" content="ফ্রেম ঠিক করার সময় স্ক্যানার অ্যাপ আপনার কাগজ দেখছে। সেই ছবি নিয়ে কী করে — এটাই আসল প্রাইভেসি প্রশ্ন।">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:site_name" content="SixSeasons Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/blog/bn/what-a-document-scanner-sees/">
+  <link rel="alternate" hreflang="bn" href="https://mohammadrafiqulislam.com/blog/bn/what-a-document-scanner-sees/">
+  <link rel="alternate" hreflang="en" href="https://mohammadrafiqulislam.com/blog/en/what-a-document-scanner-sees/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :lang(bn), .bn-text { font-family: 'Noto Sans Bengali', 'DM Sans', sans-serif; }
+    h1:lang(bn), h2:lang(bn), h3:lang(bn), h4:lang(bn) { font-family: 'Noto Sans Bengali', 'Syne', sans-serif; font-weight: 700; }
+
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+  </style>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+      --green: #10b981;
+      --android: #3DDC84;
+      --bn: #f59e0b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', 'Noto Sans Bengali', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: auto; padding: 0 24px; width: 100%; }
+    .container-narrow { max-width: 780px; margin: auto; padding: 0 24px; width: 100%; }
+
+    section { padding: 80px 0; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    .lang-pill {
+      display: inline-block;
+      margin-left: 28px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lang-pill a { margin: 0 4px; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      nav ul { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15,23,42,0.98); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+      nav ul.open { max-height: 400px; }
+      nav ul li { width: 100%; }
+      nav a { margin: 0; padding: 14px 24px; display: block; border-bottom: 1px solid var(--border); }
+      .lang-pill { margin: 14px 24px; }
+    }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-play { background: #fff; color: var(--bg); }
+    .prose a.btn-play, a.btn-play { color: var(--bg); border-bottom: none; }
+    .btn-play:hover { background: #e2e8f0; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow.bn-eyebrow { color: var(--bn); }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+
+    footer { padding: 50px 0 40px; text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; }
+    footer a:hover { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 900; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--accent-hover); }
+
+    /* ── Blog hub / listing ─────────────────────── */
+    .blog-hero { padding: 140px 0 60px; background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 45%); }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 18px; }
+    .blog-hero p { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+    .lang-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    @media (max-width: 700px) { .lang-choice-grid { grid-template-columns: 1fr; } }
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .lang-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .lang-card h2 { color: var(--text); font-size: 1.4rem; margin-bottom: 10px; }
+    .lang-card p { color: var(--muted); font-size: 0.92rem; }
+    .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
+    .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent-hover); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { color: var(--muted); font-size: 0.9rem; }
+    .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
+
+    .coming-soon-note { margin-top: 40px; padding: 18px 22px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Article page ─────────────────────── */
+    .article-header { padding: 150px 0 40px; }
+    .breadcrumb { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .article-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.25; margin-bottom: 18px; }
+    .article-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .article-meta-row { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.85rem; }
+
+    .prose { padding: 10px 0 60px; font-size: 1.02rem; }
+    .prose h2 { font-size: 1.5rem; margin: 42px 0 16px; color: var(--text); }
+    .prose h3 { font-size: 1.15rem; margin: 28px 0 12px; color: var(--text); }
+    .prose p { color: #cbd5e1; margin-bottom: 18px; }
+    .prose ul, .prose ol { color: #cbd5e1; margin: 0 0 20px 22px; }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { color: var(--text); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(14,165,233,0.35); }
+    .prose a:hover { color: var(--accent-hover); }
+
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+    .callout h4 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+    .callout p { color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem; }
+
+    .app-promo { background: linear-gradient(135deg, rgba(167,139,250,0.12), rgba(99,102,241,0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 30px; margin: 36px 0; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .app-promo img { width: 60px; height: 60px; border-radius: 14px; flex-shrink: 0; }
+    .app-promo-text h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .app-promo-text p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0; }
+    .tag-chip { background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 6px 12px; border-radius: 999px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "ছবি তোলার আগেই স্ক্যানার অ্যাপ আপনার কাগজের কী দেখে?",
+    "description": "ফ্রেম ঠিক করার সময় স্ক্যানার অ্যাপ আপনার কাগজ দেখছে। সেই ছবি নিয়ে কী করে — এটাই আসল প্রাইভেসি প্রশ্ন।",
+    "author": { "@type": "Organization", "name": "SixSeasons Labs" },
+    "publisher": { "@type": "Organization", "name": "SixSeasons Labs" },
+    "datePublished": "2026-10-15",
+    "dateModified": "2026-10-15",
+    "mainEntityOfPage": "https://mohammadrafiqulislam.com/blog/bn/what-a-document-scanner-sees/",
+    "inLanguage": "bn",
+    "image": "https://mohammadrafiqulislam.com/assets/og-image.png"
+  }
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">SixSeasons<span> Labs</span></a>
+      <ul id="navList">
+        <li><a href="/apps/">অ্যাপস</a></li>
+        <li><a href="/blog/bn/" class="active">ব্লগ</a></li>
+        <li><a href="/resume/">রিজিউম</a></li>
+        <li class="lang-pill"><a href="/blog/en/what-a-document-scanner-sees/" lang="en">EN</a> / <a href="#" style="color:var(--text);">BN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+<main id="main-content">
+
+  <section class="article-header bn-text" lang="bn">
+    <div class="container-narrow">
+      <div class="breadcrumb"><a href="/">হোম</a> / <a href="/blog/bn/">ব্লগ</a> / কাগজপত্র নিরাপত্তা</div>
+      <span class="article-tag">কাগজপত্র নিরাপত্তা</span>
+      <h1 style="margin-top:14px;">ছবি তোলার আগেই স্ক্যানার অ্যাপ আপনার কাগজের কী দেখে?</h1>
+      <p class="article-sub">পাসপোর্টের দিকে স্ক্যানার অ্যাপ তাক করার মুহূর্ত থেকেই অ্যাপটা সেটা দেখছে। প্রাইভেসি নিয়ে বেশিরভাগ
+        প্রশ্ন থেমে যায় "ছবি আপলোড করে কিনা" পর্যন্ত। আসল প্রশ্নটা শুরু হয় তারও আগে।</p>
+      <div class="article-meta-row">
+        <span>লিখেছেন SixSeasons Labs</span>
+        <span>&middot;</span>
+        <span>আপডেট: অক্টোবর ২০২৬</span>
+        <span>&middot;</span>
+        <span>৬ মিনিট পড়ার সময়</span>
+      </div>
+      <p style="margin-top:12px;font-size:0.9rem;"><a href="/blog/en/what-a-document-scanner-sees/" lang="en" style="color:var(--accent);">Read in English →</a></p>
+    </div>
+  </section>
+
+  <section class="prose bn-text" lang="bn">
+    <div class="container-narrow">
+
+      <p>আজকের স্ক্যানার অ্যাপ পাতা ঠিক করে ধরার সময় একটা চমৎকার কাজ করে: কাগজের চারপাশে সরাসরি একটা সীমারেখা আঁকে,
+        আর কখনো কখনো কাগজ স্থির হলে নিজেই ছবি তুলে নেয়। এটা করতে হলে, আপনি যতক্ষণ ফ্রেম ঠিক করছেন, ততক্ষণ
+        অ্যাপটাকে ক্যামেরার দৃশ্য দেখতে হয় — সেকেন্ডে অনেকবার।</p>
+
+      <p>এতে নিজে থেকে খারাপ কিছু নেই। কিন্তু এর মানে, "অ্যাপটা আমার কাগজ নিয়ে কী করে?" — এই প্রশ্নের আসলে তিনটা
+        অংশ: ছবি তোলার <em>আগে</em> ক্যামেরার দৃশ্য নিয়ে কী করে, তোলার <em>পরে</em> পাতাটা নিয়ে কী করে, আর এর মধ্যে
+        কোথাও কিছু পাঠায় কিনা।</p>
+
+      <h2>যে তিনটা মুহূর্ত নিয়ে প্রশ্ন করা দরকার</h2>
+      <ul>
+        <li><strong>যখন ফ্রেম ঠিক করছেন।</strong> পাতার কিনারা খুঁজতে মোটামুটি একটা ছবিই যথেষ্ট: ছোট, সাদা-কালো একটা
+          কপিতেই বোঝা যায় কাগজ কোথায় শেষ। লেখা পড়তে লাগে পরিষ্কার, পূর্ণ আকারের ছবি। যে অ্যাপের শুধু সীমারেখা
+          দরকার, প্রিভিউয়ের ছবিগুলো পড়া, রেখে দেওয়া বা আপলোড করার কোনো কারণ তার নেই।</li>
+        <li><strong>ছবি তোলার পরে।</strong> এখান থেকেই অ্যাপের আসল কাজ শুরু হওয়ার কথা: পাতা সোজা করা, পরে খোঁজার জন্য
+          লেখা পড়া। জিজ্ঞেস করুন, এই পড়ার কাজটা কোথায় হয় — ফোনে, নাকি সার্ভারে?</li>
+        <li><strong>পাতাটা শেষে কোথায় থাকে।</strong> সাধারণ গ্যালারি বা শেয়ার করা ফোল্ডারে রাখা স্ক্যান, সেখানে থাকা
+          বাকি সবকিছুর মতোই প্রাইভেট। এনক্রিপ্টেড ভল্টে রাখা স্ক্যান একেবারে আলাদা ব্যাপার।</li>
+      </ul>
+
+      <div class="callout">
+        <h4>যেকোনো স্ক্যানারে করা যায় এমন একটা সহজ পরীক্ষা</h4>
+        <p>ওয়াই-ফাই আর মোবাইল ডাটা বন্ধ করে একটা পাতা স্ক্যান করুন। অ্যাপটা যদি তখনও কিনারা খুঁজে পায়, লেখা পড়ে, আর
+          সার্চ করতে দেয় — কাজটা আপনার ফোনেই হচ্ছে। কিছু বন্ধ হয়ে গেলে, কাজের কিছু অংশ অন্য কোথাও হচ্ছিল।</p>
+      </div>
+
+      <h2>Docuary প্রতিটা মুহূর্ত কীভাবে সামলায়</h2>
+      <p>Docuary আমার তৈরি এনক্রিপ্টেড ডকুমেন্ট ভল্ট, আর শুরু থেকেই এগুলো ছিল নকশার প্রশ্ন। এটা দুইভাবে স্ক্যান করতে
+        পারে, আর "আগের" মুহূর্তটা দুই ক্ষেত্রে দুইভাবে সামলানো হয়।</p>
+
+      <h3>Google-এর ডকুমেন্ট স্ক্যানার (সাধারণত এটাই)</h3>
+      <p>সংস্করণ 0.8.0 থেকে Scan চাপলে খোলে Google-এর ডকুমেন্ট স্ক্যানার, যা Google Play services-এর একটা স্ক্রিন।
+        এটা Docuary-র নিজের ডিটেক্টরের চেয়ে অনেক নির্ভরযোগ্যভাবে পাতার কিনারা খুঁজে পায় — সাদা টেবিলে সাদা লিফলেটও —
+        আর Google জানায় এটা পুরোপুরি ডিভাইসেই কাজ করে। আপনি যতক্ষণ ওই স্ক্রিনে আছেন, Docuary কিছুই দেখে না। কাজ শেষ
+        করলে তবেই পাতাটা Docuary-র কাছে ফেরে, তার নিজস্ব স্টোরেজে একটা ফাইল হিসেবে। Docuary সেটা একবার পড়ে সাথে সাথে
+        ওই কপি মুছে ফেলে, আর প্রতিবার ভল্ট লক হলে বা অ্যাপ চালু হলে পড়ে থাকা কোনো কপিও পরিষ্কার করে।</p>
+
+      <h3>Docuary-র নিজের ক্যামেরা (বিকল্প)</h3>
+      <p>যে ফোনে Google Play services নেই, বা যিনি এটাই পছন্দ করেন, তাদের জন্য Docuary-র নিজের ক্যামেরা। এটাই নিজে
+        সরাসরি সীমারেখা আঁকে, তাই "ছবি তোলার আগে কী করে?" প্রশ্নটা এখানেই সবচেয়ে জরুরি। এটা প্রিভিউয়ের প্রতিটা ছবির
+        শুধু উজ্জ্বলতাটুকু পড়ে, প্রায় ৩২০ পিক্সেল চওড়া করে ছোট করে নেয়, সেকেন্ডে হাতে গোনা কয়েকটা ছবি দেখে, বাকিগুলো
+        না পড়েই বাদ দেয়। এই ছবিগুলো কখনো সংরক্ষণ হয় না, আপলোড হয় না, আর লেখা পড়ার জন্য ব্যবহার হয় না। পাতা স্থির হলে
+        সীমারেখা সোনালি হয়; শাটার না চাপা পর্যন্ত কাগজের কিছুই রাখা হয় না।</p>
+
+      <h3>শাটার চাপার পরে, দুই ক্ষেত্রেই</h3>
+      <p>তোলা পাতাটায় একবার, আপনার ফোনেই, রিভিউয়ের সময় লেখা পড়া হয়। সেভ করলে পাতা আর তার লেখা এনক্রিপ্টেড ভল্টে যায়,
+        আর ভেতরের শব্দ দিয়ে সার্চ করে কাগজটা পাওয়া যায়। বাদ দিলে, সেটা আর থাকে না।</p>
+
+      <div class="callout">
+        <h4>একটা সংশোধন, খোলাখুলিভাবে</h4>
+        <p>Docuary-র লেখা পড়ার ব্যবস্থা আসে Google-এর ML Kit থেকে। সংস্করণ 0.7.0 পর্যন্ত ML Kit তার ডিফল্ট নিয়মে
+          Google-কে নাম-পরিচয়হীন ডায়াগনস্টিক তথ্য পাঠাত: ফোনের মডেল, অ্যান্ড্রয়েড ও অ্যাপের সংস্করণ, প্রতিটা ইনস্টলের
+          একটা শনাক্তকারী, সময় ও ত্রুটির হিসাব — কখনো ছবি বা লেখা নয়। প্রাইভেসি পলিসির আগের সংস্করণে বলা ছিল অ্যাপটা
+          কোনো নেটওয়ার্ক অনুরোধই করে না; ওই সংস্করণগুলোর জন্য সেটা সঠিক ছিল না। 0.8.0 থেকে এই রিপোর্টিং বন্ধ, আর
+          <a href="/apps/docuary/privacy-policy#mlkit">প্রাইভেসি পলিসিতে</a> এখন সেটা স্পষ্ট করে বলা আছে।</p>
+      </div>
+
+      <div class="app-promo">
+        <img src="/assets/docuary_icon.png" alt="Docuary অ্যাপ আইকন" loading="lazy">
+        <div class="app-promo-text">
+          <h4 class="bn-text" lang="bn">Docuary: কাগজ স্ক্যান, পড়া আর রাখা — নিজের ফোনেই</h4>
+          <p class="bn-text" lang="bn">Docuary অ্যান্ড্রয়েডের জন্য একটা এনক্রিপ্টেড ডকুমেন্ট ভল্ট। পাসপোর্ট, এনআইডি, বীমার
+            পলিসি বা সার্টিফিকেট স্ক্যান করলে সেটা সোজা হয়, আপনার ফোনেই ইংরেজি, বাংলা, হিন্দি, আরবি বা উর্দুতে পড়া হয়, আর
+            আপনার নিজের পাসওয়ার্ডে লক করা ভল্টে জমা হয়। ভেতরের শব্দ দিয়ে কাগজ খোঁজা যায়, মেয়াদ শেষের রিমাইন্ডার লক স্ক্রিনে
+            কখনো কাগজের নাম বলে না, আর ঐচ্ছিক এন্ড-টু-এন্ড এনক্রিপ্টেড Google Drive ব্যাকআপ চালু না করলে Docuary ফোন থেকে
+            কিছুই পাঠায় না।</p>
+          <p class="bn-text" lang="bn" style="color:var(--muted);font-size:0.88rem;"><strong style="color:var(--text);">Docuary
+            এখন Google Play-তে ক্লোজড টেস্টিং পর্যায়ে আছে</strong> — এখনও সবার জন্য উন্মুক্ত হয়নি। আগেভাগে
+            ব্যবহার করে দেখতে চাইলে ও মতামত দিয়ে সাহায্য করতে চাইলে অ্যাপের পাতা থেকে টেস্টে যোগ দিতে পারেন।</p>
+          <a href="/apps/docuary/" class="btn btn-play">বিস্তারিত ও টেস্টে যোগ দিন</a>
+        </div>
+      </div>
+
+      <h2>যেকোনো স্ক্যানার অ্যাপকে যে পাঁচটা প্রশ্ন করবেন</h2>
+      <ol style="list-style-type: bengali;">
+        <li><strong>সরাসরি সীমারেখা দেখায় কি, আর প্রিভিউয়ের ছবিগুলো নিয়ে কী করে?</strong> এমন উত্তর খুঁজুন: "কিনারা
+          খোঁজার জন্য ব্যবহার হয়, তারপর বাদ দেওয়া হয়।"</li>
+        <li><strong>লেখা কোথায় পড়া হয়?</strong> ফোনে, নাকি সার্ভারে আপলোড করে?</li>
+        <li><strong>স্ক্যান শেষে কোথায় থাকে?</strong> গ্যালারিতে, শেয়ার করা ফোল্ডারে, নাকি কোনো এনক্রিপ্টেড জায়গায়?</li>
+        <li><strong>অ্যাকাউন্ট লাগে কি?</strong> অ্যাকাউন্ট মানে সাধারণত আপনার কাগজ, বা তার তথ্য, আপনার ফোনের বাইরেও
+          কোথাও থাকে।</li>
+        <li><strong>প্রাইভেসি পলিসিতে কি তথ্য পাঠানো লাইব্রেরিগুলোর নাম আছে?</strong> অ্যানালিটিক্স আর ডায়াগনস্টিক
+          প্রায়ই অন্য টুলের ভেতরে লুকিয়ে আসে, তাই "কিছুই পাঠায় না" লেখা পলিসিও একবার খুঁটিয়ে দেখা ভালো।</li>
+      </ol>
+
+      <h2>সংক্ষেপে</h2>
+      <p>ছবি তোলার অনেক আগে থেকেই স্ক্যানার অ্যাপ আপনার কাগজ দেখছে। ভালো অ্যাপ সেই সময়টা শুধু কিনারা খুঁজতে ব্যবহার
+        করে, আপনি পাতা রাখবেন ঠিক করার পরে ফোনেই লেখা পড়ে, আর ফলাফল এমন জায়গায় রাখে যা শুধু আপনিই খুলতে পারেন। এই
+        প্রশ্নগুলো শুধু এই অ্যাপকে নয় — যত স্ক্যানার ব্যবহার করেন, সবাইকেই করা উচিত।</p>
+
+      <div class="tag-row">
+        <span class="tag-chip">কাগজপত্র নিরাপত্তা</span>
+        <span class="tag-chip">প্রাইভেসি</span>
+        <span class="tag-chip">ডকুমেন্ট স্ক্যানার</span>
+        <span class="tag-chip">অ্যান্ড্রয়েড</span>
+      </div>
+
+      <h2>আরও পড়ুন</h2>
+      <div class="related-grid">
+        <a href="/blog/bn/bangla-document-scanner-offline/" class="article-card">
+          <span class="article-tag">কাগজপত্র নিরাপত্তা</span>
+          <h3 class="bn-text" lang="bn">বাংলা লেখা পড়তে পারে, এমন প্রাইভেট ডকুমেন্ট স্ক্যানার</h3>
+        </a>
+        <a href="/blog/bn/kagojpotro-nirapode-rakhar-upay/" class="article-card">
+          <span class="article-tag">কাগজপত্র নিরাপত্তা</span>
+          <h3 class="bn-text" lang="bn">পাসপোর্ট-এনআইডির ছবি ফোনে কোথায় রাখেন?</h3>
+        </a>
+      </div>
+
+      <h2>সচরাচর জিজ্ঞাসিত প্রশ্ন</h2>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">ছবি তোলার আগে কি স্ক্যানার অ্যাপকে ক্যামেরা দেখতেই হয়?</h3>
+        <p>শুধু তখনই, যখন অ্যাপটা সরাসরি পাতার সীমারেখা দেখায়। কিনারা খুঁজতে প্রিভিউয়ের ছবি দেখতে হয়, কিন্তু সেটা ছোট,
+          সাদা-কালো একটা কপিতেই করা যায়, যা কখনো রাখা হয় না আর লেখা পড়ার জন্য ব্যবহার হয় না। অ্যাপটা ছবি আপলোড করে
+          কিনা, শুধু সেটা নয় — প্রিভিউয়ের ছবিগুলো নিয়ে কী করে, সেটাও জিজ্ঞেস করুন।</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">Docuary কখন আমার কাগজের লেখা পড়ে?</h3>
+        <p>শুধু তখনই, যখন একটা পাতা তোলা হয়ে Docuary-র কাছে আসে — সেভ করার আগে রিভিউয়ের সময়। লেখা পড়া হয় ফোনেই। সেভ
+          করলে পাতাটা এনক্রিপ্টেড ভল্টে যায়; বাদ দিলে, আর থাকে না।</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">Docuary কি Google-কে কিছু পাঠায়?</h3>
+        <p>Google Drive ব্যাকআপ চালু না করলে Docuary নিজে ফোন থেকে কিছুই পাঠায় না। Google-এর ডকুমেন্ট স্ক্যানার Google
+          Play services-এর অংশ, আর Google জানায় সেটা পুরোপুরি ডিভাইসেই কাজ করে। সংস্করণ 0.7.0 পর্যন্ত লেখা পড়ার
+          ব্যবস্থা Google-কে নাম-পরিচয়হীন ডায়াগনস্টিক তথ্য পাঠাত, কখনো ছবি বা লেখা নয়; 0.8.0-এ সেটা বন্ধ করা হয়েছে, আর
+          <a href="/apps/docuary/privacy-policy#mlkit">প্রাইভেসি পলিসিতে</a> তা ব্যাখ্যা করা আছে।</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">স্ক্যানারের রাখা আমার পাতার কপির কী হয়?</h3>
+        <p>Google-এর স্ক্যানার প্রতিটা পাতা Docuary-র নিজস্ব স্টোরেজে একটা ফাইল হিসেবে ফেরত দেয়। Docuary সেটা একবার পড়ে
+          সাথে সাথে মুছে ফেলে, আর প্রতিবার ভল্ট লক হলে বা অ্যাপ চালু হলে পড়ে থাকা কোনো কপিও পরিষ্কার করে।</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function () {
+          backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</main>
+</body>
+
+</html>
