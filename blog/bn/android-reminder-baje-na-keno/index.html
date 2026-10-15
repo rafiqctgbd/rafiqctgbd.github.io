@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অ্যান্ড্রয়েডে রিমাইন্ডার বাজে না কেন — আর কীভাবে ঠিক করবেন</title>
+  <meta name="description" content="রিমাইন্ডার সেট করেছিলেন, বাজেনি? সাধারণত অ্যাপ নষ্ট নয় — ব্যাটারি অপটিমাইজেশন, ফোন কোম্পানির অটোস্টার্ট বন্ধ, বা নতুন অনুমতি না দেওয়া। Xiaomi, Oppo, Vivo-সহ যেকোনো অ্যান্ড্রয়েড ফোনে ধাপে ধাপে সমাধান।">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/bn/android-reminder-baje-na-keno/">
+  <meta property="og:title" content="অ্যান্ড্রয়েডে রিমাইন্ডার বাজে না কেন — আর কীভাবে ঠিক করবেন">
+  <meta property="og:description" content="অ্যান্ড্রয়েডে রিমাইন্ডার না বাজার কারণ আর ধাপে ধাপে সমাধান — ব্যাটারি, অটোস্টার্ট আর নতুন অনুমতি।">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:site_name" content="SixSeasons Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/blog/bn/android-reminder-baje-na-keno/">
+  <link rel="alternate" hreflang="bn" href="https://mohammadrafiqulislam.com/blog/bn/android-reminder-baje-na-keno/">
+  <link rel="alternate" hreflang="en" href="https://mohammadrafiqulislam.com/blog/en/android-reminders-not-working-fix/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :lang(bn), .bn-text { font-family: 'Noto Sans Bengali', 'DM Sans', sans-serif; }
+    h1:lang(bn), h2:lang(bn), h3:lang(bn), h4:lang(bn) { font-family: 'Noto Sans Bengali', 'Syne', sans-serif; font-weight: 700; }
+
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+  </style>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+      --green: #10b981;
+      --android: #3DDC84;
+      --bn: #f59e0b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', 'Noto Sans Bengali', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: auto; padding: 0 24px; width: 100%; }
+    .container-narrow { max-width: 780px; margin: auto; padding: 0 24px; width: 100%; }
+
+    section { padding: 80px 0; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    .lang-pill {
+      display: inline-block;
+      margin-left: 28px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lang-pill a { margin: 0 4px; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      nav ul { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15,23,42,0.98); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+      nav ul.open { max-height: 400px; }
+      nav ul li { width: 100%; }
+      nav a { margin: 0; padding: 14px 24px; display: block; border-bottom: 1px solid var(--border); }
+      .lang-pill { margin: 14px 24px; }
+    }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-play { background: #fff; color: var(--bg); }
+    .prose a.btn-play, a.btn-play { color: var(--bg); border-bottom: none; }
+    .btn-play:hover { background: #e2e8f0; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow.bn-eyebrow { color: var(--bn); }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+
+    footer { padding: 50px 0 40px; text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; }
+    footer a:hover { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 900; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--accent-hover); }
+
+    /* ── Blog hub / listing ─────────────────────── */
+    .blog-hero { padding: 140px 0 60px; background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 45%); }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 18px; }
+    .blog-hero p { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+    .lang-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    @media (max-width: 700px) { .lang-choice-grid { grid-template-columns: 1fr; } }
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .lang-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .lang-card h2 { color: var(--text); font-size: 1.4rem; margin-bottom: 10px; }
+    .lang-card p { color: var(--muted); font-size: 0.92rem; }
+    .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
+    .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent-hover); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { color: var(--muted); font-size: 0.9rem; }
+    .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
+
+    .coming-soon-note { margin-top: 40px; padding: 18px 22px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Article page ─────────────────────── */
+    .article-header { padding: 150px 0 40px; }
+    .breadcrumb { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .article-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.25; margin-bottom: 18px; }
+    .article-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .article-meta-row { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.85rem; }
+
+    .prose { padding: 10px 0 60px; font-size: 1.02rem; }
+    .prose h2 { font-size: 1.5rem; margin: 42px 0 16px; color: var(--text); }
+    .prose h3 { font-size: 1.15rem; margin: 28px 0 12px; color: var(--text); }
+    .prose p { color: #cbd5e1; margin-bottom: 18px; }
+    .prose ul, .prose ol { color: #cbd5e1; margin: 0 0 20px 22px; }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { color: var(--text); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(14,165,233,0.35); }
+    .prose a:hover { color: var(--accent-hover); }
+
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+    .callout h4 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+    .callout p { color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem; }
+
+    .app-promo { background: linear-gradient(135deg, rgba(167,139,250,0.12), rgba(99,102,241,0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 30px; margin: 36px 0; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .app-promo img { width: 60px; height: 60px; border-radius: 14px; flex-shrink: 0; }
+    .app-promo-text h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .app-promo-text p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0; }
+    .tag-chip { background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 6px 12px; border-radius: 999px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "অ্যান্ড্রয়েডে রিমাইন্ডার বাজে না কেন — আর কীভাবে ঠিক করবেন",
+    "description": "অ্যান্ড্রয়েডে রিমাইন্ডার না বাজার কারণ আর ধাপে ধাপে সমাধান — ব্যাটারি, অটোস্টার্ট আর নতুন অনুমতি।",
+    "author": { "@type": "Organization", "name": "SixSeasons Labs" },
+    "publisher": { "@type": "Organization", "name": "SixSeasons Labs" },
+    "datePublished": "2026-10-15",
+    "dateModified": "2026-10-15",
+    "mainEntityOfPage": "https://mohammadrafiqulislam.com/blog/bn/android-reminder-baje-na-keno/",
+    "inLanguage": "bn",
+    "image": "https://mohammadrafiqulislam.com/assets/og-image.png"
+  }
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">SixSeasons<span> Labs</span></a>
+      <ul id="navList">
+        <li><a href="/apps/">অ্যাপস</a></li>
+        <li><a href="/blog/bn/" class="active">ব্লগ</a></li>
+        <li><a href="/resume/">রিজিউম</a></li>
+        <li class="lang-pill"><a href="/blog/en/android-reminders-not-working-fix/" lang="en">EN</a> / <a href="#" style="color:var(--text);">BN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+<main id="main-content">
+
+  <section class="article-header bn-text" lang="bn">
+    <div class="container-narrow">
+      <div class="breadcrumb"><a href="/">হোম</a> / <a href="/blog/bn/">ব্লগ</a> / অ্যান্ড্রয়েড সমস্যা ও সমাধান</div>
+      <span class="article-tag">অ্যান্ড্রয়েড সমস্যা ও সমাধান</span>
+      <h1 style="margin-top:14px;">অ্যান্ড্রয়েডে রিমাইন্ডার বাজে না কেন — আর কীভাবে ঠিক করবেন</h1>
+      <p class="article-sub">রিমাইন্ডার না বাজলে সাধারণত অ্যাপটা নষ্ট নয়। অ্যান্ড্রয়েডের ভেতরের কিছু একটা সেটা থামিয়ে দিয়েছে
+        — আর খুঁজে দেখার জায়গা মাত্র কয়েকটা।</p>
+      <div class="article-meta-row">
+        <span>লিখেছেন SixSeasons Labs</span>
+        <span>&middot;</span>
+        <span>আপডেট: অক্টোবর ২০২৬</span>
+        <span>&middot;</span>
+        <span>১০ মিনিট পড়ার সময়</span>
+      </div>
+      <p style="margin-top:12px;font-size:0.9rem;"><a href="/blog/en/android-reminders-not-working-fix/" lang="en" style="color:var(--accent);">Read in English →</a></p>
+    </div>
+  </section>
+
+  <section class="prose bn-text" lang="bn">
+    <div class="container-narrow">
+
+      <p>আমি অ্যান্ড্রয়েডের রিমাইন্ডার অ্যাপ বানাই, আর সবচেয়ে বেশি যে মেসেজ পাই তা মোটামুটি একই: "রিমাইন্ডার সেট করেছিলাম,
+        বাজেইনি।" প্রায় প্রতিবারই অ্যাপ ঠিক যা বলা হয়েছিল তাই করেছে — রিমাইন্ডার ঠিকমতো সেট হয়েছিল, তারপর ফোনের অপারেটিং
+        সিস্টেম চুপচাপ ঠিক করেছে সেটা সময়মতো পৌঁছাবে না।</p>
+
+      <p>ব্যবহারকারী হিসেবে এটা অজুহাতের মতো শোনায়। তাই এই লেখাটা অজুহাত নয়, উল্টোটা: অ্যান্ড্রয়েডে রিমাইন্ডার ঠিক কী কারণে
+        থামে, সাধারণত যে ক্রমে ঘটে, আর কোন সেটিংস বদলালে ঠিক হয়। এটা যেকোনো রিমাইন্ডার অ্যাপের জন্য খাটে, শুধু আমার
+        অ্যাপের জন্য নয়।</p>
+
+      <h2>প্রথমে যে পার্থক্যটা বুঝলে বেশিরভাগ ব্যাখ্যা হয়ে যায়</h2>
+      <p>কোনো কিছু মনে করিয়ে দিতে অ্যাপ অ্যান্ড্রয়েডকে দুইভাবে বলতে পারে, আর দুটোকে একেবারে আলাদাভাবে দেখা হয়।</p>
+      <ul>
+        <li><strong>নোটিফিকেশন</strong> হলো একটা বার্তা, যা দেখানোর জন্য অ্যাপ সিস্টেমকে অনুরোধ করে। সিস্টেম চাইলে সেটা দেরি
+          করাতে পারে, অন্যগুলোর সাথে একসাথে দেখাতে পারে, বা ফোন জাগা পর্যন্ত আটকে রাখতে পারে। "আপনার অর্ডার পাঠানো হয়েছে"-র
+          জন্য এটা ঠিক আছে; "সকাল ৮টার ট্যাবলেট"-এর জন্য নয়।</li>
+        <li><strong>এক্স্যাক্ট অ্যালার্ম</strong> হলো ঠিক একটা নির্দিষ্ট মুহূর্তে ফোন জাগানোর অনুরোধ। অ্যান্ড্রয়েড এটাকে
+          গুরুত্ব দিয়ে দেখে — ফোনের নিজের ঘড়ির (Clock) অ্যাপও এটাই ব্যবহার করে। এটা স্ক্রিন জাগাতে পারে আর বেশিরভাগ বাধা
+          পেরিয়ে বাজতে পারে।</li>
+      </ul>
+      <p>অনেক টু-ডু, ক্যালেন্ডার আর সাধারণ রিমাইন্ডার অ্যাপ প্রথমটা ব্যবহার করে। সেগুলো খারাপ বানানো নয় — বাজারের তালিকার
+        জন্য অ্যালার্ম-ঘড়ির মতো নিখুঁত সময় লাগে না। কিন্তু ওষুধ বা বিলের শেষ তারিখের জন্য এমন একটা অ্যাপ ব্যবহার করলে, এমন
+        হাতিয়ার বেছেছেন যা সময়ের নিশ্চয়তা দেওয়ার জন্য বানানোই হয়নি।</p>
+
+      <div class="callout">
+        <h4>দ্রুত একটা পরীক্ষা</h4>
+        <p>দুই মিনিট পরের একটা রিমাইন্ডার সেট করুন, ফোন লক করে না ছুঁয়ে রেখে দিন। তারপর একই পরীক্ষা আবার করুন, এবার ফোন
+          এক ঘণ্টা বা তার বেশি সময় ফেলে রেখে। দ্বিতীয় পরীক্ষাটাই আসল — বেশিরভাগ সমস্যা দেখা দেয় ফোন গভীর বিশ্রাম অবস্থায়
+          গেলে, আর রাতে ঠিক সেটাই হয়।</p>
+      </div>
+
+      <h2>প্রথম স্তর: ডোজ (Doze) আর ব্যাটারি অপটিমাইজেশন</h2>
+      <p>ফোন কিছুক্ষণ স্থির আর অব্যবহৃত থাকলে অ্যান্ড্রয়েডের একটা ব্যাটারি-বাঁচানো ব্যবস্থা চালু হয়, সাধারণত যাকে Doze বলে।
+        অ্যাপগুলোকে যখন খুশি চলতে না দিয়ে, ব্যাকগ্রাউন্ডের কাজগুলো মাঝে মাঝে একসাথে সেরে নেয়। এটা সত্যিই ভালো প্রকৌশল —
+        আজকের ফোন সারাদিন চলে অনেকটা এর জন্যই।</p>
+      <p>এর পার্শ্বপ্রতিক্রিয়া: যে অ্যাপ ডিফল্ট <strong>Optimised</strong> ব্যাটারি মোডে আছে, তার নির্ধারিত কাজ পিছিয়ে যেতে
+        পারে। নির্দিষ্ট মিনিটের রিমাইন্ডারের জন্য "পিছিয়ে যাওয়া" মানে দেরি, আর দেরি মানে প্রায়ই অকেজো।</p>
+      <p><strong>সমাধান:</strong> অ্যাপের ব্যাটারি ব্যবহার <strong>Unrestricted</strong> করুন। বেশিরভাগ ফোনে: সেটিংস &rarr;
+        অ্যাপস &rarr; [অ্যাপের নাম] &rarr; ব্যাটারি &rarr; Unrestricted। এই পাতার সবচেয়ে কার্যকর সেটিং এটাই। রিমাইন্ডার অ্যাপ
+        প্রায় সারাক্ষণ কিছুই করে না, তাই এতে ব্যাটারি উল্লেখযোগ্যভাবে খরচ হয় না।</p>
+
+      <h2>দ্বিতীয় স্তর: ফোন কোম্পানির নিজস্ব অ্যাপ-বন্ধকারী</h2>
+      <p>এই স্তরের কথা বেশিরভাগ মানুষ শোনেনই না, আর এ কারণেই একই অ্যান্ড্রয়েড সংস্করণের দুটো ফোন একেবারে আলাদা আচরণ করে।</p>
+      <p>Xiaomi, Redmi ও POCO (MIUI/HyperOS), Oppo ও Realme (ColorOS), Vivo (Funtouch OS), Huawei ও Honor (EMUI) — সবাই
+        অ্যান্ড্রয়েডের ওপর নিজেদের আরেকটা ব্যাটারি ব্যবস্থাপনা যোগ করে। এটা সাধারণত অ্যান্ড্রয়েডের চেয়ে বেশি কড়া, আর এসব ফোনের
+        অনেকগুলোতে নতুন ইনস্টল করা অ্যাপের ব্যাকগ্রাউন্ড অটোস্টার্ট শুরু থেকেই বন্ধ থাকে।</p>
+      <p>ফল: অ্যাপটা ব্যাকগ্রাউন্ডে বন্ধ হয়ে যায়, আর কাল সকালের রিমাইন্ডার বাজার সুযোগই পায় না।</p>
+      <p><strong>সমাধান:</strong> <strong>Autostart</strong> সেটিং খুঁজুন (কখনো নাম "Auto-launch", "Start in background" বা
+        "Allow background activity") আর রিমাইন্ডার অ্যাপের জন্য চালু করুন। MIUI আর HyperOS-এ সাধারণত সেটিংস &rarr; অ্যাপস
+        &rarr; Permissions &rarr; Autostart। ফোনে সুবিধা থাকলে সাম্প্রতিক অ্যাপের তালিকায় অ্যাপটা লক করে রাখাও ভালো।</p>
+      <p>একটা কথা জেনে রাখা ভালো: Autostart চালু আছে কিনা, তা জানার কোনো উপায় অ্যান্ড্রয়েড অ্যাপকে দেয় না। বেশিরভাগ অনুমতি
+        অ্যাপ নিজেই পরীক্ষা করে জানাতে পারে, কিন্তু এটা নয়। তাই ভালোভাবে বানানো রিমাইন্ডার অ্যাপ "সব ঠিক আছে" না বলে, আপনাকে
+        নিজে একবার দেখে নিতে বলে।</p>
+
+      <h2>তৃতীয় স্তর: অ্যান্ড্রয়েডের নতুন তিনটা অনুমতি</h2>
+      <p>নতুন অ্যান্ড্রয়েড সংস্করণে কয়েকটা অনুমতি এসেছে যা কয়েক বছর আগে ছিল না। প্রতিটা চুপচাপ রিমাইন্ডার নষ্ট করতে পারে, আর
+        প্রতিটা দেওয়া হয় আলাদা জায়গা থেকে।</p>
+      <h3>নোটিফিকেশন (Android 13 ও পরের সংস্করণ)</h3>
+      <p>নোটিফিকেশন দেখানোর আগেই এখন অ্যাপকে অনুমতি চাইতে হয়। অ্যাপ প্রথমবার খোলার সময় আসা এই প্রশ্নে একবার "না" বলে ফেললে —
+        যা সহজেই হয় — রিমাইন্ডার ভেতরে ভেতরে বাজার সময় হলেও আপনাকে কিছুই দেখাবে না।</p>
+      <h3>Alarms &amp; reminders (Android 12 ও পরের সংস্করণ)</h3>
+      <p>এক্স্যাক্ট অ্যালার্ম সেট করতে এখন আলাদা একটা অনুমতি লাগে, নাম <strong>Alarms &amp; reminders</strong>। এটা ছাড়া
+        অ্যালার্ম-ঘড়ির মতো নিখুঁত সময় চাওয়া অ্যাপকেও অনির্দিষ্ট সময়সূচিতে ফিরে যেতে হয় — আবার সেই প্রথম স্তরের দেরি।</p>
+      <h3>ফুল-স্ক্রিন অ্যালার্ট (Android 14 ও পরের সংস্করণ)</h3>
+      <p>অ্যালার্ম বাজলে যে ফুল-স্ক্রিন সতর্কতা পুরো পর্দা দখল করে — যার জন্য ভিডিও দেখার সময়ও রিমাইন্ডার চোখ এড়ায় না — সেটাও
+        এখন সীমিত অনুমতি। এটা না থাকলে অ্যালার্ম হয়তো বাজবে, কিন্তু ছোট একটা ব্যানার হয়ে, যা সহজেই চোখ এড়িয়ে যায়।</p>
+
+      <div class="app-promo">
+        <img src="/assets/mhr_icon.png" alt="Medicine &amp; Health Reminder অ্যাপ আইকন" loading="lazy">
+        <div class="app-promo-text">
+          <h4 class="bn-text" lang="bn">আমার নিজের অ্যাপে এটা কীভাবে সামলাই</h4>
+          <p class="bn-text" lang="bn">আমার দুটো রিমাইন্ডার অ্যাপই সাধারণ নোটিফিকেশনের বদলে এক্স্যাক্ট অ্যালার্ম আর ফুল-স্ক্রিন
+            অ্যালার্ট ব্যবহার করে, ফোন রিস্টার্টের পর প্রতিটা রিমাইন্ডার আবার সেট করে, আর প্রতিবার খোলার সময় দেখে নেয় চুপচাপ কিছু
+            বাদ পড়েছে কিনা। দুটোতেই একটা Reminder Reliability স্ক্রিন আছে, যা ওপরের প্রতিটা সেটিংয়ের অবস্থা দেখায় আর সরাসরি
+            ফোনের সঠিক পাতায় নিয়ে যায় — Autostart-এর জন্য নিজে দেখে নেওয়ার অনুরোধসহ, কারণ অ্যান্ড্রয়েড এটা জানায় না।
+            <strong>Medicine &amp; Health Reminder</strong> ওষুধ, ডোজ আর স্বাস্থ্যের হিসাবের জন্য; <strong>NextCue</strong>
+            বিল, নবায়ন, সাবস্ক্রিপশন আর গুরুত্বপূর্ণ তারিখের জন্য। দুটোই Google Play-তে, ফ্রি।</p>
+          <a href="https://play.google.com/store/apps/details?id=com.rafiqctgbd.medicinehealth" class="btn btn-play" target="_blank" rel="noopener" style="margin:0 10px 10px 0;">Medicine &amp; Health Reminder</a>
+          <a href="https://play.google.com/store/apps/details?id=com.rafiqctgbd.nextcue" class="btn btn-play" target="_blank" rel="noopener" style="margin:0 10px 10px 0;">NextCue</a>
+        </div>
+      </div>
+
+      <h2>চেকলিস্ট, ক্রম অনুযায়ী</h2>
+      <p>ফোনে রিমাইন্ডার অনির্ভরযোগ্য হলে, এই ক্রমে একে একে দেখুন। বেশিরভাগের সমস্যা প্রথম দুটোতেই মিটে যায়।</p>
+      <ol style="list-style-type: bengali;">
+        <li><strong>ব্যাটারি: Unrestricted।</strong> সেটিংস &rarr; অ্যাপস &rarr; [অ্যাপ] &rarr; ব্যাটারি।</li>
+        <li><strong>Autostart: চালু।</strong> শুধু Xiaomi, Oppo, Vivo, Realme, Huawei আর Honor ফোনে; কোথায় আছে তা কোম্পানিভেদে
+          আলাদা।</li>
+        <li><strong>নোটিফিকেশন: অনুমতি দেওয়া।</strong> অ্যাপের অ্যালার্ম নোটিফিকেশন চ্যানেল চালু আর নিঃশব্দ করা নেই কিনা দেখুন।</li>
+        <li><strong>Alarms &amp; reminders: অনুমতি দেওয়া।</strong> Android 12 ও পরের সংস্করণে।</li>
+        <li><strong>ফুল-স্ক্রিন অ্যালার্ট: অনুমতি দেওয়া।</strong> Android 14 ও পরের সংস্করণে।</li>
+        <li><strong>অ্যাপ Force stop করবেন না।</strong> Force stop করলে অ্যাপ আবার না খোলা পর্যন্ত তার সেট করা অ্যালার্ম বাতিল
+          থাকে। বেশিরভাগ ফোনে সাম্প্রতিক অ্যাপের তালিকা থেকে সরিয়ে দেওয়া ঠিক আছে; অ্যাপ সেটিংস থেকে Force stop নয়।</li>
+        <li><strong>Do Not Disturb দেখুন।</strong> কিছু সেটআপে অ্যালার্মও চুপ হয়ে যায়, আর DND-এর সময়সূচি সেট করে ভুলে যাওয়া
+          সহজ।</li>
+      </ol>
+
+      <h2>কারো কারো ক্ষেত্রে এটা কেন বেশি হয়</h2>
+      <p>এই সমস্যা কখনো না হয়ে থাকলে, সম্ভবত আপনার ফোনে হালকা অ্যান্ড্রয়েড স্কিন আর কড়া ব্যাটারি সেভার চালু নেই। কম ও মাঝারি
+        দামের ফোন — বাংলাদেশ আর দক্ষিণ এশিয়ার বেশিরভাগ বাজার — অন্যভাবে সাজানো, কারণ ব্যাটারি লাইফ দিয়ে ফোন বিক্রি হয়, আর
+        একটা মিস হওয়া নোটিফিকেশন স্পেসিফিকেশনের তালিকায় দেখা যায় না।</p>
+      <p>তাই একই রিমাইন্ডার অ্যাপ এক ফোনে নিখুঁত আর আরেক ফোনে অনির্ভরযোগ্য হতে পারে, অ্যাপে কোনো পার্থক্য ছাড়াই। অ্যাপ মুছে
+        আরেকটা চেষ্টা করার আগে এটা জানা ভালো — কারণ নতুন করে ইনস্টল করলে ওপরের কোনো সেটিং বদলায় না, আর কিছু ফোনে নতুন
+        ইনস্টলে Autostart আবার শুরু থেকেই বন্ধ থাকে।</p>
+
+      <h2>সংক্ষেপে</h2>
+      <p>রিমাইন্ডার বাজে না আপনার ফোন খারাপ বলে বা আপনি ভুল ব্যবহার করছেন বলে নয়। ফোন নিজের কাজ করছে — ব্যাটারি বাঁচাচ্ছে —
+        আর কেউ তাকে বলেনি যে ঠিক এই অ্যাপটার দেরি আপনি সইতে পারবেন না। ওপরের সেটিংসে পাঁচ মিনিটই সাধারণত সেটা বলে দেওয়ার
+        জন্য যথেষ্ট।</p>
+
+      <div class="tag-row">
+        <span class="tag-chip">অ্যান্ড্রয়েড নোটিফিকেশন</span>
+        <span class="tag-chip">ব্যাটারি অপটিমাইজেশন</span>
+        <span class="tag-chip">এক্স্যাক্ট অ্যালার্ম</span>
+        <span class="tag-chip">MIUI ও HyperOS</span>
+        <span class="tag-chip">সমস্যা সমাধান</span>
+      </div>
+
+      <h2>আরও পড়ুন</h2>
+      <div class="related-grid">
+        <a href="/blog/bn/oshudh-khawar-reminder-shohoj-upay/" class="article-card">
+          <span class="article-tag">ওষুধ রিমাইন্ডার</span>
+          <h3 class="bn-text" lang="bn">ওষুধ খাওয়ার কথা মনে রাখার ৮টি সহজ উপায়</h3>
+        </a>
+        <a href="/blog/bn/bill-renewal-reminder-shohoj-upay/" class="article-card">
+          <span class="article-tag">বিল ও নবায়ন</span>
+          <h3 class="bn-text" lang="bn">বিল আর নবায়নের তারিখ ভুলে যাওয়া বন্ধ করার সহজ উপায়</h3>
+        </a>
+      </div>
+
+      <h2>সচরাচর জিজ্ঞাসিত প্রশ্ন</h2>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">অ্যান্ড্রয়েডে রিমাইন্ডার দেরিতে আসে বা আসেই না কেন?</h3>
+        <p>সাধারণত অপারেটিং সিস্টেম থামিয়ে দেয়, অ্যাপ নয়। Doze আর ব্যাটারি অপটিমাইজেশন ব্যাকগ্রাউন্ডের কাজ পিছিয়ে দেয়, আর
+          অনেক ফোন কোম্পানি তার ওপর আরও কড়া অ্যাপ-বন্ধকারী যোগ করে। সাধারণ নোটিফিকেশন হিসেবে সেট করা রিমাইন্ডারই প্রথম দেরি হয়;
+          এক্স্যাক্ট অ্যালার্ম অনেক ভালো টিকে থাকে।</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">নোটিফিকেশন আর এক্স্যাক্ট অ্যালার্মের পার্থক্য কী?</h3>
+        <p>নোটিফিকেশন এমন বার্তা যা সিস্টেম নিজের ইচ্ছায় দেরি করাতে পারে। এক্স্যাক্ট অ্যালার্ম ঠিক নির্দিষ্ট মুহূর্তে ফোন জাগানোর
+          অনুরোধ, যা গুরুত্ব দিয়ে দেখা হয় — ঘড়ির অ্যাপও এটাই ব্যবহার করে। Android 12 থেকে এর জন্য অ্যাপের <strong>Alarms
+          &amp; reminders</strong> অনুমতি লাগে।</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">কোন সেটিং আগে বদলাব?</h3>
+        <p>অ্যাপের ব্যাটারি ব্যবহার <strong>Unrestricted</strong> করুন — অন্য যেকোনো কিছুর চেয়ে বেশি মিস হওয়া রিমাইন্ডার এতে ঠিক
+          হয়। তারপর Alarms &amp; reminders আর নোটিফিকেশনের অনুমতি দিন, আর Xiaomi, Oppo, Vivo, Realme ও Huawei ফোনে Autostart-ও
+          চালু করুন।</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="bn-text" lang="bn">কম দামের অ্যান্ড্রয়েড ফোনে এটা বেশি হয় কেন?</h3>
+        <p>এগুলো ব্যাটারি লাইফের জন্য সাজানো, তাই নিজস্ব স্কিন ব্যাকগ্রাউন্ডের অ্যাপ বেশি কড়াভাবে বন্ধ করে, আর প্রায়ই শুরু থেকেই
+          Autostart বন্ধ থাকে। দোষটা অ্যাপের নয়, আর নতুন করে ইনস্টল করলে খুব কমই কাজ হয় — ওপরের অনুমতিগুলো দিলেই হয়।</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function () {
+          backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</main>
+</body>
+
+</html>
