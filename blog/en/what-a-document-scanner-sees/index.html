@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What a Document Scanner Sees Before You Press the Shutter</title>
+  <meta name="description" content="A scanner app watches your document the whole time you frame it. What it does with those frames, and with the page after you take it, is the real privacy question. What to ask any scanner app, and how Docuary answers it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/en/what-a-document-scanner-sees/">
+  <meta property="og:title" content="What a Document Scanner Sees Before You Press the Shutter">
+  <meta property="og:description" content="A scanner app watches your document while you frame it. What it does with those frames is the real privacy question.">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:site_name" content="SixSeasons Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/blog/en/what-a-document-scanner-sees/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+      --green: #10b981;
+      --android: #3DDC84;
+      --bn: #f59e0b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', 'Noto Sans Bengali', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: auto; padding: 0 24px; width: 100%; }
+    .container-narrow { max-width: 780px; margin: auto; padding: 0 24px; width: 100%; }
+
+    section { padding: 80px 0; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    .lang-pill {
+      display: inline-block;
+      margin-left: 28px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lang-pill a { margin: 0 4px; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      nav ul { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15,23,42,0.98); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+      nav ul.open { max-height: 400px; }
+      nav ul li { width: 100%; }
+      nav a { margin: 0; padding: 14px 24px; display: block; border-bottom: 1px solid var(--border); }
+      .lang-pill { margin: 14px 24px; }
+    }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-play { background: #fff; color: var(--bg); }
+    .prose a.btn-play, a.btn-play { color: var(--bg); border-bottom: none; }
+    .btn-play:hover { background: #e2e8f0; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow.bn-eyebrow { color: var(--bn); }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+
+    footer { padding: 50px 0 40px; text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; }
+    footer a:hover { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 900; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--accent-hover); }
+
+    /* ── Blog hub / listing ─────────────────────── */
+    .blog-hero { padding: 140px 0 60px; background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 45%); }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 18px; }
+    .blog-hero p { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+    .lang-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    @media (max-width: 700px) { .lang-choice-grid { grid-template-columns: 1fr; } }
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .lang-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .lang-card h2 { color: var(--text); font-size: 1.4rem; margin-bottom: 10px; }
+    .lang-card p { color: var(--muted); font-size: 0.92rem; }
+    .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
+    .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent-hover); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { color: var(--muted); font-size: 0.9rem; }
+    .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
+
+    .coming-soon-note { margin-top: 40px; padding: 18px 22px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Article page ─────────────────────── */
+    .article-header { padding: 150px 0 40px; }
+    .breadcrumb { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .article-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.25; margin-bottom: 18px; }
+    .article-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .article-meta-row { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.85rem; }
+
+    .prose { padding: 10px 0 60px; font-size: 1.02rem; }
+    .prose h2 { font-size: 1.5rem; margin: 42px 0 16px; color: var(--text); }
+    .prose h3 { font-size: 1.15rem; margin: 28px 0 12px; color: var(--text); }
+    .prose p { color: #cbd5e1; margin-bottom: 18px; }
+    .prose ul, .prose ol { color: #cbd5e1; margin: 0 0 20px 22px; }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { color: var(--text); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(14,165,233,0.35); }
+    .prose a:hover { color: var(--accent-hover); }
+
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+    .callout h4 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+    .callout p { color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem; }
+
+    .app-promo { background: linear-gradient(135deg, rgba(167,139,250,0.12), rgba(99,102,241,0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 30px; margin: 36px 0; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .app-promo img { width: 60px; height: 60px; border-radius: 14px; flex-shrink: 0; }
+    .app-promo-text h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .app-promo-text p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0; }
+    .tag-chip { background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 6px 12px; border-radius: 999px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+
+
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What a Document Scanner Sees Before You Press the Shutter",
+  "description": "A scanner app watches your document while you frame it. What it does with those frames is the real privacy question.",
+  "author": {
+    "@type": "Organization",
+    "name": "SixSeasons Labs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SixSeasons Labs"
+  },
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-15",
+  "mainEntityOfPage": "https://mohammadrafiqulislam.com/blog/en/what-a-document-scanner-sees/",
+  "inLanguage": "en",
+  "image": "https://mohammadrafiqulislam.com/assets/og-image.png"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does a scanner app need to look at the camera before I take the picture?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if it shows you the page outline live. Finding the edges means looking at preview frames, but that can be done on a small, greyscale copy that is never stored and never read for text. Ask the app what it does with those frames, not just whether it uploads your photos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does Docuary read the text on my document?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only after a page has been captured and handed to Docuary, during the review step before you save it. Recognition runs on the phone. If you save the page, it goes into the encrypted vault; if you discard it, it is gone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Docuary send anything to Google?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Docuary itself sends nothing off your phone unless you turn on Google Drive backup. Google's document scanner is part of Google Play services, which Google describes as working entirely on the device. Versions up to 0.7.0 did send Google anonymous text-recognition diagnostics, never images or text; that was switched off in 0.8.0, and the privacy policy explains it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to the scanner's copy of my page?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Google's scanner hands each page back as a file in Docuary's private storage. Docuary reads it once and deletes it straight away, and clears out any leftover copy every time the vault locks or the app starts."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">SixSeasons<span> Labs</span></a>
+      <ul id="navList">
+        <li><a href="/apps/">Apps</a></li>
+        <li><a href="/blog/en/" class="active">Blog</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li class="lang-pill"><a href="#" style="color:var(--text);">EN</a> / <a href="/blog/bn/">BN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+<main id="main-content">
+
+  <section class="article-header">
+    <div class="container-narrow">
+      <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/en/">Blog</a> / Document Security</div>
+      <span class="article-tag">Document Security</span>
+      <h1 style="margin-top:14px;">What a Document Scanner Sees Before You Press the Shutter</h1>
+      <p class="article-sub">The moment you point a scanner app at your passport, it is looking at it. Most of the
+        privacy questions people ask stop at "does it upload my photos?" The more useful question starts earlier.</p>
+      <div class="article-meta-row">
+        <span>By SixSeasons Labs</span>
+        <span>&middot;</span>
+        <span>Updated October 2026</span>
+        <span>&middot;</span>
+        <span>6 min read</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="container-narrow">
+
+      <p>A modern scanner app does something clever while you line up the page: it draws an outline around the
+        document in real time, and sometimes takes the picture by itself once the page is steady. To do that, it has to
+        look at the camera feed the whole time you are framing the shot, many times a second.</p>
+
+      <p>That is not sinister in itself. But it means "what does this app do with my documents?" really has three
+        parts: what it does with the camera feed <em>before</em> you take the picture, what it does with the page
+        <em>after</em>, and what it sends anywhere along the way.</p>
+
+      <h2>Three moments worth asking about</h2>
+      <ul>
+        <li><strong>While you frame the shot.</strong> Finding a page's edges only needs a rough picture: a small,
+          greyscale copy is enough to see where the paper ends. Reading the text needs a sharp, full-size image. An app
+          that only wants the outline has no reason to read, keep or upload the preview frames.</li>
+        <li><strong>After you take the picture.</strong> This is the point where the app should start working on the
+          page in earnest: straightening it, reading the text so you can search it later. Ask where that reading happens,
+          on the phone or on a server.</li>
+        <li><strong>Where the page ends up.</strong> A scan saved into your ordinary photo gallery, or a shared folder,
+          is only as private as everything else there. A scan saved into an encrypted vault is a different thing.</li>
+      </ul>
+
+      <div class="callout">
+        <h4>A simple test you can do with any scanner</h4>
+        <p>Switch off Wi-Fi and mobile data, then scan a page. If the app still finds the edges, still reads the text
+          and still lets you search it, the work is happening on your phone. If something stops working, part of it
+          was happening somewhere else.</p>
+      </div>
+
+      <h2>How Docuary handles each moment</h2>
+      <p>Docuary is the encrypted document vault I build, and these were design questions from the start. There are
+        two ways it can scan, and each one deals with the "before" differently.</p>
+
+      <h3>Google's document scanner (the usual way)</h3>
+      <p>From version 0.8.0, tapping Scan opens Google's document scanner, a screen provided by Google Play services.
+        It finds the page edges far more reliably than Docuary's own detector did, even a white leaflet on a white desk,
+        and Google describes it as working entirely on the device. While you are in that screen, Docuary sees nothing at
+        all. Only when you finish does the page come back to Docuary, as a file in its private storage. Docuary reads it
+        once and deletes that copy straight away, and it sweeps out any leftover copy every time the vault locks or the
+        app starts.</p>
+
+      <h3>Docuary's own camera (the fallback)</h3>
+      <p>Phones without Google Play services, or anyone who prefers it, get Docuary's own camera. This is the one that
+        draws the live outline itself, so it is the one where "what does it do before the shutter?" matters most. It
+        reads only the brightness of each preview frame, shrinks it to about 320 pixels across, looks at a handful of
+        frames a second and drops the rest unread. Those frames are never stored, never uploaded and never read for
+        text. The outline turns gold when the page is steady; nothing about the document is kept until you press the
+        shutter.</p>
+
+      <h3>After the shutter, either way</h3>
+      <p>Text recognition runs once, on the captured page, on your phone, while you review it. If you save it, the page
+        and its text go into the encrypted vault, and search finds the document by the words inside it. If you discard
+        it, it is gone.</p>
+
+      <div class="callout">
+        <h4>A correction worth making openly</h4>
+        <p>Docuary's text recognition comes from Google's ML Kit, and up to version 0.7.0 ML Kit sent Google anonymous
+          diagnostics as it ships by default: device model, Android and app version, a per-installation identifier, timing and error counts, never images or text.
+          Earlier versions of the privacy policy said the app made no network requests at all, which was not accurate for
+          those versions. From 0.8.0 that reporting is switched off, and the
+          <a href="/apps/docuary/privacy-policy#mlkit">privacy policy</a> now says so plainly.</p>
+      </div>
+
+      <div class="app-promo">
+        <img src="/assets/docuary_icon.png" alt="Docuary app icon" loading="lazy">
+        <div class="app-promo-text">
+          <h4>Docuary: scan, read and keep documents on your own phone</h4>
+          <p>Docuary is an encrypted document vault for Android. Scan a passport, NID, insurance policy or certificate
+            and it is straightened, read on your phone in English, Bangla, Hindi, Arabic or Urdu, and filed in a vault
+            locked behind your own password. Search finds documents by the words inside them, expiry reminders never name
+            the document on your lock screen, and unless you turn on the optional end-to-end encrypted Google Drive
+            backup, Docuary sends nothing off your phone.</p>
+          <p style="color:var(--muted);font-size:0.88rem;"><strong style="color:var(--text);">Docuary is
+            currently in closed testing on Google Play</strong> and is not publicly available yet. If you'd like
+            to try it early and help shape it, you can join the test from the app page.</p>
+          <a href="/apps/docuary/" class="btn btn-play">Learn more &amp; join the test</a>
+        </div>
+      </div>
+
+      <h2>Five questions to ask any scanner app</h2>
+      <ol>
+        <li><strong>Does it show a live outline, and what does it do with the preview frames?</strong> Look for an
+          answer like "used to find the edges, then discarded".</li>
+        <li><strong>Where is the text read?</strong> On the phone, or uploaded to a server?</li>
+        <li><strong>Where do scans end up?</strong> In your gallery, in a shared folder, or somewhere encrypted?</li>
+        <li><strong>Does it need an account?</strong> An account usually means your documents, or data about them,
+          live somewhere other than your phone.</li>
+        <li><strong>Does the privacy policy name the libraries that phone home?</strong> Analytics and diagnostics often
+          come bundled inside other tools, so a policy that says "nothing" deserves a second look.</li>
+      </ol>
+
+      <h2>The short version</h2>
+      <p>A scanner app is looking at your document long before you take the picture. The good ones use that time only to
+        find the edges, read the text on your phone once you have chosen to keep the page, and store the result somewhere
+        only you can open. Those are the questions to ask, and they are worth asking of every scanner you use, not just
+        this one.</p>
+
+      <div class="tag-row">
+        <span class="tag-chip">Document Security</span>
+        <span class="tag-chip">Privacy</span>
+        <span class="tag-chip">Document Scanner</span>
+        <span class="tag-chip">Android</span>
+      </div>
+
+      <h2>Related reading</h2>
+      <div class="related-grid">
+        <a href="/blog/en/bangla-document-scanner-offline/" class="article-card">
+          <span class="article-tag">Document Security</span>
+          <h3>A Private Document Scanner That Reads Bangla &mdash; Offline</h3>
+        </a>
+        <a href="/blog/en/secure-important-documents-phone-guide/" class="article-card">
+          <span class="article-tag">Document Security</span>
+          <h3>Where Do You Actually Keep a Photo of Your Passport?</h3>
+        </a>
+      </div>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3>Does a scanner app need to look at the camera before I take the picture?</h3>
+        <p>Only if it shows you the page outline live. Finding the edges means looking at preview frames, but that can be done on a small, greyscale copy that is never stored and never read for text. Ask the app what it does with those frames, not just whether it uploads your photos.</p>
+      </div>
+      <div class="faq-item">
+        <h3>When does Docuary read the text on my document?</h3>
+        <p>Only after a page has been captured and handed to Docuary, during the review step before you save it. Recognition runs on the phone. If you save the page, it goes into the encrypted vault; if you discard it, it is gone.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does Docuary send anything to Google?</h3>
+        <p>Docuary itself sends nothing off your phone unless you turn on Google Drive backup. Google&#x27;s document scanner is part of Google Play services, which Google describes as working entirely on the device. Versions up to 0.7.0 did send Google anonymous text-recognition diagnostics, never images or text; that was switched off in 0.8.0, and <a href="/apps/docuary/privacy-policy#mlkit">the privacy policy explains it</a>.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens to the scanner&#x27;s copy of my page?</h3>
+        <p>Google&#x27;s scanner hands each page back as a file in Docuary&#x27;s private storage. Docuary reads it once and deletes it straight away, and clears out any leftover copy every time the vault locks or the app starts.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function () {
+          backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</main>
+</body>
+
+</html>
