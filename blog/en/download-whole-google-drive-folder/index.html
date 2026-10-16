@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Download a Whole Shared Google Drive Folder, Hundreds of Subfolders and All</title>
+  <meta name="description" content="The browser zips big Drive folders, splits them and can&#x27;t resume. How to download a whole shared Google Drive folder to your PC file by file, keeping the structure, retrying drops and skipping what you already have, with rclone or the free Cloudburst app for Windows.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/en/download-whole-google-drive-folder/">
+  <meta property="og:title" content="How to Download a Whole Shared Google Drive Folder, Hundreds of Subfolders and All">
+  <meta property="og:description" content="Download a whole shared Google Drive folder to your PC, structure intact, without zips that stall halfway.">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:site_name" content="SixSeasons Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/blog/en/download-whole-google-drive-folder/">
+  <link rel="alternate" hreflang="en" href="https://mohammadrafiqulislam.com/blog/en/download-whole-google-drive-folder/">
+  <link rel="alternate" hreflang="bn" href="https://mohammadrafiqulislam.com/blog/bn/google-drive-puro-folder-download/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Noto+Sans+Bengali:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --accent-hover: #38bdf8;
+      --border: rgba(255, 255, 255, 0.08);
+      --success: #10b981;
+      --green: #10b981;
+      --android: #3DDC84;
+      --bn: #f59e0b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; max-width: 100%; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', 'Noto Sans Bengali', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1200px; margin: auto; padding: 0 24px; width: 100%; }
+    .container-narrow { max-width: 780px; margin: auto; padding: 0 24px; width: 100%; }
+
+    section { padding: 80px 0; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .container { height: 70px; display: flex; justify-content: space-between; align-items: center; }
+
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.5px; text-decoration: none; }
+    .logo span { color: var(--accent); }
+
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; margin-left: 28px; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    .lang-pill {
+      display: inline-block;
+      margin-left: 28px;
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lang-pill a { margin: 0 4px; }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.25s ease; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-toggle { display: flex; }
+      nav ul { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: rgba(15,23,42,0.98); border-bottom: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+      nav ul.open { max-height: 400px; }
+      nav ul li { width: 100%; }
+      nav a { margin: 0; padding: 14px 24px; display: block; border-bottom: 1px solid var(--border); }
+      .lang-pill { margin: 14px 24px; }
+    }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.5px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-play { background: #fff; color: var(--bg); }
+    .prose a.btn-play, a.btn-play { color: var(--bg); border-bottom: none; }
+    .btn-play:hover { background: #e2e8f0; }
+    .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .eyebrow.bn-eyebrow { color: var(--bn); }
+
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+
+    footer { padding: 50px 0 40px; text-align: center; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: none; margin: 0 12px; font-size: 0.9rem; }
+    footer a:hover { color: var(--accent); }
+    footer p { color: var(--muted); font-size: 0.85rem; margin-top: 18px; }
+
+    .back-to-top { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; border: none; font-size: 1.1rem; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 900; }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { background: var(--accent-hover); }
+
+    /* ── Blog hub / listing ─────────────────────── */
+    .blog-hero { padding: 140px 0 60px; background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 45%); }
+    .blog-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 18px; }
+    .blog-hero p { color: var(--muted); font-size: 1.05rem; max-width: 640px; }
+
+    .lang-choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    @media (max-width: 700px) { .lang-choice-grid { grid-template-columns: 1fr; } }
+    .lang-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; text-decoration: none; display: block; transition: border-color 0.2s, transform 0.2s; }
+    .lang-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .lang-card h2 { color: var(--text); font-size: 1.4rem; margin-bottom: 10px; }
+    .lang-card p { color: var(--muted); font-size: 0.92rem; }
+    .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+    .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+
+    .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
+    .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
+    .article-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .article-tag { display: inline-block; width: fit-content; background: rgba(14,165,233,0.12); color: var(--accent-hover); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+    .article-card h3 { color: var(--text); font-size: 1.15rem; line-height: 1.35; }
+    .article-card p { color: var(--muted); font-size: 0.9rem; }
+    .article-meta { color: var(--muted); font-size: 0.78rem; margin-top: auto; padding-top: 6px; border-top: 1px solid var(--border); }
+
+    .coming-soon-note { margin-top: 40px; padding: 18px 22px; border: 1px dashed var(--border); border-radius: 12px; color: var(--muted); font-size: 0.88rem; }
+
+    /* ── Article page ─────────────────────── */
+    .article-header { padding: 150px 0 40px; }
+    .breadcrumb { color: var(--muted); font-size: 0.82rem; margin-bottom: 18px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .article-header h1 { font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.25; margin-bottom: 18px; }
+    .article-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; }
+    .article-meta-row { display: flex; flex-wrap: wrap; gap: 16px; color: var(--muted); font-size: 0.85rem; }
+
+    .prose { padding: 10px 0 60px; font-size: 1.02rem; }
+    .prose h2 { font-size: 1.5rem; margin: 42px 0 16px; color: var(--text); }
+    .prose h3 { font-size: 1.15rem; margin: 28px 0 12px; color: var(--text); }
+    .prose p { color: #cbd5e1; margin-bottom: 18px; }
+    .prose ul, .prose ol { color: #cbd5e1; margin: 0 0 20px 22px; }
+    .prose li { margin-bottom: 8px; }
+    .prose strong { color: var(--text); }
+    .prose a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(14,165,233,0.35); }
+    .prose a:hover { color: var(--accent-hover); }
+
+    .callout { background: var(--card); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 12px; padding: 22px 24px; margin: 30px 0; }
+    .callout h4 { font-size: 0.95rem; color: var(--accent); margin-bottom: 8px; }
+    .callout p { color: #cbd5e1; margin-bottom: 0; font-size: 0.95rem; }
+
+    .app-promo { background: linear-gradient(135deg, rgba(167,139,250,0.12), rgba(99,102,241,0.06)); border: 1px solid var(--border); border-radius: 18px; padding: 30px; margin: 36px 0; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .app-promo img { width: 60px; height: 60px; border-radius: 14px; flex-shrink: 0; }
+    .app-promo-text h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--text); }
+    .app-promo-text p { color: var(--muted); font-size: 0.88rem; margin-bottom: 14px; }
+
+    .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .faq-item h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 30px 0; }
+    .tag-chip { background: var(--card); border: 1px solid var(--border); color: var(--muted); font-size: 0.78rem; padding: 6px 12px; border-radius: 999px; }
+
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 18px; }
+
+
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+    :lang(bn) { font-family: 'Noto Sans Bengali', 'DM Sans', sans-serif; }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Download a Whole Shared Google Drive Folder, Hundreds of Subfolders and All",
+  "description": "Download a whole shared Google Drive folder to your PC, structure intact, without zips that stall halfway.",
+  "author": {
+    "@type": "Organization",
+    "name": "SixSeasons Labs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SixSeasons Labs"
+  },
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-15",
+  "mainEntityOfPage": "https://mohammadrafiqulislam.com/blog/en/download-whole-google-drive-folder/",
+  "inLanguage": "en",
+  "image": "https://mohammadrafiqulislam.com/assets/og-image.png"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need my own Google account for a shared link?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You connect your own Google Drive once, and the shared folder is downloaded through that connection. One connection works for as many shared links as you like."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If a download stops halfway, do I start from scratch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Run the same download again from History: anything already downloaded is skipped and only the rest comes down."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What else does it work with besides Google Drive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dropbox, OneDrive, Box, pCloud, MEGA, Amazon S3, SFTP and the rest of rclone's roughly 70 services."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, completely free to use. It is freeware, not open source; the open-source rclone inside it keeps its own licence."
+      }
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="logo">SixSeasons<span> Labs</span></a>
+      <ul id="navList">
+        <li><a href="/apps/">Apps</a></li>
+        <li><a href="/blog/en/" class="active">Blog</a></li>
+        <li><a href="/resume/">Resume</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li class="lang-pill"><a href="#" style="color:var(--text);">EN</a> / <a href="/blog/bn/google-drive-puro-folder-download/" lang="bn">BN</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+<main id="main-content">
+
+  <section class="article-header">
+    <div class="container-narrow">
+      <div class="breadcrumb"><a href="/">Home</a> / <a href="/blog/en/">Blog</a> / Windows Tools</div>
+      <span class="article-tag">Windows Tools</span>
+      <h1 style="margin-top:14px;">How to Download a Whole Shared Google Drive Folder, Hundreds of Subfolders and All</h1>
+      <p class="article-sub">Someone shares a Drive folder with years of files in it. The browser download zips it, splits
+        it, stalls halfway, and leaves you guessing what's missing. There's a calmer way to bring the whole tree down to
+        your PC.</p>
+      <div class="article-meta-row">
+        <span>By SixSeasons Labs</span>
+        <span>&middot;</span>
+        <span>Updated October 2026</span>
+        <span>&middot;</span>
+        <span>6 min read</span>
+      </div>
+      <p style="margin-top:12px;font-size:0.9rem;"><a href="/blog/bn/google-drive-puro-folder-download/" lang="bn" style="color:var(--accent);">বাংলায় পড়ুন →</a></p>
+    </div>
+  </section>
+
+  <section class="prose">
+    <div class="container-narrow">
+
+      <p>A colleague shares a folder of project files. A relative shares every family photo since 2010. A government office
+        or an archive shares a collection of scanned records, divided into hundreds of subfolders. You click
+        <em>Download</em>, and the trouble starts.</p>
+
+      <p>For a small folder, the browser is fine. For a big one, it is the wrong tool, and knowing why saves an evening of
+        retrying.</p>
+
+      <h2>Why the browser struggles with big folders</h2>
+      <ul>
+        <li><strong>It zips first.</strong> Drive has to pack the folder into zip files before anything downloads, and a
+          large folder is often split into several separate zips.</li>
+        <li><strong>An interruption means starting over.</strong> If the connection drops halfway through a large zip,
+          there's usually no resuming it.</li>
+        <li><strong>You can't easily tell what's missing.</strong> After unzipping several parts, there's no simple check
+          that every file in every subfolder actually arrived.</li>
+        <li><strong>No second pass.</strong> If the folder gets new files next month, the browser can't fetch just those;
+          it's the whole thing again.</li>
+      </ul>
+
+      <div class="callout">
+        <h4>What a big download actually needs</h4>
+        <p>Copy files one by one rather than as one giant zip, keep the folder structure as it is, retry automatically
+          when a transfer drops, skip files you already have, and show real progress. Then a stopped download simply
+          continues where it left off.</p>
+      </div>
+
+      <h2>The tool that does this: rclone</h2>
+      <p>The open-source program <a href="https://rclone.org/" target="_blank" rel="noopener">rclone</a> is the long-standing
+        answer for moving whole folder trees between cloud storage and your computer. It speaks Google Drive, Dropbox,
+        OneDrive, S3 and dozens of other services, retries failed transfers and skips files that are already there. Its
+        only real drawback is that it runs from the command line, with a configuration step that asks a long series of
+        technical questions. That puts it out of reach for most people.</p>
+
+      <div class="app-promo">
+        <img src="/assets/cloudburst_icon.png" alt="Cloudburst app icon" loading="lazy">
+        <div class="app-promo-text">
+          <h4>Cloudburst: rclone's power, without the command line</h4>
+          <p>Cloudburst is my free Windows app built on rclone. Pick a cloud and sign in through your browser; Cloudburst
+            answers rclone's setup questions for you. Paste a shared Google Drive folder link, or browse your own folders
+            and "Shared with me", pick a folder and a destination, and see the total size before you start. Downloads go
+            into a queue with pause, resume, cancel and automatic retry, with real percent, speed and ETA, and files you
+            already have are skipped, so running a download again finishes it. Save common downloads as one-click presets.
+            No installer: unzip and run.</p>
+          <a href="/#tools" class="btn btn-play">Download Cloudburst for Windows</a>
+        </div>
+      </div>
+
+      <h2>Step by step with Cloudburst</h2>
+
+      <h3>1. Connect Google Drive once</h3>
+      <p>Choose Google Drive and sign in through your browser. Because rclone's shared Google sign-in app is being retired
+        during 2026, Cloudburst walks you through creating your own free Google app first. It's a one-time step of about
+        five minutes, and every later Google Drive connection reuses it.</p>
+
+      <h3>2. Paste the shared link, or browse</h3>
+      <p>Paste the link to the folder someone shared with you, or browse your own Drive and "Shared with me" in a folder tree
+        and pick exactly the folder you want.</p>
+
+      <h3>3. Check the size, pick a destination</h3>
+      <p>A dry run shows how big the download is before it starts, so you know whether that drive has room. Choose where it
+        should go; the folder structure is kept exactly as it is in Drive.</p>
+
+      <h3>4. Let it run, and run it again if it stops</h3>
+      <p>Transfers that drop are retried automatically. If the PC sleeps or the connection goes down for longer, start the
+        same download again from History: files already on your disk are skipped, so it picks up the rest.</p>
+
+      <h2>A few honest notes</h2>
+      <ul>
+        <li><strong>It's Windows only:</strong> Windows 10 or 11, 64-bit.</li>
+        <li><strong>Windows SmartScreen will warn you the first time.</strong> The app isn't code-signed yet, so choose
+          "More info", then "Run anyway". You only do this once.</li>
+        <li><strong>It downloads what you're allowed to see.</strong> A shared link only works if the folder is shared with
+          you or with anyone who has the link; Cloudburst doesn't get around permissions.</li>
+        <li><strong>Your files go straight to your PC.</strong> Cloudburst has no server of its own; connections and history
+          are kept in a folder next to the app.</li>
+      </ul>
+
+      <h2>The short version</h2>
+      <p>For a few files, the browser is fine. For a folder with hundreds of subfolders, copy it file by file with something
+        that retries, skips what you already have and keeps the structure. rclone does that; Cloudburst puts it behind a
+        sign-in button and a progress bar.</p>
+
+      <div class="tag-row">
+        <span class="tag-chip">Google Drive</span>
+        <span class="tag-chip">rclone</span>
+        <span class="tag-chip">Windows</span>
+        <span class="tag-chip">Free Tools</span>
+      </div>
+
+      <h2>Related reading</h2>
+      <div class="related-grid">
+        <a href="/blog/en/measure-land-from-mouza-map/" class="article-card">
+          <span class="article-tag">Land &amp; Mouza Maps</span>
+          <h3>How to Measure Your Land from the Mouza Map on Your Phone</h3>
+        </a>
+        <a href="/blog/en/secure-important-documents-phone-guide/" class="article-card">
+          <span class="article-tag">Document Security</span>
+          <h3>Where Do You Actually Keep a Photo of Your Passport?</h3>
+        </a>
+      </div>
+
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <h3>Do I need my own Google account for a shared link?</h3>
+        <p>Yes. You connect your own Google Drive once, and the shared folder is downloaded through that connection. One connection works for as many shared links as you like.</p>
+      </div>
+      <div class="faq-item">
+        <h3>If a download stops halfway, do I start from scratch?</h3>
+        <p>No. Run the same download again from History: anything already downloaded is skipped and only the rest comes down.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What else does it work with besides Google Drive?</h3>
+        <p>Dropbox, OneDrive, Box, pCloud, MEGA, Amazon S3, SFTP and the rest of rclone&#x27;s roughly 70 services.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is it free?</h3>
+        <p>Yes, completely free to use. It is freeware, not open source; the open-source rclone inside it keeps its own licence.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      var backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function () {
+          backToTop.classList.toggle('visible', window.scrollY > 500);
+        });
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</main>
+</body>
+
+</html>
