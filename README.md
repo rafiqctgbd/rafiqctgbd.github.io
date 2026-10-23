@@ -36,7 +36,7 @@ the entire deploy process.
 | [Medicine & Health Reminder](https://mohammadrafiqulislam.com/apps/medicine-health-reminder/) | `com.rafiqctgbd.medicinehealth` | Published |
 | [NextCue: Bill & Life Reminder](https://mohammadrafiqulislam.com/apps/nextcue/) | `com.rafiqctgbd.nextcue` | Published |
 | [Docuary: Document Vault](https://mohammadrafiqulislam.com/apps/docuary/) | `com.rafiqctgbd.docuary` | In testing |
-| [Mouza Plot & Land Measure BD](https://mohammadrafiqulislam.com/apps/mouza-plot/) | `com.rafiqctgbd.mouzaplot` | In testing |
+| [Mouza Plot & Land Measure BD](https://mohammadrafiqulislam.com/apps/mouza-plot/) | `com.rafiqctgbd.mouzaplot` | Published |
 
 All four are free, ad-free, and store data locally on the device. MHR, NextCue
 and Docuary offer optional user-controlled Google Drive backup; Mouza Plot saves
