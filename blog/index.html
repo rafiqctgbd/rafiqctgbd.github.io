@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Medicine Reminders, Health &amp; Productivity Tips | SixSeasons Labs</title>
-  <meta name="description" content="Practical English and Bangla guides on medicine reminders, health habits, Android notification fixes, and daily productivity — by the developer of Medicine & Health Reminder.">
+  <title>Blog — Medicine, Land Records, Documents &amp; Reminders | SixSeasons Labs</title>
+  <meta name="description" content="Practical English and Bangla guides on medicine reminders, measuring land from Mouza maps, keeping documents safe, bills and renewals, and Android fixes — from the developer of the SixSeasons Labs apps.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://mohammadrafiqulislam.com/blog/">
-  <meta property="og:title" content="Blog — Medicine Reminders, Health &amp; Productivity Tips | SixSeasons Labs">
-  <meta property="og:description" content="Practical English and Bangla guides on medicine reminders, health habits, Android notification fixes, and daily productivity — by the developer of Medicine & Health Reminder.">
+  <meta property="og:title" content="Blog — Medicine, Land Records, Documents &amp; Reminders | SixSeasons Labs">
+  <meta property="og:description" content="Practical English and Bangla guides on medicine reminders, measuring land from Mouza maps, keeping documents safe, bills and renewals, and Android fixes — from the developer of the SixSeasons Labs apps.">
   <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
   <meta property="og:site_name" content="SixSeasons Labs">
   <meta name="twitter:card" content="summary_large_image">
@@ -133,10 +133,12 @@
     .lang-card p { color: var(--muted); font-size: 0.92rem; }
     .lang-card .flag { font-size: 1.8rem; margin-bottom: 12px; display: block; }
 
-    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 20px; }
+    .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 20px; }
     .pillar-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
     .pillar-card h3 { font-size: 1rem; color: var(--text); margin-bottom: 8px; }
     .pillar-card p { color: var(--muted); font-size: 0.87rem; }
+    .pillar-card .pillar-app { display: inline-block; margin-top: 10px; font-size: 0.8rem; color: var(--accent); text-decoration: none; }
+    .pillar-card .pillar-app:hover { color: var(--accent-hover); }
 
     .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 36px; }
     .article-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 26px; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s; }
@@ -202,7 +204,7 @@
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Blog — Medicine Reminders, Health & Productivity Tips | SixSeasons Labs",
+  "name": "Blog — Medicine, Land Records, Documents & Reminders | SixSeasons Labs",
   "url": "https://mohammadrafiqulislam.com/blog/",
   "inLanguage": "en",
   "isPartOf": {
@@ -218,7 +220,7 @@
     "@type": "Organization",
     "name": "SixSeasons Labs"
   },
-  "description": "Practical English and Bangla guides on medicine reminders, health habits, Android notification fixes, and daily productivity — by the developer of Medicine & Health Reminder.",
+  "description": "Practical English and Bangla guides on medicine reminders, measuring land from Mouza maps, keeping documents safe, bills and renewals, and Android fixes — from the developer of the SixSeasons Labs apps.",
   "primaryImageOfPage": {
     "@type": "ImageObject",
     "url": "https://mohammadrafiqulislam.com/assets/og-image.png"
@@ -249,20 +251,20 @@
   <section class="blog-hero">
     <div class="container">
       <div class="eyebrow">Blog &middot; ব্লগ</div>
-      <h1>Guides on medicine reminders, health habits &amp; staying on schedule</h1>
-      <p>Practical, no-nonsense articles to help you (or someone you care for) never miss a dose,
-        an appointment, or an important renewal &mdash; in English and in Bangla.</p>
+      <h1>Guides on medicine, land records, documents &amp; staying on schedule</h1>
+      <p>Practical, no-nonsense articles in English and in Bangla: take medicine on time, measure your
+        land from a Mouza map, keep important papers safe, and never miss a bill or a renewal.</p>
 
       <div class="lang-choice-grid">
         <a href="/blog/en/" class="lang-card">
           <span class="flag">🇬🇧</span>
           <h2>English Blog</h2>
-          <p>Medicine reminders, health tips, Android notification troubleshooting, and productivity guides.</p>
+          <p>Medicine reminders, land and Mouza maps, keeping documents safe, Android fixes and free tools.</p>
         </a>
         <a href="/blog/bn/" class="lang-card">
           <span class="flag">🇧🇩</span>
           <h2 class="bn-text" lang="bn">বাংলা ব্লগ</h2>
-          <p class="bn-text" lang="bn">ওষুধ খাওয়ার রিমাইন্ডার, স্বাস্থ্য টিপস এবং দৈনন্দিন রুটিন নিয়ে সহজ বাংলা গাইড।</p>
+          <p class="bn-text" lang="bn">ওষুধের রিমাইন্ডার, মৌজা ম্যাপে জমির মাপ ও খতিয়ান, কাগজপত্র নিরাপদ রাখা আর দৈনন্দিন কাজের সহজ বাংলা গাইড।</p>
         </a>
       </div>
     </div>
@@ -271,28 +273,43 @@
   <section style="padding-top:0;">
     <div class="container">
       <h2 style="font-size:1.4rem;margin-bottom:6px;">What this blog covers</h2>
-      <p style="color:var(--muted);max-width:680px;">Content is organized around five practical themes, all built from
-        real experience developing <a href="/apps/medicine-health-reminder/" style="color:var(--accent);">Medicine &amp; Health Reminder</a>.</p>
+      <p style="color:var(--muted);max-width:680px;">Six practical themes, each built from real experience developing
+        my apps: <a href="/apps/medicine-health-reminder/" style="color:var(--accent);">Medicine &amp; Health Reminder</a>,
+        <a href="/apps/nextcue/" style="color:var(--accent);">NextCue</a>, <a href="/apps/docuary/" style="color:var(--accent);">Docuary</a> and
+        <a href="/apps/mouza-plot/" style="color:var(--accent);">Mouza Plot</a>.</p>
       <div class="pillar-grid">
         <div class="pillar-card">
-          <h3>💊 Medicine Reminders</h3>
-          <p>Never-miss-a-dose strategies for daily medicine, diabetes, blood pressure, and elderly care.</p>
+          <h3>💊 Medicine &amp; Health</h3>
+          <p>Never-miss-a-dose habits, what to do after a missed dose, medicine for elderly parents, running out of
+            stock, and logging blood pressure and sugar on your phone.</p>
+          <a href="/apps/medicine-health-reminder/" class="pillar-app">Medicine &amp; Health Reminder →</a>
         </div>
         <div class="pillar-card">
-          <h3>🩺 Health Tips</h3>
-          <p>Water intake, sleep schedules, checkup and vaccination reminders.</p>
+          <h3>📅 Bills &amp; Renewals</h3>
+          <p>Passport, licence and insurance renewals, bills and subscriptions, pausing reminders without forgetting to turn them back on,
+            and choosing the right reminder app.</p>
+          <a href="/apps/nextcue/" class="pillar-app">NextCue →</a>
         </div>
         <div class="pillar-card">
-          <h3>📅 General Reminders</h3>
-          <p>Passport renewal, driving license, bills, and subscriptions &mdash; the things everyone forgets.</p>
+          <h3>🗺️ Land &amp; Mouza Maps</h3>
+          <p>Measure a plot from a Mouza map, find it on the satellite map, read khatian shares (anna&ndash;gonda),
+            and match an old dag number to the new survey.</p>
+          <a href="/apps/mouza-plot/" class="pillar-app">Mouza Plot &amp; Land Measure BD →</a>
+        </div>
+        <div class="pillar-card">
+          <h3>🗂️ Documents</h3>
+          <p>Keeping passports, certificates and policies safe on your phone, and scanning documents offline without
+            sending them to the cloud.</p>
+          <a href="/apps/docuary/" class="pillar-app">Docuary →</a>
         </div>
         <div class="pillar-card">
           <h3>🤖 Android Tips</h3>
-          <p>Why notifications get delayed, battery optimization fixes, and alarm reliability.</p>
+          <p>Why reminders and alarms get delayed, battery-optimisation fixes, and how to see an app's exact Google
+            Play install count.</p>
         </div>
         <div class="pillar-card">
-          <h3>⏱️ Productivity</h3>
-          <p>Habit stacking, daily routines, and building systems that don't rely on willpower.</p>
+          <h3>🛠️ Free Tools</h3>
+          <p>Printing Wafid medical slips in bulk and downloading a whole Google Drive folder at once.</p>
         </div>
       </div>
     </div>
