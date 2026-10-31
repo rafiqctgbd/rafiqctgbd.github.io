@@ -918,6 +918,7 @@
           <li><a href="#g-satellite">&nbsp;&nbsp;9. Show on satellite map</a></li>
           <li><a href="#g-tools">&nbsp;&nbsp;10. Tools &amp; khatian search</a></li>
           <li><a href="#g-compare">&nbsp;&nbsp;11. Compare surveys</a></li>
+          <li><a href="#g-divide">&nbsp;&nbsp;12. Divide a plot</a></li>
           <li><a href="#units">Land Units</a></li>
           <li><a href="#faq">Questions</a></li>
           <li><a href="#terms">Terms of Service</a></li>
@@ -1048,8 +1049,14 @@
           <li>Tap inside a plot to select it, then <span class="ui">Rename</span> to give it its dag number or a name.</li>
           <li>To move a corner, tap its white dot, move the map until the crosshair is where the corner belongs, and
             tap <span class="ui">Place here</span>. While you move it, the app shows what the area would become. <span class="ui">Add after</span>
-            inserts a new corner after the selected one.</li>
+            inserts a new corner after the selected one. While a corner moves, the lengths of its two sides and the plot's
+            angle there show right beside it, so they stay in view however far you zoom in.</li>
           <li><span class="ui">Delete plot</span> removes it (Undo brings it back).</li>
+          <li><strong>Recorded area:</strong> under a selected plot, type the area the khatian or deed records in
+            <span class="ui">Recorded area (khatian or deed), decimal</span>. The app shows how far the measurement differs, in decimal
+            and per cent (in red when more than 2%), and the PDF report includes it.</li>
+          <li><strong>Find a plot:</strong> with two or more plots, the search icon at the top finds one by its dag number or name
+            (English or Bengali digits) and zooms to it.</li>
         </ol>
 
         <div class="tip-box"><strong>Totals and shares:</strong> ⋮ menu › <span class="ui">Total &amp; shares</span> adds up the
@@ -1066,6 +1073,9 @@
           <li><strong>Backup:</strong> Settings › <span class="ui">Back up maps and plots</span> saves one file with every map,
             plot and Google map outline. On a new phone, <span class="ui">Restore from a backup</span> adds them back; nothing
             already on the phone is deleted.</li>
+          <li><strong>Plot table (CSV):</strong> ⋮ menu › <span class="ui">Export plot table (Excel, CSV)…</span>
+            (<span class="ui">Pro · free during launch</span>) saves one row per plot: area in every unit, kani–gonda, perimeter,
+            sides, recorded area and difference, with a total. It opens in Excel, Google Sheets or LibreOffice, Bengali included.</li>
           <li><strong>DXF:</strong> ⋮ menu › <span class="ui">Export DXF…</span> saves the plots for AutoCAD and other CAD software
             (units: ground inches, the same as the official Mouza DWG drawings).</li>
           <li><strong>Validation:</strong> ⋮ menu › <span class="ui">Validation</span> compares your plots with areas you already know,
@@ -1166,6 +1176,29 @@
         <div class="tip-box"><strong>An approximate comparison, not an official pentagraph.</strong> Old maps were drawn by hand: the
           fit is good near the matching points and drifts away from them. For mutation, disputes or court, use a licensed surveyor (amin)
           and your land office.</div>
+
+        <h3 id="g-divide">12. Divide a plot (batwara)</h3>
+        <p>Select a measured plot and tap <span class="ui">Divide this plot (shares)</span> (<span class="ui">Pro · free during launch</span>).
+          The map needs its scale set, and the outline must not cross itself.</p>
+        <ol>
+          <li><strong>Shares:</strong> type them like <span class="ui">1, 1, 2</span> (two equal heirs and a double share) or
+            <span class="ui">40, 35, 25</span> (percentages), or tap 2–5 equal parts.</li>
+          <li><strong>Direction of the cuts:</strong> <span class="ui">West–east lines</span> or <span class="ui">North–south lines</span>
+            (the map's top taken as north; part 1 is the northernmost or westernmost), or follow one of the plot's sides:
+            <span class="ui">Every part on this side</span> gives each part a piece of that side, such as a road frontage;
+            <span class="ui">Strips along this side</span> cuts parallel to it. <span class="ui">Start from the other end</span> numbers
+            the parts the other way.</li>
+          <li>The parts show on the map in colour, each with its area in decimal, katha and kani–gonda. If a part would
+            fall into two pieces (an L- or U-shaped plot), the app says so: choose another direction.</li>
+          <li><span class="ui">Add as plots</span> makes each part a plot of its own, named after the plot (2486/1, 2486/2 …), with
+            its sides. Dividing the same plot again replaces the old parts. Undo takes it back.</li>
+          <li><strong>Report:</strong> <span class="ui">Share PDF</span> on the divided plot or any part asks
+            <span class="ui">Just this plot</span> or <span class="ui">The whole division</span>: a first page with the parts in colour
+            and a table of shares, areas and sides, then a page for each part.</li>
+        </ol>
+        <div class="tip-box"><strong>A proposal, not a legal partition.</strong> Straight cuts by area are a starting point for a
+          family discussion. Land value, roads, ponds and buildings may call for a different split, and only an amin's
+          measurement on the ground and a registered deed make it final.</div>
       </section>
 
       <section id="units">
@@ -1493,7 +1526,9 @@
         <ol>
           <li>দাগ বেছে নিতে তার ভেতরে ট্যাপ করুন, তারপর দাগ নম্বর বা নাম দিতে <span class="ui">নাম দিন</span>-এ ট্যাপ করুন।</li>
           <li>কোণ সরাতে তার সাদা বিন্দুতে ট্যাপ করুন, ক্রসহেয়ার কোণের সঠিক জায়গায় না আসা পর্যন্ত ম্যাপ সরান, তারপর <span class="ui">এখানে বসান</span>-এ ট্যাপ করুন। সরানোর সময় আয়তন কী হবে তা অ্যাপ দেখায়। <span class="ui">এরপর যোগ</span> নির্বাচিত কোণের পরে নতুন কোণ বসায়।</li>
-          <li><span class="ui">দাগ মুছুন</span> দাগটি সরিয়ে দেয় (Undo করলে ফিরে আসে)।</li>
+          <li><span class="ui">দাগ মুছুন</span> দাগটি সরিয়ে দেয় (Undo করলে ফিরে আসে)। কোণ সরানোর সময় পাশের দুই বাহুর মাপ আর সেখানে দাগের কোণ (ডিগ্রিতে) ঠিক পাশেই দেখায়, তাই যত জুম করুন চোখে থাকে।</li>
+          <li><strong>রেকর্ডের জমি:</strong> বেছে নেওয়া দাগের নিচে <span class="ui">রেকর্ডের জমি (খতিয়ান বা দলিল), শতক</span>-এ খতিয়ান বা দলিলের জমি লিখুন। মাপ কত কম-বেশি, শতক ও শতাংশে দেখায় (২%-এর বেশি হলে লাল), আর PDF রিপোর্টেও থাকে।</li>
+          <li><strong>দাগ খুঁজুন:</strong> দুই বা বেশি দাগ থাকলে ওপরের খোঁজার আইকন দিয়ে দাগ নম্বর বা নাম লিখে (বাংলা বা ইংরেজি অঙ্কে) দাগটি খুঁজে সেখানে জুম করা যায়।</li>
         </ol>
         <div class="tip-box"><strong>মোট ও ভাগ:</strong> ⋮ মেনু › <span class="ui">মোট ও ভাগ</span> আপনার টিক দেওয়া দাগগুলোর যোগফল করে এবং মোটকে ভাগে ভাগ করে, যেমন <span class="ui">১, ১, ২</span> (দুজন সমান ওয়ারিশ ও একজন দ্বিগুণ অংশের) বা <span class="ui">৪০, ৩৫, ২৫</span> (শতাংশ)। এটি শুধু আয়তন ভাগ করে; জমির ওপর কার অংশ কোথায় পড়বে তা আঁকে না।</div>
 
@@ -1501,6 +1536,7 @@
         <ol>
           <li><strong>PDF রিপোর্ট:</strong> একটি দাগ বেছে <span class="ui">PDF শেয়ার</span>-এ ট্যাপ করে হোয়াটসঅ্যাপ, ই-মেইল বা ড্রাইভে পাঠান। কয়েকটি দাগের জন্য ⋮ মেনু › <span class="ui">PDF রিপোর্ট শেয়ার / সেভ করুন…</span>: দাগগুলোতে টিক দিয়ে <span class="ui">শেয়ার</span> বা <span class="ui">সেভ</span> চাপুন। এতে প্রতিটি দাগের আয়তন, বাহু, পরিসীমা এবং ব্যবহৃত ক্যালিব্রেশন থাকে; প্রতিটি পাতার শেষে অ্যাপের নাম ও Google Play-র লিংক থাকে।</li>
           <li><strong>ব্যাকআপ:</strong> সেটিংস › <span class="ui">ম্যাপ ও দাগের ব্যাকআপ</span> প্রতিটি ম্যাপ, দাগ ও গুগল ম্যাপ আউটলাইনসহ একটি ফাইল সংরক্ষণ করে। নতুন ফোনে <span class="ui">ব্যাকআপ থেকে রিস্টোর</span> সেগুলো ফিরিয়ে আনে; ফোনে যা আগে থেকে আছে তার কিছুই মোছা হয় না।</li>
+          <li><strong>দাগের তালিকা (CSV):</strong> ⋮ মেনু › <span class="ui">দাগের তালিকা এক্সপোর্ট (Excel, CSV)…</span> (<span class="ui">Pro · লঞ্চ অফারে ফ্রি</span>) প্রতিটি দাগের এক সারি সংরক্ষণ করে: সব এককে জমি, কানি–গণ্ডা, পরিসীমা, বাহু, রেকর্ডের জমি ও পার্থক্য, শেষে মোট। এক্সেল, গুগল শিটস বা লিব্রেঅফিসে খোলে, বাংলাসহ।</li>
           <li><strong>DXF:</strong> ⋮ মেনু › <span class="ui">DXF এক্সপোর্ট…</span> অটোক্যাড ও অন্যান্য ক্যাড সফটওয়্যারের জন্য দাগগুলো সংরক্ষণ করে (একক: ভূমির ইঞ্চি, অফিসিয়াল মৌজা DWG ড্রয়িংয়ের মতোই)।</li>
           <li><strong>যাচাই:</strong> ⋮ মেনু › <span class="ui">যাচাই</span> আপনার দাগগুলোকে আপনার আগে থেকে জানা আয়তনের সাথে (যেমন দলিল বা অটোক্যাড থেকে) মেলায় এবং পার্থক্য দেখায়।</li>
         </ol>
@@ -1572,6 +1608,27 @@
         </ol>
         <div class="tip-box"><strong>আনুমানিক তুলনা, অফিসিয়াল পেন্টাগ্রাফ নয়।</strong> পুরোনো ম্যাপ হাতে আঁকা: বিন্দুর কাছে মিল ভালো,
           দূরে সরে যায়। নামজারি, বিরোধ বা আদালতের কাজে লাইসেন্সধারী আমিন (সার্ভেয়ার) ও আপনার ভূমি অফিসের সাহায্য নিন।</div>
+
+        <h3>১২. দাগ ভাগ (বাটোয়ারা)</h3>
+        <p>মাপা একটি দাগ বেছে <span class="ui">দাগ ভাগ করুন (বাটোয়ারা)</span> (<span class="ui">Pro · লঞ্চ অফারে ফ্রি</span>)-এ ট্যাপ করুন।
+          ম্যাপের স্কেল ঠিক থাকতে হবে, আর সীমানা নিজেকে কাটলে চলবে না।</p>
+        <ol>
+          <li><strong>অংশ:</strong> লিখুন <span class="ui">১, ১, ২</span> (দুজন সমান ওয়ারিশ ও একজন দ্বিগুণ) বা <span class="ui">৪০, ৩৫, ২৫</span>
+            (শতাংশ), অথবা ২–৫ সমান ভাগের বোতাম চাপুন।</li>
+          <li><strong>কাটার দিক:</strong> <span class="ui">আড়াআড়ি (পূর্ব-পশ্চিম)</span> বা <span class="ui">লম্বালম্বি (উত্তর-দক্ষিণ)</span> (ম্যাপের
+            ওপরের দিক উত্তর ধরে; ভাগ ১ সবচেয়ে উত্তরে বা পশ্চিমে), অথবা দাগের কোনো বাহু ধরে: <span class="ui">প্রতি ভাগ এই বাহু ছুঁয়ে</span>
+            দিলে প্রতিটি ভাগ ওই বাহুর কিছুটা পায়, যেমন রাস্তার দিক; <span class="ui">এই বাহুর সমান্তরাল ফালি</span> বাহুর সমান্তরালে কাটে।
+            <span class="ui">অন্য প্রান্ত থেকে শুরু</span> ভাগের নম্বর উল্টো দিক থেকে দেয়।</li>
+          <li>ভাগগুলো ম্যাপে রঙে দেখায়, প্রতিটির জমি শতক, কাঠা ও কানি–গণ্ডায়। কোনো ভাগ দুই টুকরো হয়ে গেলে (L বা U আকারের দাগে)
+            অ্যাপ জানায়: অন্য দিক বেছে নিন।</li>
+          <li><span class="ui">দাগ হিসেবে যোগ করুন</span> চাপলে প্রতিটি ভাগ আলাদা দাগ হয়, মূল দাগের নামে (২৪৮৬/১, ২৪৮৬/২ …), বাহুর মাপসহ।
+            একই দাগ আবার ভাগ করলে আগের ভাগগুলো বদলে যায়। Undo চাপলে ফিরে আসে।</li>
+          <li><strong>রিপোর্ট:</strong> ভাগ করা দাগ বা যেকোনো ভাগে <span class="ui">PDF শেয়ার</span> চাপলে জিজ্ঞেস করে
+            <span class="ui">শুধু এই দাগ</span> না <span class="ui">পুরো বাটোয়ারা</span>: প্রথম পাতায় রঙিন ভাগ আর অংশ, জমি ও বাহুর তালিকা,
+            তারপর প্রতিটি ভাগের আলাদা পাতা।</li>
+        </ol>
+        <div class="tip-box"><strong>প্রস্তাবিত ভাগ, আইনি বাটোয়ারা নয়।</strong> জমির পরিমাণ ধরে সোজা রেখায় ভাগ পরিবারের আলোচনার শুরু মাত্র।
+          জমির দাম, রাস্তা, পুকুর বা ঘরের জন্য অন্যভাবে ভাগ দরকার হতে পারে; চূড়ান্ত হয় কেবল মাঠে আমিনের মাপ আর রেজিস্ট্রি করা দলিলে।</div>
       </section>
 
       <section id="bn-units">
