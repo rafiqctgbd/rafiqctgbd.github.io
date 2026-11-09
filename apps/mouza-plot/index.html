@@ -1556,6 +1556,23 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         });
       }
+
+      // A visitor from an ad or post link with utm_ tags: the Google Play buttons pass the tags on as
+      // the install referrer, so Play Console shows where installs came from. Without tags, nothing changes.
+      var tags = [];
+      new URLSearchParams(window.location.search).forEach(function (value, key) {
+        if (/^utm_(source|medium|campaign|term|content)$/.test(key) && value) {
+          tags.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+        }
+      });
+      if (tags.length) {
+        var referrer = encodeURIComponent(tags.join('&'));
+        document.querySelectorAll('a[href^="https://play.google.com/store/apps/details"]').forEach(function (a) {
+          if (a.href.indexOf('referrer=') === -1) {
+            a.href += (a.href.indexOf('?') === -1 ? '?' : '&') + 'referrer=' + referrer;
+          }
+        });
+      }
     })();
   </script>
 
