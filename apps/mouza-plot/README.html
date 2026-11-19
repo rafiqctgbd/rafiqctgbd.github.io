@@ -965,6 +965,9 @@
           <strong>Download</strong>, where you find maps, <strong>Google map</strong>, for measuring on satellite
           images, and <strong>Tools</strong>, for land calculators, deed records and khatian search. The gear at the top right of My maps opens Settings
           (language, version and this privacy policy).</p>
+        <div class="tip-box"><strong>New here?</strong> The <span class="ui">How to start</span> card at the top of My maps opens a 5-minute video
+          (English or Bengali, with the app's language) that shows every step, from getting a map to measuring a plot; Settings › About
+          links to it too. Stuck anywhere? Write on the <a href="https://www.facebook.com/MouzaPlot" target="_blank" rel="noopener">Facebook page</a> or by e-mail.</div>
 
         <h3 id="g-maps">1. Get a map</h3>
         <ol>
@@ -990,6 +993,8 @@
         </ol>
         <div class="tip-box"><strong>On mobile data?</strong> A folder can be hundreds of megabytes. The app warns you
           and offers <strong>Wait for Wi-Fi</strong>, which starts the download once you are on Wi-Fi.</div>
+        <div class="tip-box"><strong>Your mouza not on the servers?</strong> Download any other mouza's map to learn measuring. When you
+          get your own map elsewhere (for example ordered from dlrms.land.gov.bd), open it with <span class="ui">Open map image</span>.</div>
 
         <h3 id="g-own">2. Open your own map</h3>
         <ol>
@@ -997,7 +1002,12 @@
             open a map from WhatsApp, e-mail or a file manager with <em>Open with</em> or <em>Share</em> and choose
             Mouza Plot.</li>
           <li>For a PDF, page 1 is prepared at the scan's full resolution, which takes a moment for a large sheet.</li>
-          <li>Rename or delete a map from the list with the pencil and bin icons.</li>
+          <li>Rename or delete a map from the list with the pencil and bin icons. Deleted one by mistake? Tap <span class="ui">Undo</span> in the
+            message that follows.</li>
+          <li><strong>Only a phone photo of a paper map?</strong> It opens upright, and the app says it is a photo, not a scan: calibrate it
+            with two points of known distance (method B below). Hold the camera straight above flat paper; the result is still approximate.</li>
+          <li>Your work is saved as you go, even a plot half drawn if Android closes the app. If a save fails (a full phone, for example), a red
+            bar stays at the top with <span class="ui">Try again</span>.</li>
         </ol>
 
         <h3 id="g-scale">3. Set the scale (calibration)</h3>
@@ -1088,10 +1098,11 @@
           <li><strong>PDF report:</strong> select a plot and tap <span class="ui">Share PDF</span> to send it by WhatsApp, e-mail or
             Drive. For several plots, use the ⋮ menu › <span class="ui">Share or save PDF report…</span>: tick the plots, then
             <span class="ui">Share</span> or <span class="ui">Save</span>. It lists each plot's area, sides and perimeter, and the
-            calibration used; every page ends with the app's name and a link to it on Google Play.</li>
+            calibration used, and draws the distance lines you kept on the map with their lengths; every page ends with the app's name and a link to it on Google Play.</li>
           <li><strong>Backup:</strong> Settings › <span class="ui">Back up maps and plots</span> saves one file with every map,
             plot and Google map outline. On a new phone, <span class="ui">Restore from a backup</span> adds them back; nothing
-            already on the phone is deleted.</li>
+            already on the phone is deleted. The file is read back after saving; if it is not whole (the card full, the connection lost), it is
+            deleted and the app says so.</li>
           <li><strong>Plot table (CSV):</strong> ⋮ menu › <span class="ui">Export plot table (Excel, CSV)…</span>
             (<span class="ui">Pro · free during launch</span>) saves one row per plot: area in every unit, kani–gonda, perimeter,
             sides, recorded area and difference, with a total. It opens in Excel, Google Sheets or LibreOffice, Bengali included.</li>
@@ -1149,7 +1160,7 @@
           <li><strong>Plots far from the landmarks drift.</strong> Use <span class="ui">Adjust the placed plots</span> to shift them
             (0.5 m steps) or turn them (0.1° / 0.25°) until they sit on the boundaries you see. <span class="ui">Reset</span> undoes it.</li>
           <li><strong>Google Earth export</strong> (KMZ with the map image, or KML outlines only) needs every matched landmark taken
-            <strong>by GPS, standing at the place</strong>, and no hand adjustment; it can then include the whole Mouza map. Landmarks set on the satellite map are for
+            <strong>by GPS, standing at the place</strong>, and no hand adjustment; it can then include the whole Mouza map, and the distance lines you kept go with the plots. Landmarks set on the satellite map are for
             viewing in the app only: the Google Maps terms do not allow carrying positions taken from its imagery out of the app.</li>
         </ol>
         <div class="tip-box"><strong>Approximate, not a survey.</strong> Old Mouza maps were drawn and copied by hand, and the paper
@@ -1226,7 +1237,9 @@
           The map needs its scale set, and the outline must not cross itself.</p>
         <ol>
           <li><strong>Shares:</strong> type them like <span class="ui">1, 1, 2</span> (two equal heirs and a double share) or
-            <span class="ui">40, 35, 25</span> (percentages), or tap 2–5 equal parts.</li>
+            <span class="ui">40, 35, 25</span> (percentages), or tap 2–5 equal parts. Under the box the app says what the shares add up to: 20, 40, 55
+            add up to 115, so the plot is split into 115 equal parts and each part gets its share. If a total near 100 is not 100 (a percentage typed
+            wrong), it asks you to check. Each part shows its fraction and percentage (20/115 = 17.4%), on screen and in the PDF.</li>
           <li><strong>Direction of the cuts:</strong> <span class="ui">West–east lines</span> or <span class="ui">North–south lines</span>
             (the map's top taken as north; part 1 is the northernmost or westernmost), or follow one of the plot's sides:
             <span class="ui">Every part on this side</span> gives each part a piece of that side, such as a road frontage;
@@ -1549,6 +1562,7 @@
       <section id="bn-guide" class="guide">
         <h2><span class="ico">🧭</span> ব্যবহার নির্দেশিকা</h2>
         <p>অ্যাপের নিচে চারটি ট্যাব আছে: <strong>আমার ম্যাপ</strong> (যেখানে মাপা হয়), <strong>ডাউনলোড</strong> (যেখানে ম্যাপ খোঁজা হয়), <strong>গুগল ম্যাপ</strong> (স্যাটেলাইট ছবিতে মাপার জন্য) এবং <strong>টুলস</strong> (জমির ক্যালকুলেটর ও খতিয়ান অনুসন্ধানের জন্য)। আমার ম্যাপ ট্যাবের ওপরে ডানে গিয়ার আইকনে সেটিংস খোলে (ভাষা, ভার্সন ও গোপনীয়তা নীতি)।</p>
+        <div class="tip-box"><strong>নতুন ব্যবহারকারী?</strong> আমার ম্যাপের ওপরে <span class="ui">শুরু করার নিয়ম</span> কার্ডে ৫ মিনিটের ভিডিও আছে (অ্যাপের ভাষা অনুযায়ী বাংলা বা ইংরেজি): ম্যাপ নামানো থেকে দাগ মাপা পর্যন্ত সব ধাপ। সেটিংস › অ্যাপ সম্পর্কে অংশেও এর লিংক আছে। কোথাও আটকে গেলে <a href="https://www.facebook.com/MouzaPlot" target="_blank" rel="noopener">ফেসবুক পেজে</a> বা ইমেইলে লিখুন।</div>
 
         <h3>১. ম্যাপ সংগ্রহ</h3>
         <ol>
@@ -1561,12 +1575,15 @@
           <li>ম্যাপগুলো ফোনের <strong>Downloads / Mouza Plot</strong> ফোল্ডারে বিভাগ, জেলা ও উপজেলা অনুযায়ী সাজানো থাকে। ওপরে ডানের ঘড়ির আইকনে ডাউনলোড করা ম্যাপের তালিকা দেখায়; যেকোনোটি মাপার জন্য খুলতে তার পাশে <span class="ui">মাপুন</span>-এ ট্যাপ করুন।</li>
         </ol>
         <div class="tip-box"><strong>মোবাইল ডাটায় আছেন?</strong> একটি ফোল্ডার শত শত মেগাবাইটের হতে পারে। অ্যাপ আপনাকে সতর্ক করে এবং <strong>ওয়াই-ফাইয়ের অপেক্ষা</strong> দেয়, যা ওয়াই-ফাইতে এলে ডাউনলোড শুরু করে।</div>
+        <div class="tip-box"><strong>আপনার মৌজার ম্যাপ সার্ভারে নেই?</strong> অন্য যেকোনো মৌজার একটি ম্যাপ নামিয়ে মাপা শিখে নিন। নিজের ম্যাপ অন্য কোথাও থেকে পেলে (যেমন dlrms.land.gov.bd থেকে অর্ডার করে) <span class="ui">ম্যাপ ছবি খুলুন</span> দিয়ে খুলুন।</div>
 
         <h3>২. নিজের ম্যাপ খোলা</h3>
         <ol>
           <li><span class="ui">আমার ম্যাপ</span>-এ <span class="ui">ম্যাপ ছবি খুলুন</span>-এ ট্যাপ করে একটি স্ক্যান করা ম্যাপ বেছে নিন: PDF, JPG বা PNG। হোয়াটসঅ্যাপ, ই-মেইল বা ফাইল ম্যানেজার থেকেও <em>Open with</em> বা <em>Share</em> দিয়ে Mouza Plot বেছে নিয়ে ম্যাপ খুলতে পারেন।</li>
           <li>PDF হলে প্রথম পাতাটি স্ক্যানের পূর্ণ রেজোলিউশনে তৈরি হয়; বড় শিটের জন্য কিছুটা সময় লাগে।</li>
-          <li>তালিকা থেকে পেন্সিল ও বিন আইকনে ম্যাপের নাম বদলানো বা মুছে ফেলা যায়।</li>
+          <li>তালিকা থেকে পেন্সিল ও বিন আইকনে ম্যাপের নাম বদলানো বা মুছে ফেলা যায়। ভুলে মুছে ফেললে পরের বার্তায় <span class="ui">ফিরিয়ে আনুন</span> চাপুন।</li>
+          <li><strong>কাগজের ম্যাপের শুধু ফোনে তোলা ছবি আছে?</strong> ছবিটি সোজা হয়ে খোলে, আর অ্যাপ জানায় এটি স্ক্যান নয়, ক্যামেরার ছবি: জানা দূরত্বের দুটি বিন্দু দিয়ে ক্যালিব্রেট করুন (নিচে খ পদ্ধতি)। সমান কাগজের ঠিক ওপর থেকে সোজা করে ছবি তুলুন; তবুও মাপ আনুমানিক।</li>
+          <li>কাজ সাথে সাথে সেভ হয়, এমনকি অ্যান্ড্রয়েড অ্যাপ বন্ধ করে দিলেও আধা-আঁকা দাগ থেকে যায়। কোনো কারণে সেভ না হলে (যেমন ফোন ভর্তি) ওপরে একটি লাল বার <span class="ui">আবার চেষ্টা</span>-সহ থেকে যায়।</li>
         </ol>
 
         <h3>৩. স্কেল ঠিক করা (ক্যালিব্রেশন)</h3>
@@ -1606,8 +1623,8 @@
 
         <h3>৬. রিপোর্ট ও এক্সপোর্ট</h3>
         <ol>
-          <li><strong>PDF রিপোর্ট:</strong> একটি দাগ বেছে <span class="ui">PDF শেয়ার</span>-এ ট্যাপ করে হোয়াটসঅ্যাপ, ই-মেইল বা ড্রাইভে পাঠান। কয়েকটি দাগের জন্য ⋮ মেনু › <span class="ui">PDF রিপোর্ট শেয়ার / সেভ করুন…</span>: দাগগুলোতে টিক দিয়ে <span class="ui">শেয়ার</span> বা <span class="ui">সেভ</span> চাপুন। এতে প্রতিটি দাগের আয়তন, বাহু, পরিসীমা এবং ব্যবহৃত ক্যালিব্রেশন থাকে; প্রতিটি পাতার শেষে অ্যাপের নাম ও Google Play-র লিংক থাকে।</li>
-          <li><strong>ব্যাকআপ:</strong> সেটিংস › <span class="ui">ম্যাপ ও দাগের ব্যাকআপ</span> প্রতিটি ম্যাপ, দাগ ও গুগল ম্যাপ আউটলাইনসহ একটি ফাইল সংরক্ষণ করে। নতুন ফোনে <span class="ui">ব্যাকআপ থেকে রিস্টোর</span> সেগুলো ফিরিয়ে আনে; ফোনে যা আগে থেকে আছে তার কিছুই মোছা হয় না।</li>
+          <li><strong>PDF রিপোর্ট:</strong> একটি দাগ বেছে <span class="ui">PDF শেয়ার</span>-এ ট্যাপ করে হোয়াটসঅ্যাপ, ই-মেইল বা ড্রাইভে পাঠান। কয়েকটি দাগের জন্য ⋮ মেনু › <span class="ui">PDF রিপোর্ট শেয়ার / সেভ করুন…</span>: দাগগুলোতে টিক দিয়ে <span class="ui">শেয়ার</span> বা <span class="ui">সেভ</span> চাপুন। এতে প্রতিটি দাগের আয়তন, বাহু, পরিসীমা এবং ব্যবহৃত ক্যালিব্রেশন থাকে, আর ম্যাপে রাখা দূরত্বের লাইনগুলো তাদের মাপসহ আঁকা থাকে; প্রতিটি পাতার শেষে অ্যাপের নাম ও Google Play-র লিংক থাকে।</li>
+          <li><strong>ব্যাকআপ:</strong> সেটিংস › <span class="ui">ম্যাপ ও দাগের ব্যাকআপ</span> প্রতিটি ম্যাপ, দাগ ও গুগল ম্যাপ আউটলাইনসহ একটি ফাইল সংরক্ষণ করে। নতুন ফোনে <span class="ui">ব্যাকআপ থেকে রিস্টোর</span> সেগুলো ফিরিয়ে আনে; ফোনে যা আগে থেকে আছে তার কিছুই মোছা হয় না। সেভ করার পর ফাইলটি আবার পড়ে যাচাই হয়; পুরোটা লেখা না গেলে (কার্ড ভর্তি বা সংযোগ কেটে গেলে) ফাইলটি মুছে অ্যাপ তা জানায়।</li>
           <li><strong>দাগের তালিকা (CSV):</strong> ⋮ মেনু › <span class="ui">দাগের তালিকা এক্সপোর্ট (Excel, CSV)…</span> (<span class="ui">Pro · লঞ্চ অফারে ফ্রি</span>) প্রতিটি দাগের এক সারি সংরক্ষণ করে: সব এককে জমি, কানি–গণ্ডা, পরিসীমা, বাহু, রেকর্ডের জমি ও পার্থক্য, শেষে মোট। এক্সেল, গুগল শিটস বা লিব্রেঅফিসে খোলে, বাংলাসহ।</li>
           <li><strong>DXF:</strong> ⋮ মেনু › <span class="ui">DXF এক্সপোর্ট…</span> অটোক্যাড ও অন্যান্য ক্যাড সফটওয়্যারের জন্য দাগগুলো সংরক্ষণ করে (একক: ভূমির ইঞ্চি, অফিসিয়াল মৌজা DWG ড্রয়িংয়ের মতোই)।</li>
           <li><strong>যাচাই:</strong> ⋮ মেনু › <span class="ui">যাচাই</span> আপনার দাগগুলোকে আপনার আগে থেকে জানা আয়তনের সাথে (যেমন দলিল বা অটোক্যাড থেকে) মেলায় এবং পার্থক্য দেখায়।</li>
@@ -1650,7 +1667,7 @@
             সরান (০.৫ মিটার করে) বা ঘোরান (০.১° / ০.২৫°), যতক্ষণ না দেখা সীমানার সাথে মেলে। <span class="ui">রিসেট</span> চাপলে আগের
             অবস্থায় ফেরে।</li>
           <li><strong>গুগল আর্থে এক্সপোর্ট</strong> (ম্যাপের ছবিসহ KMZ, বা শুধু সীমানাসহ KML) করতে মেলানো প্রতিটি চিহ্ন
-            <strong>জায়গায় দাঁড়িয়ে জিপিএস দিয়ে</strong> নিতে হবে, আর হাতে অ্যাডজাস্ট করা থাকা চলবে না; তখন পুরো মৌজা ম্যাপও এতে রাখা যায়। স্যাটেলাইট ম্যাপে মেলানো চিহ্ন
+            <strong>জায়গায় দাঁড়িয়ে জিপিএস দিয়ে</strong> নিতে হবে, আর হাতে অ্যাডজাস্ট করা থাকা চলবে না; তখন পুরো মৌজা ম্যাপও এতে রাখা যায়, আর ম্যাপে রাখা দূরত্বের লাইনগুলোও দাগের সাথে যায়। স্যাটেলাইট ম্যাপে মেলানো চিহ্ন
             শুধু অ্যাপে দেখার জন্য: গুগলের শর্ত অনুযায়ী তাদের ছবি থেকে নেওয়া অবস্থান অ্যাপের বাইরে নেওয়া যায় না।</li>
         </ol>
         <div class="tip-box"><strong>আনুমানিক, জরিপ নয়।</strong> পুরোনো মৌজা ম্যাপ হাতে আঁকা ও হাতে কপি করা, আর বছরের পর বছর কাগজ
@@ -1701,7 +1718,8 @@
           ম্যাপের স্কেল ঠিক থাকতে হবে, আর সীমানা নিজেকে কাটলে চলবে না।</p>
         <ol>
           <li><strong>অংশ:</strong> লিখুন <span class="ui">১, ১, ২</span> (দুজন সমান ওয়ারিশ ও একজন দ্বিগুণ) বা <span class="ui">৪০, ৩৫, ২৫</span>
-            (শতাংশ), অথবা ২–৫ সমান ভাগের বোতাম চাপুন।</li>
+            (শতাংশ), অথবা ২–৫ সমান ভাগের বোতাম চাপুন। বক্সের নিচে অ্যাপ অংশের যোগফল দেখায়: ২০, ৪০, ৫৫-এর যোগফল ১১৫, তাই পুরো জমিকে ১১৫ সমান অংশ ধরে প্রতি ভাগকে তার অংশ দেওয়া হয়।
+            যোগফল ১০০-এর কাছাকাছি কিন্তু ১০০ না হলে (শতাংশ ভুল লেখা) আবার দেখতে বলে। প্রতিটি ভাগের পাশে তার অংশ ও শতাংশ দেখায় (২০/১১৫ = ১৭.৪%), পর্দায় ও PDF-এ।</li>
           <li><strong>কাটার দিক:</strong> <span class="ui">আড়াআড়ি (পূর্ব-পশ্চিম)</span> বা <span class="ui">লম্বালম্বি (উত্তর-দক্ষিণ)</span> (ম্যাপের
             ওপরের দিক উত্তর ধরে; ভাগ ১ সবচেয়ে উত্তরে বা পশ্চিমে), অথবা দাগের কোনো বাহু ধরে: <span class="ui">প্রতি ভাগ এই বাহু ছুঁয়ে</span>
             দিলে প্রতিটি ভাগ ওই বাহুর কিছুটা পায়, যেমন রাস্তার দিক; <span class="ui">এই বাহুর সমান্তরাল ফালি</span> বাহুর সমান্তরালে কাটে।
