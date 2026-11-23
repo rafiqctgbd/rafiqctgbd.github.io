@@ -991,6 +991,8 @@
             district and upazila. The clock icon at the top right lists the maps you have downloaded; tap
             <span class="ui">Measure</span> on any of them to open it for measuring.</li>
         </ol>
+        <div class="tip-box"><strong>A free extra, no guarantee.</strong> Downloading maps is an optional extra: the servers may sometimes be
+          slow or unavailable, and a map may be missing. Measuring works on any map you open, from anywhere.</div>
         <div class="tip-box"><strong>On mobile data?</strong> A folder can be hundreds of megabytes. The app warns you
           and offers <strong>Wait for Wi-Fi</strong>, which starts the download once you are on Wi-Fi.</div>
         <div class="tip-box"><strong>Your mouza not on the servers?</strong> Download any other mouza's map to learn measuring. When you
@@ -1001,7 +1003,8 @@
           <li>On <span class="ui">My maps</span>, tap <span class="ui">Open map image</span> and choose a scanned map: PDF, JPG or PNG. You can also
             open a map from WhatsApp, e-mail or a file manager with <em>Open with</em> or <em>Share</em> and choose
             Mouza Plot.</li>
-          <li>For a PDF, page 1 is prepared at the scan's full resolution, which takes a moment for a large sheet.</li>
+          <li>For a PDF, page 1 is prepared at the scan's full resolution, which takes a moment for a large sheet. If the PDF has
+            several pages, the app then lists them: tap a page to open it as a map of its own, or <span class="ui">Keep the first page</span>.</li>
           <li>Rename or delete a map from the list with the pencil and bin icons. Deleted one by mistake? Tap <span class="ui">Undo</span> in the
             message that follows.</li>
           <li><strong>Only a phone photo of a paper map?</strong> It opens upright, and the app says it is a photo, not a scan: calibrate it
@@ -1028,6 +1031,10 @@
             two-point calibration the app also compares it with the printed scale: it tells you if the image looks
             resized (for example "about 80% of the original scan, 320 DPI") or if your points match a different
             scale, such as 32″ instead of 16″.</li>
+          <li><strong>Measuring the scale bar offers the fix.</strong> When a <span class="ui">Distance</span> line measures the chain scale bar and
+            the scan is a little resized, the app says by how many per cent and offers <span class="ui">Calibrate on this line</span> in one tap.
+            Until a map is calibrated on its scale bar, the map panel shows <span class="ui">Not checked on the chain scale bar</span>; tap it to
+            calibrate. Many scans are 1–2% resized, which makes areas 2–4% off.</li>
           <li>Bigha and kani sizes differ from area to area. Set the ones used where your land is in Settings ›
             <span class="ui">Bigha–katha</span> (default 1 bigha = 33.06 decimal = 20 katha) and
             <span class="ui">Kani–gonda</span> (default 1 kani = 40 decimal). Every map and the Google map use them.</li>
@@ -1050,7 +1057,9 @@
           to see its length again or delete it; press and hold one of its ends and drag it to move it.</div>
         <div class="tip-box"><strong>Smart Trace (beta):</strong> instead of placing every corner, put the crosshair on the open
           paper inside a plot and tap <span class="ui">Smart Trace</span>, or long-press there. The app follows the printed boundary lines and draws the outline as a draft in about 3
-          seconds. Check each side against the map, move any corner that is off, then tap <span class="ui">Finish</span>.
+          seconds, on the <strong>middle</strong> of the lines; a corner next to a plot already measured joins it, so neighbouring plots share their
+          boundary. Zoom in and check that each corner sits on the middle of the lines and that a straight side has no extra corner; move any
+          corner that is off, then tap <span class="ui">Finish</span>. Close up, a plot's colour fades so the whole line shows under its outline.
           If a line is broken or faint it says so and you draw that plot by hand. Turn it off in Settings, or double-tap
           the <span class="ui">Smart Trace</span> label on the map.</div>
         <div class="tip-box"><strong>Make the map clearer:</strong> the sliders button at the top right of the map opens
@@ -1083,7 +1092,8 @@
             <span class="ui">Recorded area (khatian or deed), decimal</span>. The app shows how far the measurement differs, in decimal
             and per cent (in red when more than 2%), and the PDF report includes it.</li>
           <li><strong>Find a plot:</strong> with two or more plots, the search icon at the top finds one by its dag number or name
-            (English or Bengali digits) and zooms to it.</li>
+            (English or Bengali digits) and zooms to it. <span class="ui">On your other maps</span> lists the same number on your other saved
+            maps; tap one to open that map on the dag.</li>
           <li><strong>Map vs ground</strong> (<span class="ui">Pro · free during launch</span>)<strong>:</strong> under a selected plot, open
             <span class="ui">Map vs ground (lengths measured on the land)</span> and type each side as measured on the land, in your length
             setting (feet.inches: 50.6 = 50 ft 6 in). The app shows the difference side by side (over 2% in red) and the area from your
@@ -1095,6 +1105,14 @@
           plots you tick and divides the total into shares, for example <span class="ui">1, 1, 2</span> (two equal heirs and one
           double share) or <span class="ui">40, 35, 25</span> (percentages). It divides the area only; it does not draw where each
           share lies on the ground.</div>
+        <div class="tip-box" id="g-join"><strong>A dag on two sheets:</strong> ⋮ menu › <span class="ui">Join the next sheet</span>, then pick the next
+          sheet of this mouza or the bordering mouza's sheet (both need their scale set). The easy way: put both crosshairs on the same place
+          you know on both sheets (a road or canal crossing the edge, a sheet corner) and tap <span class="ui">Join by eye</span>; turn the next
+          sheet's orange lines until those along the edge meet, then <span class="ui">Place here</span>. One more shared place afterwards makes it
+          exact. Or mark the four corners of the printed map frame on each sheet (<span class="ui">1. Map frame</span>), then two or more shared
+          places far apart (<span class="ui">2. Same places</span>). A plot can then go across the sheet edge, each piece measured at its own
+          sheet's scale. ⋮ › <span class="ui">Hide the next sheet</span> shows this sheet alone (the join is kept); <span class="ui">Take the join
+          apart</span> removes it. Approximate: old sheets were drawn by hand.</div>
 
         <h3 id="g-share">6. Reports and export</h3>
         <ol>
@@ -1111,6 +1129,9 @@
             sides, recorded area and difference, with a total. It opens in Excel, Google Sheets or LibreOffice, Bengali included.</li>
           <li><strong>DXF:</strong> ⋮ menu › <span class="ui">Export DXF…</span> saves the plots for AutoCAD and other CAD software
             (units: ground inches, the same as the official Mouza DWG drawings).</li>
+          <li><strong>Bring outlines in:</strong> ⋮ menu › <span class="ui">Bring outlines in (KML, DXF)</span> adds the closed outlines in a file
+            as plots. A DXF (ground inches, as exported) lands at the map's scale with its labels; a KML or KMZ needs this map placed on the
+            satellite map first. One Undo takes them all back.</li>
           <li><strong>Validation:</strong> ⋮ menu › <span class="ui">Validation</span> compares your plots with areas you already know,
             for example from a deed or from AutoCAD, and shows the difference.</li>
         </ol>
@@ -1145,6 +1166,11 @@
         <p>Open a calibrated map, tap <span class="ui">⋮</span> › <span class="ui">Show on satellite map</span>
           (<span class="ui">Pro · free during launch</span>). The Mouza map and the satellite map are shown together.</p>
         <ol>
+          <li><strong>Quick start, place by eye:</strong> put the Mouza map's crosshair (top) on a place you know, such as a road junction or
+            a bridge, and tap <span class="ui">Place map by eye</span>. Move the satellite map until its crosshair is on the same real place,
+            turn and size it (<span class="ui">−1%</span> / <span class="ui">+1%</span>) until the lines lie on the fields, then
+            <span class="ui">Place here</span>. That place becomes landmark 1. For a closer fit: put the Mouza crosshair on a junction of the
+            map's lines, tap <span class="ui">Pick a point on the map</span>, then <span class="ui">Place here</span> on the real junction.</li>
           <li><strong>Mark landmarks</strong> on the Mouza map, at home if you like: put the Mouza crosshair on a road junction,
             bridge, culvert, canal crossing or mouza boundary corner and tap <span class="ui">Mark</span>. Mark three or four
             <strong>close around your plot (about 100 to 300 m away), on different sides</strong>. Avoid riverbanks and pond
@@ -1152,6 +1178,8 @@
           <li><strong>Match each landmark:</strong> tap its number, then find it on the satellite map and tap
             <span class="ui">Set here</span>, or stand at it and tap <span class="ui">GPS</span>. Two matched landmarks place the
             map; more give a check, and the app shows how many metres each one is off.</li>
+          <li><strong>Does it match?</strong> Once placed, the app asks whether the dag lines match the field boundaries. If they don't, the
+            usual cause is the scan's scale: tap <span class="ui">Check the scale (Calibrate)</span> and calibrate on the chain scale bar.</li>
           <li>Your plots appear in yellow on the satellite map. Tap one to compare its area on the Mouza map with its area as
             placed, or <span class="ui">Copy to Google map</span> to fine-tune its corners on the Google map tab.</li>
           <li><strong>The whole Mouza map:</strong> with two landmarks matched, the layers button › <span class="ui">Whole Mouza map</span> lays the
@@ -1161,7 +1189,9 @@
           <li><strong>Find a place:</strong> the magnifier on the satellite map searches by name, starting with the place in the
             map's name.</li>
           <li><strong>Plots far from the landmarks drift.</strong> Use <span class="ui">Adjust the placed plots</span> to shift them
-            (0.5 m steps) or turn them (0.1° / 0.25°) until they sit on the boundaries you see. <span class="ui">Reset</span> undoes it.</li>
+            (0.5 m steps) or turn them (0.1° / 0.25°) until they sit on the boundaries you see. They turn about a landmark
+            (<span class="ui">Landmark</span>, the default, marked by a red ring), so a place you have lined up stays put; <span class="ui">Corner</span>
+            and <span class="ui">Plot centre</span> are the other choices. <span class="ui">Reset</span> undoes it.</li>
           <li><strong>Google Earth export</strong> (KMZ with the map image, or KML outlines only) needs every matched landmark taken
             <strong>by GPS, standing at the place</strong>, and no hand adjustment; it can then include the whole Mouza map, and the distance lines you kept go with the plots. Landmarks set on the satellite map are for
             viewing in the app only: the Google Maps terms do not allow carrying positions taken from its imagery out of the app.</li>
@@ -1578,13 +1608,14 @@
           <li><strong>পুরো ফোল্ডার</strong> সংরক্ষণ করতে <span class="ui">ফোল্ডার ডাউনলোড…</span>-এ ট্যাপ করুন (বা ফোল্ডারে লং-প্রেস করুন)। অ্যাপ আগে ফাইলের সংখ্যা ও আকার গুনে নেয় এবং ডাউনলোডের আগে জিজ্ঞেস করে। ডাউনলোড ব্যাকগ্রাউন্ডে চলতে থাকে, নোটিফিকেশনে অগ্রগতি দেখা যায় এবং সেখান থেকে বাতিল করা যায়। যে ম্যাপ আপনার কাছে আগেই আছে তা বাদ যায়, তাই আবার চালালে থেমে যাওয়া ডাউনলোড শেষ হয়।</li>
           <li>ম্যাপগুলো ফোনের <strong>Downloads / Mouza Plot</strong> ফোল্ডারে বিভাগ, জেলা ও উপজেলা অনুযায়ী সাজানো থাকে। ওপরে ডানের ঘড়ির আইকনে ডাউনলোড করা ম্যাপের তালিকা দেখায়; যেকোনোটি মাপার জন্য খুলতে তার পাশে <span class="ui">মাপুন</span>-এ ট্যাপ করুন।</li>
         </ol>
+        <div class="tip-box"><strong>ফ্রি বাড়তি সুবিধা, কোনো নিশ্চয়তা নেই।</strong> ম্যাপ ডাউনলোড একটি ঐচ্ছিক বাড়তি সুবিধা: সার্ভার কখনো ধীর বা বন্ধ থাকতে পারে, কোনো ম্যাপ না-ও থাকতে পারে। যেখান থেকেই ম্যাপ খুলুন, মাপা চলে।</div>
         <div class="tip-box"><strong>মোবাইল ডাটায় আছেন?</strong> একটি ফোল্ডার শত শত মেগাবাইটের হতে পারে। অ্যাপ আপনাকে সতর্ক করে এবং <strong>ওয়াই-ফাইয়ের অপেক্ষা</strong> দেয়, যা ওয়াই-ফাইতে এলে ডাউনলোড শুরু করে।</div>
         <div class="tip-box"><strong>আপনার মৌজার ম্যাপ সার্ভারে নেই?</strong> অন্য যেকোনো মৌজার একটি ম্যাপ নামিয়ে মাপা শিখে নিন। নিজের ম্যাপ অন্য কোথাও থেকে পেলে (যেমন dlrms.land.gov.bd থেকে অর্ডার করে) <span class="ui">ম্যাপ ছবি খুলুন</span> দিয়ে খুলুন।</div>
 
         <h3>২. নিজের ম্যাপ খোলা</h3>
         <ol>
           <li><span class="ui">আমার ম্যাপ</span>-এ <span class="ui">ম্যাপ ছবি খুলুন</span>-এ ট্যাপ করে একটি স্ক্যান করা ম্যাপ বেছে নিন: PDF, JPG বা PNG। হোয়াটসঅ্যাপ, ই-মেইল বা ফাইল ম্যানেজার থেকেও <em>Open with</em> বা <em>Share</em> দিয়ে Mouza Plot বেছে নিয়ে ম্যাপ খুলতে পারেন।</li>
-          <li>PDF হলে প্রথম পাতাটি স্ক্যানের পূর্ণ রেজোলিউশনে তৈরি হয়; বড় শিটের জন্য কিছুটা সময় লাগে।</li>
+          <li>PDF হলে প্রথম পাতাটি স্ক্যানের পূর্ণ রেজোলিউশনে তৈরি হয়; বড় শিটের জন্য কিছুটা সময় লাগে। PDF-এ কয়েকটি পাতা থাকলে অ্যাপ পরে সেগুলোর তালিকা দেখায়: যেকোনো পাতায় চাপলে সেটি আলাদা ম্যাপ হিসেবে খোলে, অথবা <span class="ui">প্রথম পৃষ্ঠাই থাক</span>।</li>
           <li>তালিকা থেকে পেন্সিল ও বিন আইকনে ম্যাপের নাম বদলানো বা মুছে ফেলা যায়। ভুলে মুছে ফেললে পরের বার্তায় <span class="ui">ফিরিয়ে আনুন</span> চাপুন।</li>
           <li><strong>কাগজের ম্যাপের শুধু ফোনে তোলা ছবি আছে?</strong> ছবিটি সোজা হয়ে খোলে, আর অ্যাপ জানায় এটি স্ক্যান নয়, ক্যামেরার ছবি: জানা দূরত্বের দুটি বিন্দু দিয়ে ক্যালিব্রেট করুন (নিচে খ পদ্ধতি)। সমান কাগজের ঠিক ওপর থেকে সোজা করে ছবি তুলুন; তবুও মাপ আনুমানিক।</li>
           <li>কাজ সাথে সাথে সেভ হয়, এমনকি অ্যান্ড্রয়েড অ্যাপ বন্ধ করে দিলেও আধা-আঁকা দাগ থেকে যায়। কোনো কারণে সেভ না হলে (যেমন ফোন ভর্তি) ওপরে একটি লাল বার <span class="ui">আবার চেষ্টা</span>-সহ থেকে যায়।</li>
@@ -1596,6 +1627,7 @@
           <li><strong>ক. ছাপা স্কেল + স্ক্যান DPI।</strong> ম্যাপের স্কেলে ট্যাপ করুন (১৬″, ৩২″, ৬৪″, ৮০″ বা কাস্টম)। স্ক্যানের রেজোলিউশন ফাইল থেকেই পড়া হয়; ফাইলে না থাকলে অ্যাপ সরকারি স্ক্যানের রেজোলিউশন <strong>৪০০ DPI</strong> ধরে নেয় এবং তা জানিয়ে দেয়।</li>
           <li><strong>খ. দুটি বিন্দু, জানা দূরত্ব।</strong> স্ক্যান ছোট-বড় করা হয়ে থাকলে বা কাগজ সংকুচিত হলে এটি ভালো। <span class="ui">দুটি বিন্দু দিন</span> বেছে ছাপা <strong>চেইন স্কেল বার</strong>-এর (বা আপনার জানা যেকোনো দূরত্বের) দুই প্রান্তে ক্রসহেয়ার রেখে বিন্দু দিন, তারপর প্রকৃত দূরত্ব লিখুন।</li>
           <li><strong>যাচাই করুন</strong> <span class="ui">দূরত্ব</span> টুল দিয়ে: স্কেল বার মেপে মিলিয়ে দেখুন। দুই-বিন্দু ক্যালিব্রেশনের পর অ্যাপ তা ছাপা স্কেলের সাথেও মেলায়: ছবি ছোট-বড় করা মনে হলে (যেমন &quot;মূল স্ক্যানের প্রায় ৮০%, ৩২০ DPI&quot;) বা আপনার বিন্দুগুলো অন্য স্কেলের সাথে মিললে (যেমন ১৬″-এর বদলে ৩২″) তা জানিয়ে দেয়।</li>
+          <li><strong>স্কেল বার মাপলেই ঠিক করার প্রস্তাব।</strong> <span class="ui">দূরত্ব</span> লাইনে চেইন স্কেল বার মাপলে স্ক্যান সামান্য ছোট-বড় হলে অ্যাপ কত শতাংশ তা জানায় এবং এক চাপে <span class="ui">এই লাইন ধরে ক্যালিব্রেট করুন</span> দেয়। স্কেল বার দিয়ে ক্যালিব্রেট না করা পর্যন্ত ম্যাপের প্যানেলে <span class="ui">স্কেল বার দিয়ে যাচাই হয়নি</span> দেখায়; চাপলে ক্যালিব্রেশন খোলে। অনেক স্ক্যান ১–২% ছোট-বড়, তাতে জমি ২–৪% কম-বেশি আসে।</li>
           <li>বিঘা ও কানির মাপ এলাকাভেদে আলাদা। আপনার জমি যেখানে সেখানকার মাপ সেটিংস › <span class="ui">বিঘা–কাঠা</span> (ডিফল্ট ১ বিঘা = ৩৩.০৬ শতক = ২০ কাঠা) এবং <span class="ui">কানি–গণ্ডা</span> (ডিফল্ট ১ কানি = ৪০ শতক)-এ ঠিক করুন। প্রতিটি ম্যাপ ও গুগল ম্যাপ এগুলোই ব্যবহার করে।</li>
         </ol>
 
@@ -1607,7 +1639,7 @@
           <li><span class="ui">শেষ</span>-এ ট্যাপ করুন। দাগের আয়তন শতক, বর্গফুট, বর্গমিটার, একর, কাঠা ও বিঘায় দেখায়, সাথে ফুট, মিটার ও চেইনে পরিসীমা এবং প্রতিটি বাহুর দৈর্ঘ্য।</li>
         </ol>
         <div class="tip-box"><strong>দূরত্বের লাইন:</strong> বিন্দু বসানোর সময় শেষ বিন্দু থেকে ক্রসহেয়ারের দূরত্ব পাশে দেখায়। <span class="ui">দূরত্ব</span> টুলে দুটি বিন্দু যোগ করে <span class="ui">লাইন সেভ</span> চাপুন: মাপসহ লাইনটি ম্যাপে থেকে যায়। এর প্রান্ত দাগের কোণ ও বাহুতে বসে যায়। এক কোণ থেকে উল্টো দিকের কোণে লাইন টেনে কর্ণও মাপা যায়। রাখা লাইনে চাপলে মাপ আবার দেখায়, মোছাও যায়; প্রান্ত চেপে ধরে টানলে সরে।</div>
-        <div class="tip-box"><strong>স্মার্ট ট্রেস (বিটা):</strong> প্রতিটি কোণ বসানোর বদলে ক্রসহেয়ার দাগের ভেতরের ফাঁকা কাগজে রেখে <span class="ui">স্মার্ট ট্রেস</span> চাপুন, বা সেখানে লং-প্রেস করুন। অ্যাপ ছাপা সীমানা রেখা অনুসরণ করে প্রায় ৩ সেকেন্ডে খসড়া আউটলাইন আঁকে। প্রতিটি বাহু ম্যাপের সাথে মিলিয়ে দেখুন, ভুল কোণ সরান, তারপর <span class="ui">শেষ</span>-এ ট্যাপ করুন। রেখা ভাঙা বা অস্পষ্ট হলে অ্যাপ তা জানায় এবং সেই দাগ হাতে আঁকতে হয়। সেটিংসে এটি বন্ধ করা যায়, বা ম্যাপের <span class="ui">স্মার্ট ট্রেস</span> লেবেলে ডাবল-ট্যাপ করুন।</div>
+        <div class="tip-box"><strong>স্মার্ট ট্রেস (বিটা):</strong> প্রতিটি কোণ বসানোর বদলে ক্রসহেয়ার দাগের ভেতরের ফাঁকা কাগজে রেখে <span class="ui">স্মার্ট ট্রেস</span> চাপুন, বা সেখানে লং-প্রেস করুন। অ্যাপ ছাপা সীমানা রেখা অনুসরণ করে প্রায় ৩ সেকেন্ডে রেখার <strong>ঠিক মাঝখান</strong> দিয়ে খসড়া আউটলাইন আঁকে; আগে মাপা পাশের দাগের কাছের কোণ সেই কোণেই মিলে যায়, ফলে পাশের দাগের সীমানা এক থাকে। জুম করে দেখুন প্রতিটি কোণ রেখার মাঝখানে আছে কিনা আর সোজা বাহুতে বাড়তি কোণ নেই তো; ভুল কোণ সরান, তারপর <span class="ui">শেষ</span>-এ ট্যাপ করুন। কাছ থেকে দেখলে দাগের রং হালকা হয়ে যায়, তাই সীমানার নিচে পুরো রেখা দেখা যায়। রেখা ভাঙা বা অস্পষ্ট হলে অ্যাপ তা জানায় এবং সেই দাগ হাতে আঁকতে হয়। সেটিংসে এটি বন্ধ করা যায়, বা ম্যাপের <span class="ui">স্মার্ট ট্রেস</span> লেবেলে ডাবল-ট্যাপ করুন।</div>
         <div class="tip-box"><strong>ম্যাপ স্পষ্ট করুন:</strong> ম্যাপের ওপরে ডানের স্লাইডার বোতাম খোলে <span class="ui">মূল</span>, <span class="ui">পরিষ্কার</span>, <span class="ui">গাঢ় রেখা</span>, <span class="ui">সাদা-কালো</span> ও <span class="ui">রাতের</span>, সাথে <span class="ui">উজ্জ্বলতা</span> ও <span class="ui">কনট্রাস্ট</span>। পরিষ্কার পুরোনো কালচে কাগজ সাদা করে, রেখা, দাগ নম্বর ও রঙিন লেখা রেখে দেয়। পছন্দটি সব ম্যাপের জন্য মনে থাকে। শুধু দেখার ধরন বদলায়; মাপ ও রিপোর্ট একই থাকে।</div>
         <div class="tip-box"><strong>ফুট ও ইঞ্চি:</strong> দৈর্ঘ্য ডিফল্টভাবে ৮′ ৬″ আকারে দেখায়। সেটিংস › <span class="ui">দৈর্ঘ্যের ফরম্যাট</span> দিয়ে দশমিক ফুটে (৮.৫০ ফুট) বদলানো যায়।</div>
         <div class="tip-box"><strong>ভুল হয়ে গেছে?</strong> পর্দার ওপরের Undo ও Redo যেকোনো পরিবর্তন ফেরায়, মুছে ফেলা কোণ বা দাগও। আউটলাইন নিজেকে কেটে গেলে অ্যাপ সতর্ক করে, কারণ তখন আয়তনের কোনো অর্থ থাকে না।</div>
@@ -1621,10 +1653,11 @@
           <li><strong>বাহুতে নতুন কোণ:</strong> বেছে নেওয়া দাগের প্রতিটি লম্বা বাহুর মাঝখানে একটি ছোট বিন্দু দেখায়। সেটি চেপে ধরে নতুন কোণের জায়গায় টেনে নিন।</li>
           <li><span class="ui">দাগ মুছুন</span> দাগটি সরিয়ে দেয় (Undo করলে ফিরে আসে)। কোণ সরানোর সময় পাশের দুই বাহুর মাপ আর সেখানে দাগের কোণ (ডিগ্রিতে) ঠিক পাশেই দেখায়, তাই যত জুম করুন চোখে থাকে।</li>
           <li><strong>রেকর্ডের জমি:</strong> বেছে নেওয়া দাগের নিচে <span class="ui">রেকর্ডের জমি (খতিয়ান বা দলিল), শতক</span>-এ খতিয়ান বা দলিলের জমি লিখুন। মাপ কত কম-বেশি, শতক ও শতাংশে দেখায় (২%-এর বেশি হলে লাল), আর PDF রিপোর্টেও থাকে।</li>
-          <li><strong>দাগ খুঁজুন:</strong> দুই বা বেশি দাগ থাকলে ওপরের খোঁজার আইকন দিয়ে দাগ নম্বর বা নাম লিখে (বাংলা বা ইংরেজি অঙ্কে) দাগটি খুঁজে সেখানে জুম করা যায়।</li>
+          <li><strong>দাগ খুঁজুন:</strong> দুই বা বেশি দাগ থাকলে ওপরের খোঁজার আইকন দিয়ে দাগ নম্বর বা নাম লিখে (বাংলা বা ইংরেজি অঙ্কে) দাগটি খুঁজে সেখানে জুম করা যায়। <span class="ui">অন্য ম্যাপে</span> আপনার অন্য সেভ করা ম্যাপে একই নম্বরের দাগ দেখায়; চাপলে সেই ম্যাপ দাগের ওপর খোলে।</li>
           <li><strong>নকশা বনাম দখল</strong> (<span class="ui">Pro · লঞ্চ অফারে ফ্রি</span>)<strong>:</strong> বেছে নেওয়া দাগের নিচে <span class="ui">নকশা বনাম দখল (জমিতে মাপা দৈর্ঘ্য)</span> খুলে প্রতিটি বাহু জমিতে যা মেপেছেন লিখুন, সেটিংসের দৈর্ঘ্যের এককে (ফুট.ইঞ্চি: ৫০.৬ = ৫০ ফুট ৬ ইঞ্চি)। অ্যাপ বাহু ধরে ধরে পার্থক্য দেখায় (২%-এর বেশি হলে লাল), আর আপনার মাপ থেকে জমি; PDF রিপোর্ট ও দাগের তালিকায়ও থাকে। চার বা বেশি কোণের দাগে শুধু বাহু দিয়ে হিসাব আনুমানিক: নির্দিষ্ট জমির জন্য কর্ণও মেপে টুলস › <span class="ui">মাঠের মাপ থেকে ক্ষেত্রফল</span> ব্যবহার করুন।</li>
         </ol>
         <div class="tip-box"><strong>মোট ও ভাগ:</strong> ⋮ মেনু › <span class="ui">মোট ও ভাগ</span> আপনার টিক দেওয়া দাগগুলোর যোগফল করে এবং মোটকে ভাগে ভাগ করে, যেমন <span class="ui">১, ১, ২</span> (দুজন সমান ওয়ারিশ ও একজন দ্বিগুণ অংশের) বা <span class="ui">৪০, ৩৫, ২৫</span> (শতাংশ)। এটি শুধু আয়তন ভাগ করে; জমির ওপর কার অংশ কোথায় পড়বে তা আঁকে না।</div>
+        <div class="tip-box"><strong>দুই শিটে পড়া দাগ:</strong> ⋮ মেনু › <span class="ui">পাশের শিট জোড়া</span>, তারপর এই মৌজার পাশের শিট বা পাশের মৌজার শিট বেছে নিন (দুটিরই স্কেল ঠিক করা থাকতে হবে)। সহজ উপায়: দুই শিটেই চেনা একই জায়গায় (কিনারা পার হওয়া রাস্তা বা খাল, শিটের কোণ) দুই ক্রসহেয়ার রেখে <span class="ui">চোখে মিলিয়ে জোড়া</span> চাপুন; পাশের শিটের কমলা রেখা ঘুরিয়ে কিনারার রেখাগুলো মিলিয়ে <span class="ui">এখানে বসান</span> চাপুন। পরে আরেকটি মিল-জায়গা দিলে জোড়া নিখুঁত হয়। অথবা প্রতিটি শিটে ছাপা ফ্রেমের চার কোণ (<span class="ui">১. ম্যাপের ফ্রেম</span>), তারপর দূরে দূরে দুই বা বেশি মিল-জায়গা (<span class="ui">২. একই জায়গা</span>) দিন। তখন দাগ শিটের কিনারা পার হতে পারে, প্রতিটি অংশ নিজের শিটের স্কেলে মাপা হয়। ⋮ › <span class="ui">পাশের শিট লুকান</span> শুধু এই শিট দেখায় (জোড়া থাকে); <span class="ui">জোড়া খুলুন</span> জোড়া সরায়। আনুমানিক: পুরোনো শিট হাতে আঁকা।</div>
 
         <h3>৬. রিপোর্ট ও এক্সপোর্ট</h3>
         <ol>
@@ -1632,6 +1665,7 @@
           <li><strong>ব্যাকআপ:</strong> সেটিংস › <span class="ui">ম্যাপ ও দাগের ব্যাকআপ</span> প্রতিটি ম্যাপ, দাগ ও গুগল ম্যাপ আউটলাইনসহ একটি ফাইল সংরক্ষণ করে। নতুন ফোনে <span class="ui">ব্যাকআপ থেকে রিস্টোর</span> সেগুলো ফিরিয়ে আনে; ফোনে যা আগে থেকে আছে তার কিছুই মোছা হয় না। সেভ করার পর ফাইলটি আবার পড়ে যাচাই হয়; পুরোটা লেখা না গেলে (কার্ড ভর্তি বা সংযোগ কেটে গেলে) ফাইলটি মুছে অ্যাপ তা জানায়।</li>
           <li><strong>দাগের তালিকা (CSV):</strong> ⋮ মেনু › <span class="ui">দাগের তালিকা এক্সপোর্ট (Excel, CSV)…</span> (<span class="ui">Pro · লঞ্চ অফারে ফ্রি</span>) প্রতিটি দাগের এক সারি সংরক্ষণ করে: সব এককে জমি, কানি–গণ্ডা, পরিসীমা, বাহু, রেকর্ডের জমি ও পার্থক্য, শেষে মোট। এক্সেল, গুগল শিটস বা লিব্রেঅফিসে খোলে, বাংলাসহ।</li>
           <li><strong>DXF:</strong> ⋮ মেনু › <span class="ui">DXF এক্সপোর্ট…</span> অটোক্যাড ও অন্যান্য ক্যাড সফটওয়্যারের জন্য দাগগুলো সংরক্ষণ করে (একক: ভূমির ইঞ্চি, অফিসিয়াল মৌজা DWG ড্রয়িংয়ের মতোই)।</li>
+          <li><strong>আউটলাইন আনা:</strong> ⋮ মেনু › <span class="ui">আউটলাইন আনুন (KML, DXF)</span> ফাইলের বন্ধ আউটলাইনগুলো দাগ হিসেবে যোগ করে। DXF (ভূমির ইঞ্চিতে, এক্সপোর্টের মতো) ম্যাপের স্কেলে লেবেলসহ বসে; KML বা KMZ-এর জন্য আগে ম্যাপটি স্যাটেলাইট ম্যাপে বসাতে হয়। একবার Undo চাপলে সব ফেরে।</li>
           <li><strong>যাচাই:</strong> ⋮ মেনু › <span class="ui">যাচাই</span> আপনার দাগগুলোকে আপনার আগে থেকে জানা আয়তনের সাথে (যেমন দলিল বা অটোক্যাড থেকে) মেলায় এবং পার্থক্য দেখায়।</li>
         </ol>
 
@@ -1655,12 +1689,14 @@
         <p>স্কেল ঠিক করা একটি ম্যাপ খুলে <span class="ui">⋮</span> › <span class="ui">স্যাটেলাইট ম্যাপে দেখুন</span>
           (<span class="ui">Pro · লঞ্চ অফারে ফ্রি</span>)-এ ট্যাপ করুন। মৌজা ম্যাপ ও স্যাটেলাইট ম্যাপ একসাথে দেখায়।</p>
         <ol>
+          <li><strong>দ্রুত শুরু, চোখে মিলিয়ে বসানো:</strong> মৌজা ম্যাপের ক্রসহেয়ার (ওপরে) চেনা জায়গায়, যেমন রাস্তার মোড় বা ব্রিজে রেখে <span class="ui">চোখে মিলিয়ে বসান</span> চাপুন। স্যাটেলাইট ম্যাপ সরিয়ে তার ক্রসহেয়ার একই আসল জায়গায় আনুন, ঘুরিয়ে ও ছোট-বড় করে (<span class="ui">−১%</span> / <span class="ui">+১%</span>) রেখাগুলো মাঠের ওপর মিলিয়ে <span class="ui">এখানে বসান</span> চাপুন। জায়গাটি ১ নম্বর চিহ্ন হয়। আরও কাছাকাছি মেলাতে: মৌজা ক্রসহেয়ার ম্যাপের রেখার মোড়ে রেখে <span class="ui">ম্যাপের বিন্দু ধরুন</span>, তারপর আসল মোড়ে <span class="ui">এখানে বসান</span>।</li>
           <li><strong>চিহ্ন দিন</strong>, চাইলে বাসায় বসেই: মৌজা ক্রসহেয়ার রাস্তার মোড়, ব্রিজ, কালভার্ট, খালের ক্রসিং বা মৌজার
             সীমানার কোণে রেখে <span class="ui">চিহ্ন দিন</span> চাপুন। <strong>দাগের কাছাকাছি (প্রায় ১০০ থেকে ৩০০ মিটারের মধ্যে)
             বিভিন্ন দিকে</strong> তিন-চারটি চিহ্ন দিন। নদীর পাড় ও পুকুরের কিনারা বাদ দিন: এগুলো সরে যায়।</li>
           <li><strong>প্রতিটি চিহ্ন মেলান:</strong> চিহ্নের নম্বরে ট্যাপ করে স্যাটেলাইট ম্যাপে খুঁজে <span class="ui">এখানে বসান</span>
             চাপুন, অথবা জায়গায় দাঁড়িয়ে <span class="ui">জিপিএস</span> চাপুন। দুটি চিহ্ন মেলালেই ম্যাপ বসে যায়; বেশি দিলে যাচাই হয়,
             আর অ্যাপ দেখায় কোন চিহ্ন কত মিটার সরে আছে।</li>
+          <li><strong>মিলছে কি?</strong> বসানোর পর অ্যাপ জিজ্ঞেস করে মৌজা ম্যাপের দাগ মাঠের সীমানার সাথে মিলছে কিনা। না মিললে সাধারণ কারণ স্ক্যানের স্কেল: <span class="ui">স্কেল যাচাই করুন (ক্যালিব্রেশন)</span> চেপে চেইন স্কেল বার দিয়ে ক্যালিব্রেট করুন।</li>
           <li>আপনার দাগগুলো স্যাটেলাইট ম্যাপে হলুদ রঙে দেখায়। কোনোটিতে ট্যাপ করে মৌজা ম্যাপের আয়তন আর বসানো অবস্থার আয়তন মিলিয়ে
             দেখুন, অথবা <span class="ui">গুগল ম্যাপে কপি করুন</span> চেপে গুগল ম্যাপ ট্যাবে কোণগুলো ঠিক করুন।</li>
           <li><strong>পুরো মৌজা ম্যাপ:</strong> দুটি চিহ্ন মেলানো থাকলে লেয়ার বোতাম › <span class="ui">পুরো মৌজা ম্যাপ</span> পুরো স্ক্যান করা শিট
@@ -1669,8 +1705,9 @@
             জুম করলে মাঠের ওপর দাগ নম্বর দেখায়।</li>
           <li><strong>জায়গা খুঁজুন:</strong> স্যাটেলাইট ম্যাপের ম্যাগনিফায়ার নাম দিয়ে জায়গা খোঁজে, ম্যাপের নামে থাকা জায়গা দিয়ে শুরু করে।</li>
           <li><strong>চিহ্ন থেকে দূরের দাগ সরে যেতে পারে।</strong> <span class="ui">বসানো দাগ অ্যাডজাস্ট করুন</span> দিয়ে দাগগুলো
-            সরান (০.৫ মিটার করে) বা ঘোরান (০.১° / ০.২৫°), যতক্ষণ না দেখা সীমানার সাথে মেলে। <span class="ui">রিসেট</span> চাপলে আগের
-            অবস্থায় ফেরে।</li>
+            সরান (০.৫ মিটার করে) বা ঘোরান (০.১° / ০.২৫°), যতক্ষণ না দেখা সীমানার সাথে মেলে। ঘোরানো হয় একটি চিহ্ন ধরে
+            (<span class="ui">চিহ্ন</span>, আগে থেকে বাছা, লাল বৃত্তে দেখায়), তাই মিলিয়ে রাখা জায়গা সরে না; <span class="ui">কোণ</span> ও <span class="ui">দাগের মাঝ</span>
+            অন্য দুই উপায়। <span class="ui">রিসেট</span> চাপলে আগের অবস্থায় ফেরে।</li>
           <li><strong>গুগল আর্থে এক্সপোর্ট</strong> (ম্যাপের ছবিসহ KMZ, বা শুধু সীমানাসহ KML) করতে মেলানো প্রতিটি চিহ্ন
             <strong>জায়গায় দাঁড়িয়ে জিপিএস দিয়ে</strong> নিতে হবে, আর হাতে অ্যাডজাস্ট করা থাকা চলবে না; তখন পুরো মৌজা ম্যাপও এতে রাখা যায়, আর ম্যাপে রাখা দূরত্বের লাইনগুলোও দাগের সাথে যায়। স্যাটেলাইট ম্যাপে মেলানো চিহ্ন
             শুধু অ্যাপে দেখার জন্য: গুগলের শর্ত অনুযায়ী তাদের ছবি থেকে নেওয়া অবস্থান অ্যাপের বাইরে নেওয়া যায় না।</li>
