@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>document.documentElement.className+=" js";</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — মাথা খাটাও: বাংলা ধাঁধা গেম</title>
+  <meta name="description" content="Terms of Service for মাথা খাটাও: বাংলা ধাঁধা গেম (Matha Khatao: Bangla Brain Game), a free offline Android game by SixSeasons Labs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #0ea5e9;
+      --border: rgba(255, 255, 255, 0.08);
+      --green: #10b981;
+      --yellow: #f59e0b;
+      --code-bg: #0d1424;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+      height: 66px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-right {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-right a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .nav-right a:hover {
+      color: var(--accent);
+    }
+
+    /* HEADER */
+    .page-header {
+      padding: 130px 0 50px;
+      background: radial-gradient(ellipse at 80% 0%, rgba(14, 165, 233, 0.07), transparent 50%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-header .wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 0 24px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      opacity: 0.4;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .header-badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: 'Syne', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-android {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--green);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .badge-free {
+      background: rgba(14, 165, 233, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+    }
+
+    .badge-privacy {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--yellow);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.8rem;
+    }
+
+    .header-desc {
+      color: var(--muted);
+      max-width: 580px;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    /* MAIN */
+    .main-wrap {
+      max-width: 960px;
+      margin: auto;
+      padding: 60px 24px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    /* TOC */
+    .toc {
+      position: sticky;
+      top: 90px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .toc-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .toc ul {
+      list-style: none;
+    }
+
+    .toc li {
+      margin-bottom: 6px;
+    }
+
+    .toc a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: block;
+      padding: 4px 0 4px 10px;
+      border-left: 2px solid transparent;
+    }
+
+    .toc a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    /* CONTENT */
+    .content section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 90px;
+    }
+
+    .content h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .content h2 .ico {
+      font-size: 1rem;
+    }
+
+    .content p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .content a {
+      color: var(--accent);
+    }
+
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    /* Feature list */
+    .feature-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .feature-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: '▹';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    /* Privacy list */
+    .privacy-list {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-list li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+    }
+
+    .privacy-list li::before {
+      content: '✓';
+      color: var(--green);
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    /* Permission cards */
+    .perm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .perm-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .perm-card .perm-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .perm-card .perm-desc {
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    /* Code-style scope */
+    .scope-tag {
+      display: inline-flex;
+      align-items: center;
+      background: var(--code-bg);
+      border: 1px solid rgba(14, 165, 233, 0.2);
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.83rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    /* Links section */
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .link-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .link-card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .link-card .link-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(14, 165, 233, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .link-card .link-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .link-card .link-title {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    /* Developer card */
+    .dev-card {
+      background: linear-gradient(135deg, var(--card), #162032);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dev-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .dev-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 3px;
+    }
+
+    .dev-role {
+      color: var(--muted);
+      font-size: 0.83rem;
+      margin-bottom: 8px;
+    }
+
+    .dev-github {
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .dev-github:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width:768px) {
+      .main-wrap {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 32px 16px 48px;
+      }
+
+      .toc {
+        display: none;
+      }
+
+      .perm-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-header {
+        padding: 90px 0 40px;
+      }
+
+      .page-header .wrap {
+        padding: 0 16px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .content h2 {
+        font-size: 1.15rem;
+      }
+
+      .content p {
+        font-size: 0.9rem;
+      }
+
+      .nav-right {
+        gap: 10px;
+      }
+    }
+
+    @media (max-width:640px) {
+      /* Nav */
+      body { overflow-x: hidden; }
+      .nav-logo { font-size: 0.95rem; letter-spacing: -0.3px; }
+      .nav-right { display: none; }
+      nav .wrap { padding: 0 14px; }
+      /* Headings — fix flex overflow */
+      h2 {
+        display: block !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 1.4rem;
+        padding-left: 12px;
+        border-left: 4px solid var(--accent);
+        line-height: 1.3;
+        word-break: break-word;
+      }
+      h2::before { display: none !important; }
+      /* Layout */
+      .wrap, .container { padding-left: 14px !important; padding-right: 14px !important; }
+      .content-wrap, .main-wrap { padding-left: 14px !important; padding-right: 14px !important; }
+      .page-header .wrap { padding: 0 14px; }
+      /* Prevent content overflow */
+      * { max-width: 100%; box-sizing: border-box; }
+      p, li, a { word-break: break-word; overflow-wrap: anywhere; }
+      .highlight-box, .contact-box, .tl-card, .feature-card,
+      .perm-item, .link-card, .proj-card, .training-item { overflow: hidden; }
+      h1 { font-size: 1.8rem; }
+      .toc { display: none !important; }
+      .main-wrap { grid-template-columns: 1fr !important; padding: 28px 14px 60px !important; }
+      .content h2 { font-size: 1.05rem !important; padding-left: 10px; }
+      .perm-grid { grid-template-columns: 1fr !important; }
+      .links-grid { grid-template-columns: 1fr !important; }
+      .dev-card { flex-direction: column; gap: 12px; }
+      .content p, .feature-list li, .privacy-list li { font-size: 0.88rem; }
+      .breadcrumb { font-size: 0.72rem; flex-wrap: wrap; }
+      .badge { font-size: 0.7rem; padding: 4px 9px; }
+      .main-wrap {
+        padding: 24px 12px 32px;
+      }
+
+      .page-header {
+        padding: 70px 0 32px;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+
+    /* ── Reduced motion ─────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-fill-mode: forwards !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ── Scroll reveal ─────────────────────── */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Mobile nav toggle ─────────────────────── */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 640px) {
+      .nav-toggle {
+        display: flex !important;
+      }
+
+      .nav-right {
+        display: flex !important;
+        position: absolute;
+        top: 66px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        gap: 0;
+      }
+
+      .nav-right.open {
+        max-height: 220px;
+      }
+
+      .nav-right a {
+        display: block;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* ── Back to top ─────────────────────── */
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+      z-index: 900;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--accent-hover);
+    }
+  
+    /* A11y: WCAG 2.2 (2.5.8) minimum target size 24x24 for standalone controls */
+    nav a, .breadcrumb a, .footer-links a, footer a, .lang-switch a, .btn, .lang-card {
+      min-height: 24px;
+      display: inline-flex;
+      align-items: center;
+    }
+    nav a, .breadcrumb a, footer a { padding-block: 4px; padding-inline: 6px; min-width: 24px; justify-content: center; }
+    .lang-card { display: block; }
+  </style>
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohammadrafiqulislam.com/apps/matha-khatao/README">
+  <meta property="og:title" content="Terms of Service — মাথা খাটাও: বাংলা ধাঁধা গেম">
+  <meta property="og:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+  <meta property="og:description"
+    content="Terms of Service for Matha Khatao: Bangla Brain Game, a free offline Android game by SixSeasons Labs.">
+  <meta property="og:site_name" content="মাথা খাটাও">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://mohammadrafiqulislam.com/apps/matha-khatao/README">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <!-- Theme color (mobile browser chrome) -->
+  <meta name="theme-color" content="#0f172a">
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terms of Service — মাথা খাটাও: বাংলা ধাঁধা গেম">
+  <meta name="twitter:description"
+    content="Terms of Service for Matha Khatao: Bangla Brain Game, a free offline Android game by SixSeasons Labs.">
+  <meta name="twitter:image" content="https://mohammadrafiqulislam.com/assets/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms of Service — মাথা খাটাও: বাংলা ধাঁধা গেম",
+  "url": "https://mohammadrafiqulislam.com/apps/matha-khatao/README",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "SixSeasons Labs",
+    "url": "https://mohammadrafiqulislam.com/"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "SixSeasons Labs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "SixSeasons Labs"
+  },
+  "description": "Terms of Service for Matha Khatao: Bangla Brain Game, a free offline Android game by SixSeasons Labs.",
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://mohammadrafiqulislam.com/assets/og-image.png"
+  }
+}
+</script>
+</head>
+
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a href="/" class="nav-logo">মাথা<span> খাটাও</span></a>
+      <div class="nav-right" id="navList">
+        <a href="/apps/matha-khatao/">App Home</a>
+        <a href="/apps/matha-khatao/privacy-policy">Privacy Policy</a>
+        <a href="/">← Portfolio</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page-header reveal">
+    <div class="wrap">
+      <div class="breadcrumb">
+        <a href="/">Portfolio</a>
+        <span>/</span>
+        <a href="/apps/matha-khatao/">মাথা খাটাও</a>
+        <span>/</span>
+        Terms of Service
+      </div>
+      <div class="header-badge-row">
+        <span class="badge badge-android">📱 Android</span>
+        <span class="badge badge-free">⚡ Free</span>
+        <span class="badge badge-privacy">📴 Offline</span>
+      </div>
+      <img class="page-app-icon" src="/assets/mathakhatao_icon.png" alt="মাথা খাটাও app icon" width="56" height="56" style="display:block;width:56px;height:56px;border-radius:14px;margin:0 0 14px;box-shadow:0 4px 14px rgba(0,0,0,.3);object-fit:cover;">
+      <h1>Terms of Service</h1>
+      <p class="header-desc">Terms of Service for মাথা খাটাও: বাংলা ধাঁধা গেম (Matha Khatao: Bangla Brain Game), the offline
+        Bangla puzzle game of riddles, wordplay, math, optical illusions and folk stories. Last updated November 2026.</p>
+    </div>
+  </div>
+
+  <div class="main-wrap">
+
+    <aside>
+      <nav class="toc">
+        <div class="toc-title">Contents</div>
+        <ul>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#bn-terms">সেবার শর্তাবলী (বাংলা)</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#privacy">Data Privacy</a></li>
+          <li><a href="#links">Links</a></li>
+          <li><a href="#developer">Developer</a></li>
+        </ul>
+      </nav>
+    </aside>
+<main id="main-content">
+
+    <div class="content">
+
+      <section id="terms">
+        <h2><span class="ico">📜</span> Terms of Service</h2>
+        <p><em>Last updated: 26 November 2026</em></p>
+        <p>By downloading, installing, or playing মাথা খাটাও: বাংলা ধাঁধা গেম ("the Game"), you agree to these Terms of
+          Service. If you do not agree, please do not use the Game.</p>
+
+        <p><strong>1. Description of Service</strong><br>
+          The Game is a free Android puzzle game in Bangla: riddles, wordplay, math puzzles, optical illusions and
+          puzzles retold from folk stories. It works offline and needs no account. This version has no advertisements
+          and no in-app purchases.</p>
+
+        <p><strong>2. Who May Play</strong><br>
+          The Game is meant for players aged 13 and over. Younger children should play with a parent or guardian.</p>
+
+        <p><strong>3. Puzzles and Answers</strong><br>
+          The puzzles are for fun and learning. Some riddles have more than one sensible answer, and folk stories exist
+          in many versions; the Game's answers and explanations are offered in good faith but may not match every
+          reading. If you think an answer is wrong, tell us the level number and we will look at it.</p>
+
+        <p><strong>4. Puzzles That Use the Phone</strong><br>
+          Some puzzles ask you to shake, tilt or turn the phone over, or to press its volume buttons. Hold the phone
+          firmly, play somewhere safe, and never play while walking in traffic, cycling or driving. You are responsible
+          for any damage to your phone or surroundings.</p>
+
+        <p><strong>5. Your Progress</strong><br>
+          Your progress and settings are stored only on your phone (and, if you turned it on, in Android's own device
+          backup to your Google account). Clearing the app's data or uninstalling the Game removes them. See the
+          <a href="/apps/matha-khatao/privacy-policy">Privacy Policy</a> for full details.</p>
+
+        <p><strong>6. Content and Sharing</strong><br>
+          The puzzles, pictures, text and sounds of the Game belong to SixSeasons Labs, unless noted otherwise. You may
+          share a puzzle with the Game's Share button for personal, non-commercial use; please do not copy, republish
+          or sell the Game's content as your own.</p>
+
+        <p><strong>7. No Warranty</strong><br>
+          The Game is provided "as is" and "as available," without warranties of any kind, express or implied, including
+          that it will run without errors on every device.</p>
+
+        <p><strong>8. Limitation of Liability</strong><br>
+          To the fullest extent permitted by law, the developer is not liable for any indirect, incidental, or
+          consequential damages arising from your use of, or inability to use, the Game.</p>
+
+        <p><strong>9. Changes to the Game and These Terms</strong><br>
+          Puzzles and features may be added, changed, or removed in future updates. If a future version adds ads or
+          purchases, the Privacy Policy and the Google Play listing will say so before that version is released. These
+          Terms may be updated from time to time; continued use of the Game after a change means you accept the revised
+          Terms.</p>
+
+        <p><strong>10. Termination</strong><br>
+          You may stop using the Game at any time by uninstalling it.</p>
+
+        <p><strong>11. Contact</strong><br>
+          Questions about these Terms can be sent to <a href="mailto:support@mohammadrafiqulislam.com">support@mohammadrafiqulislam.com</a>.</p>
+      </section>
+
+      <section id="bn-terms">
+        <h2><span class="ico">📜</span> সেবার শর্তাবলী (বাংলা)</h2>
+        <p><em>সর্বশেষ হালনাগাদ: ২৬ নভেম্বর ২০২৬</em></p>
+        <p>মাথা খাটাও: বাংলা ধাঁধা গেম ("গেম") ডাউনলোড, ইনস্টল বা খেলার মাধ্যমে আপনি এই শর্তাবলীতে সম্মত হচ্ছেন। সম্মত না
+          হলে অনুগ্রহ করে গেমটি ব্যবহার করবেন না।</p>
+
+        <p><strong>১. সেবার বিবরণ</strong><br>
+          এটি বাংলায় একটি ফ্রি অ্যান্ড্রয়েড ধাঁধা গেম: ধাঁধা, শব্দের খেলা, অঙ্কের ধাঁধা, দৃষ্টিভ্রম আর লোককাহিনি থেকে নেওয়া
+          ধাঁধা। ইন্টারনেট ছাড়াই চলে, কোনো অ্যাকাউন্ট লাগে না। এই সংস্করণে কোনো বিজ্ঞাপন বা ইন-অ্যাপ কেনাকাটা নেই।</p>
+
+        <p><strong>২. কারা খেলতে পারবেন</strong><br>
+          গেমটি ১৩ বছর বা তার বেশি বয়সীদের জন্য। ছোট শিশুরা বাবা-মা বা অভিভাবকের সাথে খেলবে।</p>
+
+        <p><strong>৩. ধাঁধা ও উত্তর</strong><br>
+          ধাঁধাগুলো আনন্দ আর শেখার জন্য। কিছু ধাঁধার একাধিক যুক্তিসঙ্গত উত্তর থাকতে পারে, আর লোককাহিনির নানা রূপ আছে;
+          গেমের উত্তর ও ব্যাখ্যা সরল বিশ্বাসে দেওয়া, তবে সবার পড়ার সাথে না-ও মিলতে পারে। কোনো উত্তর ভুল মনে হলে লেভেল
+          নম্বরসহ জানাবেন, আমরা দেখব।</p>
+
+        <p><strong>৪. ফোন নাড়ানোর ধাঁধা</strong><br>
+          কিছু ধাঁধায় ফোন ঝাঁকাতে, কাত করতে, উল্টাতে বা ভলিউম বোতাম চাপতে হয়। ফোন শক্ত করে ধরুন, নিরাপদ জায়গায় খেলুন,
+          আর রাস্তায় হাঁটার সময়, সাইকেল বা গাড়ি চালানোর সময় কখনো খেলবেন না। ফোন বা আশপাশের কোনো ক্ষতির দায় আপনার।</p>
+
+        <p><strong>৫. আপনার অগ্রগতি</strong><br>
+          আপনার অগ্রগতি ও সেটিংস শুধু আপনার ফোনেই থাকে (আর আপনি চালু রাখলে, Android-এর নিজস্ব ডিভাইস ব্যাকআপে আপনার
+          Google অ্যাকাউন্টে)। অ্যাপের ডাটা মুছলে বা গেম আনইনস্টল করলে সেগুলো মুছে যায়। বিস্তারিত
+          <a href="/apps/matha-khatao/privacy-policy">গোপনীয়তা নীতি</a>-তে।</p>
+
+        <p><strong>৬. কনটেন্ট ও শেয়ার</strong><br>
+          গেমের ধাঁধা, ছবি, লেখা ও শব্দ SixSeasons Labs-এর, অন্যভাবে উল্লেখ না থাকলে। গেমের শেয়ার বোতাম দিয়ে ব্যক্তিগত,
+          অবাণিজ্যিক কাজে ধাঁধা শেয়ার করতে পারেন; তবে গেমের কনটেন্ট নিজের বলে কপি, পুনঃপ্রকাশ বা বিক্রি করবেন না।</p>
+
+        <p><strong>৭. কোনো নিশ্চয়তা নেই</strong><br>
+          গেমটি "যেমন আছে" ও "যখন পাওয়া যায়" ভিত্তিতে দেওয়া হয়, কোনো প্রকাশ্য বা অন্তর্নিহিত নিশ্চয়তা ছাড়া, যার মধ্যে
+          প্রতিটি ফোনে ত্রুটি ছাড়া চলার নিশ্চয়তাও নেই।</p>
+
+        <p><strong>৮. দায়ের সীমা</strong><br>
+          আইন যতদূর অনুমতি দেয়, গেম ব্যবহার বা ব্যবহার করতে না পারা থেকে হওয়া কোনো পরোক্ষ, আনুষঙ্গিক বা ফলস্বরূপ ক্ষতির
+          জন্য ডেভেলপার দায়ী নন।</p>
+
+        <p><strong>৯. গেম ও শর্তাবলীর পরিবর্তন</strong><br>
+          ভবিষ্যতের আপডেটে ধাঁধা ও সুবিধা যোগ, বদল বা বাদ হতে পারে। কোনো সংস্করণে বিজ্ঞাপন বা কেনাকাটা যোগ হলে, সেই সংস্করণ
+          প্রকাশের আগে গোপনীয়তা নীতি ও Google Play পেজে তা জানানো হবে। এই শর্তাবলী সময়ে সময়ে হালনাগাদ হতে পারে; পরিবর্তনের
+          পরও গেম ব্যবহার করলে নতুন শর্তাবলী মেনে নিচ্ছেন বলে ধরা হবে।</p>
+
+        <p><strong>১০. ব্যবহার বন্ধ</strong><br>
+          যেকোনো সময় গেমটি আনইনস্টল করে ব্যবহার বন্ধ করতে পারেন।</p>
+
+        <p><strong>১১. যোগাযোগ</strong><br>
+          এই শর্তাবলী নিয়ে প্রশ্ন থাকলে লিখুন: <a href="mailto:support@mohammadrafiqulislam.com">support@mohammadrafiqulislam.com</a>।</p>
+      </section>
+
+      <section id="about">
+        <h2><span class="ico">📋</span> About</h2>
+        <p>মাথা খাটাও is a Bangla brain game of 500 levels in 5 zones: classic riddles and wordplay, math traps and school
+          geometry, optical illusions that draw their proof, and Nasiruddin Hodja and Gopal Bhar stories retold as puzzles,
+          with pictures and scenes from everyday Bangladeshi life. Wrong answers get an explanation, so you learn while you
+          play. It works offline, with no account.</p>
+      </section>
+
+      <section id="privacy">
+        <h2><span class="ico">🔐</span> Data Privacy</h2>
+        <ul class="privacy-list">
+          <li>No account, sign-in or registration</li>
+          <li>No personal information collected, stored, shared or sold</li>
+          <li>No ads, analytics, tracking or crash reporting in this version</li>
+          <li>No Android permissions requested, and no internet use</li>
+          <li>Progress stays on your phone; the motion sensor is read only during the puzzles that need it, never stored</li>
+        </ul>
+        <p>Full details: <a href="/apps/matha-khatao/privacy-policy">Privacy Policy</a>.</p>
+      </section>
+
+      <section id="links">
+        <h2><span class="ico">🔗</span> Links</h2>
+        <div class="links-grid">
+          <a href="/apps/matha-khatao/" class="link-card">
+            <div class="link-ico">🏠</div>
+            <div>
+              <div class="link-label">Navigation</div>
+              <div class="link-title">App Homepage</div>
+            </div>
+          </a>
+          <a href="/apps/matha-khatao/privacy-policy" class="link-card">
+            <div class="link-ico">📄</div>
+            <div>
+              <div class="link-label">Legal</div>
+              <div class="link-title">Privacy Policy</div>
+            </div>
+          </a>
+          <a href="/" class="link-card">
+            <div class="link-ico">👤</div>
+            <div>
+              <div class="link-label">Developer</div>
+              <div class="link-title">Portfolio</div>
+            </div>
+          </a>
+          <a href="/apps/" class="link-card">
+            <div class="link-ico">📱</div>
+            <div>
+              <div class="link-label">More</div>
+              <div class="link-title">All Apps</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="developer">
+        <h2><span class="ico">👨‍💻</span> Developer</h2>
+        <div class="dev-card">
+          <div class="dev-avatar">S</div>
+          <div>
+            <div class="dev-name">SixSeasons Labs</div>
+            <div class="dev-role">Independent developer</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  </div>
+<footer>
+    <a href="/">Portfolio</a>
+    <a href="/apps/matha-khatao/">App Home</a>
+    <a href="/apps/matha-khatao/privacy-policy">Privacy Policy</a>
+    <p style="margin-top:12px;">© 2026 SixSeasons Labs. All rights reserved.</p>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var navList = document.getElementById('navList');
+      if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+          var isOpen = navList.classList.toggle('open');
+          toggle.classList.toggle('open', isOpen);
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            navList.classList.remove('open');
+            toggle.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && items.length) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0, rootMargin: '200px 0px 200px 0px' });
+        items.forEach(function (el) { observer.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('is-visible'); });
+      }
+
+      var btn = document.getElementById('backToTop');
+      if (btn) {
+        window.addEventListener('scroll', function () {
+          btn.classList.toggle('visible', window.scrollY > 500);
+        });
+        btn.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    })();
+  </script>
+
+</body>
+
+</html>
